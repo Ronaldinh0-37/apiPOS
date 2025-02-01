@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- METAS BASICOS -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- TITULO Y DESCRIPCION -->
+<title>apiPOS</title>
+<meta name="description" content="apiPOS es un sistema de punto de venta (POS) desarrollado en JavaScript, diseñado para integrarse de forma rápida y sencilla con cualquier sistema de ventas, facturación o ERP mediante API REST. Su tecnología web offline permite operar ultrarrápido con o sin conexión a internet.">
+
+<!-- FAVICONS DINAMICOS-->
+<link rel="icon" type="image/png" sizes="36x36" href="./img/icon/android-icon-36x36.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./img/icon/android-icon-48x48.png">
+<link rel="icon" type="image/png" sizes="72x72" href="./img/icon/android-icon-72x72.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./img/icon/android-icon-96x96.png">
+<link rel="icon" type="image/png" sizes="144x144" href="./img/icon/android-icon-144x144.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./img/icon/android-icon-192x192.png">
+<link rel="apple-touch-icon" sizes="57x57" href="./img/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="./img/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="./img/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="./img/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="./img/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="./img/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="./img/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./img/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./img/icon/favicon-96x96.png">
+<meta name="msapplication-TileImage" content="./img/icon/ms-icon-144x144.png">
+<link rel="manifest" href="./img/icon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-icons.css" rel="stylesheet">
+<link href="css/apipos.min.css?v=1.0.0" rel="stylesheet">
+<link href="css/pdf_viewer.min.css" rel="stylesheet">
+</head>
+<body>
+<header id="header" class="header dark-background d-flex flex-column">
+<i class="header-toggle d-xl-none bi bi-list"></i>
+<a href="javascript:void(0)" class="header-a-brand">
+<div class="profile-img">
+<img src="./img/icon/android-icon-192x192.png" alt="Zapanike" class="img-fluid" style="width: 50px;">
+</div>
+</a>
+<nav id="navmenu" class="navmenu flex-grow-1">
+<ul></ul>
+</nav>
+<div id="setSucursalDiv">
+<img src="./img/icon/android-icon-192x192.png" class="img-fluid rounded-circle categorias-img">
+<select id="setSucursalCodigo" class="custom-inputs"></select>
+</div>
+<div id="setCajeroDiv">
+<img src="./img/icon/android-icon-192x192.png" class="img-fluid rounded-circle categorias-img">
+<select id="setCajeroCodigo" class="custom-inputs"></select>
+</div>
+</header>
+<main>
+<section id="pos" style="padding: 0; margin: 0;">
+<div class="pos-container">
+<div id="modalOverlay"></div>
+<div id="detalleModal" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="container-buttons">
+<button type="button" class="btnModal" onclick="imprimirPdf()">
+<i class="bi bi-printer-fill"></i>
+</button>
+<h1 class="text-success-modal"><i class="bi bi-check-circle-fill"></i> Operación Exitosa!</h1>
+<button id="closeModal" type="button" class="close">
+<span>&times;</span>
+</button>
+</div>
+<div id="dynamicContent">
+<div id="pdfContainer">
+<canvas id="pdfCanvas"></canvas>
+</div>
+<div class="container-buttons">
+<button id="btnModalXml" class="btnModal btnModalFooter" onclick="descargarXml()" style="color: darkblue;">
+<i class="bi bi-file-earmark-code-fill"></i>
+<span>Descargar XML</span>
+</button>
+<button id="btnModalCdr" class="btnModal btnModalFooter" onclick="descargarCdr()" style="color: darkgreen;">
+<i class="bi bi-file-earmark-arrow-down-fill"></i>
+<span>Descargar CDR</span>
+</button>
+<button class="btnModal btnModalFooter" onclick="descargarPdf()" style="color: darkred;">
+<i class="bi bi-file-earmark-pdf-fill"></i>
+<span>Descargar PDF</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<input id="windowId" type="hidden" value="0">
+<div id="div_sections">
+<div id="div_section_left">
+<div class="tabs">
+<select id="selectTab" class="mobile-tabs custom-inputs" onchange="switchTabMobile(this)"></select>
+<div class="tabs-container"></div>
+<button class="new-tab-btn custom-input-add" id="newTabBtn" disabled="disabled" onclick="addNewTab()"><i class="bi bi-plus"></i></button>
+<i id="internet-icon" class="bi bi-wifi icon-net"></i>
+</div>
+<div id="div_section_products" class="d-flex flex-column flex-grow-1">
+<div class="products-panel d-flex flex-column">
+<input type="text" id="searchInput" class="custom-inputs-border" placeholder="Buscar producto:">
+<div id="products" class="row flex-grow-1"></div>
+<select id="itemsPerPageSelect">
+<option value="12">12 resultados</option>
+<option value="20">20 resultados</option>
+<option value="50">50 resultados</option>
+<option value="100">100 resultados</option>
+</select>
+</div>
+</div>
+<div id="div_section_options" class="d-flex flex-column flex-grow-1 hidden"></div>
+<div id="div_section_pay" class="d-flex flex-column flex-grow-1 hidden">
+<div class="d-flex">
+<button type="button" class="btn btn-backOptions div-width-50" onclick="showRightSection();"><i class="bi bi-arrow-left span-backOptions"></i> Regresar</button>
+<button type="button" class="btn btn-addMoreProducts div-width-50" onclick="showLeftSection(); showSection('div_section_products');"><i class="bi bi-search span-addMoreProducts"></i> Agregar productos</button>
+</div>
+</div>
+</div>
+<div id="div_section_right">
+<div id="general-options"></div>
+<div id="cart-panel" class="d-flex flex-column flex-grow-1">
+<button type="button" class="btn btn-addMoreProducts" onclick="showLeftSection(); showSection('div_section_products');"><i class="bi bi-search span-addMoreProducts"></i> Agregar más productos</button>
+</div>
+<div id="divMarginTopAuto" class="divMarginTopAuto"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=1.0.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+</script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/pos-main.js"></script>
+<script src="js/pdf-lib.min.js"></script>
+<script src="js/fontkit.umd.min.js"></script>
+<script src="js/download.js"></script>
+<script src="js/qrcode.min.js"></script>
+<script src="js/pos.js" type="module"></script>
+<script src="js/apipos.min.js?v=1.0.0"></script>
+</body>
+</html>
