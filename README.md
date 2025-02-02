@@ -1,6 +1,6 @@
 # apiPOS
 
-apiPOS - Punto de Venta Integrable y Ultrarápido
+apiPOS - Punto de Venta Integrable y Ultrarrápido
 
 apiPOS es un sistema de punto de venta (POS) desarrollado en JavaScript, diseñado para integrarse de forma rápida y sencilla con cualquier sistema de ventas, facturación o ERP mediante API REST. Su tecnología web offline permite operar con o sin conexión a internet, garantizando continuidad en las ventas y evitando interrupciones.
 
