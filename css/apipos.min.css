@@ -2099,9 +2099,9 @@ display: block;
 }
 
 .modal-content {
-  width: auto;
-  min-width: 250px;
-  max-width: 100%;
+width: auto;
+min-width: 250px;
+max-width: 100%;
 }
 
 .close span{
@@ -2164,16 +2164,16 @@ margin-top: auto;
 }
 
 #pdfContainer {
-      margin-bottom: 15px;
-      overflow-y: auto;
+margin-bottom: 15px;
+overflow-y: auto;
 scrollbar-width: thin;
 scrollbar-color: #080060 transparent; 
-    }
-    #pdfCanvas {
-      display: block;
-      margin: 0 auto;
-    }
-    
+}
+#pdfCanvas {
+display: block;
+margin: 0 auto;
+}
+
 #dynamicContent{
 display: flex;
 flex-direction: column;
@@ -2185,25 +2185,25 @@ align-items: center;
 }
 
 .btnModal{
-  border: none;
-  background: none;
-  font-size: 30px;
-  color: #080060;
+border: none;
+background: none;
+font-size: 30px;
+color: #080060;
 }
 .btnModalFooter{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 .btnModalFooter span{
-  font-size: 13px;
+font-size: 13px;
 }
 
 #closeModal{
-  color: #080060;
-    border: none;
-    background: none;
-    font-weight: normal;
+color: #080060;
+border: none;
+background: none;
+font-weight: normal;
 }
 
 #btnModalXml{
@@ -2213,58 +2213,58 @@ display: none;
 display: none;
 }
 .categorias-img{
-  width: 35px;
+width: 35px;
 }
 .categorias-a{
-  padding: 0 !important;
-  margin-bottom: 10px;
+padding: 0 !important;
+margin-bottom: 10px;
 }
 .category-checkbox {
-    display: none;
+display: none;
 }
 .category-label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-size: 13px;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 10px;
+font-size: 13px;
 }
 .category-label:hover .categorias-img {
-    transform: scale(1.1); /* Animación de escala al pasar el mouse */
+transform: scale(1.1); /* Animación de escala al pasar el mouse */
 }
 
 .custom-label-cart-options{
-  text-align: right;
-    padding-right: 20px;
-    width: 50%;
+text-align: right;
+padding-right: 20px;
+width: 50%;
 }
 
 .icon-pay-efectivo{
-  color: green;
-  font-size: 20px;
+color: green;
+font-size: 20px;
 }
 .icon-pay-card{
-  color: #080060;
-  font-size: 20px;
+color: #080060;
+font-size: 20px;
 }
 .icon-pay-transfer{
-  color: #111;
-  font-size: 20px;
+color: #111;
+font-size: 20px;
 }
 .icon-pay-deposit{
-  color: #111;
-  font-size: 20px;
+color: #111;
+font-size: 20px;
 }
 .icon-pay-calendar{
-  color: green;
-  font-size: 20px;
+color: green;
+font-size: 20px;
 }
 
 .label-debe-vuelto{
-  margin-top: 10px;
-  font-weight: bold;
-  text-align: center;
+margin-top: 10px;
+font-weight: bold;
+text-align: center;
 }
 
 .btn-addMoreProducts{
@@ -2303,67 +2303,116 @@ margin-right: 10px;
 }
 
 .divs_payments {
-  margin-top: 10px;
-  margin-bottom: 20px;
+margin-top: 10px;
+margin-bottom: 20px;
 }
 
 .payment-option {
-  width: 33.3%;
-  text-align: center;
-  font-size: 14px;
-  border-radius: 5px;
-  font-weight: bold;
-  margin: 0 10px;
-  padding: 10px;
-  text-decoration: none;
-  transition: background 0.3s, color 0.3s;
-  background: #fff;
-  color: #FF5900;
-  border: 1px solid #080060;
+width: 33.3%;
+text-align: center;
+font-size: 14px;
+border-radius: 5px;
+font-weight: bold;
+margin: 0 10px;
+padding: 10px;
+text-decoration: none;
+transition: background 0.3s, color 0.3s;
+background: #fff;
+color: #FF5900;
+border: 1px solid #080060;
 }
 
 /* Estilos individuales por tipo de pago */
 .payment-contado {
-  margin-left: 50px;
+margin-left: 50px;
 }
 
 .payment-mixto {
-  margin-right: 50px;
+margin-right: 50px;
 }
 
 /* Estilo activo */
 .active-payment {
-  background: #f9f5f5 !important;
-  color: #FF5900 !important;
-  font-weight: bold;
-  border: none !important;
+background: #f9f5f5 !important;
+color: #FF5900 !important;
+font-weight: bold;
+border: none !important;
+}
+
+/* Estilos solo para la sección del login */
+.login-container {
+width: 100%;
+max-width: 400px;
+background: #fff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login-wrapper {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+.numeric-keypad {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+margin-top: 10px;
+}
+.numeric-keypad button {
+width: 100%;
+padding: 10px;
+font-size: 1.2rem;
+border: none;
+background: #080060;
+color: white;
+border-radius: 5px;
+cursor: pointer;
+}
+.numeric-keypad button:active {
+background: #FF5900;
+}
+.delete-key {
+background: #FF5900 !important;
+}
+.delete-key:active {
+background: #FF5900 !important;
+}
+.btn-access-login{
+background: #FF5900 !important;
+color: #fff;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .tabs-container {
-  display: none;
-  }
-  
-  .mobile-tabs {
-  display: block;
-  margin: 5px;
-  }
-  
-  #div_section_left{
-  width: 100%;
-  }
-  #div_section_right{
-  width: 100%;
-  }
-  
-  .modal{
-  max-width: 100%;
-  width: 100%;
-  }
-  
-  .btn-addMoreProducts, .btn-backOptions{
-  display: block;
-  }
-  }
-  
+.tabs-container {
+display: none;
+}
+
+.mobile-tabs {
+display: block;
+margin: 5px;
+}
+
+#div_section_left{
+width: 100%;
+}
+#div_section_right{
+width: 100%;
+}
+
+.modal{
+max-width: 100%;
+width: 100%;
+}
+
+.btn-addMoreProducts, .btn-backOptions{
+display: block;
+}
+
+.login-wrapper {
+align-items: flex-start;
+padding-top: 50px;
+}
+}

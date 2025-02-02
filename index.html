@@ -36,11 +36,11 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=1.0.0" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.0.0" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
-<header id="header" class="header dark-background d-flex flex-column">
+<header id="header" class="header dark-background d-flex flex-column hidden">
 <i class="header-toggle d-xl-none bi bi-list"></i>
 <a href="javascript:void(0)" class="header-a-brand">
 <div class="profile-img">
@@ -59,8 +59,40 @@
 <select id="setCajeroCodigo" class="custom-inputs"></select>
 </div>
 </header>
+<section id="login" style="padding: 0; margin: 0;">
+<div class="login-wrapper">
+<div class="login-container">
+<h4 class="text-center mb-3">🔐 <b>apiPOS</b></h4>
+<div class="mb-2">
+<label class="form-label">👤 Usuario:</label>
+<input type="text" id="usuario" class="form-control" placeholder="Ingrese su usuario">
+</div>
+<div class="mb-2">
+<label class="form-label">🔑 Contraseña:</label>
+<div class="input-group">
+<input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña" readonly>
+<button class="btn btn-outline-secondary" onclick="togglePassword()">👁️</button>
+</div>
+</div>
+<div class="numeric-keypad">
+<button onclick="addNumber(1)">1</button>
+<button onclick="addNumber(2)">2</button>
+<button onclick="addNumber(3)">3</button>
+<button onclick="addNumber(4)">4</button>
+<button onclick="addNumber(5)">5</button>
+<button onclick="addNumber(6)">6</button>
+<button onclick="addNumber(7)">7</button>
+<button onclick="addNumber(8)">8</button>
+<button onclick="addNumber(9)">9</button>
+<button onclick="addNumber(0)">0</button>
+<button class="delete-key" onclick="deleteNumber()">⌫</button>
+</div>
+<button class="btn w-100 mt-3 btn-access-login" onclick="acceder()">Acceder</button>
+</div>
+</div>
+</section>
 <main>
-<section id="pos" style="padding: 0; margin: 0;">
+<section id="pos" style="padding: 0; margin: 0;" class="hidden">
 <div class="pos-container">
 <div id="modalOverlay"></div>
 <div id="detalleModal" class="modal">
@@ -136,7 +168,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=1.0.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.0.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -144,7 +176,8 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=1
 <script src="js/fontkit.umd.min.js"></script>
 <script src="js/download.js"></script>
 <script src="js/qrcode.min.js"></script>
+<script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=1.0.0"></script>
+<script src="js/apipos.min.js?v=2.0.0"></script>
 </body>
 </html>
