@@ -2383,6 +2383,24 @@ background: #FF5900 !important;
 background: #FF5900 !important;
 color: #fff;
 }
+.btn-logout{
+width: 100%;
+background-color: #FF5900;
+color: #fff;
+font-size: 15px;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+.btn-logout-icon{
+font-size: 18px;
+}
+.btn-logout:hover{
+font-size: 16px;
+background-color: #FF5900;
+}
+.btn-logout:hover > .btn-logout-icon{
+font-size: 19px;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
