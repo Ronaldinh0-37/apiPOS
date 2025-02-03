@@ -1,6 +1,9 @@
-/**
-* Name: POS - apiERP
-* Author: Luisito Programa
+/*
+Name: apiPOS
+Author: Luisito Programa
+Website 1: luisitoprograma.com
+Website 2: apiERP.dev
+version: 2.2.0
 */
 
 /* Importar fuentes locales */
@@ -2400,6 +2403,43 @@ background-color: #FF5900;
 }
 .btn-logout:hover > .btn-logout-icon{
 font-size: 19px;
+}
+
+.footer-apierp {
+text-align: center;
+padding: 5px;
+color: #111;
+font-family: Arial, sans-serif;
+}
+.a-apierp{
+color: #111;
+}
+.a-apierp:hover{
+color: #111;
+font-weight: bold;
+}
+.span-apierp-api{
+color: #080060;
+}
+.span-apierp-erp{
+color: #FF5900;
+}
+.p-get-token{
+font-size: 14px !important;
+line-height: 0 !important;
+margin-top: 10px;
+font-weight: bold;
+}
+.p-apierp{
+margin-top: 20px;
+font-size: 12px !important;
+line-height: 0 !important;
+}
+.p-ftr-copyright{
+font-size: 10px !important;
+line-height: 0 !important;
+margin-top: 15px;
+font-weight: bold;
 }
 
 /* Responsive Design */
