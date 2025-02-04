@@ -36,7 +36,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.3.0" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.4.0" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -144,7 +144,10 @@
 </div>
 <div id="div_section_products" class="d-flex flex-column flex-grow-1">
 <div class="products-panel d-flex flex-column">
-<input type="text" id="searchInput" class="custom-inputs-border" placeholder="Buscar producto:">
+<div class="d-flex">
+<input type="text" id="searchInput" class="custom-inputs-border" placeholder="Buscar producto:" autocomplete="off" style="width: 90%;">
+<button id="btnAddProductForm" class="custom-input-cart-options form-control custom-input-btn-background" type="button" style="width: 10%; margin-top: 3.5px;"><i class="bi bi-plus" style="font-size: 18px;"></i></button>
+</div>
 <div id="products" class="row flex-grow-1"></div>
 <select id="itemsPerPageSelect">
 <option value="12">12 resultados</option>
@@ -174,7 +177,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.3.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.4.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -184,6 +187,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.3.0"></script>
+<script src="js/apipos.min.js?v=2.4.0"></script>
 </body>
 </html>
