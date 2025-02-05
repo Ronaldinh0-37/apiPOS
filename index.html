@@ -30,13 +30,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="./img/icon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="96x96" href="./img/icon/favicon-96x96.png">
 <meta name="msapplication-TileImage" content="./img/icon/ms-icon-144x144.png">
-<link rel="manifest" href="./img/icon/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="./manifest.json">
+<meta name="msapplication-TileColor" content="#080060">
+<meta name="theme-color" content="#080060">
+<meta name="msapplication-config" content="./browserconfig.xml">
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.4.0" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.5.0" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -63,16 +64,18 @@
 <section id="login" style="padding: 0; margin: 0;">
 <div class="login-wrapper">
 <div class="login-container">
-<h4 class="text-center mb-3">🔐 <b><span class="span-apierp-api">api</span><span class="span-apierp-erp">POS</span></b></h4>
+<h4 class="text-center mb-3">
+<img src="./img/apiPOS.png" alt="apiPOS" class="img-fluid" style="width: 100px;">
+</h4>
 <div class="mb-2">
-<label class="form-label">👤 Usuario:</label>
+<label class="form-label"><b>👤 Usuario:</b></label>
 <input type="text" id="usuario" class="form-control" placeholder="Ingrese su usuario">
 </div>
 <div class="mb-2">
-<label class="form-label">🔑 Contraseña:</label>
+<label class="form-label"><b>🔐 Contraseña:</b></label>
 <div class="input-group">
 <input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña" readonly>
-<button class="btn btn-outline-secondary" onclick="togglePassword()">👁️</button>
+<button class="btn btn-outline-secondary btn-passw-login" onclick="togglePassword()">👁️</button>
 </div>
 </div>
 <div class="numeric-keypad">
@@ -177,7 +180,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.4.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.5.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -187,6 +190,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.4.0"></script>
+<script src="js/apipos.min.js?v=2.5.0"></script>
 </body>
 </html>
