@@ -37,7 +37,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.6.0" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.7.0" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -67,22 +67,18 @@
 <h4 class="text-center mb-3">
 <img src="./img/apiPOS.png" alt="apiPOS" class="img-fluid" style="width: 100px;">
 </h4>
-<div id="div_auth_Token" class="mb-2">
-<label class="form-label"><b>🔐 Auth Token:</b></label>
-<input type="text" id="auth_Token" class="form-control" placeholder="Ingrese su Auth Token">
-</div>
-<div id="div_usuario" class="mb-2 hidden">
+<div id="div_usuario" class="mb-2">
 <label class="form-label"><b>👤 Usuario:</b></label>
 <input type="text" id="usuario" class="form-control" placeholder="Ingrese su usuario">
 </div>
-<div id="div_password" class="mb-2 hidden">
+<div id="div_password" class="mb-2">
 <label class="form-label"><b>🔐 Contraseña:</b></label>
 <div class="input-group">
 <input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña" readonly>
 <button class="btn btn-outline-secondary btn-passw-login" onclick="togglePassword()">👁️</button>
 </div>
 </div>
-<div id="numeric-keypad" class="numeric-keypad hidden">
+<div id="numeric-keypad" class="numeric-keypad">
 <button onclick="addNumber(1)">1</button>
 <button onclick="addNumber(2)">2</button>
 <button onclick="addNumber(3)">3</button>
@@ -95,8 +91,7 @@
 <button onclick="addNumber(0)">0</button>
 <button class="delete-key" onclick="deleteNumber()">⌫</button>
 </div>
-<button id="btn-access-continuar" class="btn w-100 mt-3 btn-access-login">Continuar</button>
-<button id="btn-access-login" class="btn w-100 mt-3 btn-access-login hidden">Acceder</button>
+<button id="btn-access-login" class="btn w-100 mt-3 btn-access-login">Acceder</button>
 <div class="footer-apierp">
 <p class="p-get-token">&#191;Aún no tienes tu Auth Token? <a href="https://apierp.dev/AuthToken/" target="_blank" class="a-apierp"><span class="span-apierp-api">¡Obténlo </span><span class="span-apierp-erp">Ahora!</span></a></p>
 <p class="p-apierp">Desarrollado con la tecnología de <a href="https://packagist.org/packages/luisito-programa/apierp" target="_blank" class="a-apierp"><span class="span-apierp-api">api</span><span class="span-apierp-erp">ERP</span>.dev</a></p>
@@ -185,7 +180,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.6.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.7.0').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -195,6 +190,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.6.0"></script>
+<script src="js/apipos.min.js?v=2.7.0"></script>
 </body>
 </html>
