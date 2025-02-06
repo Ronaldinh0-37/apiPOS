@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.7.0
+version: 2.8.0
 */
 
 /* Importar fuentes locales */
@@ -388,7 +388,7 @@ vertical-align: middle;
   left: 0;
 }
 
-.header .header-toggle {
+.header-toggle {
   color: var(--contrast-color);
   background-color: var(--accent-color);
   font-size: 22px;
@@ -399,14 +399,11 @@ vertical-align: middle;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  position: fixed;
-  top: 15px;
-  right: 15px;
   z-index: 9999;
   transition: background-color 0.3s;
 }
 
-.header .header-toggle:hover {
+.header-toggle:hover {
   color: var(--contrast-color);
   background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
 }

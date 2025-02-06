@@ -8,7 +8,20 @@
 
 <!-- TITULO Y DESCRIPCION -->
 <title>apiPOS</title>
-<meta name="description" content="apiPOS es un sistema de punto de venta (POS) desarrollado en JavaScript, diseñado para integrarse de forma rápida y sencilla con cualquier sistema de ventas, facturación o ERP mediante API REST. Su tecnología web offline permite operar ultrarrápido con o sin conexión a internet.">
+<meta name="description" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+
+<!-- OPEN GRAPH METADATA FOR SOCIAL SHARING -->
+<meta property="og:image" content="./img/apiPOS.png">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="564">
+<meta property="og:image:alt" content="apiPOS - Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+
+<!-- TWITTER CARD METADATA -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="./img/apiPOS.png">
+<meta name="twitter:image:alt" content="apiPOS - Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+<meta name="twitter:image:width" content="800">
+<meta name="twitter:image:height" content="564">
 
 <!-- FAVICONS DINAMICOS-->
 <link rel="icon" type="image/png" sizes="36x36" href="./img/icon/android-icon-36x36.png">
@@ -42,7 +55,6 @@
 </head>
 <body>
 <header id="header" class="header dark-background d-flex flex-column hidden">
-<i class="header-toggle d-xl-none bi bi-list"></i>
 <a href="javascript:void(0)" class="header-a-brand">
 <div class="profile-img">
 <img src="./img/icon/android-icon-192x192.png" alt="Zapanike" class="img-fluid" style="width: 50px;">
@@ -144,6 +156,7 @@
 <div class="tabs-container"></div>
 <button class="new-tab-btn custom-input-add" id="newTabBtn" disabled="disabled" onclick="addNewTab()"><i class="bi bi-plus"></i></button>
 <i id="internet-icon" class="bi bi-wifi icon-net"></i>
+<i class="header-toggle d-xl-none bi bi-list"></i>
 </div>
 <div id="div_section_products" class="d-flex flex-column flex-grow-1">
 <div class="products-panel d-flex flex-column">
