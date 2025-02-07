@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.0
+version: 2.9.1
 */
 
 /* Importar fuentes locales */
@@ -1547,20 +1547,21 @@ display: none;
 # POS - apiERP
 --------------------------------------------------------------*/
 .hidden {
-  display: none !important;
+display: none !important;
 }
 #header{
-  background: #616161;
-  padding: 0;
+color: #888;
+background: #f7f7f7;
+padding: 0;
 }
 .header-a-brand{
-background: #f7f7f7;
+background: #fff;
 }
 .navmenu{
 height: 0;
 overflow-y: auto;
 scrollbar-width: thin;
-scrollbar-color: #FF5900 transparent; 
+scrollbar-color: #888 transparent; 
 }
 .navmenu ul{
 padding-top: 15px;
@@ -1727,6 +1728,10 @@ cursor: pointer;
 height: 100%;
 }
 
+.cart-item-principal{
+border-bottom: 1px solid #ddd;
+margin-bottom: 10px;
+}
 .cart-item{
 display: flex;
 justify-content: space-between;
@@ -1739,29 +1744,29 @@ font-size: 14px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-border-bottom: 1px solid #ddd;
-margin-bottom: 10px;
 background: #fff;
 font-size: 14px;
+padding-bottom: 10px;
 }
-
+.label-cart{
+color: #888;
+font-size: 13px;
+}
 .input_cart_setDescripcion{
 padding-left: 10px;
 font-size: 14px;
-width: 50%;
 color: #888;
 }
 
 .input_cart_setCantidad{
 display: flex;
 align-items: center;
-width: 25%;
 }
 
 .input_cart_setSubtotal{
-width: 20%;
 font-size: 14px;
-text-align: center;
+text-align: right;
+padding-right: 10px;
 color: #888;
 }
 
@@ -1772,7 +1777,6 @@ border: none;
 border-radius: 4px;
 cursor: pointer;
 font-size: 13px;
-width: 5%;
 margin-right: 10px;
 }
 
@@ -1780,20 +1784,22 @@ margin-right: 10px;
 background-color: red;
 }
 
-.input_cart_setTipAfeIgv{
-width: 50%;
-margin-left: 10px;
+.input_cart_moreOptionsButton{
+color: #888;
+background: none;
+border: none;
+cursor: pointer;
+font-size: 20px;
+font-weight: bolder;
+padding: 0;
+margin-left: 5px;
+margin-right: 15px;
 }
 
-.input_cart_setMtoPrecioUnitario{
-width: 25%;
+.bg-background-transparent{
+background-color: #f7f7f7 !important;
 }
-
-.input_cart_setDescPorcentaje{
-width: 25%;
-}
-
-.custom-input-cart {
+.custom-input-cart{
 text-align: center;
 height: 25px;
 box-shadow: none !important;
@@ -1801,7 +1807,17 @@ font-size: 14px;
 padding: 0;
 color: #888;
 }
-
+.custom-input-cart-notas{
+text-align: left;
+box-shadow: none !important;
+font-size: 13px;
+padding: 0;
+padding-top: 5px;
+padding-left: 5px;
+color: #888;
+margin-right: 10px;
+margin-left: 10px;
+}
 .custom-input-cart-options {
 text-align: center;
 height: 35px;
@@ -1824,6 +1840,11 @@ appearance: none;
 margin: 0;
 }
 
+.input_setCantidad{
+border-top: none;
+border-bottom: none;
+border-color: #888 !important;
+}
 .btn-decrease,
 .btn-increase {
 width: 25px;
@@ -1831,8 +1852,8 @@ height: 25px;
 display: flex;
 align-items: center;
 justify-content: center;
-color: white;
-background-color: #444;
+color: #888;
+border: 1px solid #888;
 }
 
 .product h7{
@@ -1946,7 +1967,8 @@ margin-top: 15px;
 .custom-input-cart-setClienteDireccion,
 .custom-input-cart-setFecha,
 .custom-input-cart-setVendedor,
-.custom-input-cart-btnConsultar{
+.custom-input-cart-btnConsultar,
+.custom-input-cart-btnOpcionesCliente{
 margin-top: 5px;
 }
 
@@ -2001,7 +2023,7 @@ margin-top: 20px;
 height: 0;
 overflow-y: auto;
 scrollbar-width: thin;
-scrollbar-color: #080060 transparent; 
+scrollbar-color: #888 transparent; 
 }
 
 #products::-webkit-scrollbar{
@@ -2021,7 +2043,7 @@ background: transparent;
 height: 0;
 overflow-y: auto;
 scrollbar-width: thin;
-scrollbar-color: #080060 transparent; 
+scrollbar-color: #888 transparent; 
 }
 
 .cart-items-container::-webkit-scrollbar{
@@ -2043,7 +2065,7 @@ cursor: wait;
 
 #setSucursalDiv{
 margin-top: auto;
-border-top: 2px solid #fff;
+border-top: 1px solid #888;
 padding-top: 5px;
 padding-bottom: 5px;
 font-size: 14px;
@@ -2051,7 +2073,8 @@ text-align: center;
 display: flex;
 }
 #setSucursalCodigo{
-background-color: #616161;
+color: #888;
+background: none;
 width: 100%;
 padding: 0;
 padding-top: 5px;
@@ -2060,8 +2083,12 @@ margin: 0;
 border-radius: 0;
 text-align: center;
 }
+#setSucursalCodigo option{
+background: #f7f7f7;
+color: #888;
+}
 #setCajeroDiv{
-border-top: 2px solid #fff;
+border-top: 1px solid #888;
 padding-top: 5px;
 padding-bottom: 5px;
 font-size: 14px;
@@ -2069,7 +2096,8 @@ text-align: center;
 display: flex;
 }
 #setCajeroCodigo{
-background-color: #616161;
+color: #888;
+background: none;
 width: 100%;
 padding: 0;
 padding-top: 5px;
@@ -2077,6 +2105,10 @@ padding-bottom: 5px;
 margin: 0;
 border-radius: 0;
 text-align: center;
+}
+#setCajeroCodigo option{
+background: #f7f7f7;
+color: #888;
 }
 
 .modal {
@@ -2094,7 +2126,7 @@ max-width: 90%;
 overflow: auto;
 width: auto;
 scrollbar-width: thin;
-scrollbar-color: #080060 transparent; 
+scrollbar-color: #888 transparent; 
 }
 
 .modal.active {
@@ -2144,6 +2176,9 @@ width: 40%;
 display: flex;
 flex-direction: column
 }
+.div-width-100{
+width: 100% !important;
+}
 .div-width-90{
 width: 90% !important;
 }
@@ -2153,14 +2188,23 @@ width: 30% !important;
 .div-width-35{
 width: 35% !important;
 }
+.div-width-45{
+width: 45% !important;
+}
 .div-width-50{
 width: 50% !important;
+}
+.div-width-25{
+width: 25% !important;
 }
 .div-width-20{
 width: 20% !important;
 }
 .div-width-10{
 width: 10% !important;
+}
+.div-width-5{
+width: 5% !important;
 }
 .divMarginTopAuto{
 margin-top: auto;
@@ -2170,7 +2214,7 @@ margin-top: auto;
 margin-bottom: 15px;
 overflow-y: auto;
 scrollbar-width: thin;
-scrollbar-color: #080060 transparent; 
+scrollbar-color: #888 transparent; 
 }
 #pdfCanvas {
 display: block;
