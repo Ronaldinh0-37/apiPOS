@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
 
-<!-- METAS BASICOS -->
+<!-- METAS BÁSICOS -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- TITULO Y DESCRIPCION -->
+<!-- TITULO Y DESCRIPCIÓN -->
 <title>apiPOS</title>
 <meta name="description" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
 
@@ -50,7 +50,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.1" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.2" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -115,39 +115,133 @@
 <main>
 <section id="pos" style="padding: 0; margin: 0;" class="hidden">
 <div class="pos-container">
-<div id="modalOverlay"></div>
+
+<!-- MODAL PDF -->
+<div id="modalOverlay" class="modalOverlay"></div>
 <div id="detalleModal" class="modal">
 <div class="modal-content" style="border: none;">
-<div class="container-buttons">
-<button type="button" class="btnModal" onclick="imprimirPdf()">
+<div class="d-flex">
+<button type="button" class="btnModal" onclick="imprimirPdf()" style="margin-left: auto; font-size: 25px; margin-top: 5px;">
 <i class="bi bi-printer-fill"></i>
 </button>
-<h1 class="text-success-modal"><i class="bi bi-check-circle-fill"></i> Operación Exitosa!</h1>
-<button id="closeModal" type="button" class="close">
+<button id="closeModal" type="button" class="close closeModal">
 <span>&times;</span>
 </button>
 </div>
-<div id="dynamicContent">
+<h1 class="text-success-modal"><i class="bi bi-check-circle"></i> Operación Exitosa!</h1>
+<div id="dynamicContent" class="dynamicContent">
 <div id="pdfContainer">
 <canvas id="pdfCanvas"></canvas>
 </div>
+</div>
+
+<!-- OPTIONS -->
+<div class="container-buttons mb-2" style="display: block !important; justify-content: normal! important; margin: 0 auto;">
+<div class="div-width-10"></div>
+<button id="btnVisualizacion" onclick="optionsPdf(1)" class="btnModalActive btnModalOptions" style="margin-right: 15px;">
+<span>Visualización</span>
+</button>
+<button id="btnArchivosContables" onclick="optionsPdf(2)" class="btnModal btnModalOptions" style="margin-right: 15px;">
+<span>Archivos Contables</span>
+</button>
+<button id="btnOpciones" onclick="optionsPdf(3)" class="btnModal btnModalOptions">
+<span>Opciones</span>
+</button>
+<div class="div-width-10"></div>
+</div>
+
+<!-- VISUALIZACIÓN -->
+<div id="visualizacion">
+
+<!-- PDF -->
+<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
+<div class="div-width-10"></div>
+<button id="btnViewA4" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
+<img src="./img/icon-pdf.png" alt="icon-pdf" class="img-modal-pay">
+<span>A4</span>
+</button>
+<button id="btnViewA5" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
+<img src="./img/icon-pdf.png" alt="icon-pdf" class="img-modal-pay">
+<span>A5</span>
+</button>
+<button id="btnViewTicket" class="btnModal btnModalFooter" style="color: #111; flex-direction: row;">
+<img src="./img/icon-ticket.png" alt="icon-ticket" class="img-modal-pay">
+<span>Ticket</span>
+</button>
+<div class="div-width-10"></div>
+</div>
+
+<!-- DOWNLOAD AND SEND -->
+<div class="container-buttons" style="justify-content: center; margin: 0 auto;">
+<div class="div-width-10"></div>
+<button class="btnModal btnModalFooter" onclick="descargarPdf()" style="color: #888; font-size: 25px; font-weight: bolder; margin-right: 10px;">
+<img src="./img/icon-download.png" alt="icon-download" class="img-modal-pay">
+</button>
+<input type="text" class="custom-input-cart form-control" style="height: 30px !important; width: auto !important; border: 1px solid green !important; margin-right: 10px;">
+<button class="btnModal btnModalFooter" style="background: green; color: white; flex-direction: row; height: 30px;">
+<span style="margin-right: 5px;">Enviar</span>
+<i class="bi bi-whatsapp" style="font-size: 15px !important;"></i>
+</button>
+<div class="div-width-10"></div>
+</div>
+</div>
+
+<!-- ARCHIVOS CONTABLES -->
+<div id="archivos_contables" class="hidden">
+
+<!-- DOCUMENTS -->
+<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
+<div class="div-width-10"></div>
+<button id="btnModalXml" class="btnModal btnModalFooter" onclick="descargarXml()" style="color: #111; flex-direction: row; margin-right: 25px;">
+<i class="bi bi-file-earmark-pdf" style="color: darkred"></i>
+<span>XML</span>
+</button>
+<button id="btnModalCdr" class="btnModal btnModalFooter" onclick="descargarCdr()" style="color: #111; flex-direction: row;">
+<i class="bi bi-file-earmark-pdf" style="color: darkred"></i>
+<span>CDR</span>
+</button>
+<div class="div-width-10"></div>
+</div>
+</div>
+
+<!-- OPCIONES -->
+<div id="opciones" class="hidden">
+
+<!-- OPCIONES DE LA OPERACIÓN -->
+<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
+<button id="btnDarBaja" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
+<img src="./img/icon-baja.png" alt="icon-baja" class="img-modal-pay">
+<span>Dar de baja</span>
+</button>
+<button id="btnAnular" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
+<img src="./img/icon-anular.png" alt="icon-anular" class="img-modal-pay">
+<span>Anular (Nota de Crédito)</span>
+</button>
+<button id="btnDuplicar" class="btnModal btnModalFooter" style="color: #111; flex-direction: row;">
+<img src="./img/icon-duplicar.png" alt="icon-duplicar" class="img-modal-pay">
+<span>Duplicar</span>
+</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- MODAL PAY -->
+<div id="modalOverlayPay" class="modalOverlay"></div>
+<div id="detalleModalPay" class="modal">
+<div class="modal-content" style="border: none;">
 <div class="container-buttons">
-<button id="btnModalXml" class="btnModal btnModalFooter" onclick="descargarXml()" style="color: darkblue;">
-<i class="bi bi-file-earmark-code-fill"></i>
-<span>Descargar XML</span>
-</button>
-<button id="btnModalCdr" class="btnModal btnModalFooter" onclick="descargarCdr()" style="color: darkgreen;">
-<i class="bi bi-file-earmark-arrow-down-fill"></i>
-<span>Descargar CDR</span>
-</button>
-<button class="btnModal btnModalFooter" onclick="descargarPdf()" style="color: darkred;">
-<i class="bi bi-file-earmark-pdf-fill"></i>
-<span>Descargar PDF</span>
+<button id="closeModalPay" type="button" class="close closeModal">
+<span>&times;</span>
 </button>
 </div>
+<div class="dynamicContent">
+<div id="div_section_pay" class="d-flex flex-column flex-grow-1"></div>
 </div>
 </div>
 </div>
+
 <input id="windowId" type="hidden" value="0">
 <div id="div_sections">
 <div id="div_section_left">
@@ -175,12 +269,6 @@
 </div>
 <div id="div_section_options" class="d-flex flex-column flex-grow-1 hidden"></div>
 <div id="div_section_options_cliente" class="d-flex flex-column flex-grow-1 hidden"></div>
-<div id="div_section_pay" class="d-flex flex-column flex-grow-1 hidden">
-<div class="d-flex">
-<button type="button" class="btn btn-backOptions div-width-50" onclick="showRightSection();"><i class="bi bi-arrow-left span-backOptions"></i> Regresar</button>
-<button type="button" class="btn btn-addMoreProducts div-width-50" onclick="showLeftSection(); showSection('div_section_products');"><i class="bi bi-search span-addMoreProducts"></i> Agregar productos</button>
-</div>
-</div>
 </div>
 <div id="div_section_right">
 <div id="general-options"></div>
@@ -194,7 +282,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.1').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.2').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -204,6 +292,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.1"></script>
+<script src="js/apipos.min.js?v=2.9.2"></script>
 </body>
 </html>
