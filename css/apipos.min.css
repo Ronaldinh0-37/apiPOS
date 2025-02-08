@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.2
+version: 2.9.3
 */
 
 /* Importar fuentes locales */
@@ -2400,6 +2400,7 @@ background: #fff;
 color: #FF5900;
 border: 1px solid #888;
 align-items: center;
+display: flex;
 }
 
 .img-modal-pay{
@@ -2563,6 +2564,10 @@ cursor: pointer;
 background: #080060;
 }
 
+.inputEfectivoNroOperacion{
+border: none !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
 .tabs-container {
@@ -2582,8 +2587,11 @@ width: 100%;
 }
 
 .modal{
-max-width: 100%;
-width: 100%;
+max-width: 100% !important;
+width: 100% !important;
+}
+#dynamicContent{
+width: 100% !important;
 }
 
 .btn-addMoreProducts, .btn-backOptions{
@@ -2593,5 +2601,30 @@ display: block;
 .login-wrapper {
 align-items: flex-start;
 padding-top: 50px;
+}
+
+.payment-contado {
+margin-left: 0px;
+}
+.payment-mixto {
+margin-right: 0px;
+}
+.payment-option {
+display: block;
+}
+.div_margen{
+display: none;
+}
+.input-array-method{
+width: 25% !important;
+}
+.select-array-bank{
+width: 25% !important;
+}
+.input-array-operacion{
+width: 25% !important;
+}
+.input-array-totalcomision{
+width: 25% !important;
 }
 }
