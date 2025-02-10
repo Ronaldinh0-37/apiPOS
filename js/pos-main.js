@@ -8,8 +8,6 @@
 
   function headerToggle() {
     document.querySelector('#header').classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
   }
   headerToggleBtn.addEventListener('click', headerToggle);
 
@@ -48,7 +46,7 @@
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
       
-      // Obtener la posición del viewport del elemento
+      // Obtener la posiciï¿½n del viewport del elemento
     let rect = section.getBoundingClientRect();
     let position = window.scrollY + 200;
     

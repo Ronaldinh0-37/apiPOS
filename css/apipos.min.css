@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.4
+version: 2.9.5
 */
 
 /* Importar fuentes locales */
@@ -389,23 +389,20 @@ vertical-align: middle;
 }
 
 .header-toggle {
-  color: var(--contrast-color);
-  background-color: var(--accent-color);
-  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   cursor: pointer;
   z-index: 9999;
   transition: background-color 0.3s;
 }
-
-.header-toggle:hover {
-  color: var(--contrast-color);
-  background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
+.btn-none{
+padding: 0;
+margin: 0;
+border: none;
+background: none;
 }
 
 /*--------------------------------------------------------------
@@ -1754,7 +1751,6 @@ font-size: 13px;
 }
 .input_cart_setDescripcion{
 padding-left: 10px;
-font-size: 14px;
 color: #888;
 }
 
@@ -1764,24 +1760,17 @@ align-items: center;
 }
 
 .input_cart_setSubtotal{
-font-size: 14px;
 text-align: right;
 padding-right: 10px;
 color: #888;
 }
 
-.input_cart_setButton{
-background-color: #FF5900;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+.input-cart-size{
 font-size: 13px;
-margin-right: 10px;
 }
 
-.input_cart_setButton:hover {
-background-color: red;
+.input_cart_setButton{
+margin-right: 10px;
 }
 
 .input_cart_moreOptionsButton{
@@ -1803,14 +1792,12 @@ background-color: #f7f7f7 !important;
 text-align: center;
 height: 25px;
 box-shadow: none !important;
-font-size: 14px;
 padding: 0;
 color: #888;
 }
 .custom-input-cart-notas{
 text-align: left;
 box-shadow: none !important;
-font-size: 13px;
 padding: 0;
 padding-top: 5px;
 padding-left: 5px;
@@ -1825,6 +1812,10 @@ box-shadow: none !important;
 font-size: 14px;
 padding: 0;
 color: #888;
+}
+.icon-width-20{
+width: 20px;
+height: auto;
 }
 
 input[type="number"] {
@@ -1841,19 +1832,7 @@ margin: 0;
 }
 
 .input_setCantidad{
-border-top: none;
-border-bottom: none;
-border-color: #888 !important;
-}
-.btn-decrease,
-.btn-increase {
-width: 25px;
-height: 25px;
-display: flex;
-align-items: center;
-justify-content: center;
-color: #888;
-border: 1px solid #888;
+border: none;
 }
 
 .product h7{
@@ -1966,7 +1945,7 @@ margin-top: 15px;
 .custom-input-cart-setClienteDenominacion,
 .custom-input-cart-setClienteDireccion,
 .custom-input-cart-setFecha,
-.custom-input-cart-setVendedor,
+.custom-input-cart-setVendedorCodigo,
 .custom-input-cart-btnConsultar,
 .custom-input-cart-btnOpcionesCliente{
 margin-top: 5px;
@@ -2191,6 +2170,9 @@ width: 30% !important;
 .div-width-35{
 width: 35% !important;
 }
+.div-width-40{
+width: 40% !important;
+}
 .div-width-45{
 width: 45% !important;
 }
@@ -2286,7 +2268,7 @@ color: #FF5900 !important;
 }
 
 .categorias-img{
-width: 35px;
+width: 30px;
 }
 .categorias-a{
 padding: 0 !important;
@@ -2406,6 +2388,15 @@ display: flex;
 .img-modal-pay{
 width: 30px;
 height: auto;
+}
+.img-cart-item{
+width: 30px;
+height: 30px;
+}
+.img-delete-card{
+width: 18px;
+height: auto;
+margin-bottom: 3px;
 }
 
 /* Estilos individuales por tipo de pago */
@@ -2562,6 +2553,61 @@ cursor: pointer;
 }
 .product-form button:hover {
 background: #080060;
+}
+
+#countryCode option{
+background-repeat: no-repeat;
+background-position: left center;
+padding-left: 30px;
+}
+.custom-select-pais-flag{
+width: 30% !important;
+height: 30px !important;
+font-size: 14px;
+color: #888;
+}
+.select-button-pais-flag {
+background: white;
+padding: 5px;
+width: 100%;
+cursor: pointer;
+text-align: right;
+}
+.dropdown-list-pais-flag {
+position: absolute;
+width: 30%;
+background: white;
+border: 1px solid green;
+display: none;
+max-height: 150px;
+overflow-y: auto;
+z-index: 10;
+scrollbar-width: thin;
+scrollbar-color: #888 transparent; 
+}
+.dropdown-item-pais-flag {
+display: flex;
+align-items: center;
+padding: 5px;
+cursor: pointer;
+}
+.dropdown-item-pais-flag:hover {
+background: #f0f0f0;
+}
+.dropdown-item-pais-flag img {
+width: 20px;
+height: 15px;
+margin-right: 10px;
+}
+#phoneNumber{
+height: 30px !important; width: 70% !important; border: 1px solid #fff; border-bottom: 1px solid green; font-size: 14px;
+}
+#sendWhatsApp{
+background: green; color: white; flex-direction: row; height: 30px;
+}
+
+.ml-auto{
+margin-left: auto;
 }
 
 .inputEfectivoNroOperacion{
