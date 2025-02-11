@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.5
+version: 2.9.6
 */
 
 /* Importar fuentes locales */
@@ -2561,8 +2561,8 @@ background-position: left center;
 padding-left: 30px;
 }
 .custom-select-pais-flag{
-width: 30% !important;
-height: 30px !important;
+width: 30%;
+height: 30px;
 font-size: 14px;
 color: #888;
 }
@@ -2600,7 +2600,7 @@ height: 15px;
 margin-right: 10px;
 }
 #phoneNumber{
-height: 30px !important; width: 70% !important; border: 1px solid #fff; border-bottom: 1px solid green; font-size: 14px;
+height: 30px !important; width: 70%; border: 1px solid #fff; border-bottom: 1px solid green; font-size: 14px;
 }
 #sendWhatsApp{
 background: green; color: white; flex-direction: row; height: 30px;
@@ -2672,5 +2672,14 @@ width: 25% !important;
 }
 .input-array-totalcomision{
 width: 25% !important;
+}
+.dropdown-list-pais-flag {
+width: 100%;
+}
+.custom-select-pais-flag{
+width: 40%;
+}
+#phoneNumber{
+width: 60%;
 }
 }
