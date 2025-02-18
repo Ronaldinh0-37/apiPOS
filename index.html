@@ -50,7 +50,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.15" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.16" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -254,6 +254,16 @@
 </div>
 </div>
 
+<!-- MODAL OPTIONS -->
+<div id="modalOverlayOptions" class="modalOverlay"></div>
+<div id="detalleModalOptions" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="dynamicContent">
+<div id="div_section_options" class="d-flex flex-column flex-grow-1"></div>
+</div>
+</div>
+</div>
+
 <input id="windowId" type="hidden" value="0">
 <div id="div_sections">
 <div id="div_section_left">
@@ -281,7 +291,6 @@
 </select>
 </div>
 </div>
-<div id="div_section_options" class="d-flex flex-column flex-grow-1 hidden"></div>
 <div id="div_section_options_cliente" class="d-flex flex-column flex-grow-1 hidden"></div>
 </div>
 <div id="div_section_right">
@@ -296,7 +305,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.15').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.16').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -306,6 +315,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.15"></script>
+<script src="js/apipos.min.js?v=2.9.16"></script>
 </body>
 </html>

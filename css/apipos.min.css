@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.15
+version: 2.9.16
 */
 
 /* Importar fuentes locales */
@@ -1704,10 +1704,6 @@ font-size: 14px;
 color: #888;
 }
 
-.container-section-options{
-width: 100%;
-}
-
 h2 {
 text-align: center;
 }
@@ -1806,6 +1802,14 @@ padding-left: 5px;
 color: #888;
 margin-right: 10px;
 margin-left: 10px;
+}
+.custom-input-cart-observacion{
+text-align: left;
+box-shadow: none !important;
+padding: 0;
+padding-top: 5px;
+padding-left: 5px;
+color: #888;
 }
 .custom-input-cart-options {
 text-align: center;
@@ -1947,7 +1951,6 @@ margin-top: 15px;
 .custom-input-cart-setClienteDenominacion,
 .custom-input-cart-setClienteDireccion,
 .custom-input-cart-setFecha,
-.custom-input-cart-setVendedorCodigo,
 .custom-input-cart-btnConsultar,
 .custom-input-cart-btnOpcionesCliente{
 margin-top: 5px;
@@ -1960,6 +1963,10 @@ padding-right: 5px;
 .col-bt-padding{
 padding-left: 5px;
 padding-right: 5px;
+}
+.col-bt-padding-options{
+padding-left: 15px;
+padding-right: 15px;
 }
 
 .checkout{
@@ -2166,6 +2173,9 @@ width: 100% !important;
 .div-width-90{
 width: 90% !important;
 }
+.div-width-70{
+width: 70% !important;
+}
 .div-width-30{
 width: 30% !important;
 }
@@ -2221,8 +2231,25 @@ background: #f7f7f7;
 width: 80%;
 margin: 0 auto;
 }
+.container-title-options{
+background: #f7f7f7;
+border-radius: 50px;
+padding: 20px;
+height: 99vh;
+}
+.container-section-options{
+margin-top: 70px;
+}
 #detalleModal{
 width: 50%;
+border-radius: 50px;
+}
+#detalleModalPay{
+border-radius: 50px;
+}
+#detalleModalOptions{
+border-radius: 50px;
+padding: 0;
 }
 .container-buttons{
 display: flex;
@@ -2267,6 +2294,9 @@ margin-left: auto;
 }
 #closeModal{
 color: #FF5900 !important;
+}
+.closeModalOptions{
+margin-left: auto;
 }
 
 .categorias-img{
@@ -2616,6 +2646,10 @@ margin-left: auto;
 
 .inputEfectivoNroOperacion{
 border: none !important;
+}
+
+.div-group-container{
+margin-bottom: 20px;
 }
 
 /* Responsive Design */
