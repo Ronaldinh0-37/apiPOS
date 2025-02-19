@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.17
+version: 2.9.18
 */
 
 /* Importar fuentes locales */
@@ -1810,6 +1810,7 @@ padding: 0;
 padding-top: 5px;
 padding-left: 5px;
 color: #888;
+font-size: 13px;
 }
 .custom-input-cart-options {
 text-align: center;
@@ -2341,6 +2342,7 @@ margin-right: 10px;
 }
 .input-array-method,
 .select-array-bank,
+.select-array-other-payment,
 .input-array-operacion,
 .input-array-comision,
 .input-array-totalcomision{
@@ -2349,6 +2351,16 @@ outline: none;
 border-color: #888 !important;
 font-size: 13px !important;
 margin-right: 10px;
+}
+
+.select-array-other-payment{
+border: none !important;
+color: #080060;
+padding: 0;
+background: none;
+}
+.select-array-other-payment {
+box-shadow: none !important;
 }
 
 .btnSaveOperacion{
@@ -2649,10 +2661,6 @@ background: green; color: white; flex-direction: row; height: 30px;
 margin-left: auto;
 }
 
-.inputEfectivoNroOperacion {
-border: none !important;
-}
-
 .div-group-container {
 display: flex;
 }
@@ -2744,18 +2752,6 @@ display: block;
 }
 .div_margen{
 display: none;
-}
-.input-array-method{
-width: 25% !important;
-}
-.select-array-bank{
-width: 25% !important;
-}
-.input-array-operacion{
-width: 25% !important;
-}
-.input-array-totalcomision{
-width: 25% !important;
 }
 .dropdown-list-pais-flag {
 width: 100%;
