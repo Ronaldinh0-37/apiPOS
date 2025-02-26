@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.20
+version: 2.9.22
 */
 
 /* Importar fuentes locales */
@@ -1696,7 +1696,7 @@ flex: 1;
 
 .products-panel, #general-options{
 background: #11111109;
-padding-bottom: 15px;
+margin-bottom: 10px;
 }
 
 #general-options label{
@@ -1716,6 +1716,11 @@ border-radius: 5px;
 background: #fff;
 cursor: pointer;
 height: 100%;
+}
+.product:focus,
+input:focus,
+textarea:focus{
+outline: 1px solid #080060;
 }
 .product-container {
 display: flex;
@@ -2008,7 +2013,6 @@ background-color: #080060;
 
 #products{
 margin: 0;
-margin-top: 20px;
 height: 0;
 overflow-y: auto;
 scrollbar-width: thin;
@@ -2700,6 +2704,11 @@ height: auto;
 margin-right: 5px;
 margin-top: 5px;
 }
+.img-btnopt {
+width: 15px;
+height: auto;
+margin-bottom: 3px;
+}
 .custom-checkbox{
 margin-right: 5px;
 position: relative;
@@ -2708,6 +2717,20 @@ top: 2px;
 
 input[type="checkbox"] {
   accent-color: #FF5900;
+}
+
+.btnopt{
+padding: 0;
+}
+.btnoptfirst{
+padding-left: 11px;
+}
+.btns-btnopt{
+border-color: #080060 !important;
+border-radius: 0;
+}
+.btns-btnopt:hover{
+background-color: #f7f7f7;
 }
 
 /* Responsive Design */
