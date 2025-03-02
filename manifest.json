@@ -1,6 +1,6 @@
 {
   "name": "apiPOS",
-  "short_name": "apiPOS",
+  "short_name": "apiPOS | Punto de Venta Integrable y Ultrarrápido",
   "description": "Punto de Venta Integrable y Ultrarrápido.",
   "start_url": "./index.html",
   "display": "standalone",
