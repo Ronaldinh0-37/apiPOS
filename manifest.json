@@ -1,7 +1,7 @@
 {
   "name": "apiPOS | Punto de Venta Integrable y Ultrarrápido",
-  "short_name": "apiPOS | Punto de Venta Integrable y Ultrarrápido",
-  "description": "Punto de Venta Integrable y Ultrarrápido.",
+  "short_name": "apiPOS",
+  "description": "Punto de Venta Integrable y Ultrarrápido",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f7f7f7",
@@ -49,6 +49,19 @@
       "sizes": "512x512",
       "type": "image/png",
       "density": "5.0"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./img/screenshots/desktop.png",
+      "sizes": "800x600",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "./img/screenshots/mobile.png",
+      "sizes": "320x640",
+      "type": "image/png"
     }
   ]
 }
