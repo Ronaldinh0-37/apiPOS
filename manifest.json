@@ -1,10 +1,10 @@
 {
-  "name": "apiPOS - Punto de Venta Integrable y Ultrarrápido",
+  "name": "apiPOS",
   "short_name": "apiPOS",
-  "description": "apiPOS: Es un sistema de Punto de Venta Integrable y Ultrarrápido desarrollado en JavaScript, diseñado para integrarse de forma rápida y sencilla con cualquier sistema de ventas, facturación o ERP mediante API REST con tecnología web offline.",
+  "description": "Punto de Venta Integrable y Ultrarrápido.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fafafa",
+  "background_color": "#f7f7f7",
   "theme_color": "#080060",
   "orientation": "portrait",
   "icons": [
@@ -43,6 +43,12 @@
       "sizes": "192x192",
       "type": "image/png",
       "density": "4.0"
+    },
+    {
+      "src": "./img/icon/android-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "density": "5.0"
     }
   ]
 }
