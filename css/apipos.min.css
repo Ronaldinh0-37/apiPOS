@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.25
+version: 2.9.26
 */
 
 /* Importar fuentes locales */
@@ -2173,10 +2173,11 @@ font-weight: bold;
 }
 
 .text-success-modal{
-font-size: 16px;
-color: darkgreen;
+font-size: 14px;
+color: green;
 text-align: center;
 font-weight: bold;
+margin-bottom: 0;
 }
 
 .modalOverlay {
@@ -2768,6 +2769,58 @@ border-radius: 0;
 }
 .btns-btnopt:hover{
 background-color: #f7f7f7;
+}
+
+/* IMPRESION */
+.btn-group{
+font-size: 11px;
+background: #080060;
+height: 30px;
+margin-left: auto;
+margin-top: 10px;
+margin-right: 10px;
+}
+#defaultPrinter{
+padding: 0;
+padding-left: 10px;
+padding-right: 10px;
+font-size: 11px;
+color: #fff;
+}
+#id_dropdown_impresion{
+background: #080060;
+color: #fff;
+padding: 0;
+padding-left: 5px;
+padding-right: 5px;
+}
+#printerDropdown{
+font-size: 11px;
+padding: 0;
+padding-top: 5px;
+}
+.dropdown-item{
+padding: 0;
+padding-left: 5px;
+}
+.dropdown-item:focus{
+background-color: #080060;
+color: white;
+}
+#btnModalPrint{
+font-size: 25px;
+margin-top: 5px;
+margin-right: 10px;
+}
+#btnModalNewOperation{
+padding: 0;
+padding-left: 10px;
+padding-right: 10px;
+font-size: 11px;
+background-color: #FF5900;
+color: #fff;
+height: 30px;
+margin-top: 10px;
 }
 
 /* Responsive Design */

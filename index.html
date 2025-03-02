@@ -50,7 +50,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.25" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.26" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -120,10 +120,28 @@
 <div id="modalOverlay" class="modalOverlay"></div>
 <div id="detalleModal" class="modal">
 <div class="modal-content" style="border: none;">
-<div class="d-flex">
-<button type="button" class="btnModal" onclick="imprimirPdf()" style="margin-left: auto; font-size: 25px; margin-top: 5px;">
+<div class="d-flex mb-3">
+
+<!-- INTEGRACION CON APIERP - IMPRESION DIRECTA ONLINE -->
+<div class="btn-group">
+<button type="button" class="btn" id="defaultPrinter">No Disponible</button>
+<button type="button" class="btn dropdown-toggle dropdown-toggle-split" id="id_dropdown_impresion" data-bs-toggle="dropdown" aria-expanded="false">
+<span class="div_btn_cliente hint--bottom" style="cursor: pointer;">
+<i class="fas fa-chevron-down" style="font-size: 14px;color: white;"></i>
+</span>
+</button>
+<ul class="dropdown-menu" id="printerDropdown"></ul>
+</div>
+
+<!-- IMPRESION NORMAL -->
+<button id="btnModalPrint" type="button" class="btnModal" onclick="imprimirPdf()">
 <img src="./img/icon-printer.svg" alt="icon-baja" class="img-modal-pay">
 </button>
+
+<!-- NUEVA OPERACION -->
+<button id="btnModalNewOperation" type="button" class="btn">Nueva Venta</button>
+
+<!-- CERRAR MODAL -->
 <button id="closeModal" type="button" class="close closeModal">
 <span>&times;</span>
 </button>
@@ -156,11 +174,11 @@
 <!-- PDF -->
 <div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
 <div class="div-width-10"></div>
-<button id="btnViewA4" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
+<button id="btnViewA4" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;" onclick="generatePdfA4()">
 <img src="./img/icon-pdf.svg" alt="icon-pdf" class="img-modal-pay">
 <span>A4</span>
 </button>
-<button id="btnViewTicket" class="btnModal btnModalFooter" style="color: #111; flex-direction: row;">
+<button id="btnViewTicket" class="btnModal btnModalFooter" style="color: #111; flex-direction: row;" onclick="generatePdfTk()">
 <img src="./img/icon-ticket.svg" alt="icon-ticket" class="img-modal-pay">
 <span>Ticket</span>
 </button>
@@ -304,7 +322,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.25').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.26').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -314,6 +332,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.25"></script>
+<script src="js/apipos.min.js?v=2.9.26"></script>
 </body>
 </html>
