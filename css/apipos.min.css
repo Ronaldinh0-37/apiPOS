@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.26
+version: 2.9.27
 */
 
 /* Importar fuentes locales */
@@ -2090,7 +2090,11 @@ background: transparent;
 cursor: wait;
 }
 
-#setSucursalDiv{
+#selectTab{
+width: 40%;
+}
+
+#setBranchDiv{
 margin-top: auto;
 border-top: 1px solid #888;
 padding-top: 5px;
@@ -2099,7 +2103,7 @@ font-size: 14px;
 text-align: center;
 display: flex;
 }
-#setSucursalCodigo{
+#setBranchId{
 color: #888;
 background: none;
 width: 100%;
@@ -2110,11 +2114,13 @@ margin: 0;
 border-radius: 0;
 text-align: center;
 }
-#setSucursalCodigo option{
+#setBranchId option{
 background: #f7f7f7;
 color: #888;
 }
-#setCajeroDiv{
+#setCajeroDiv,
+#setWarehouseDiv,
+#setFloorDiv{
 border-top: 1px solid #888;
 padding-top: 5px;
 padding-bottom: 5px;
@@ -2122,7 +2128,9 @@ font-size: 14px;
 text-align: center;
 display: flex;
 }
-#setCajeroCodigo{
+#setCajeroCodigo,
+#setWarehouseId,
+#setFloorId{
 color: #888;
 background: none;
 width: 100%;
@@ -2133,7 +2141,9 @@ margin: 0;
 border-radius: 0;
 text-align: center;
 }
-#setCajeroCodigo option{
+#setCajeroCodigo option,
+#setWarehouseId option,
+#setFloorId option{
 background: #f7f7f7;
 color: #888;
 }
@@ -2293,6 +2303,12 @@ border-radius: 50px;
 }
 #detalleModalPay{
 border-radius: 50px;
+}
+#detalleModalLayout{
+width: 100%;
+}
+#closeModalLayout{
+margin-left: auto;
 }
 #detalleModalOptions{
 border-radius: 50px;
@@ -2821,6 +2837,39 @@ background-color: #FF5900;
 color: #fff;
 height: 30px;
 margin-top: 10px;
+}
+
+/* Layout Windows */
+#layout-windows {
+  width: 1500px;
+  height: 1000px;
+  position: relative;
+  border: 1px solid #888;
+  background-color: #fff;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.draggable {
+  position: absolute;
+  padding: 5px 10px;
+  background-color: #f7f7f7;
+  border: 1px solid #000;
+  cursor: move;
+  user-select: none;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.draggable .nombre {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+.draggable img {
+  width: 40px;
+  display: block;
+  pointer-events: none;
 }
 
 /* Responsive Design */

@@ -52,7 +52,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.26" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.27" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -65,14 +65,32 @@
 <nav id="navmenu" class="navmenu flex-grow-1">
 <ul></ul>
 </nav>
-<div id="setSucursalDiv">
+
+<!-- SUCURSALES -->
+<div id="setBranchDiv">
 <img src="./img/branch.png" class="img-fluid rounded-circle categorias-img">
-<select id="setSucursalCodigo" class="custom-inputs"></select>
+<select id="setBranchId" class="custom-inputs"></select>
 </div>
+
+<!-- ALMACENES -->
+<div id="setWarehouseDiv">
+<img src="./img/branch.png" class="img-fluid rounded-circle categorias-img">
+<select id="setWarehouseId" class="custom-inputs"></select>
+</div>
+
+<!-- PISOS O AMBIENTES -->
+<div id="setFloorDiv">
+<img src="./img/branch.png" class="img-fluid rounded-circle categorias-img">
+<select id="setFloorId" class="custom-inputs"></select>
+</div>
+
+<!-- CAJEROS -->
 <div id="setCajeroDiv">
 <img src="./img/user.png" class="img-fluid rounded-circle categorias-img">
 <select id="setCajeroCodigo" class="custom-inputs"></select>
 </div>
+
+<!-- LOGOUT -->
 <button type="button" class="btn btn-logout"><i class="bi bi-power btn-logout-icon"></i> Cerrar Sesión</button>
 </header>
 <section id="login" style="padding: 0; margin: 0;">
@@ -274,6 +292,19 @@
 </div>
 </div>
 
+<!-- MODAL LAYOUT -->
+<div id="modalOverlayLayout" class="modalOverlay"></div>
+<div id="detalleModalLayout" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="container-buttons">
+<button id="closeModalLayout" type="button" class="close closeModal">
+<span>&times;</span>
+</button>
+</div>
+<div id="layout-windows"></div>
+</div>
+</div>
+
 <!-- MODAL OPTIONS -->
 <div id="modalOverlayOptions" class="modalOverlay"></div>
 <div id="detalleModalOptions" class="modal">
@@ -290,7 +321,7 @@
 <div class="tabs">
 <select id="selectTab" class="mobile-tabs custom-inputs" onchange="switchTabMobile(this)"></select>
 <div class="tabs-container"></div>
-<button class="new-tab-btn custom-input-add" id="newTabBtn" disabled="disabled" onclick="addNewTab()"><i class="bi bi-plus"></i></button>
+<button class="new-tab-btn custom-input-add" id="newTabBtn" disabled="disabled" onclick="/*addNewTab()*/ showModalLayout()"><i class="bi bi-plus"></i></button>
 <i id="internet-icon" class="bi bi-wifi icon-net"></i>
 <button type="button" class="header-toggle d-xl-none btn-none">
 <img src="./img/icon-menu.svg" alt="icon-menu" class="img-modal-pay">
@@ -324,7 +355,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.26').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.27').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -334,6 +365,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.26"></script>
+<script src="js/apipos.min.js?v=2.9.27"></script>
 </body>
 </html>
