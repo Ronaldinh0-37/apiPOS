@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.34
+version: 2.9.35
 */
 
 /* Importar fuentes locales */
@@ -2841,8 +2841,8 @@ margin-top: 10px;
 
 /* Layout Windows */
 #layout-windows {
-width: 1500px;
-height: 1000px;
+width: 1000px;
+height: 540px;
 position: relative;
 border: 1px solid #D3D3D3;
 background-color: #D3D3D3;
@@ -2851,7 +2851,6 @@ margin: 0 auto;
 }
 .draggable {
 position: absolute;
-padding: 5px 10px;
 cursor: move;
 user-select: none;
 white-space: nowrap;
@@ -2863,16 +2862,19 @@ align-items: center;
 background-color: #f7f7f7;
 border: 1px solid #000;
 border-radius: 4px;
+padding: 5px 10px;
 }
 .draggable-room{
 background-color: #f7f7f7;
 border: 1px solid #000;
 border-radius: 4px;
+padding: 5px 10px;
 }
 .draggable-window{
 background-color: #f7f7f7;
 border: 1px solid #000;
 border-radius: 4px;
+padding: 5px 10px;
 }
 .draggable-element-bar{
 
@@ -2925,36 +2927,46 @@ height: auto;
 width: 150px;
 height: auto;
 }
-.icon-element-bathroom-men{
-width: 150px;
-height: auto;
-}
+.icon-element-bathroom-men,
+.icon-element-bathroom-unisex,
 .icon-element-bathroom-women{
-width: 150px;
+width: 80px;
 height: auto;
 }
 .icon-element-cashier{
 width: 100px;
 height: auto;
 }
+.icon-element-clock{
+width: 50px;
+height: auto;
+}
 .icon-element-fridge{
-width: 120px;
+width: 50px;
 height: auto;
 }
 .icon-element-laptop{
-width: 70px;
+width: 60px;
+height: auto;
+}
+.icon-element-printer{
+width: 50px;
+height: auto;
+}
+.icon-element-user{
+width: 60px;
 height: auto;
 }
 .icon-element-vase{
-width: 70px;
+width: 60px;
 height: auto;
 }
 .icon-element-vertical-line{
-width: 200px;
+width: 20px;
 height: auto;
 }
 .icon-element-waiter{
-width: 100px;
+width: 80px;
 height: auto;
 }
 

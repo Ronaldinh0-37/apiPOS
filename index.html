@@ -52,7 +52,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.34" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.35" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -155,7 +155,7 @@
 
 <!-- IMPRESION NORMAL -->
 <button id="btnModalPrint" type="button" class="btnModal" onclick="imprimirPdf()">
-<img src="./img/icon-printer.svg" alt="icon-baja" class="img-modal-pay">
+<img src="./img/layout/icon-printer.svg" alt="icon-baja" class="img-modal-pay">
 </button>
 
 <!-- NUEVA OPERACION -->
@@ -307,9 +307,13 @@
     <option value="element-bar">Barra</option>
     <option value="element-bathroom-men">Baño Hombres</option>
     <option value="element-bathroom-women">Baño Mujeres</option>
+    <option value="element-bathroom-unisex">Baño Unisex</option>
     <option value="element-cashier">Cajero</option>
+    <option value="element-clock">Reloj</option>
     <option value="element-fridge">Refrigerador</option>
     <option value="element-laptop">Computadora Portátil</option>
+    <option value="element-printer">Impresora</option>
+    <option value="element-user">Usuario</option>
     <option value="element-vase">Florero</option>
     <option value="element-vertical-line">Línea Vertical</option>
     <option value="element-waiter">Mozo</option>
@@ -372,7 +376,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.34').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.35').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -382,6 +386,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.34"></script>
+<script src="js/apipos.min.js?v=2.9.35"></script>
 </body>
 </html>
