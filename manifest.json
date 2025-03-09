@@ -53,13 +53,61 @@
   ],
   "screenshots": [
     {
-      "src": "./img/screenshots/desktop.png",
+      "src": "./img/screenshots/desktop-1.png",
       "sizes": "800x600",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "./img/screenshots/mobile.png",
+      "src": "./img/screenshots/desktop-2.png",
+      "sizes": "800x600",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "./img/screenshots/desktop-3.png",
+      "sizes": "800x600",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "./img/screenshots/desktop-4.png",
+      "sizes": "800x600",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "./img/screenshots/desktop-5.png",
+      "sizes": "800x600",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "./img/screenshots/mobile-1.png",
+      "sizes": "320x640",
+      "type": "image/png"
+    }
+    ,
+    {
+      "src": "./img/screenshots/mobile-2.png",
+      "sizes": "320x640",
+      "type": "image/png"
+    }
+    ,
+    {
+      "src": "./img/screenshots/mobile-3.png",
+      "sizes": "320x640",
+      "type": "image/png"
+    }
+    ,
+    {
+      "src": "./img/screenshots/mobile-4.png",
+      "sizes": "320x640",
+      "type": "image/png"
+    }
+    ,
+    {
+      "src": "./img/screenshots/mobile-5.png",
       "sizes": "320x640",
       "type": "image/png"
     }
