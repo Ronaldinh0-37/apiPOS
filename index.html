@@ -52,7 +52,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.38" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.39" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -344,9 +344,6 @@
 <div class="tabs-container"></div>
 <button class="new-tab-btn custom-input-add" id="newTabBtn" disabled="disabled" onclick="/*addNewTab()*/ showModalLayout()"><i class="bi bi-plus"></i></button>
 <i id="internet-icon" class="bi bi-wifi icon-net"></i>
-<button type="button" class="header-toggle d-xl-none btn-none">
-<img src="./img/icon-menu.svg" alt="icon-menu" class="img-modal-pay">
-</button>
 </div>
 <div id="div_section_products" class="d-flex flex-column flex-grow-1">
 <div class="products-panel d-flex flex-column">
@@ -376,7 +373,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.38').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.39').then(() => { navigator.serviceWorker.ready.then((registration) => { registration.update(); }); }).catch((err) => console.error('Error to WKR:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -386,6 +383,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.38"></script>
+<script src="js/apipos.min.js?v=2.9.39"></script>
 </body>
 </html>
