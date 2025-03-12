@@ -52,7 +52,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.46" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.47" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -373,7 +373,7 @@
 </section>
 </main>
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.46').then((registration) => { console.log('SW Success'); registration.onupdatefound = () => { const installingWorker = registration.installing; installingWorker.onstatechange = () => { if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) { console.log('SW New Version'); } }; }; navigator.serviceWorker.addEventListener('controllerchange', () => { window.location.reload(); }); }).catch((err) => console.error('Error al registrar el Service Worker:', err)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2.9.47').then((registration) => { console.log('SW Success'); registration.onupdatefound = () => { const installingWorker = registration.installing; installingWorker.onstatechange = () => { if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) { console.log('SW New Version'); } }; }; navigator.serviceWorker.addEventListener('controllerchange', () => { window.location.reload(); }); }).catch((err) => console.error('Error al registrar el Service Worker:', err)); }
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/pos-main.js"></script>
@@ -383,6 +383,6 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('./app.js?v=2
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.46"></script>
+<script src="js/apipos.min.js?v=2.9.47"></script>
 </body>
 </html>
