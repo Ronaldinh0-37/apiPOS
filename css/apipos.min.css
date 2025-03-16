@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.56
+version: 2.9.57
 */
 
 /* Importar fuentes locales */
@@ -3052,71 +3052,243 @@ background-color: #f7f7f7;
 
 /* Shifts */
 #detalleModalShift{
-width: 80%;
+width: auto;
+height: auto;
 border-radius: 50px;
 padding: 0;
+padding-bottom: 20px;
 }
 #closeModalShift{
 margin-left: auto;
 padding-right: 20px;
 }
 
-.container-shift {
-max-width: 600px;
-margin: 20px auto;
-padding: 20px;
-background: #fff;
-border-radius: 8px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Shift Open */
+.icon-close{
+width: 18px;
+height: auto;
+margin-right: 10px;
+margin-top: 25px;
 }
-.center-shift {
-text-align: center;
+.shift-open-container{
+display: flex;
 }
-.icon-shift {
-font-size: 50px;
-margin-bottom: 10px;
-}
-.form-group-shift {
-margin-bottom: 15px;
+.shift-open-leftCol{
+flex: 1;
 display: flex;
 justify-content: center;
 align-items: center;
-flex-wrap: wrap;
 }
-.form-group-shift label {
-flex: 1 0 120px;
-text-align: right;
+.shift-open-img{
+width: 80px;
+height: auto;
+margin-left: 20px;
+margin-right: 50px;
+}
+.shift-open-rightCol{
+flex: 2;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+padding: 10px;
+}
+.shift-open-title{
+text-align: center;
+color: #080060;
+font-size: 20px;
+font-weight: bold;
+margin-bottom: 30px;
+}
+.shift-open-label{
+color: #080060;
+font-size: 15px;
+font-weight: bold;
+white-space: nowrap;
+margin-right: 20px;
+}
+.shift-open-row2{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 30px;
+}
+.shift-open-input{
+border: 1px solid #FF5900 !important;
+width: 100px;
+height: 20px;
+}
+.shift-open-btnContainer{
+text-align: center;
+}
+.shift-open-btn{
+background-color: #FF5900;
+color: white;
+padding: 5px;
+padding-left: 10px;
+padding-right: 10px;
+border: none;
+border-radius: 5px;
+font-size: 13px;
+white-space: nowrap;
+}
+
+
+/* Shift Close */
+.shift-close-container {
+display: flex;
+flex-direction: column;
+gap: 20px;
+padding: 20px;
+}
+.shift-close-row1,
+.shift-close-row2,
+.shift-close-infoRow,
+.shift-close-btnRow {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.shift-close-row1{
+position: relative;
+bottom: 20px;
+}
+.shift-close-leftCol {
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.shift-close-img {
+width: 70px;
+height: auto;
+}
+.shift-close-rightCol {
+flex: 2;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.shift-close-title {
+text-align: center;
+color: #080060;
+font-weight: bold;
+font-size: 18px;
+margin: 0;
+}
+.shift-close-label {
+color: #111;
+font-weight: bold;
+font-size: 14px;
+white-space: nowrap;
 margin-right: 10px;
 }
-.form-group-shift input {
-flex: 1 0 150px;
-padding: 8px;
-border: 1px solid #ccc;
-border-radius: 4px;
+.shift-close-smallIcon {
+width: 24px;
+height: auto;
+position: relative;
+left: 5px;
+bottom: 1px;
 }
-.shift-button {
-padding: 10px 20px;
-background-color: #007bff;
-border: none;
-border-radius: 4px;
-color: #fff;
-cursor: pointer;
-margin-top: 15px;
-}
-.shift-button:hover {
-background-color: #0056b3;
+.shift-close-infoSpan {
+border: 1px solid #888;
+border-left: 0;
+border-radius: 5px;
+padding: 2px 5px;
+font-size: 12px;
+color: #888;
+white-space: nowrap;
 }
 .shift-table {
 width: 100%;
 border-collapse: collapse;
-margin-top: 15px;
 }
-.shift-table, .shift-table th, .shift-table td {
-border: 1px solid #ccc;
-}
-.shift-table th, .shift-table td {
-padding: 8px;
+.shift-table th,
+.shift-table td {
+padding: 5px;
 text-align: center;
+font-size: 13px;
+color: #888;
+}
+.shift-close-infoRow {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.shift-close-info-col {
+flex: 1;
+display: flex;
+align-items: center;
+margin-right: 20px;
+}
+.shift-close-infoLabel {
+font-weight: bold;
+color: #000;
+font-size: 14px;
+white-space: nowrap;
+margin-right: 10px;
+}
+.shift-close-infoValue {
+font-weight: bold;
+color: #080060;
+font-size: 14px;
+}
+.shift-close-input {
+border: 1px solid #111 !important;
+width: 100px;
+height: 20px;
+}
+.shift-table-expenses{
+color: #FF5900 !important;
+}
+.shift-close-row5 {
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+.shift-close-notaLabel {
+font-weight: bold;
+margin-bottom: 5px;
+color: #888;
+font-size: 15px;
+}
+.shift-close-textarea {
+width: 100%;
+border-color: #080060 !important;
+text-align: left;
+padding: 5px;
+height: auto;
+}
+.shift-close-differentialRow {
+width: 100%;
+background: #ff5900;
+color: #fff;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 3px;
+font-size: 13px;
+}
+.shift-close-diff-col {
+flex: 1;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+.shift-close-btnRow {
+width: 100%;
+display: flex;
+justify-content: center;
+}
+.shift-close-btn {
+background-color: #080060;
+color: #fff;
+padding: 5px;
+padding-left: 10px;
+padding-right: 10px;
+border: none;
+border-radius: 5px;
+font-size: 13px;
 }
 
 /* Responsive Design */
