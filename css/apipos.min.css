@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.54
+version: 2.9.55
 */
 
 /* Importar fuentes locales */
@@ -1558,27 +1558,37 @@ flex-direction: column;
 .tabs {
 display: flex;
 align-items: center;
-gap: 10px;
+gap: 5px;
 margin: 10px;
 }
-
+.img-tab-home{
+width: 35px;
+height: auto;
+}
+#scrollLeft {
+transform: rotate(180deg);
+}
+.arrow-link {
+text-decoration: none;
+}
+.icon-arrow-right{
+width: 25px;
+height: auto;
+}
 .tabs-container {
 display: flex;
 overflow: hidden;
 gap: 5px;
-min-width: 0px;
-max-width: 90%;
+max-width: 40%;
 padding: 5px;
+scroll-behavior: smooth;
 }
-
 .tabs-container:active {
 cursor: grabbing;
 }
-
 .tabs-container.dragging {
 user-select: none;
 }
-
 .tabs .tab-window {
 flex: 0 0 auto;
 min-width: 120px;
@@ -1600,7 +1610,6 @@ overflow: hidden;
 text-overflow: ellipsis;
 transition: background-color 0.3s ease;
 }
-
 .tabs .tab-window.active {
 padding-top: 5px;
 background-color: #080060;
@@ -1616,7 +1625,7 @@ background-color: #FF5900;
 color: white;
 cursor: pointer;
 margin: 5px;
-font-size: 14px;
+font-size: 13px;
 }
 
 .custom-inputs:hover {
@@ -1664,8 +1673,8 @@ display: flex !important;
 
 .products-panel{
 flex: 1;
-padding-left: 20px;
-padding-right: 20px;
+padding-left: 5px;
+padding-right: 5px;
 }
 
 .cart-panel{
@@ -1893,8 +1902,8 @@ background-color: #080060;
 display: none;
 }
 
-#internet-icon{
-font-size: 2rem;
+#tabs-icon-online,
+#tabs-icon-offline{
 transition: color 0.3s ease;
 margin-left: auto;
 }
@@ -2356,9 +2365,11 @@ display: none;
 cursor: pointer;
 display: flex;
 align-items: center;
-gap: 10px;
 margin-bottom: 10px;
-font-size: 11px;
+font-size: 12px;
+padding-left: 2px;
+padding-right: 2px;
+text-wrap: wrap;
 }
 .category-label:hover .categorias-img,
 .marca-label:hover .categorias-img {
@@ -2412,30 +2423,22 @@ text-align: center;
 font-size: 16px;
 }
 
-.btn-addMoreProducts{
+/* Search More Products */
+#search_more_products{
 background: #FF590010;
 border: 1px solid #FF5900;
-color: #FF5900;
-font-size: 15px;
-font-weight: bold;
-padding-top: 0;
-padding-bottom: 3px;
+color: #080060;
+font-size: 14px;
+padding-top: 5px;
+padding-bottom: 5px;
+margin-top: 15px;
 margin-bottom: 15px;
 display: none;
 }
-.btn-backOptions{
-background: #FF590010;
-border: 1px solid #FF5900;
-color: #FF5900;
-font-size: 15px;
-font-weight: bold;
-padding-top: 0;
-padding-bottom: 3px;
-margin-bottom: 15px;
-display: none;
-}
-.span-addMoreProducts, .span-backOptions{
-font-size: 20px;
+.img-search-more-products{
+width: 20px;
+height: auto;
+margin: 5px;
 }
 
 .input-Descuento-Global{
@@ -3142,7 +3145,8 @@ width: 100% !important;
 width: 100% !important;
 }
 
-.btn-addMoreProducts, .btn-backOptions{
+/* Search More Products */
+#search_more_products{
 display: block;
 }
 
@@ -3198,11 +3202,49 @@ display: block;
 margin: 0 auto;
 }
 .header {
-width: 120px;
+width: 100px;
 }
 .header~main,
 .header~#footer {
-margin-left: 120px;
+margin-left: 100px;
+}
+#icon-branch,
+#icon-warehouse,
+#icon-floor,
+#icon-user{
+display: none;
+}
+#setBranchId{
+background: url(../img/icon-branch.svg) no-repeat center center;
+}
+#setWarehouseId{
+background: url(../img/icon-warehouse.svg) no-repeat center center;
+}
+#setFloorId{
+background: url(../img/icon-floor.svg) no-repeat center center;
+}
+#setCajeroCodigo{
+background: url(../img/user.png) no-repeat center center;
+}
+#setBranchId,
+#setWarehouseId,
+#setFloorId,
+#setCajeroCodigo{
+-webkit-appearance: none !important;
+-moz-appearance: none !important;
+appearance: none !important;
+background-size: 30px;
+width: 50% !important;
+margin: 0 auto;
+transition: width 0.3s ease;
+text-indent: -9999px;
+overflow: hidden;
+}
+#setBranchId:focus,
+#setWarehouseId:focus,
+#setFloorId:focus,
+#setCajeroCodigo:focus{
+text-indent: 0;
 }
 
 /* SHIFTS */

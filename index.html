@@ -52,7 +52,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.54" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.55" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -68,30 +68,30 @@
 
 <!-- SUCURSALES -->
 <div id="setBranchDiv">
-<img src="./img/branch.png" class="img-fluid rounded-circle categorias-img">
+<img id="icon-branch" src="./img/icon-branch.svg" class="img-fluid rounded-circle categorias-img">
 <select id="setBranchId" class="custom-inputs"></select>
 </div>
 
 <!-- ALMACENES -->
 <div id="setWarehouseDiv">
-<img src="./img/branch.png" class="img-fluid rounded-circle categorias-img">
+<img id="icon-warehouse" src="./img/icon-warehouse.svg" class="img-fluid rounded-circle categorias-img">
 <select id="setWarehouseId" class="custom-inputs"></select>
 </div>
 
 <!-- PISOS O AMBIENTES -->
 <div id="setFloorDiv">
-<img src="./img/branch.png" class="img-fluid rounded-circle categorias-img">
+<img id="icon-floor" src="./img/icon-floor.svg" class="img-fluid rounded-circle categorias-img">
 <select id="setFloorId" class="custom-inputs"></select>
 </div>
 
 <!-- CAJEROS -->
 <div id="setCajeroDiv">
-<img src="./img/user.png" class="img-fluid rounded-circle categorias-img">
+<img id="icon-user" src="./img/user.png" class="img-fluid rounded-circle categorias-img">
 <select id="setCajeroCodigo" class="custom-inputs"></select>
 </div>
 
 <!-- LOGOUT -->
-<button type="button" class="btn btn-logout"><i class="bi bi-power btn-logout-icon"></i> Cerrar Sesión</button>
+<button type="button" class="btn btn-logout"><i class="bi bi-power btn-logout-icon"></i> Salir</button>
 </header>
 <section id="login" style="padding: 0; margin: 0;">
 <div class="login-wrapper">
@@ -353,10 +353,51 @@
 <div id="div_sections">
 <div id="div_section_left">
 <div class="tabs">
+
+<!-- HOME -->
+<a href="javascript:void(0)" id="tabs-home" class="arrow-link">
+<img src="./img/icon-home.svg" alt="icon-home" class="img-tab-home">
+</a>
+
+<!-- SHIFT -->
+<a href="javascript:void(0)" id="tabs-shift" class="arrow-link">
+<img src="./img/icon-cash-register.svg" alt="icon-cash-register" class="img-tab-home">
+</a>
+
+<!-- TABS RESPONSIVE -->
 <select id="selectTab" class="mobile-tabs custom-inputs" onchange="switchTabMobile(this)"></select>
+
+<!-- ARROW LEFT -->
+<a href="javascript:void(0)" id="scrollLeft" class="arrow-link">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+</a>
+
+<!-- TABS CONTAINER -->
 <div class="tabs-container"></div>
-<button class="new-tab-btn custom-input-add" id="newTabBtn" disabled="disabled" onclick="/*addNewTab()*/ showModalLayout()"><i class="bi bi-plus"></i></button>
-<i id="internet-icon" class="bi bi-wifi icon-net"></i>
+
+<!-- ARROW RIGHT -->
+<a href="javascript:void(0)" id="scrollRight" class="arrow-link">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+</a>
+
+<!-- ADD WINDOW -->
+<a href="javascript:void(0)" id="tabs-newTab" class="arrow-link" disabled="disabled">
+<img src="./img/icon-window-add.svg" alt="icon-window-add" class="img-tab-home">
+</a>
+
+<!-- NET ICON -->
+<img id="tabs-icon-online" src="./img/icon-online.svg" alt="icon-online" class="icon-arrow-right hidden">
+<img id="tabs-icon-offline" src="./img/icon-offline.svg" alt="icon-offline" class="icon-arrow-right hidden">
+
+<!-- ADD ORDERS -->
+<a href="javascript:void(0)" id="tabs-orders" class="arrow-link">
+<img src="./img/icon-orders-add.svg" alt="icon-orders-add" class="img-tab-home">
+</a>
+
+<!-- AREAS -->
+<a href="javascript:void(0)" id="tabs-areas" class="arrow-link">
+<img src="./img/icon-areas.svg" alt="icon-areas" class="img-tab-home">
+</a>
 </div>
 <div id="div_section_products" class="d-flex flex-column flex-grow-1">
 <div class="products-panel d-flex flex-column">
@@ -377,7 +418,9 @@
 <div id="div_section_right">
 <div id="general-options"></div>
 <div id="cart-panel" class="d-flex flex-column flex-grow-1">
-<button type="button" class="btn btn-addMoreProducts" onclick="showLeftSection(); showSection('div_section_products');"><i class="bi bi-search span-addMoreProducts"></i> Agregar más productos</button>
+<button id="search_more_products" type="button" class="btn">
+<img src="./img/icon-arrow-left-blue.svg" alt="icon-arrow-left-blue" class="img-search-more-products"> Agregar más productos <img src="./img/icon-store-blue.svg" alt="icon-store-blue" class="img-search-more-products">
+</button>
 </div>
 <div id="divMarginTopAuto" class="divMarginTopAuto"></div>
 </div>
@@ -393,6 +436,6 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.54"></script>
+<script src="js/apipos.min.js?v=2.9.55"></script>
 </body>
 </html>
