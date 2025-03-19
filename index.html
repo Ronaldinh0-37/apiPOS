@@ -52,7 +52,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.60" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.61" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -349,7 +349,24 @@
 </div>
 </div>
 
+<!-- MODAL WINDOW SHIFT -->
+<div id="modalOverlayWindowShift" class="modalOverlay"></div>
+<div id="detalleModalWindowShift" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="container-buttons">
+<button id="closeModalWindowShift" type="button" class="close closeModal">
+<img src="./img/icon-close.svg" alt="icon-close" class="icon-close">
+</button>
+</div>
+<div class="container-WindowShift" id="windowShiftContent"></div>
+</div>
+</div>
+
+
+<!-- WINDOW ID -->
 <input id="windowId" type="hidden" value="0">
+
+<!-- SECTIONS -->
 <div id="div_sections">
 <div id="div_section_left">
 <div class="tabs">
@@ -364,21 +381,8 @@
 <img src="./img/icon-cash-register.svg" alt="icon-cash-register" class="img-tab-home">
 </a>
 
-<!-- TABS RESPONSIVE -->
-<select id="selectTab" class="mobile-tabs custom-inputs" onchange="switchTabMobile(this)"></select>
-
-<!-- ARROW LEFT -->
-<a href="javascript:void(0)" id="scrollLeft" class="arrow-link">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-</a>
-
-<!-- TABS CONTAINER -->
-<div class="tabs-container"></div>
-
-<!-- ARROW RIGHT -->
-<a href="javascript:void(0)" id="scrollRight" class="arrow-link">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-</a>
+<!-- TABS -->
+<select id="selectTab" class="custom-inputs" onchange="switchTab(this.value)"></select>
 
 <!-- ADD WINDOW -->
 <a href="javascript:void(0)" id="tabs-newTab" class="arrow-link" disabled="disabled">
@@ -436,6 +440,6 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.60"></script>
+<script src="js/apipos.min.js?v=2.9.61"></script>
 </body>
 </html>

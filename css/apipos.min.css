@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.60
+version: 2.9.61
 */
 
 /* Importar fuentes locales */
@@ -1565,56 +1565,12 @@ margin: 10px;
 width: 35px;
 height: auto;
 }
-#scrollLeft {
-transform: rotate(180deg);
-}
 .arrow-link {
 text-decoration: none;
 }
 .icon-arrow-right{
 width: 25px;
 height: auto;
-}
-.tabs-container {
-display: flex;
-overflow: hidden;
-gap: 5px;
-max-width: 40%;
-padding: 5px;
-scroll-behavior: smooth;
-}
-.tabs-container:active {
-cursor: grabbing;
-}
-.tabs-container.dragging {
-user-select: none;
-}
-.tabs .tab-window {
-flex: 0 0 auto;
-min-width: 120px;
-max-width: 120px;
-text-align: center;
-align-items: center;
-justify-content: center;
-background-color: #FF5900;
-color: white;
-padding: 5px;
-padding-top: 7px;
-border-radius: 4px 4px 0 0;
-scroll-snap-align: center;
-cursor: pointer;
-border: 1px solid #ccc;
-font-size: 12px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-transition: background-color 0.3s ease;
-}
-.tabs .tab-window.active {
-padding-top: 5px;
-background-color: #080060;
-border-bottom: 1px solid white;
-font-size: 14px;
 }
 
 .custom-inputs{
@@ -1898,10 +1854,6 @@ width: 100%;
 background-color: #080060;
 }
 
-.mobile-tabs {
-display: none;
-}
-
 #tabs-icon-online,
 #tabs-icon-offline{
 transition: color 0.3s ease;
@@ -2076,10 +2028,6 @@ background: transparent;
 
 #newTabBtn{
 cursor: wait;
-}
-
-#selectTab{
-width: 40%;
 }
 
 #setBranchDiv{
@@ -3293,14 +3241,6 @@ font-size: 13px;
 
 /* Responsive Design */
 @media (max-width: 768px) {
-.tabs-container {
-display: none;
-}
-
-.mobile-tabs {
-display: block;
-margin: 5px;
-}
 
 #div_section_left{
 width: 100%;
