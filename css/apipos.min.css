@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.65
+version: 2.9.66
 */
 
 /* Importar fuentes locales */
@@ -2874,100 +2874,92 @@ flex-direction: column;
 align-items: center;
 }
 
-.draggable-table-free{
-background-color: #ebfff5;
-color: #076031;
-border: 3px solid #076031;
-}
-.draggable-table-occupied{
-background-color: #fff7f3;
-color: #e9512e;
-border: 3px solid #e9512e;
-}
-.draggable-table-collect{
-background-color: #eaeef6;
-color: #080060;
-border: 3px solid #080060;
-}
-.draggable-table-round-small{
-height: 120px;
-width: 120px;
-border-radius: 50%;
-}
-.draggable-table-round-medium{
-height: 160px;
-width: 160px;
-border-radius: 50%;
-}
-.draggable-table-round-large{
-height: 200px;
-width: 200px;
-border-radius: 50%;
-}
-.draggable-table-square-small{
-height: 120px;
-width: 120px;
-border-radius: 15px;
-}
-.draggable-table-square-medium{
-height: 160px;
-width: 160px;
-border-radius: 15px;
-}
-.draggable-table-square-large{
-height: 200px;
-width: 200px;
-border-radius: 15px;
-}
-.draggable-table-rectangle-horizontal-small{
-height: 60px;
-width: 120px;
-border-radius: 5px;
-}
-.draggable-table-rectangle-horizontal-medium{
-height: 80px;
-width: 160px;
-border-radius: 5px;
-}
-.draggable-table-rectangle-horizontal-large{
-height: 100px;
-width: 200px;
-border-radius: 5px;
-}
-.draggable-table-rectangle-vertical-small{
-height: 120px;
-width: 60px;
-border-radius: 5px;
-}
-.draggable-table-rectangle-vertical-medium{
-height: 160px;
-width: 80px;
-border-radius: 5px;
-}
-.draggable-table-rectangle-vertical-large{
-height: 200px;
-width: 100px;
-border-radius: 5px;
-}
-
-.draggable-table{
+/* Layout Elements Status */
+.draggable-element{
 padding: 5px 10px;
 display: flex;
 align-items: center;
 justify-content: center;
 }
-.draggable-room{
-background-color: #f7f7f7;
-border: 1px solid #000;
-border-radius: 4px;
-padding: 5px 10px;
+.draggable-free{
+background-color: #ebfff5;
+color: #076031;
+border: 3px solid #076031;
 }
-.draggable-window{
-background-color: #f7f7f7;
-border: 1px solid #000;
-border-radius: 4px;
-padding: 5px 10px;
+.draggable-occupied{
+background-color: #fff7f3;
+color: #e9512e;
+border: 3px solid #e9512e;
 }
+.draggable-collect{
+background-color: #eaeef6;
+color: #080060;
+border: 3px solid #080060;
+}
+
+/* Layout Elements Shape */
+.draggable-round-small{
+height: 120px;
+width: 120px;
+border-radius: 50%;
+}
+.draggable-round-medium{
+height: 160px;
+width: 160px;
+border-radius: 50%;
+}
+.draggable-round-large{
+height: 200px;
+width: 200px;
+border-radius: 50%;
+}
+.draggable-square-small{
+height: 120px;
+width: 120px;
+border-radius: 15px;
+}
+.draggable-square-medium{
+height: 160px;
+width: 160px;
+border-radius: 15px;
+}
+.draggable-square-large{
+height: 200px;
+width: 200px;
+border-radius: 15px;
+}
+.draggable-rectangle-horizontal-small{
+height: 60px;
+width: 120px;
+border-radius: 5px;
+}
+.draggable-rectangle-horizontal-medium{
+height: 80px;
+width: 160px;
+border-radius: 5px;
+}
+.draggable-rectangle-horizontal-large{
+height: 100px;
+width: 200px;
+border-radius: 5px;
+}
+.draggable-rectangle-vertical-small{
+height: 120px;
+width: 60px;
+border-radius: 5px;
+}
+.draggable-rectangle-vertical-medium{
+height: 160px;
+width: 80px;
+border-radius: 5px;
+}
+.draggable-rectangle-vertical-large{
+height: 200px;
+width: 100px;
+border-radius: 5px;
+}
+
+/* Other Elements */
 .draggable-element-bar{
 
 }
@@ -3003,16 +2995,8 @@ margin-bottom: 3px;
 display: block;
 pointer-events: none;
 }
-.icon-table{
+.icon-element{
 width: 35px;
-height: auto;
-}
-.icon-room{
-width: 70px;
-height: auto;
-}
-.icon-window{
-width: 70px;
 height: auto;
 }
 .icon-element-bar{
