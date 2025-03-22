@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.66
+version: 2.9.67
 */
 
 /* Importar fuentes locales */
@@ -2087,9 +2087,9 @@ color: #888;
 .modal {
 display: none;
 position: fixed;
-top: 50%;
+top: 0;
 left: 50%;
-transform: translate(-50%, -50%);
+transform: translateX(-50%);
 z-index: 1000;
 background-color: white;
 border: 1px solid #ccc;
@@ -2764,6 +2764,7 @@ margin-top: 10px;
 .layout-tab-row {
 width: 100%;
 text-align: center;
+margin-top: 20px;
 margin-bottom: 30px;
 }
 .layout-tab-btn {
@@ -3069,13 +3070,6 @@ background-color: #f7f7f7;
 }
 
 /* Shifts */
-#detalleModalShift{
-width: auto;
-height: auto;
-border-radius: 50px;
-padding: 0;
-padding-bottom: 20px;
-}
 #closeModalShift{
 padding-right: 20px;
 }
@@ -3094,6 +3088,8 @@ margin-top: 25px;
 }
 .shift-open-container{
 display: flex;
+padding-left: 30px;
+padding-right: 30px;
 }
 .shift-open-leftCol{
 flex: 1;
@@ -3317,6 +3313,15 @@ font-size: 13px;
 #input-setWindowType{
 margin-right: 20px;
 }
+#detalleModalShift,
+#detalleModalWindowShift,
+#detalleModalCreateWindow{
+width: auto;
+height: auto;
+border-radius: 50px;
+padding: 0;
+padding-bottom: 20px;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -3437,6 +3442,10 @@ overflow: hidden;
 #setCajeroCodigo:focus{
 text-indent: 0;
 }
+.custom-inputs{
+padding: 2px;
+margin: 0px;
+}
 
 /* SHIFTS */
 .container-shift {
@@ -3450,6 +3459,24 @@ align-items: stretch;
 .form-group-shift label {
 text-align: left;
 margin-bottom: 5px;
+}
+
+/* LAYOUT */
+.layout-tab-btn{
+font-size: 15px;
+padding: 0;
+padding-right: 5px;
+padding-left: 5px;
+margin-right: 0px;
+}
+.tabs-environments-separator{
+margin: 0;
+}
+#tabs-newTab{
+margin-left: 0;
+}
+.img-tab-home{
+width: 25px;
 }
 
 /* Create Window */
