@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.67
+version: 2.9.68
 */
 
 /* Importar fuentes locales */
@@ -2877,7 +2877,8 @@ align-items: center;
 
 /* Layout Elements Status */
 .draggable-element{
-padding: 5px 10px;
+padding-left: 5px;
+padding-right: 5px;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -2988,10 +2989,32 @@ border-radius: 5px;
 .draggable-element-waiter{
 
 }
-.draggable .nombre {
-font-size: 14px;
-margin-bottom: 3px;
+
+/* Elements Window */
+.top-row{
+display:flex; justify-content: space-between; align-items: center;
 }
+.middle-row{
+text-align: center; margin-top: 5px;
+font-size: 14px;
+}
+.bottom-row{
+display:flex; justify-content: space-between; margin-top: 5px;
+}
+.draggable .nombre {
+font-size: 20px;
+text-align: center;
+width: 100%;
+}
+.span-element{
+display: block;
+font-size: 8.5px;
+}
+.left-text,
+.time-text{
+font-size: 9px;
+}
+
 .draggable img {
 display: block;
 pointer-events: none;
@@ -2999,6 +3022,7 @@ pointer-events: none;
 .icon-element{
 width: 35px;
 height: auto;
+margin: 0 auto;
 }
 .icon-element-bar{
 width: 150px;
