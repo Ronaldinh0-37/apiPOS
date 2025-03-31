@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 2.9.73
+version: 2.9.74
 */
 
 /* Importar fuentes locales */
@@ -1599,6 +1599,12 @@ margin: 0;
 font-size: 13px;
 }
 
+#btnAddProductFree{
+width: 10%;
+margin-top: 3.5px;
+background: none;
+border: none;
+}
 .custom-inputs-border{
 padding: 5px 15px;
 border: 1px solid #080060;
@@ -1607,7 +1613,12 @@ background-color: #fff;
 color: #080060;
 margin: 5px;
 font-size: 13px;
-width: 100%;
+height: 30px;
+box-shadow: none !important;
+}
+#btnAddProduct{
+width: 10%;
+margin-top: 3.5px;
 }
 
 .tabs .bi-plus{
@@ -2363,21 +2374,41 @@ font-size: 16px;
 }
 
 /* Search More Products */
-#search_more_products{
+.container-responsive-main{
 background: #FF590010;
 border: 1px solid #FF5900;
 color: #080060;
-font-size: 14px;
 padding-top: 5px;
 padding-bottom: 5px;
 margin-top: 15px;
 margin-bottom: 15px;
 display: none;
 }
+#search_more_products{
+font-size: 14px;
+padding: 0;
+border-radius: 0;
+border-right: 1px solid #080060;
+margin-right: 20px;
+padding-right: 20px;
+}
 .img-search-more-products{
 width: 20px;
 height: auto;
 margin: 5px;
+}
+.img-tab-home-responsive{
+width: 35px;
+}
+.container-responsive-main-header{
+background: #FF590010;
+border: 1px solid #FF5900;
+color: #080060;
+display: none;
+}
+#show_right_section{
+transform: rotate(180deg);
+padding: 0;
 }
 
 .input-Descuento-Global{
@@ -3156,7 +3187,6 @@ margin-bottom: 30px;
 }
 .shift-open-input{
 border: 1px solid #FF5900 !important;
-width: 100px;
 height: 20px;
 }
 .shift-open-btnContainer{
@@ -3334,12 +3364,14 @@ font-size: 13px;
 }
 
 /* Create Window */
-#input-setWindowType{
+#input-setWindowType,
+#inputItemPrice{
 margin-right: 20px;
 }
 #detalleModalShift,
 #detalleModalWindowShift,
-#detalleModalCreateWindow{
+#detalleModalCreateWindow,
+#detalleModalCreateItem{
 width: auto;
 height: auto;
 border-radius: 50px;
@@ -3366,8 +3398,11 @@ width: 100% !important;
 }
 
 /* Search More Products */
-#search_more_products{
-display: block;
+.container-responsive-main,
+.container-responsive-main-header{
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .login-wrapper {

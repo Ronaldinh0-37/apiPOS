@@ -52,7 +52,7 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.73" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.74" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -62,6 +62,11 @@
 <img src="./img/icon/android-icon-192x192.png" alt="Zapanike" class="img-fluid" style="width: 50px;">
 </div>
 </a>
+<div class="container-responsive-main-header">
+<button id="show_right_section" type="button" class="btn">
+<img src="./img/icon-arrow-left-blue.svg" alt="icon-arrow-right-blue" class="img-search-more-products">
+</button>
+</div>
 <nav id="navmenu" class="navmenu flex-grow-1">
 <ul></ul>
 </nav>
@@ -418,7 +423,7 @@
 <h2 class="shift-open-title">Crear Window</h2>
 <div class="shift-open-row2">
 <label class="shift-open-label" for="input-setWindowType">Tipo:</label>
-<select class="form-control custom-input-cart-options shift-open-input" type="number" id="input-setWindowType">
+<select class="form-control custom-input-cart-options shift-open-input" id="input-setWindowType">
 <option value="1">Ventana</option>
 <option value="2">Mesa</option>
 <option value="3">Habitación</option>
@@ -428,6 +433,39 @@
 </div>
 <div class="shift-open-btnContainer">
 <button class="shift-open-btn" id="btnWindowSave">Guardar</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MODAL CREATE ITEM -->
+<div id="modalOverlayCreateItem" class="modalOverlay"></div>
+<div id="detalleModalCreateItem" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="container-buttons">
+<button id="closeModalCreateItem" type="button" class="close closeModal margin-left-auto">
+<img src="./img/icon-close.svg" alt="icon-close" class="icon-close">
+</button>
+</div>
+<div class="shift-open-container">
+<div class="shift-open-leftCol">
+<img class="shift-open-img" src="./img/icon-product-free-2.svg" alt="Create Item">
+</div>
+<div class="shift-open-rightCol">
+<h2 class="shift-open-title">Producto Libre</h2>
+<div class="shift-open-row2">
+<label class="shift-open-label" for="inputItemName">Nombre:</label>
+<input class="form-control custom-input-cart-options shift-open-input" type="text" id="inputItemName" placeholder="Nombre del Producto:">
+</div>
+<div class="shift-open-row2">
+<label class="shift-open-label" for="inputItemPrice">Precio:</label>
+<input class="form-control custom-input-cart-options shift-open-input" type="number" step="any" id="inputItemPrice" placeholder="0.00">
+<label class="shift-open-label" for="inputItemTax">Impuesto:</label>
+<select class="form-control custom-input-cart-options shift-open-input" id="inputItemTax"></select>
+</div>
+<div class="shift-open-btnContainer">
+<button class="shift-open-btn" id="btnItemSave">Guardar</button>
 </div>
 </div>
 </div>
@@ -472,8 +510,13 @@
 <div id="div_section_products" class="d-flex flex-column flex-grow-1">
 <div class="products-panel d-flex flex-column">
 <div class="d-flex">
-<input type="text" id="searchInput" class="custom-inputs-border" placeholder="Buscar producto:" autocomplete="off" style="width: 90%;">
-<button id="btnAddProductForm" class="custom-input-cart-options form-control custom-input-btn-background" type="button" style="width: 10%; margin-top: 3.5px;"><i class="bi bi-plus" style="font-size: 18px;"></i></button>
+<button id="btnAddProductFree" class="custom-input-cart-options form-control" type="button">
+<img src="./img/icon-product-free.svg" alt="icon-areas" class="img-tab-home">
+</button>
+<input type="text" id="searchInput" class="custom-inputs-border form-control" placeholder="Buscar producto:" autocomplete="off">
+<button id="btnAddProduct" class="custom-input-cart-options form-control custom-input-btn-background" type="button">
+<i class="bi bi-plus" style="font-size: 18px;"></i>
+</button>
 </div>
 <div id="products" class="row flex-grow-1"></div>
 <select id="itemsPerPageSelect">
@@ -488,9 +531,14 @@
 <div id="div_section_right">
 <div id="general-options"></div>
 <div id="cart-panel" class="d-flex flex-column flex-grow-1">
+<div class="container-responsive-main">
 <button id="search_more_products" type="button" class="btn">
 <img src="./img/icon-arrow-left-blue.svg" alt="icon-arrow-left-blue" class="img-search-more-products"> Agregar más productos <img src="./img/icon-store-blue.svg" alt="icon-store-blue" class="img-search-more-products">
 </button>
+<a href="javascript:void(0)" id="tabs-areas-responsive" class="arrow-link">
+<img src="./img/icon-areas.svg" alt="icon-areas" class="img-tab-home-responsive">
+</a>
+</div>
 </div>
 <div id="divMarginTopAuto" class="divMarginTopAuto"></div>
 </div>
@@ -506,6 +554,6 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.73"></script>
+<script src="js/apipos.min.js?v=2.9.74"></script>
 </body>
 </html>
