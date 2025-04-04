@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
 
-<!-- METAS BÁSICOS -->
+<!-- METAS BASICOS -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- TITULO Y DESCRIPCIÓN -->
+<!-- TITULO Y DESCRIPCION -->
 <title>apiPOS</title>
 <meta name="description" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
 
@@ -52,10 +52,15 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apipos.min.css?v=2.9.79" rel="stylesheet">
+<link href="css/apipos.min.css?v=2.9.80" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
+
+<!-- LOGIN -->
+<section id="login" style="padding: 0; margin: 0;"></section>
+
+<!-- HEADER -->
 <header id="header" class="header dark-background d-flex flex-column hidden">
 <a href="javascript:void(0)" class="header-a-brand">
 <div class="profile-img">
@@ -98,45 +103,8 @@
 <!-- LOGOUT -->
 <button type="button" class="btn btn-logout"><i class="bi bi-power btn-logout-icon"></i> Salir</button>
 </header>
-<section id="login" style="padding: 0; margin: 0;">
-<div class="login-wrapper">
-<div class="login-container">
-<h4 class="text-center mb-3">
-<img src="./img/apiPOS.png" alt="apiPOS" class="img-fluid" style="width: 100px;">
-</h4>
-<div id="div_usuario" class="mb-2">
-<label class="form-label"><b>👤 Usuario:</b></label>
-<input type="text" id="usuario" class="form-control" placeholder="Ingrese su usuario">
-</div>
-<div id="div_password" class="mb-2">
-<label class="form-label"><b>🔐 Contraseña:</b></label>
-<div class="input-group">
-<input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña">
-<button class="btn btn-outline-secondary btn-passw-login" onclick="togglePassword()">👁️</button>
-</div>
-</div>
-<div id="numeric-keypad" class="numeric-keypad">
-<button onclick="addNumber(1)">1</button>
-<button onclick="addNumber(2)">2</button>
-<button onclick="addNumber(3)">3</button>
-<button onclick="addNumber(4)">4</button>
-<button onclick="addNumber(5)">5</button>
-<button onclick="addNumber(6)">6</button>
-<button onclick="addNumber(7)">7</button>
-<button onclick="addNumber(8)">8</button>
-<button onclick="addNumber(9)">9</button>
-<button onclick="addNumber(0)">0</button>
-<button class="delete-key" onclick="deleteNumber()">⌫</button>
-</div>
-<button id="btn-access-login" class="btn w-100 mt-3 btn-access-login">Acceder</button>
-<div class="footer-apierp">
-<p class="p-get-token">&#191;Aún no tienes una cuenta? <a href="https://apierp.dev/signup/" target="_blank" class="a-apierp"><span class="span-apierp-api">¡Regístrate</span> <span class="span-apierp-erp">Ahora!</span></a></p>
-<p class="p-apierp">Desarrollado con la tecnología de <a href="https://www.apierp.dev/" target="_blank" class="a-apierp"><span class="span-apierp-api">api</span><span class="span-apierp-erp">ERP</span>.dev</a></p>
-<p class="p-ftr-copyright">&copy; 2025</p>
-</div>
-</div>
-</div>
-</section>
+
+<!-- MAIN -->
 <main>
 <section id="pos" style="padding: 0; margin: 0;" class="hidden">
 <div class="pos-container">
@@ -554,6 +522,7 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/bcrypt.min.js"></script>
 <script src="js/pos.js" type="module"></script>
-<script src="js/apipos.min.js?v=2.9.79"></script>
+<script src="js/apipos_setup.min.js?v=2.9.80"></script>
+<script src="js/apipos.min.js?v=2.9.80"></script>
 </body>
 </html>
