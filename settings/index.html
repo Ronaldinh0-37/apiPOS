@@ -52,7 +52,7 @@
 
 <link href="./../css/bootstrap.min.css" rel="stylesheet">
 <link href="./../css/bootstrap-icons.css" rel="stylesheet">
-<link href="./../css/apipos.min.css?v=2.9.85" rel="stylesheet">
+<link href="./../css/apipos.min.css?v=2.9.86" rel="stylesheet">
 <link href="./../css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -71,6 +71,21 @@
 
 </section>
 </main>
+<script>
+if(typeof Promise !== 'undefined' && typeof Promise.withResolvers !== 'function'){
+Promise.withResolvers = function () {
+let resolve, reject;
+const promise = new Promise(function (res, rej) {
+resolve = res;
+reject = rej;
+});
+if(typeof resolve !== 'function' || typeof reject !== 'function'){
+throw new Error('Polyfill Create resolve/reject Error');
+}
+return { promise, resolve, reject };
+};
+}
+</script>
 <script src="./../js/bootstrap.bundle.min.js"></script>
 <script src="./../js/pos-main.js"></script>
 <script src="./../js/pdf-lib.min.js"></script>
@@ -79,7 +94,7 @@
 <script src="./../js/qrcode.min.js"></script>
 <script src="./../js/bcrypt.min.js"></script>
 <script src="./../js/pos.js" type="module"></script>
-<script src="./../js/apipos_setup.min.js?v=2.9.85"></script>
-<script src="./../js/apipos_settings.min.js?v=2.9.85"></script>
+<script src="./../js/apipos_setup.min.js?v=2.9.86"></script>
+<script src="./../js/apipos_settings.min.js?v=2.9.86"></script>
 </body>
 </html>
