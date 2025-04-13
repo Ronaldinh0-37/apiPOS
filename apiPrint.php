@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 
 //DECODIFICAR JSON
 if(!isset($_POST['printData'])){
