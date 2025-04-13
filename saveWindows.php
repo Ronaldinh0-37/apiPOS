@@ -8,7 +8,6 @@ echo json_encode([
 "success" => true, 
 "message" => "Successfully!"
 ]);
-echo "<script>window.close();</script>";
 } else {
 echo json_encode([
 "success" => false, 

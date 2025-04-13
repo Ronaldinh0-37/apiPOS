@@ -67,4 +67,3 @@ exit;
 
 //RESPUESTA EXITOSA
 echo json_encode(["success" => true, "message" => "Print Sent Successfully !!!"]);
-echo "<script>window.close();</script>";
