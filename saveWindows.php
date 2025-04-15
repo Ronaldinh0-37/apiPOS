@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             
             if(isset($existingIndex[$id])){
                 $existingTime = strtotime($existingIndex[$id]['setLastDateUpdate']);
-                if($incomingTime >= $existingTime){
+                if($incomingTime > $existingTime){
                     $existingIndex[$id] = $incomingWindow;
                 }
             } else {
