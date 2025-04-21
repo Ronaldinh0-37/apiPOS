@@ -24,7 +24,7 @@
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
       
-      // Obtener la posici�n del viewport del elemento
+      // Obtener la posición del viewport del elemento
     let rect = section.getBoundingClientRect();
     let position = window.scrollY + 200;
     

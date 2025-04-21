@@ -1,0 +1,343 @@
+/*
+Name: apiPOS
+Author: Luisito Programa
+Website 1: luisitoprograma.com
+Website 2: apiERP.dev
+version: 2.9.98
+*/
+
+.header {
+color: var(--default-color);
+background-color: var(--background-color);
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+padding: 0 15px;
+width: 200px;
+transition: all ease-in-out 0.3s;
+overflow-y: auto;
+z-index: 997;
+border-right: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.header .profile-img img {
+margin: 10px auto;
+display: block;
+width: 150px;
+border: 0;
+}
+
+.header .logo {
+line-height: 1;
+margin-bottom: 15px;
+}
+
+.header .logo img {
+max-height: 32px;
+margin-right: 8px;
+}
+
+.header .logo h1 {
+font-size: 24px;
+margin: 0;
+font-weight: 700;
+color: var(--heading-color);
+background: black;
+padding-left: 5px;
+padding-right: 5px;
+}
+
+.header .social-links {
+margin: 13px 0 20px 0;
+}
+
+.header .social-links a {
+font-size: 16px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background: color-mix(in srgb, var(--default-color), transparent 90%);
+color: var(--default-color);
+margin: 0 2px;
+border-radius: 50%;
+text-align: center;
+width: 40px;
+height: 40px;
+transition: 0.3s;
+}
+
+.header .social-links a:hover {
+color: var(--contrast-color);
+background: var(--accent-color);
+}
+.header~main,
+.header~#footer {
+margin-left: 200px;
+}
+
+.header.header-show {
+left: 0;
+}
+.btn-none{
+padding: 0;
+margin: 0;
+border: none;
+background: none;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+.mobile-nav-toggle {
+display: none;
+}
+
+.navmenu {
+padding: 0;
+z-index: 9997;
+}
+
+.navmenu ul {
+list-style: none;
+padding: 0 0 20px 0;
+margin: 0;
+}
+
+.navmenu a,
+.navmenu a:focus {
+color: var(--nav-color);
+padding: 15px 10px;
+font-family: var(--nav-font);
+font-size: 16px;
+font-weight: 400;
+display: flex;
+align-items: center;
+white-space: nowrap;
+transition: 0.3s;
+width: 100%;
+}
+
+.navmenu a .navicon,
+.navmenu a:focus .navicon {
+font-size: 20px;
+margin-right: 10px;
+}
+
+.navmenu a .toggle-dropdown,
+.navmenu a:focus .toggle-dropdown {
+font-size: 12px;
+line-height: 0;
+margin-left: auto;
+width: 30px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+transition: 0.3s;
+flex-shrink: 0;
+background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+}
+
+.navmenu a .toggle-dropdown:hover,
+.navmenu a:focus .toggle-dropdown:hover {
+background-color: var(--accent-color);
+color: var(--contrast-color);
+}
+
+.navmenu a:hover,
+.navmenu .active,
+.navmenu .active:focus {
+color: var(--nav-hover-color);
+}
+
+.navmenu a:hover .navicon,
+.navmenu .active .navicon,
+.navmenu .active:focus .navicon {
+color: var(--accent-color);
+}
+
+.navmenu .active .toggle-dropdown,
+.navmenu .active:focus .toggle-dropdown {
+background-color: var(--accent-color);
+color: var(--contrast-color);
+transform: rotate(180deg);
+}
+
+.navmenu .dropdown {
+display: block;
+}
+
+.navmenu .dropdown a,
+.navmenu .dropdown a:focus {
+color: --nav-dropdown-color;
+}
+
+.navmenu .dropdown a:hover,
+.navmenu .dropdown .active,
+.navmenu .dropdown .active:focus {
+color: var(--nav-dropdown-hover-color);
+}
+
+.navmenu .dropdown ul {
+position: static;
+display: none;
+z-index: 99;
+padding: 5px 10px;
+margin: 5px 10px;
+background-color: var(--nav-dropdown-background-color);
+border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+box-shadow: none;
+transition: all 0.5s ease-in-out;
+}
+
+.navmenu .dropdown ul ul {
+background-color: rgba(33, 37, 41, 0.1);
+}
+
+.navmenu .dropdown>.dropdown-active {
+display: block;
+background-color: rgba(33, 37, 41, 0.03);
+}
+
+
+/*--------------------------------------------------------------
+# POS - apiERP
+--------------------------------------------------------------*/
+#header{
+color: #888;
+background: #f7f7f7;
+padding: 0;
+}
+.header-a-brand{
+background: #fff;
+}
+.navmenu{
+height: 0;
+overflow-y: auto;
+scrollbar-width: thin;
+scrollbar-color: #888 transparent; 
+}
+.navmenu ul{
+padding-top: 15px;
+max-height: 1000%;
+}
+
+#setBranchDiv{
+margin-top: auto;
+border-top: 1px solid #888;
+padding-top: 5px;
+padding-bottom: 5px;
+font-size: 14px;
+text-align: center;
+display: flex;
+}
+#setBranchId{
+color: #888;
+background: none;
+width: 100%;
+padding: 0;
+padding-top: 5px;
+padding-bottom: 5px;
+margin: 0;
+border-radius: 0;
+text-align: center;
+}
+#setBranchId option{
+background: #f7f7f7;
+color: #888;
+}
+#setCajeroDiv,
+#setWarehouseDiv,
+#setFloorDiv{
+border-top: 1px solid #888;
+padding-top: 5px;
+padding-bottom: 5px;
+font-size: 14px;
+text-align: center;
+display: flex;
+}
+#setCajeroCodigo,
+#setWarehouseId,
+#setFloorId{
+color: #888;
+background: none;
+width: 100%;
+padding: 0;
+padding-top: 5px;
+padding-bottom: 5px;
+margin: 0;
+border-radius: 0;
+text-align: center;
+}
+#setCajeroCodigo option,
+#setWarehouseId option,
+#setFloorId option{
+background: #f7f7f7;
+color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+/* MENU */
+.category-label,
+.marca-label {
+display: block;
+text-align: center;
+}
+.categorias-img{
+display: block;
+margin: 0 auto;
+}
+.header {
+width: 100px;
+}
+.header~main,
+.header~#footer {
+margin-left: 100px;
+}
+#icon-branch,
+#icon-warehouse,
+#icon-floor,
+#icon-user{
+display: none;
+}
+#setBranchId{
+background: url(../img/icon-branch.svg) no-repeat center center;
+}
+#setWarehouseId{
+background: url(../img/icon-warehouse.svg) no-repeat center center;
+}
+#setFloorId{
+background: url(../img/icon-floor.svg) no-repeat center center;
+}
+#setCajeroCodigo{
+background: url(../img/user.png) no-repeat center center;
+}
+#setBranchId,
+#setWarehouseId,
+#setFloorId,
+#setCajeroCodigo{
+-webkit-appearance: none !important;
+-moz-appearance: none !important;
+appearance: none !important;
+background-size: 30px;
+width: 50% !important;
+margin: 0 auto;
+transition: width 0.3s ease;
+text-indent: -9999px;
+overflow: hidden;
+}
+#setBranchId:focus,
+#setWarehouseId:focus,
+#setFloorId:focus,
+#setCajeroCodigo:focus{
+text-indent: 0;
+}
+.custom-inputs{
+padding: 2px;
+margin: 0px;
+}
+}

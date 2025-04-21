@@ -1,0 +1,77 @@
+/*
+Name: apiPOS
+Author: Luisito Programa
+Website 1: luisitoprograma.com
+Website 2: apiERP.dev
+version: 2.9.98
+*/
+
+#login{
+background-color: #fafafa;
+}
+#login .form-label {
+font-size: 16px;
+}
+#login .form-control{
+box-shadow: none !important;
+font-size: 15px !important;
+}
+.login-wrapper {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+.login-container {
+width: 100%;
+max-width: 400px;
+background: #fff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.numeric-keypad {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+margin-top: 10px;
+}
+.numeric-keypad button {
+width: 100%;
+padding: 5px;
+font-size: 1rem;
+border: none;
+background: #080060;
+color: white;
+border-radius: 5px;
+cursor: pointer;
+}
+.numeric-keypad button:active {
+background: #FF5900;
+}
+.delete-key {
+background: #FF5900 !important;
+}
+.delete-key:active {
+background: #FF5900 !important;
+}
+.btn-access-login{
+background: #FF5900 !important;
+color: #fff;
+}
+.btn-access-login:hover{
+color: #fff;
+}
+.btn-passw-login{
+background-color: #FF5900;
+border: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+.login-wrapper {
+align-items: flex-start;
+padding-top: 50px;
+}
+}

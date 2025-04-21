@@ -1,0 +1,323 @@
+/*
+Name: apiERP
+Author: Luisito Programa
+Website 1: luisitoprograma.com
+Website 2: apiERP.dev
+version: 2.9.98
+*/
+
+/* Header */
+.header {
+color: var(--lead);
+background-color: var(--transparent);
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+padding: 0;
+width: 200px;
+transition: all ease-in-out 0.3s;
+overflow-y: auto;
+z-index: 997;
+border-right: 1px solid color-mix(in srgb, var(--blue), transparent 90%);
+scrollbar-width: thin;
+scrollbar-color: var(--lead) transparent; 
+}
+.header-toggle{
+cursor: pointer;
+}
+.profile-img{
+background-color: var(--white);
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
+}
+.header .profile-img img {
+margin: 10px auto;
+margin-bottom: 0;
+display: block;
+width: 100px;
+border: 0;
+}
+.header .social-links {
+margin: 13px 0 20px 0;
+}
+.header .social-links a {
+font-size: 13px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background-color: var(--orange);
+color: var(--white);
+margin: 0 2px;
+border-radius: 50%;
+text-align: center;
+width: 30px;
+height: 30px;
+transition: 0.3s;
+}
+.header .social-links a:hover {
+color: var(--white);
+background: var(--blue);
+}
+.header.header-show {
+left: 0;
+}
+
+/* Header Nav */
+.navmenu {
+padding: 0;
+z-index: 9997;
+background-color: var(--white);
+height: 100%;
+}
+.navmenu ul {
+list-style: none;
+padding: 0 0 20px 0;
+margin: 0;
+}
+.navmenu a,
+.navmenu a:focus {
+color: var(--lead);
+padding: 6px 0px;
+font-size: 14px;
+font-weight: 400;
+display: flex;
+align-items: center;
+white-space: nowrap;
+transition: 0.3s;
+width: 100%;
+}
+.navmenu a .navicon,
+.navmenu a:focus .navicon {
+font-size: 20px;
+margin-right: 8px;
+}
+.navmenu a:hover,
+.navmenu .active,
+.navmenu .active:focus {
+color: var(--blue);
+}
+.navmenu a:hover .navicon,
+.navmenu .active .navicon,
+.navmenu .active:focus .navicon {
+color: var(--blue);
+}
+
+/* Header Sub Nav */
+.icon-main,
+.icon-main-lead{
+width: 30px;
+height: auto;
+margin-right: 5px;
+}
+.icon-main-lead{
+display: none;
+}
+.icon-arrow-right,
+.icon-arrow-right-white{
+width: 20px;
+height: auto;
+}
+.icon-arrow-right-white{
+display: none;
+}
+.navmenu li.has-submenu {
+padding-right: 10px;
+}
+.navmenu li.has-submenu > a {
+position: relative;
+padding-left: 5px !important;
+}
+.navmenu li.has-submenu > a .arrow {
+position: absolute;
+right: 0;
+margin-right: 5px;
+top: 50%;
+transform: translateY(-50%);
+transition: transform 0.3s;
+}
+.navmenu li.has-submenu .submenu {
+display: none; /* Oculto por defecto */
+margin-left: 15px; /* Mueve la sublista a la derecha */
+border-left: 1px solid #ccc; /* Borde de 1px en el lado izquierdo */
+padding-right: 15px;
+}
+.navmenu li.has-submenu .submenu li {
+padding-left: 15px;
+}
+.navmenu li.has-submenu.expanded > a {
+background-color: #FF5900;
+color: #fff;
+border-radius: 5px;
+padding: 8px;
+padding-left: 5px;
+}
+.navmenu li.has-submenu.expanded .icon-main{
+margin-right: 10px;
+}
+.navmenu li.has-submenu .submenu li a {
+padding: 0;
+padding-top: 3px;
+white-space: normal;
+font-size: 13px;
+}
+.navmenu li.has-submenu .submenu li a:hover {
+color: var(--orange);
+}
+.navmenu li.has-submenu.expanded > a .arrow {
+transform: translateY(-50%) rotate(90deg);
+}
+.navmenu li.has-submenu.expanded .icon-arrow-right {
+display: none !important;
+}
+.navmenu li.has-submenu.expanded .icon-arrow-right-white {
+display: block !important;
+}
+.navmenu li.has-submenu.expanded .icon-main {
+display: none !important;
+}
+.navmenu li.has-submenu.expanded .icon-main-lead {
+display: block !important;
+}
+.navmenu li.has-submenu.expanded > .submenu {
+display: block;
+margin-top: 8px;
+}
+
+/* Header Topbar */
+.topbar, .topbar-show {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: nowrap;
+background-color: var(--white);
+color: var(--lead);
+padding: 10px 20px;
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+margin-left: 215px;
+}
+.topbar-left,
+.topbar-right {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.separator {
+color: var(--orange);
+margin: 0 10px;
+}
+.topbar a {
+color: inherit;
+text-decoration: none;
+}
+
+@media (max-width: 1199px){
+.header {
+left: -100%;
+}
+.topbar{
+margin-left: 0;
+}
+.topbar-show{
+margin-left: 200px;
+}
+}
+
+/* Home Content Header */
+.content-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: var(--white);
+padding: 10px 20px;
+box-sizing: border-box;
+}
+.content-header .ch-col {
+flex: 1;
+}
+.content-header .ch-col.left {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+margin-left: 20px;
+}
+.content-header .ch-col.center {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.content-header .ch-col.right {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+margin-right: 20px;
+}
+.content-header .dashboard-text {
+margin-right: 10px;
+}
+
+/* Home Options Main */
+.content-menu {
+display: flex;
+justify-content: space-between;
+align-items: stretch;
+margin-top: 20px;
+}
+.content-menu .menu-col {
+flex: 1;
+padding: 0 10px;
+box-sizing: border-box;
+}
+.content-menu .menu-box {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background-color: #fff;
+border: 2px solid var(--orange);
+color: var(--blue);
+text-decoration: none;
+width: 100%;
+padding: 20px;
+box-sizing: border-box;
+}
+.content-menu .menu-box .menu-icon {
+margin-bottom: 10px;
+}
+
+/* HEADER */
+#setBranchId{
+color: #888;
+background: none;
+padding: 0;
+padding-top: 5px;
+padding-bottom: 5px;
+margin: 0;
+border: none;
+text-align: center;
+}
+#setBranchId option{
+background: #f7f7f7;
+color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px){
+
+/* HEADER */
+#setBranchId{
+background: url(../img/icon-branch.svg) no-repeat center center;
+-webkit-appearance: none !important;
+-moz-appearance: none !important;
+appearance: none !important;
+background-size: 30px;
+transition: width 0.3s ease;
+text-indent: -9999px !important;
+overflow: hidden;
+text-indent: 0;
+width: 40px;
+}
+.element-header-response{
+display: none;
+}
+}
