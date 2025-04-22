@@ -1,4 +1,3 @@
-
 //HEADER TOOGLE
 const headerToggleBtn = document.querySelector('.header-toggle');
 function headerToggle(){
