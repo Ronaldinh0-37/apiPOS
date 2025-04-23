@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=3.0.0" rel="stylesheet">
-<link href="css/apipos.min.css?v=3.0.0" rel="stylesheet">
-<link href="css/apipos_header.css?v=3.0.0" rel="stylesheet">
-<link href="css/apipos_login.css?v=3.0.0" rel="stylesheet">
+<link href="css/apierp.min.css?v=3.0.1" rel="stylesheet">
+<link href="css/apipos.min.css?v=3.0.1" rel="stylesheet">
+<link href="css/apipos_header.css?v=3.0.1" rel="stylesheet">
+<link href="css/apipos_login.css?v=3.0.1" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -424,16 +424,29 @@
 <img class="shift-open-img" src="./img/icon-product-free-2.svg" alt="Create Item">
 </div>
 <div class="shift-open-rightCol">
-<h2 class="shift-open-title">Producto Libre</h2>
+<h2 id="modalProductNewTitle" class="shift-open-title"></h2>
 <div class="shift-open-row2">
 <label class="shift-open-label" for="inputItemName">Nombre:</label>
 <input class="form-control custom-input-cart-options shift-open-input" type="text" id="inputItemName" placeholder="Nombre del Producto:">
+<input type="hidden" id="inputItemType">
+</div>
+<div class="shift-open-row2 productType1">
+<label class="shift-open-label" for="inputItemCode">SKU:</label>
+<input class="form-control custom-input-cart-options shift-open-input" type="text" id="inputItemCode">
+<label class="shift-open-label" for="inputItemCodeBar">Code Bar:</label>
+<input class="form-control custom-input-cart-options shift-open-input" type="text" id="inputItemCodeBar">
 </div>
 <div class="shift-open-row2">
 <label class="shift-open-label" for="inputItemPrice">Precio:</label>
 <input class="form-control custom-input-cart-options shift-open-input" type="number" step="any" id="inputItemPrice" placeholder="0.00">
 <label class="shift-open-label" for="inputItemTax">Impuesto:</label>
 <select class="form-control custom-input-cart-options shift-open-input" id="inputItemTax"></select>
+</div>
+<div class="shift-open-row2 productType1">
+<label class="shift-open-label" for="inputItemStockInitial">Stock Inicial:</label>
+<input class="form-control custom-input-cart-options shift-open-input" type="number" step="any" id="inputItemStockInitial" placeholder="0.00">
+<label class="shift-open-label" for="inputItemUnitCode">Unidad Medida:</label>
+<select class="form-control custom-input-cart-options shift-open-input" id="inputItemUnitCode"></select>
 </div>
 <div class="shift-open-btnContainer">
 <button class="shift-open-btn" id="btnItemSave">Guardar</button>
@@ -525,7 +538,7 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=3.0.0"></script>
-<script src="js/apipos.min.js?v=3.0.0"></script>
+<script src="js/apipos_setup.min.js?v=3.0.1"></script>
+<script src="js/apipos.min.js?v=3.0.1"></script>
 </body>
 </html>
