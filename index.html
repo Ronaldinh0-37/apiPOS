@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=3.1.4" rel="stylesheet">
-<link href="css/apipos.min.css?v=3.1.4" rel="stylesheet">
-<link href="css/apipos_header.css?v=3.1.4" rel="stylesheet">
-<link href="css/apipos_login.css?v=3.1.4" rel="stylesheet">
+<link href="css/apierp.min.css?v=3.1.5" rel="stylesheet">
+<link href="css/apipos.min.css?v=3.1.5" rel="stylesheet">
+<link href="css/apipos_header.css?v=3.1.5" rel="stylesheet">
+<link href="css/apipos_login.css?v=3.1.5" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -111,6 +111,79 @@
 <main>
 <section id="pos" style="padding: 0; margin: 0;" class="hidden">
 <div class="pos-container">
+
+<!-- MODAL LAYOUT -->
+<div id="modalOverlayLayout" class="modalOverlay"></div>
+<div id="detalleModalLayout" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="container-buttons">
+<button id="closeModalLayout" type="button" class="close closeModal margin-left-auto">
+<img src="./img/icon-arrow-back.svg" alt="icon-close" class="icon-arrow-back">
+</button>
+</div>
+<div class="layout-tab-row">
+<button class="layout-tab-btn active" data-tab="ambientes">AMBIENTES</button>
+<button class="layout-tab-btn" data-tab="llevar">LLEVAR</button>
+<button class="layout-tab-btn" data-tab="delivery">DELIVERY</button>
+<button class="layout-tab-btn" data-tab="online">ONLINE</button>
+</div>
+<div class="layout-tab-content">
+<div class="layout-tab-panel" id="tab-ambientes">
+<!-- Contenido -->
+<div class="layout-tabs-environments"></div>
+<div id="addElementControls" style="display:none;">
+<select id="newElementType">
+<option value="element-bar">Barra</option>
+<option value="element-bathroom-men">Baño Hombres</option>
+<option value="element-bathroom-women">Baño Mujeres</option>
+<option value="element-bathroom-unisex">Baño Unisex</option>
+<option value="element-cashier">Cajero</option>
+<option value="element-clock">Reloj</option>
+<option value="element-fridge">Refrigerador</option>
+<option value="element-laptop">Computadora Portátil</option>
+<option value="element-printer">Impresora</option>
+<option value="element-user">Usuario</option>
+<option value="element-vase">Florero</option>
+<option value="element-vertical-line">Línea Vertical</option>
+<option value="element-waiter">Mozo</option>
+</select>
+<button onclick="addNewElement()">Agregar Elemento</button>
+</div>
+<div class="layout-scroll-container">
+<div id="layout-windows"></div>
+</div>
+<div class="legend-layout-container">
+<span class="legend-layout-label libre">Libre</span>
+<span class="tabs-environments-separator">|</span>
+<span class="legend-layout-label ocupado">Ocupado</span>
+<span class="tabs-environments-separator">|</span>
+<span class="legend-layout-label pre-cuenta">Pre-cuenta</span>
+<span class="tabs-environments-separator">|</span>
+<span class="legend-layout-label reservada">Reservada</span>
+
+<!-- ADD WINDOW -->
+<a href="javascript:void(0)" id="tabs-newTab" class="arrow-link" disabled="disabled">
+<img src="./img/icon-window-add.svg" alt="icon-window-add" class="img-tab-home">
+</a>
+
+<!-- EDIT LAYOUT -->
+<a href="javascript:void(0)" id="tabs-editLayout" class="arrow-link hidden">
+<img src="./img/icon-edit.svg" alt="icon-edit" class="img-tab-home">
+</a>
+</div>    
+</div>
+<div class="layout-tab-panel" id="tab-llevar">
+<!-- Contenido -->
+</div>
+<div class="layout-tab-panel" id="tab-delivery">
+<!-- Contenido -->
+</div>
+<div class="layout-tab-panel" id="tab-online">
+<!-- Contenido -->
+</div>
+</div>
+</div>
+</div>
 
 <!-- MODAL PDF -->
 <div id="modalOverlay" class="modalOverlay"></div>
@@ -264,79 +337,6 @@
 </div>
 <div class="dynamicContent">
 <div id="div_section_pay" class="d-flex flex-column flex-grow-1"></div>
-</div>
-</div>
-</div>
-
-<!-- MODAL LAYOUT -->
-<div id="modalOverlayLayout" class="modalOverlay"></div>
-<div id="detalleModalLayout" class="modal">
-<div class="modal-content" style="border: none;">
-<div class="container-buttons">
-<button id="closeModalLayout" type="button" class="close closeModal margin-left-auto">
-<img src="./img/icon-arrow-back.svg" alt="icon-close" class="icon-arrow-back">
-</button>
-</div>
-<div class="layout-tab-row">
-<button class="layout-tab-btn active" data-tab="ambientes">AMBIENTES</button>
-<button class="layout-tab-btn" data-tab="llevar">LLEVAR</button>
-<button class="layout-tab-btn" data-tab="delivery">DELIVERY</button>
-<button class="layout-tab-btn" data-tab="online">ONLINE</button>
-</div>
-<div class="layout-tab-content">
-<div class="layout-tab-panel" id="tab-ambientes">
-<!-- Contenido -->
-<div class="layout-tabs-environments"></div>
-<div id="addElementControls" style="display:none;">
-<select id="newElementType">
-<option value="element-bar">Barra</option>
-<option value="element-bathroom-men">Baño Hombres</option>
-<option value="element-bathroom-women">Baño Mujeres</option>
-<option value="element-bathroom-unisex">Baño Unisex</option>
-<option value="element-cashier">Cajero</option>
-<option value="element-clock">Reloj</option>
-<option value="element-fridge">Refrigerador</option>
-<option value="element-laptop">Computadora Portátil</option>
-<option value="element-printer">Impresora</option>
-<option value="element-user">Usuario</option>
-<option value="element-vase">Florero</option>
-<option value="element-vertical-line">Línea Vertical</option>
-<option value="element-waiter">Mozo</option>
-</select>
-<button onclick="addNewElement()">Agregar Elemento</button>
-</div>
-<div class="layout-scroll-container">
-<div id="layout-windows"></div>
-</div>
-<div class="legend-layout-container">
-<span class="legend-layout-label libre">Libre</span>
-<span class="tabs-environments-separator">|</span>
-<span class="legend-layout-label ocupado">Ocupado</span>
-<span class="tabs-environments-separator">|</span>
-<span class="legend-layout-label pre-cuenta">Pre-cuenta</span>
-<span class="tabs-environments-separator">|</span>
-<span class="legend-layout-label reservada">Reservada</span>
-
-<!-- ADD WINDOW -->
-<a href="javascript:void(0)" id="tabs-newTab" class="arrow-link" disabled="disabled">
-<img src="./img/icon-window-add.svg" alt="icon-window-add" class="img-tab-home">
-</a>
-
-<!-- EDIT LAYOUT -->
-<a href="javascript:void(0)" id="tabs-editLayout" class="arrow-link hidden">
-<img src="./img/icon-edit.svg" alt="icon-edit" class="img-tab-home">
-</a>
-</div>    
-</div>
-<div class="layout-tab-panel" id="tab-llevar">
-<!-- Contenido -->
-</div>
-<div class="layout-tab-panel" id="tab-delivery">
-<!-- Contenido -->
-</div>
-<div class="layout-tab-panel" id="tab-online">
-<!-- Contenido -->
-</div>
 </div>
 </div>
 </div>
@@ -538,7 +538,7 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=3.1.4"></script>
-<script src="js/apipos.min.js?v=3.1.4"></script>
+<script src="js/apipos_setup.min.js?v=3.1.5"></script>
+<script src="js/apipos.min.js?v=3.1.5"></script>
 </body>
 </html>
