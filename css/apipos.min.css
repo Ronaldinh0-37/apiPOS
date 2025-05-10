@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 3.1.6
+version: 3.1.7
 */
 
 /* Fonts */
@@ -3053,6 +3053,99 @@ width: auto;
 border-radius: 50px;
 padding: 0;
 padding-bottom: 20px;
+}
+
+/* Images Products */
+.product-zoom-area {
+position: absolute;
+top: 0;
+left: 0;
+width: 30px;    /* ajusta al área que quieras sensible al clic */
+height: 30px;   /* idem */
+cursor: zoom-in;
+/* sin fondo ni bordes: */
+background: transparent;
+z-index: 2;
+}
+.image-modal {
+display: none; /* oculto por defecto */
+position: fixed;
+top: 0; left: 0;
+width: 100vw; height: 100vh;
+z-index: 9999;
+}
+.modal-overlay {
+position: absolute;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background: rgba(0,0,0,0.6);
+}
+.modal-content {
+position: absolute;
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+background: #fff;
+padding: 1rem;
+max-width: 90vw;
+max-height: 90vh;
+overflow: hidden;
+border-radius: 8px;
+}
+.modal-close {
+position: absolute;
+top: 8px; right: 12px;
+font-size: 24px;
+cursor: pointer;
+}
+.carousel {
+position: relative;
+display: flex;
+align-items: center;
+height: 100%;
+}
+.carousel-track {
+flex: 1;
+display: flex;
+overflow: hidden;
+height: 100%;
+}
+.carousel-track img {
+flex-shrink: 0;
+max-width: 100%;
+max-height: 80vh;
+object-fit: contain;
+transition: transform 0.3s ease;
+}
+.carousel-prev,
+.carousel-next {
+background: none;
+border: none;
+font-size: 2rem;
+cursor: pointer;
+user-select: none;
+}
+.carousel-prev { margin-right: 0.5rem; }
+.carousel-next { margin-left: 0.5rem; }
+.product-zoom-btn {
+position: absolute;
+top: 5px; left: 5px;
+font-size: 1.2rem;
+background: rgba(255,255,255,0.8);
+border-radius: 50%;
+width: 28px; height: 28px;
+line-height: 28px;
+text-align: center;
+cursor: pointer;
+z-index: 2;
+}
+.carousel-image-container {
+width: 100%;
+text-align: center;
+}
+.carousel-single-image {
+max-width: 90vw;
+max-height: 80vh;
+object-fit: contain;
 }
 
 /* Responsive Design */
