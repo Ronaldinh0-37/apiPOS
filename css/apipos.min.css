@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 3.1.7
+version: 3.1.8
 */
 
 /* Fonts */
@@ -3074,13 +3074,13 @@ top: 0; left: 0;
 width: 100vw; height: 100vh;
 z-index: 9999;
 }
-.modal-overlay {
+.modal-overlay-carousel {
 position: absolute;
 top: 0; left: 0;
 width: 100%; height: 100%;
 background: rgba(0,0,0,0.6);
 }
-.modal-content {
+.modal-content-carousel {
 position: absolute;
 top: 50%; left: 50%;
 transform: translate(-50%, -50%);
@@ -3091,7 +3091,7 @@ max-height: 90vh;
 overflow: hidden;
 border-radius: 8px;
 }
-.modal-close {
+.modal-close-carousel {
 position: absolute;
 top: 8px; right: 12px;
 font-size: 24px;
