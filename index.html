@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=3.2.2" rel="stylesheet">
-<link href="css/apipos.min.css?v=3.2.2" rel="stylesheet">
-<link href="css/apipos_header.css?v=3.2.2" rel="stylesheet">
-<link href="css/apipos_login.css?v=3.2.2" rel="stylesheet">
+<link href="css/apierp.min.css?v=3.2.3" rel="stylesheet">
+<link href="css/apipos.min.css?v=3.2.3" rel="stylesheet">
+<link href="css/apipos_header.css?v=3.2.3" rel="stylesheet">
+<link href="css/apipos_login.css?v=3.2.3" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -471,6 +471,15 @@
 </div>
 </div>
 
+<!-- MODAL NOTIFICATIONS -->
+<div id="ntf-notification-modal" class="ntf-modal ntf-hidden">
+<div class="ntf-modal-content">
+<span id="ntf-modal-close" class="ntf-close">&times;</span>
+<div id="ntf-modal-body"></div>
+<div id="ntf-modal-actions" class="ntf-modal-actions"></div>
+</div>
+</div>
+
 <!-- WINDOW ID -->
 <input id="windowId" type="hidden" value="0">
 
@@ -492,9 +501,16 @@
 <!-- TABS -->
 <select id="selectTab" class="custom-inputs" onchange="switchTab(this.value)"></select>
 
-<!-- NET ICON -->
-<img id="tabs-icon-online" src="./img/icon-online.svg" alt="icon-online" class="icon-arrow-right hidden">
-<img id="tabs-icon-offline" src="./img/icon-offline.svg" alt="icon-offline" class="icon-arrow-right hidden">
+<!-- NOTIFICATIONS -->
+<div class="ntf-notification-wrapper">
+<a href="javascript:void(0)" id="tabs-notifications" class="ntf-bell">
+<img src="./img/icon-notification.svg" alt="icon-notifications" class="img-tab-home">
+<span id="ntf-notif-count" class="ntf-badge">0</span>
+</a>
+<div id="ntf-notification-dropdown" class="ntf-dropdown ntf-hidden">
+<ul id="ntf-notifications-list"></ul>
+</div>
+</div>
 
 <!-- ADD ORDERS -->
 <a href="javascript:void(0)" id="tabs-orders" class="arrow-link">
@@ -509,12 +525,27 @@
 <div id="div_section_products" class="d-flex flex-column flex-grow-1">
 <div class="products-panel d-flex flex-column">
 <div class="d-flex">
+
+<!-- ITEM FREE -->
 <button id="btnAddProductFree" class="custom-input-cart-options form-control" type="button">
 <img src="./img/icon-product-free.svg" alt="icon-areas" class="img-tab-home">
 </button>
+
+<!-- NET ICON -->
+<img id="tabs-icon-online" src="./img/icon-online.svg" alt="icon-online" class="icon-arrow-right hidden">
+<img id="tabs-icon-offline" src="./img/icon-offline.svg" alt="icon-offline" class="icon-arrow-right hidden">
+
+<!-- ITEMS SEARCH -->
 <input type="text" id="searchInput" class="custom-inputs-border form-control" placeholder="Buscar producto:" autocomplete="off">
+
+<!-- ADD ITEM -->
 <button id="btnAddProduct" class="custom-input-cart-options form-control custom-input-btn-background" type="button">
 <i class="bi bi-plus" style="font-size: 18px;"></i>
+</button>
+
+<!-- FULLSCREEN -->
+<button id="fullscreen-btn" class="custom-input-cart-options form-control" type="button">
+<img src="./img/icon-fullscreen.svg" alt="icon-areas" class="img-tab-home">
 </button>
 </div>
 <div id="products" class="row flex-grow-1"></div>
@@ -553,7 +584,7 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=3.2.2"></script>
-<script src="js/apipos.min.js?v=3.2.2"></script>
+<script src="js/apipos_setup.min.js?v=3.2.3"></script>
+<script src="js/apipos.min.js?v=3.2.3"></script>
 </body>
 </html>
