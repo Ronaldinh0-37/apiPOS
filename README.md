@@ -3,7 +3,7 @@
 [![apiPOS](https://github.com/LuisitoPrograma/apiPOS/blob/main/img/icon/git-apipos.jpg)](https://apierp.dev/apiPOS/)
 [![Fasyb ERP](https://github.com/LuisitoPrograma/apiPOS/blob/main/img/icon/git-fasyberp.jpg)](https://www.fasyb.com/)
 
-**Sistema de Punto de Venta** (POS) desarrollado en JavaScript Nativo, diseñado para integrarse de forma rápida y sencilla con cualquier sistema de ventas, facturación o ERP mediante API REST. Su tecnología web offline permite operar con o sin conexión a internet, garantizando continuidad en las operaciones y evitando interrupciones.
+**Sistema de Punto de Venta (POS)** desarrollado en JavaScript Nativo, diseñado para integrarse de forma rápida y sencilla con cualquier sistema de ventas, facturación o ERP mediante API REST. Su tecnología web offline permite operar con o sin conexión a internet, garantizando continuidad en las operaciones y evitando interrupciones.
 
 ## Ingeniería Aplicada
 - **Progressive Web App (PWA)**: Instalación multiplataforma y un único código que se adapta en aplicaciones de escritorio, móvil y tablet, no es necesario desarrollar y mantener diferentes bases de código para iOS, Android o Web.
@@ -22,12 +22,12 @@
 - **Inventario**: Control de stock por almacen y sucursales.
 - **Distribución**: Rastreo de Rutas y Delivery con API de Google Maps.
 - **Restaurante**: Comandas, Precuentas, Gestión de Mesas y Ambientes.
-- **Hotelería**: Reservas, Pedidos por Habitación, Gestión de Pisos.
+- **Hotelería**: Reservas, Pedidos por Habitación y Gestión de Pisos.
 - **Caja**: Apertura, Cierre y Turnos.
 - **Impresión Automática**: Online y en red con [apiPrint](https://www.apierp.dev/apiprint).
 - **PDF Dinámicos**: Formatos Ticket y A4.
 - **Privilegios por Usuario**: Puede/no puede vender sin stock, visualizar items por almacen/todos los almacenes, imprimir automáticamente/manualmente, agregar/no agregar repetidamente un item, series por usuario/por sucursal, impresión online/offline, mostrar/no mostrar el nombre del lote en los PDF, mostrar/no mostrar la fecha de vencimiento del item en los PDF, configurar tipo de operación por default, puede/no puede visualizar el detalle del cierre del turno, puede/no puede ver el stock del item, configurar número de decimales, sincronizar mesas online/offline, modo seguro/modo ultrarrápido, puede/no puede operar sin haber aperturado un turno previo.
-- **Notificaciones:**: Alertas de stock mínimo, fecha de vencimiento, cumpleaños de un colaborador, cumpleaños de un cliente, cuentas por cobrar, cuentas por pagar.
+- **Notificaciones**: Alertas de stock mínimo, fecha de vencimiento, cumpleaños de un colaborador, cumpleaños de un cliente, cuentas por cobrar, cuentas por pagar.
 
 ## Requerimientos
 1. **Registro y Auth Token**: Regístrate en [apiERP.dev](https://apierp.dev/signup/) para obtener tu Auth Token único (USD $3/mes).
@@ -54,7 +54,7 @@
 ## Comunidad
 - Síguenos en [Facebook](https://www.facebook.com/LuisitoPrograma).
 - También en el [Facebook de apiERP](https://www.facebook.com/apiERPdev).
-- Canal de [Youtube](https://www.youtube.com/@luisito.programa).
+- Suscríbete al canal de [Youtube](https://www.youtube.com/@luisito.programa).
 
 ---
 
@@ -70,4 +70,4 @@
 5. API Delivery con Google Maps.
 6. API Whatsapp.
 7. API Inteligencia Artificial.
-**Muchas más ...**
+8. Muchas más ...
