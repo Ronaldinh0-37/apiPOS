@@ -17,3 +17,10 @@
 - **PDF Dinámicos**: Formatos Ticket y A4.
 - **Privilegios por Usuario**: Puede/no puede vender sin stock, visualizar items por almacen/todos los almacenes, imprimir automáticamente/manualmente, agregar/no agregar repetidamente un item, series por usuario/por sucursal, impresión online/offline, mostrar/no mostrar el nombre del lote en los PDF, mostrar/no mostrar la fecha de vencimiento del item en los PDF, configurar tipo de operación por default, puede/no puede visualizar el detalle del cierre del turno, puede/no puede ver el stock del item, configurar número de decimales, sincronizar mesas online/offline, modo seguro/modo ultrarrápido, puede/no puede operar sin haber aperturado un turno previo.
 - **Notificaciones:**: Alertas de stock mínimo, fecha de vencimiento, cumpleaños de un colaborador, cumpleaños de un cliente, cuentas por cobrar, cuentas por pagar.
+
+## Versión ^3.2.5
+- **Lista de Precios**: Precios al por mayor.
+- **UX**: Visualización de Carousel de Imágenes por item.
+
+## Versión ^3.2.6
+- **Internacionalización**: Impuestos (Taxes) para los países: Perú, EE.UU., México, Argentina, Chile, Colombia, Uruguay.

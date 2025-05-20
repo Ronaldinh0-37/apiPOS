@@ -3,7 +3,7 @@ Name: apiERP
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 3.2.5
+version: 3.2.6
 */
 
 /* Header */
@@ -286,7 +286,9 @@ margin-bottom: 10px;
 }
 
 /* HEADER */
-#setBranchId{
+#setBranchId,
+#setWarehouseId,
+#setFloorId{
 color: #888;
 background: none;
 padding: 0;
@@ -296,7 +298,9 @@ margin: 0;
 border: none;
 text-align: center;
 }
-#setBranchId option{
+#setBranchId option,
+#setWarehouseId option,
+#setFloorId option{
 background: #f7f7f7;
 color: #888;
 }
@@ -307,6 +311,17 @@ color: #888;
 /* HEADER */
 #setBranchId{
 background: url(../img/icon-branch.svg) no-repeat center center;
+}
+#setWarehouseId{
+background: url(../img/icon-warehouse.svg) no-repeat center center;
+}
+#setFloorId{
+background: url(../img/icon-floor.svg) no-repeat center center;
+}
+
+#setBranchId,
+#setWarehouseId,
+#setFloorId{
 -webkit-appearance: none !important;
 -moz-appearance: none !important;
 appearance: none !important;
