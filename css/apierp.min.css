@@ -3,7 +3,7 @@ Name: apiERP
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 3.2.7
+version: 3.2.9
 */
 
 /* SETUP */
@@ -261,6 +261,190 @@ font-size: 12px;
 cursor: pointer;
 background: var(--orange);
 color: var(--white);
+}
+
+/* ALERTS */
+#ntf-flotante-container{
+position: fixed;
+bottom: 10%;
+left: 50%;
+transform: translateX(-50%);
+z-index: 1000;
+pointer-events: none;
+}
+.ntf-flotante-message{
+background: var(--blue);
+color: #fff;
+padding: 12px 20px;
+margin-top: 10px;
+border-radius: 4px;
+font-family: sans-serif;
+font-size: 13px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+animation: ntf-slide-up-fade 3s ease-in-out forwards;
+opacity: 0;
+}
+@keyframes ntf-slide-up-fade{
+0% {
+transform: translateY(100px);
+opacity: 0;
+}
+10% {
+transform: translateY(0);
+opacity: 1;
+}
+70% {
+transform: translateY(0);
+opacity: 1;
+}
+100% {
+transform: translateY(-20px);
+opacity: 0;
+}
+}
+
+/* REPORTS */
+.btn-report-new{
+background-color: var(--transparent);
+color: var(--lead);
+border: 1px solid var(--lead);
+}
+.btn-report-new:hover{
+background-color: var(--transparent);
+color: var(--blue);
+border: 1px solid var(--blue);
+}
+#date-range-label{
+display: inline-block;
+position: relative;
+cursor: pointer;
+}
+#date-range-label .date-range-label-icon{
+color: var(--orange);
+font-size: 20px;
+}
+#date-range-options{
+display: none;
+list-style: none;
+position: absolute;
+left: 60%;
+top: 100%;
+background-color: var(--white);
+border: 1px solid var(--transparent);
+padding: 5px;
+margin: 0;
+z-index: 10;
+width: max-content;
+box-shadow: 0 4px 6px var(--transparent);
+border-radius: 4px;
+}
+#date-range-options li{
+background-color: var(--white);
+color: var(--lead);
+padding: 5px;
+cursor: pointer;
+}
+#date-range-options .li-filter-active{
+color: var(--orange);
+font-weight: bold;
+}
+#date-range-options .li-filter-active:hover{
+color: var(--orange);
+font-weight: bold;
+}
+#date-range-options li:hover{
+background-color: var(--transparent);
+color: var(--lead);
+}
+.btn-report-new{
+background-color: var(--transparent);
+color: var(--lead);
+border: 1px solid var(--lead);
+}
+.btn-report-new:hover{
+background-color: var(--transparent);
+color: var(--blue);
+border: 1px solid var(--blue);
+}
+.table-wrapper{
+position: relative;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.table-wrapper::-webkit-scrollbar{
+display: none;
+}
+.table-wrapper{
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+.table-report th{
+font-size: 15px;
+background-color: var(--transparent);
+color: var(--blue);
+font-weight: normal;
+white-space: nowrap;
+text-align: center;
+}
+.table-report td{
+font-size: 14px;
+color: var(--lead);
+white-space: nowrap;
+text-align: center;
+}
+.table-hover tbody tr:hover{
+background-color: var(--transparent);
+}
+.table-hover tbody tr:hover > td{
+color: var(--blue);
+}
+.td-amount-leter{
+font-size: 15px !important;
+color: var(--blue) !important;
+text-align: right !important;
+}
+.td-amount{
+font-size: 15px !important;
+background-color: var(--transparent) !important;
+color: var(--blue) !important;
+text-align: right !important;
+}
+.pagination-table{
+display: block !important;
+text-align: center;
+}
+.pagination-table a{
+background-color: var(--transparent);
+color: var(--lead);
+border: 1px solid var(--lead);
+}
+.pagination-table a:hover{
+background-color: var(--transparent);
+color: var(--blue);
+border: 1px solid var(--blue);
+}
+.span-table-custom{
+background: none;
+padding: 5px 10px;
+border-radius: 5px;
+font-weight: normal;
+font-size: 12.5px;
+}
+.span-table-setTipoComprobante-pedido{
+border: 1.5px solid var(--blue);
+color: var(--blue);
+}
+.span-table-setTipoComprobante-recibo{
+border: 1.5px solid var(--lead);
+color: var(--lead);
+}
+.span-table-setTipoComprobante-boleta{
+border: 1.5px solid var(--blue);
+color: var(--blue);
+}
+.span-table-setTipoComprobante-factura{
+border: 1.5px solid var(--orange);
+color: var(--orange);
 }
 
 /* RESPONSIVE */

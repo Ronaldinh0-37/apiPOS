@@ -24,3 +24,10 @@
 
 ## Versión ^3.2.6
 - **Internacionalización**: Impuestos (Taxes) para los países: Perú, EE.UU., México, Argentina, Chile, Colombia, Uruguay.
+
+## Versión ^3.2.7
+- **Segmentación**: Barberías / Peluquerías / Salones de Belleza / SPA
+- **apiERP**: Consultas RUC automáticas para Perú.
+
+## Versión ^3.2.8
+- **Reportes**: Dashboard Income + ECharts.JS

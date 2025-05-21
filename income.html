@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- METAS BASICOS -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- TITLE -->
+<title>Income</title>
+
+<!-- DESCRIPCION -->
+<meta name="description" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+
+<!-- OPEN GRAPH METADATA FOR SOCIAL SHARING -->
+<meta property="og:image" content="./img/apiPOS.png">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="564">
+<meta property="og:image:alt" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+
+<!-- TWITTER CARD METADATA -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="./img/apiPOS.png">
+<meta name="twitter:image:alt" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+<meta name="twitter:image:width" content="800">
+<meta name="twitter:image:height" content="564">
+
+<!-- FAVICONS DINAMICOS-->
+<link rel="icon" type="image/png" sizes="36x36" href="./img/icon/android-icon-36x36.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./img/icon/android-icon-48x48.png">
+<link rel="icon" type="image/png" sizes="72x72" href="./img/icon/android-icon-72x72.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./img/icon/android-icon-96x96.png">
+<link rel="icon" type="image/png" sizes="144x144" href="./img/icon/android-icon-144x144.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./img/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./img/icon/android-icon-512x512.png">
+<link rel="apple-touch-icon" sizes="57x57" href="./img/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="./img/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="./img/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="./img/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="./img/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="./img/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="./img/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./img/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/icon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="./img/icon/apple-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./img/icon/favicon-96x96.png">
+<meta name="msapplication-TileImage" content="./img/icon/ms-icon-144x144.png">
+<link rel="manifest" href="./manifest.json">
+<meta name="msapplication-TileColor" content="#080060">
+<meta name="theme-color" content="#080060">
+<meta name="msapplication-config" content="./browserconfig.xml">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/bootstrap-icons.css" rel="stylesheet">
+<link href="./css/apierp.min.css?v=3.2.9" rel="stylesheet">
+<link href="./css/apipos.min.css?v=3.2.9" rel="stylesheet">
+<link href="./css/apierp_header.css?v=3.2.9" rel="stylesheet">
+<link href="./css/apipos_login.css?v=3.2.9" rel="stylesheet">
+<link href="./css/pdf_viewer.min.css" rel="stylesheet">
+<script src="./js/echarts.min.js"></script>
+</head>
+<body>
+
+<!-- MODAL NOTIFICATIONS -->
+<div id="ntf-notification-modal" class="ntf-modal ntf-hidden">
+<div class="ntf-modal-content">
+<span id="ntf-modal-close" class="ntf-close">&times;</span>
+<div id="ntf-modal-body"></div>
+<div id="ntf-modal-actions" class="ntf-modal-actions"></div>
+</div>
+</div>
+
+<!-- LOGIN -->
+<section id="login" style="padding: 0; margin: 0;"></section>
+
+<!-- HEADER -->
+<header id="header" class="header dark-background d-flex flex-column hidden">
+<a href="#">
+<div class="profile-img">
+<img src="./img/icon/android-icon-192x192.png" alt="" class="img-fluid">
+</div>
+</a>
+<nav id="navmenu" class="navmenu">
+<ul>
+
+<!-- PUNTO DE VENTA -->
+<li class="has-submenu">
+<a href="javascript:void(0)" class="active">
+<img src="./img/icon-point-of-sale.svg" alt="icon-point-of-sale" class="icon-main">
+<img src="./img/icon-point-of-sale-lead.svg" alt="icon-point-of-sale-lead" class="icon-main-lead">
+Punto de Venta
+<span class="arrow">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
+</span>
+</a>
+<ul class="submenu">
+<li><a href="./">Acceder a apiPOS</a></li>
+<li><a href="javascript:void(0)">Gestión de Turnos</a></li>
+<li><a href="javascript:void(0)">Gestión de Reservas</a></li>
+<li><a href="javascript:void(0)">Gestión de Ambientes</a></li>
+<li><a href="javascript:void(0)">Programa de Puntos</a></li>
+<li><a href="javascript:void(0)">Vales de descuento</a></li>
+</ul>
+</li>
+
+<!-- REPORTE GENERAL -->
+<li class="has-submenu">
+<a href="javascript:void(0)">
+<img src="./img/icon-reports.svg" alt="icon-reports" class="icon-main">
+<img src="./img/icon-reports-lead.svg" alt="icon-reports-lead" class="icon-main-lead">
+Reporte General
+<span class="arrow">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
+</span>
+</a>
+<ul class="submenu">
+<li><a href="javascript:void(0)">Reporte de Ingresos</a></li>
+<li><a href="javascript:void(0)">Reporte de Cobros Realizados</a></li>
+<li><a href="javascript:void(0)">Reporte de Cobros Pendientes</a></li>
+<li><a href="javascript:void(0)">Reporte de Gastos</a></li>
+<li><a href="javascript:void(0)">Reporte de Pagos Realizados</a></li>
+<li><a href="javascript:void(0)">Reporte de Pagos Pendientes</a></li>
+<li><a href="javascript:void(0)">Reporte de Inventario</a></li>
+<li><a href="javascript:void(0)">Reporte de Producción</a></li>
+<li><a href="javascript:void(0)">Reporte de Impuestos</a></li>
+<li><a href="javascript:void(0)">Reporte de Cuentas Bancarias</a></li>
+<li><a href="javascript:void(0)">Flujo de Caja Financiero</a></li>
+</ul>
+</li>
+
+<!-- REGISTROS DE DATOS -->
+<li class="has-submenu">
+<a href="javascript:void(0)">
+<img src="./img/icon-records.svg" alt="icon-records" class="icon-main">
+<img src="./img/icon-records-lead.svg" alt="icon-records-lead" class="icon-main-lead">
+Registros
+<span class="arrow">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
+</span>
+</a>
+<ul class="submenu">
+<li><a href="javascript:void(0)">Productos y Servicios</a></li>
+<li><a href="javascript:void(0)">Clientes </a></li>
+<li><a href="javascript:void(0)">Proveedores</a></li>
+<li><a href="javascript:void(0)">Colaboradores</a></li>
+<li><a href="javascript:void(0)">Usuarios</a></li>
+<li><a href="javascript:void(0)">Sucursales</a></li>
+</ul>
+</li>
+
+<!-- LOGISTICA -->
+<li class="has-submenu">
+<a href="javascript:void(0)">
+<img src="./img/icon-logistics.svg" alt="icon-logistics" class="icon-main">
+<img src="./img/icon-logistics-lead.svg" alt="icon-logistics-lead" class="icon-main-lead">
+Logística y Op.
+<span class="arrow">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
+</span>
+</a>
+<ul class="submenu">
+<li><a href="javascript:void(0)">Gestión de Inventarios</a></li>
+<li><a href="javascript:void(0)">Gestión de Almacenes</a></li>
+<li><a href="javascript:void(0)">Guias de Remisión Remitente</a></li>
+<li><a href="javascript:void(0)">Guias de Remisión Transportista</a></li>
+<li><a href="javascript:void(0)">Transferencias entre Sucursales</a></li>
+<li><a href="javascript:void(0)">Compras pendientes por ingresar</a></li>
+<li><a href="javascript:void(0)">Ventas pendientes por despachar</a></li>
+<li><a href="javascript:void(0)">Productos por Caducar</a></li>
+<li><a href="javascript:void(0)">Gestión de Producción</a></li>
+</ul>
+</li>
+
+<!-- INGRESOS -->
+<li class="has-submenu">
+<a href="javascript:void(0)">
+<img src="./img/icon-income.svg" alt="icon-income" class="icon-main">
+<img src="./img/icon-income-lead.svg" alt="icon-income-lead" class="icon-main-lead">
+Ingresos
+<span class="arrow">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
+</span>
+</a>
+<ul class="submenu">
+<li><a href="javascript:void(0)">Gestión de Ventas</a></li>
+<li><a href="javascript:void(0)">Ingresos</a></li>
+<li><a href="javascript:void(0)">Notas de crédito y débito</a></li>
+<li><a href="javascript:void(0)">Proformas</a></li>
+<li><a href="javascript:void(0)">Registro de Pedidos</a></li>
+</ul>
+</li>
+
+<!-- GASTOS -->
+<li class="has-submenu">
+<a href="javascript:void(0)">
+<img src="./img/icon-expenses.svg" alt="icon-expenses" class="icon-main">
+<img src="./img/icon-expenses-lead.svg" alt="icon-expenses-lead" class="icon-main-lead">
+Gastos
+<span class="arrow">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
+</span>
+</a>
+<ul class="submenu">
+<li><a href="javascript:void(0)">Registro de compras</a></li>
+<li><a href="javascript:void(0)">Gastos</a></li>
+<li><a href="javascript:void(0)">Notas de crédito</a></li>
+<li><a href="javascript:void(0)">Registro de pagos</a></li>
+</ul>
+</li>
+
+<!-- CONTABILIDAD -->
+<li class="has-submenu">
+<a href="javascript:void(0)">
+<img src="./img/icon-accounting.svg" alt="icon-accounting" class="icon-main">
+<img src="./img/icon-accounting-lead.svg" alt="icon-accounting-lead" class="icon-main-lead">
+Contabilidad
+<span class="arrow">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
+</span>
+</a>
+<ul class="submenu">
+<li><a href="javascript:void(0)">Impuestos de Ingresos</a></li>
+<li><a href="javascript:void(0)">Impuestos de Gastos</a></li>
+<li><a href="javascript:void(0)">SIRE</a></li>
+</ul>
+</li>
+
+<!-- AJUSTES -->
+<li class="has-submenu">
+<a href="javascript:void(0)">
+<img src="./img/icon-settings.svg" alt="icon-settings" class="icon-main">
+<img src="./img/icon-settings-lead.svg" alt="icon-settings" class="icon-main-lead">
+Ajustes
+<span class="arrow">
+<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
+<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
+</span>
+</a>
+<ul class="submenu">
+<li><a href="javascript:void(0)">Información</a></li>
+<li><a href="javascript:void(0)">Historial de Actividad</a></li>
+<li><a href="javascript:void(0)">Correo</a></li>
+<li><a href="javascript:void(0)">Planes y Suscripciones</a></li>
+<li><a href="javascript:void(0)">Asistencia al Cliente</a></li>
+<li><a href="javascript:void(0)">Más  Ajustes</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</header>
+<header id="topbar" class="topbar hidden">
+<div class="topbar-left">
+<i class="header-toggle bi bi-list"></i>
+
+<!-- HOME -->
+<a href="javascript:void(0)" class="home-icon"><i class="bi bi-house"></i></a>
+<span class="panel-title element-header-response">Panel Principal</span>
+
+<!-- SUCURSALES, ALMACENES, AMBIENTES -->
+<span class="separator">|</span>
+<select id="setBranchId"></select>
+<select id="setWarehouseId"></select>
+<select id="setFloorId"></select>
+</div>
+<div class="topbar-right">
+
+<!-- NOTIFICATIONS -->
+<div class="ntf-notification-wrapper">
+<a href="javascript:void(0)" id="tabs-notifications" class="ntf-bell">
+<img src="./img/icon-notification.svg" alt="icon-notifications" class="img-tab-home">
+<span id="ntf-notif-count" class="ntf-badge">0</span>
+</a>
+<div id="ntf-notification-dropdown" class="ntf-dropdown ntf-hidden">
+<ul id="ntf-notifications-list"></ul>
+</div>
+</div>
+
+<span class="separator">|</span>
+
+<!-- FULLSCREEN -->
+<button id="fullscreen-btn" class="custom-input-cart-options form-control" type="button">
+<img src="./img/icon-fullscreen.svg" alt="icon-areas" class="img-tab-home">
+</button>
+
+<span class="separator">|</span>
+
+<a href="#" class="check-icon"><i class="bi bi-check"></i></a>
+<span id="setPlanName" class="plan-title element-header-response"></span>
+<span class="separator">|</span>
+<span id="setCashierName" class="user-name element-header-response"></span>
+<a href="#" class="user-icon"><i class="bi bi-person"></i></a>
+</div>
+</header>
+
+<!-- MAIN -->
+<main>
+<section id="pos" style="padding: 0; margin: 0;" class="hidden">
+
+<!-- INCOME -->
+<div class="container section-title" style="position: relative;">
+<h3 class="text-center">
+<b>Ventas</b>
+<span id="date-range-label">
+del mes <i class="bi bi-caret-down-fill" class="date-range-label-icon"></i>
+</span>
+</h3>
+<ul id="date-range-options">
+<li data-value="day">del d&iacute;a</li>
+<li data-value="week">de la semana</li>
+<li data-value="month">del mes</li>
+<li data-value="year">del a&ntilde;o</li>
+<li data-value="filtrar" class="li-filter-active">Filtrar</li>
+</ul>
+<input type="hidden" id="start-date" name="start-date" value="">
+<input type="hidden" id="end-date" name="end-date" value="">
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<a href="javascript:void(0)" onclick="" class="btn mb-4 btn-report-new">Crear Nueva Venta</a>
+
+<div class="table-responsive table-wrapper">
+<table class="table table-bordered table-hover table-report">
+<thead>
+<tr>
+<th style="text-align: center;  min-width: 100px;">Comprobante</th>
+<th style="text-align: center;  min-width: 100px;">Serie</th>
+<th style=" min-width: 200px;">Cliente</th>
+<th style="text-align: center;  min-width: 150px;">Fecha</th>
+<th style="text-align: center;  min-width: 150px;">Vencimiento</th>
+<th style="text-align: center;  min-width: 100px;">Estado</th>
+<th style="text-align: center;  min-width: 120px;">Total</th>
+<th style="text-align: center;  min-width: 120px;">Acciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">
+<span class="span-table-custom span-table-setTipoComprobante-recibo">
+Recibo
+</span>
+</td>
+<td style="text-align: center;">R001-123</td>
+<td>Constructora Del Norte S.A.C.</td>
+<td style="text-align: center;">21/05/2025 03:45AM</td>
+<td style="text-align: center;">30/05/2025</td>
+<td style="text-align: center;">
+<span class="span-table-custom" style="border: 1.5px solid #FF5900; color: #FF5900;">
+Pendiente
+</span>
+</td>
+<td style="text-align: right;">S/ 300.00</td>
+<td style="text-align: center;">
+<div class="dropdown">
+<button class="btn btn-sm dropdown-toggle" style="background: none; color: #FF5900; font-size: 25px; padding: 0; padding-right: 8px;" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+<i class="fas fa-ellipsis-h"></i>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<li>
+<a class="dropdown-item" href="javascript:void(0)" onclick="verDetalle('id', 'detalle')">
+<i class="fas fa-eye"></i> Visualizar
+</a>
+</li>
+<li>
+<a class="dropdown-item" href="#">
+<i class="fas fa-edit"></i> Editar
+</a>
+</li>
+<li>
+<a class="dropdown-item" href="javascript:void(0)" onclick="verDetalle('id', 'pdf')">
+<i class="fas fa-print"></i> Imprimir
+</a>
+</li>
+<li>
+<a class="dropdown-item text-danger" href="#">
+<i class="fas fa-trash-alt"></i> Eliminar
+</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<td colspan="5"></td>
+<td class="td-amount-leter">
+S/
+</td>
+<td class="td-amount">
+300.00
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pagination-table mt-4">
+<a href="#" class="btn btn-sm btn-outline me-2">&laquo; Anterior</a>
+<a href="#" class="btn btn-sm btn-outline-primary">
+1
+</a>
+<a href="#" class="btn btn-sm btn-outline">&raquo; Siguiente</a>
+</div>
+
+<!-- GRAPHIC -->
+<div id="salesChartContainer"></div>
+
+</div>
+</div>
+</div>
+<div id="modalOverlayViewDetails"></div>
+<div id="detalleModal" class="modal">
+<div class="modal-content">
+<span id="closeModalViewDetails" class="close">&times;</span>
+<div id="dynamicContent">
+<table>
+<thead>
+<tr>
+<th>Producto</th>
+<th>Cantidad</th>
+<th>Valor Unitario</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody id="detalleTablaBody"></tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- ALERTS -->
+<div id="ntf-flotante-container"></div>
+
+<!-- SCRIPTS -->
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/pos-main.js"></script>
+<script src="./js/setup-pdf-lib.min.js"></script>
+<script src="./js/pdf-lib.min.js"></script>
+<script src="./js/fontkit.umd.min.js"></script>
+<script src="./js/qrcode.min.js"></script>
+<script src="./js/app_pdf.min.js"></script>
+<script src="./js/pos.js"></script>
+<script src="./js/apipos_setup.min.js?v=3.2.9"></script>
+<script src="./js/apierp_header.js"></script>
+<script src="./js/apierp_income.min.js?v=3.2.9"></script>
+</body>
+</html>
