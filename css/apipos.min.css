@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 4.0.0
+version: 4.0.1
 */
 
 /* Fonts */
@@ -1400,7 +1400,7 @@ height: 100%;
 .product:focus,
 input:focus,
 textarea:focus{
-outline: 1px solid #080060;
+outline: 1px solid var(--blue);
 }
 .product-container {
 display: flex;
