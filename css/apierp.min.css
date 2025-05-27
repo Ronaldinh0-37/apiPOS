@@ -3,7 +3,7 @@ Name: apiERP
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 3.2.9
+version: 4.0.0
 */
 
 /* SETUP */
@@ -52,6 +52,7 @@ font-style: normal;
 :root {
 --blue: #080060;
 --orange: #FF5900;
+--green: #109500;
 --lead: #888;
 --transparent: #f7f7f7;
 --white: #fff;
@@ -266,25 +267,63 @@ color: var(--white);
 /* ALERTS */
 #ntf-flotante-container{
 position: fixed;
-bottom: 10%;
 left: 50%;
 transform: translateX(-50%);
-z-index: 1000;
+z-index: 9999999;
 pointer-events: none;
 }
-.ntf-flotante-message{
+.ntf-flotante-container-top{
+top: 10%;
+}
+.ntf-flotante-container-bottom{
+bottom: 10%;
+}
+.ntf-flotante-orange{
+background: var(--orange);
+color: #fff;
+}
+.ntf-flotante-blue{
 background: var(--blue);
 color: #fff;
-padding: 12px 20px;
+}
+.ntf-flotante-green{
+background: var(--green);
+color: #fff;
+}
+.ntf-flotante-message{
+padding: 5px 10px;
 margin-top: 10px;
 border-radius: 4px;
 font-family: sans-serif;
 font-size: 13px;
 box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-animation: ntf-slide-up-fade 3s ease-in-out forwards;
 opacity: 0;
 }
-@keyframes ntf-slide-up-fade{
+.ntf-flotante-top{
+animation: ntf-slide-top-fade 3s ease-in-out forwards;
+}
+.ntf-flotante-bottom{
+animation: ntf-slide-bottom-fade 3s ease-in-out forwards;
+}
+@keyframes ntf-slide-top-fade{
+0% {
+transform: translateY(-20px);
+opacity: 0;
+}
+10% {
+transform: translateY(0);
+opacity: 1;
+}
+70% {
+transform: translateY(0);
+opacity: 1;
+}
+100% {
+transform: translateY(100px);
+opacity: 0;
+}
+}
+@keyframes ntf-slide-bottom-fade{
 0% {
 transform: translateY(100px);
 opacity: 0;

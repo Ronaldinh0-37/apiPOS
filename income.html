@@ -53,10 +53,10 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=3.2.9" rel="stylesheet">
-<link href="./css/apipos.min.css?v=3.2.9" rel="stylesheet">
-<link href="./css/apierp_header.css?v=3.2.9" rel="stylesheet">
-<link href="./css/apipos_login.css?v=3.2.9" rel="stylesheet">
+<link href="./css/apierp.min.css?v=4.0.0" rel="stylesheet">
+<link href="./css/apipos.min.css?v=4.0.0" rel="stylesheet">
+<link href="./css/apierp_header.css?v=4.0.0" rel="stylesheet">
+<link href="./css/apipos_login.css?v=4.0.0" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 <script src="./js/echarts.min.js"></script>
 </head>
@@ -317,7 +317,9 @@ del mes <i class="bi bi-caret-down-fill" class="date-range-label-icon"></i>
 <li data-value="week">de la semana</li>
 <li data-value="month">del mes</li>
 <li data-value="year">del a&ntilde;o</li>
-<li data-value="filtrar" class="li-filter-active">Filtrar</li>
+<li data-value="filtrar" class="li-filter-active">
+<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#filterModal">Filtrar</a>
+</li>
 </ul>
 <input type="hidden" id="start-date" name="start-date" value="">
 <input type="hidden" id="end-date" name="end-date" value="">
@@ -434,6 +436,34 @@ S/
 </div>
 </div>
 </div>
+
+<!-- Modal Filtrar -->
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="filterModalLabel">Filtrar por fecha</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="filter-start" class="form-label">Fecha desde:</label>
+          <input type="date" class="form-control" id="filter-start">
+        </div>
+        <div class="mb-3">
+          <label for="filter-end" class="form-label">Fecha hasta:</label>
+          <input type="date" class="form-control" id="filter-end">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="apply-filter">Aplicar filtro</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </section>
 </main>
 
@@ -449,8 +479,8 @@ S/
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=3.2.9"></script>
+<script src="./js/apipos_setup.min.js?v=4.0.0"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_income.min.js?v=3.2.9"></script>
+<script src="./js/apierp_income.min.js?v=4.0.0"></script>
 </body>
 </html>

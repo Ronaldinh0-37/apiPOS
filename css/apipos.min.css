@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 3.2.9
+version: 4.0.0
 */
 
 /* Fonts */
@@ -1880,6 +1880,9 @@ width: 100% !important;
 .div-width-90{
 width: 90% !important;
 }
+.div-width-80{
+width: 80% !important;
+}
 .div-width-70{
 width: 70% !important;
 }
@@ -2668,33 +2671,7 @@ border-radius: 5px;
 }
 
 /* Other Elements */
-.draggable-element-bar{
 
-}
-.draggable-element-bathroom-men{
-
-}
-.draggable-element-bathroom-women{
-
-}
-.draggable-element-cashier{
-
-}
-.draggable-element-fridge{
-
-}
-.draggable-element-laptop{
-
-}
-.draggable-element-vase{
-
-}
-.draggable-element-vertical-line{
-
-}
-.draggable-element-waiter{
-
-}
 
 /* Elements Window */
 .top-row{
@@ -3152,6 +3129,178 @@ max-height: 80vh;
 object-fit: contain;
 }
 
+/* ADD ITEM */
+.newItem_container{
+padding-right: 15px;
+padding-left: 15px;
+}
+.newItem-modal-title{
+text-align: center;
+color: #080060;
+font-size: 20px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+.newItem-title{
+display: flex;
+flex: 1;
+align-items: center;
+justify-content: center;
+}
+.newItem-label{
+color: #080060;
+font-size: 15px;
+font-weight: bold;
+white-space: nowrap;
+}
+.newItem-span{
+color: var(--lead);
+font-size: 15px;
+font-weight: bold;
+white-space: nowrap;
+text-align: center;
+}
+.newItem-span-min{
+color: var(--lead);
+font-size: 12px;
+font-weight: bold;
+}
+.newItem_btn {
+background: var(--orange);
+color: #fff;
+border-radius: 50%;
+width: 20px;
+height: 20px;
+font-size: 12px;
+border: none;
+cursor: pointer;
+}
+.new-item-img{
+width: 80px;
+height: auto;
+}
+.image_box {
+position: relative;
+width: 100px;
+height: 100px;
+border: 2px dashed #ccc;
+border-radius:4px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+margin-bottom: 15px;
+}
+.image_box img {
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:4px; 
+}
+.image_box .remove {
+position:absolute;
+top:2px;
+right:2px;
+background:#fff;
+border-radius:50%;
+cursor:pointer;
+padding:2px; 
+}
+.newItem_col {
+flex: 1;
+}
+.newItem_section{
+margin-top: 10px;
+}
+.newItem_hidden {
+display: none;
+}
+.newItem_title_table{
+display: flex;
+gap: .5rem;
+margin-top: .5rem;
+align-items: center;
+}
+.options_list {
+position:absolute;
+top:100%; left:0;
+right:0;
+max-height:150px;
+overflow:auto;
+background:#fff;
+border:1px solid #aaa;
+z-index:10;
+scrollbar-width: thin;
+scrollbar-color: var(--blue) transparent; 
+}
+.options_list div{
+padding:.5rem;
+cursor:pointer;
+font-size: 11px;
+}
+.options_list div:hover{
+background:#eee;
+}
+.selected_tags {
+display:flex;
+flex-wrap:wrap;
+gap:.25rem;
+margin-top:.25rem;
+}
+.tag {
+border: 1px solid var(--blue);
+background: var(--white);
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 1px;
+border-radius:4px;
+display:flex;
+align-items:center;
+font-size: 11px;
+color: var(--lead);
+}
+.tag .remove-tag{
+margin-left:.25rem;
+cursor:pointer;
+font-size: 13px;
+}
+.variant_header{
+text-align: center;
+background: var(--orange);
+margin-top: 5px;
+}
+.variant_header_span{
+font-size: 13px;
+color: var(--white);
+}
+.removeVariant{
+background: var(--white) !important;
+float: right;
+}
+.newItem_row {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+}
+.newItem_col-inline label {
+margin-right: 1rem;
+}
+.newItem_list > div {
+display: flex;
+gap: .5rem;
+margin-top: .5rem;
+align-items: center;
+}
+.multi_select {
+position: relative;
+}
+.ms_input {
+width: 100%;
+padding: .5rem;
+border: 1px solid #aaa;
+border-radius:4px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
 
@@ -3254,5 +3403,14 @@ display: block;
 .shift-open-img{
 margin-left: 0;
 margin-right: 0;
+}
+
+/* ADD ITEM */
+.image_box{
+width: 45% !important;
+display: inline-block !important;
+margin: 5px !important;
+text-align: center !important;
+padding-top: 10% !important;
 }
 }
