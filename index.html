@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=4.0.2" rel="stylesheet">
-<link href="css/apipos.min.css?v=4.0.2" rel="stylesheet">
-<link href="css/apipos_header.css?v=4.0.2" rel="stylesheet">
-<link href="css/apipos_login.css?v=4.0.2" rel="stylesheet">
+<link href="css/apierp.min.css?v=4.0.3" rel="stylesheet">
+<link href="css/apipos.min.css?v=4.0.3" rel="stylesheet">
+<link href="css/apipos_header.css?v=4.0.3" rel="stylesheet">
+<link href="css/apipos_login.css?v=4.0.3" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -488,6 +488,14 @@
 <!-- BLOCK -->
 <div class="newItem_section newItem_row productType1">
 <div class="newItem_col">
+<label class="newItem-span" for="inputItemDescription">Descripción:</label>
+<input class="form-control custom-input-cart-options shift-open-input" type="text" id="inputItemDescription" placeholder="Descripción:">
+</div>
+</div>
+
+<!-- BLOCK -->
+<div class="newItem_section newItem_row productType1">
+<div class="newItem_col">
 <label class="newItem-span" for="inputItemDateExpiry">Vencimiento:</label>
 <input class="form-control custom-input-cart-options shift-open-input" type="date" id="inputItemDateExpiry" placeholder="Vencimiento:">
 </div>
@@ -565,6 +573,21 @@
 <div class="shift-open-btnContainer mt-3">
 <button class="shift-open-btn" id="btnItemSave">Guardar</button>
 </div>
+
+<!-- IMPORT CSV -->
+<div id="importNewItems" class="productType1">
+<label class="newItem-label mb-2">¿Prefieres Importarlos desde Excel?</label>
+<div class="drop-zone" id="drop-zone">
+<span class="drop-zone__prompt">Arrastra tu Excel aquí o haz clic para seleccionar</span>
+<input type="file" id="file-input" accept=".xlsx,.xls" class="drop-zone__input" />
+<button type="button" id="remove-file" class="drop-zone__remove" hidden>✕</button>
+</div>
+
+<progress id="progress" value="0" max="100" style="display:none"></progress>
+<div id="status"></div>
+<button type="button" id="upload-btn" disabled>Importar</button>
+</div>
+
 </div>
 </div>
 </div>
@@ -687,8 +710,8 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=4.0.2"></script>
-<script src="js/apierp_item.min.js?v=4.0.2"></script>
-<script src="js/apipos.min.js?v=4.0.2"></script>
+<script src="js/apipos_setup.min.js?v=4.0.3"></script>
+<script src="js/apierp_item.min.js?v=4.0.3"></script>
+<script src="js/apipos.min.js?v=4.0.3"></script>
 </body>
 </html>

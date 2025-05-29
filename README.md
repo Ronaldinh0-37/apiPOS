@@ -14,12 +14,13 @@
 - **apiPrint - Impresión Online y en Red**: Permite configurar un Server Print para enviar comandas e impresiones automatizadas en formato ticket o A4 desde cualquier dispositivo con o sin conexión a internet.
 - **Gestión de Mesas y Pedidos en Red**: Gracias a su arquitectura offline, si en un restaurante se pierde la conexión a internet, se podrá seguir visualizando de forma ininterrumpida el mapa de las mesas con sus pedidos en todos los dispositivos de la red local. La información siempre estará actualizada y sincronizada en red para todos los dispositivos de los mozos, caja y cocina.
 
-## Versión ^3.2.4
+## Versión ^4.0.0
 - **Ventas**: Boletas, Facturas y Recibos.
 - **Compras**: Boletas, Facturas y Recibos.
 - **Gastos**: Clasificación por cuentas contables.
 - **Cotizaciones**: Envíos automatizados por whatsapp y correo electrónico.
 - **Inventario**: Control de stock por almacen y sucursales.
+- **Registros**: Registro HTML de Items, Importación ultrarrápida de items con una plantilla Excel (.CSV) 100% Offline.
 - **Distribución**: Rastreo de Rutas y Delivery con API de Google Maps.
 - **Restaurante**: Comandas, Precuentas, Gestión de Mesas y Ambientes.
 - **Hotelería**: Reservas, Pedidos por Habitación y Gestión de Pisos.

@@ -31,3 +31,8 @@
 
 ## Versión ^3.2.8
 - **Reportes**: Dashboard Income + ECharts.JS
+
+## Versión ^4.0.0
+- **Items**: Registro HTML de Items, Importación ultrarrápida de items con una plantilla Excel (.CSV) 100% Offline.
+- **CSS**: Custom Alerts: Success, Warning, Error.
+- **Reportes**: Cierre Full de turno con ganancias por turno, productos vendidos, graficos estadísticos.

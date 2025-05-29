@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 4.0.2
+version: 4.0.3
 */
 
 /* Fonts */
@@ -3300,6 +3300,94 @@ padding: .5rem;
 border: 1px solid #aaa;
 border-radius:4px;
 }
+#importNewItems {
+margin-top: 15px;
+max-width: 500px;
+margin: 1rem auto;
+padding: 1rem;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+border-radius: 8px;
+background: #fff;
+text-align: center;
+}
+.drop-zone {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 1.5rem;
+border: 2px dashed #888;
+border-radius: 6px;
+transition: background 0.2s, border-color 0.2s;
+text-align: center;
+cursor: pointer;
+overflow: hidden;
+}
+.drop-zone:hover {
+background: #f9f9f9;
+border-color: #555;
+}
+.drop-zone.dragover {
+background: #e8e8ff;
+border-color: #080060;
+}
+.drop-zone__prompt {
+color: #666;
+font-size: 0.95rem;
+pointer-events: none;
+}
+.drop-zone__input {
+position: absolute;
+width: 100%;
+height: 100%;
+opacity: 0;
+cursor: pointer;
+}
+.drop-zone__remove {
+position: absolute;
+top: 6px;
+right: 6px;
+background: #e00;
+color: #fff;
+border: none;
+border-radius: 50%;
+width: 24px;
+height: 24px;
+font-size: 0.9rem;
+line-height: 1;
+cursor: pointer;
+}
+progress {
+width: 100%;
+height: 0.8rem;
+margin: 0.8rem 0;
+appearance: none;
+}
+progress::-webkit-progress-bar {
+background: #eee;
+border-radius: 4px;
+}
+progress::-webkit-progress-value {
+background: #080060;
+border-radius: 4px;
+}
+progress::-moz-progress-bar {
+background: #080060;
+border-radius: 4px;
+}
+#upload-btn{
+background: var(--blue);
+color: var(--white);
+font-size: 13px;
+margin-top: 10px;
+border: none;
+padding-left: 8px;
+padding-right: 8px;
+}
+#status{
+font-size: 13px;
+color: #333;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -3412,5 +3500,15 @@ display: inline-block !important;
 margin: 5px !important;
 text-align: center !important;
 padding-top: 10% !important;
+}
+.drop-zone {
+padding: 1rem;
+}
+.drop-zone__prompt {
+font-size: 0.9rem;
+}
+#upload-btn {
+width: 100%;
+padding: 0.6rem;
 }
 }
