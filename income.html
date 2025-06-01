@@ -53,10 +53,10 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=4.0.3" rel="stylesheet">
-<link href="./css/apipos.min.css?v=4.0.3" rel="stylesheet">
-<link href="./css/apierp_header.css?v=4.0.3" rel="stylesheet">
-<link href="./css/apipos_login.css?v=4.0.3" rel="stylesheet">
+<link href="./css/apierp.min.css?v=4.0.4" rel="stylesheet">
+<link href="./css/apipos.min.css?v=4.0.4" rel="stylesheet">
+<link href="./css/apierp_header.css?v=4.0.4" rel="stylesheet">
+<link href="./css/apipos_login.css?v=4.0.4" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 <script src="./js/echarts.min.js"></script>
 </head>
@@ -307,10 +307,7 @@ Ajustes
 <!-- INCOME -->
 <div class="container section-title" style="position: relative;">
 <h3 class="text-center">
-<b>Ventas</b>
-<span id="date-range-label">
-del mes <i class="bi bi-caret-down-fill" class="date-range-label-icon"></i>
-</span>
+<b>Ventas </b><span id="date-range-label"><i class="bi bi-caret-down-fill date-range-label-icon" style="color: #FF5900;"></i></span>
 </h3>
 <ul id="date-range-options">
 <li data-value="day">del d&iacute;a</li>
@@ -330,7 +327,7 @@ del mes <i class="bi bi-caret-down-fill" class="date-range-label-icon"></i>
 <a href="javascript:void(0)" onclick="" class="btn mb-4 btn-report-new">Crear Nueva Venta</a>
 
 <div class="table-responsive table-wrapper">
-<table class="table table-bordered table-hover table-report">
+<table id="reporte-income" class="table table-bordered table-hover table-report">
 <thead>
 <tr>
 <th style="text-align: center;  min-width: 100px;">Comprobante</th>
@@ -343,76 +340,35 @@ del mes <i class="bi bi-caret-down-fill" class="date-range-label-icon"></i>
 <th style="text-align: center;  min-width: 120px;">Acciones</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align: center;">
-<span class="span-table-custom span-table-setTipoComprobante-recibo">
-Recibo
-</span>
-</td>
-<td style="text-align: center;">R001-123</td>
-<td>Constructora Del Norte S.A.C.</td>
-<td style="text-align: center;">21/05/2025 03:45AM</td>
-<td style="text-align: center;">30/05/2025</td>
-<td style="text-align: center;">
-<span class="span-table-custom" style="border: 1.5px solid #FF5900; color: #FF5900;">
-Pendiente
-</span>
-</td>
-<td style="text-align: right;">S/ 300.00</td>
-<td style="text-align: center;">
-<div class="dropdown">
-<button class="btn btn-sm dropdown-toggle" style="background: none; color: #FF5900; font-size: 25px; padding: 0; padding-right: 8px;" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-<i class="fas fa-ellipsis-h"></i>
-</button>
-<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<li>
-<a class="dropdown-item" href="javascript:void(0)" onclick="verDetalle('id', 'detalle')">
-<i class="fas fa-eye"></i> Visualizar
-</a>
-</li>
-<li>
-<a class="dropdown-item" href="#">
-<i class="fas fa-edit"></i> Editar
-</a>
-</li>
-<li>
-<a class="dropdown-item" href="javascript:void(0)" onclick="verDetalle('id', 'pdf')">
-<i class="fas fa-print"></i> Imprimir
-</a>
-</li>
-<li>
-<a class="dropdown-item text-danger" href="#">
-<i class="fas fa-trash-alt"></i> Eliminar
-</a>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-<tr>
-<td colspan="5"></td>
-<td class="td-amount-leter">
-S/
-</td>
-<td class="td-amount">
-300.00
-</td>
-<td></td>
-</tr>
-</tbody>
+<tbody></tbody>
 </table>
 </div>
-<div class="pagination-table mt-4">
-<a href="#" class="btn btn-sm btn-outline me-2">&laquo; Anterior</a>
-<a href="#" class="btn btn-sm btn-outline-primary">
-1
-</a>
-<a href="#" class="btn btn-sm btn-outline">&raquo; Siguiente</a>
-</div>
+<div id="pagination-income" class="pagination-table mt-4"></div>
 
 <!-- GRAPHIC -->
 <div id="salesChartContainer"></div>
+
+
+
+
+
+<div class="table-responsive table-wrapper">
+<table id="reporte-income-products" class="table table-bordered table-hover table-report">
+<thead>
+<tr>
+<th style="text-align: center;  min-width: 100px;">Producto</th>
+<th style="text-align: center;  min-width: 100px;">Ventas</th>
+<th style=" min-width: 200px;">Costo</th>
+<th style="text-align: center;  min-width: 150px;">Ganancia</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div id="pagination-products" class="pagination-table mt-4"></div>
+
+<!-- GRAPHIC -->
+<div id="productPieChart" style="width: 400px; height: 400px;"></div>
 
 </div>
 </div>
@@ -479,8 +435,8 @@ S/
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=4.0.3"></script>
+<script src="./js/apipos_setup.min.js?v=4.0.4"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_income.min.js?v=4.0.3"></script>
+<script src="./js/apierp_income.min.js?v=4.0.4"></script>
 </body>
 </html>

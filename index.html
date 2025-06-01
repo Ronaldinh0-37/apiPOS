@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=4.0.3" rel="stylesheet">
-<link href="css/apipos.min.css?v=4.0.3" rel="stylesheet">
-<link href="css/apipos_header.css?v=4.0.3" rel="stylesheet">
-<link href="css/apipos_login.css?v=4.0.3" rel="stylesheet">
+<link href="css/apierp.min.css?v=4.0.4" rel="stylesheet">
+<link href="css/apipos.min.css?v=4.0.4" rel="stylesheet">
+<link href="css/apipos_header.css?v=4.0.4" rel="stylesheet">
+<link href="css/apipos_login.css?v=4.0.4" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -116,13 +116,17 @@
 <div id="imageModal" class="image-modal">
 <div class="modal-overlay-carousel"></div>
 <div class="modal-content-carousel">
-<span class="modal-close-carousel">&times;</span>
+<div class="container-buttons">
+<button id="closeModalPay" type="button" class="close closeModal modal-close-carousel margin-left-auto">
+<span>&times;</span>
+</button>
+</div>
 <div class="carousel">
-<button class="carousel-prev">&#10094;</button>
+<button class="carousel-prev"><img src="./img/icon-arrow-left-blue.svg" alt="icon-arrow-right-blue" class="img-search-more-products"></button>
 <div class="carousel-image-container">
 <img class="carousel-single-image" src="" alt="Producto">
 </div>
-<button class="carousel-next">&#10095;</button>
+<button class="carousel-next"><img src="./img/icon-arrow-left-blue.svg" alt="icon-arrow-right-blue" class="img-search-more-products"></button>
 </div>
 </div>
 </div>
@@ -710,8 +714,8 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=4.0.3"></script>
-<script src="js/apierp_item.min.js?v=4.0.3"></script>
-<script src="js/apipos.min.js?v=4.0.3"></script>
+<script src="js/apipos_setup.min.js?v=4.0.4"></script>
+<script src="js/apierp_item.min.js?v=4.0.4"></script>
+<script src="js/apipos.min.js?v=4.0.4"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 4.0.3
+version: 4.0.4
 */
 
 /* Fonts */
@@ -2104,7 +2104,7 @@ margin-right: 20px;
 padding-right: 20px;
 }
 .img-search-more-products{
-width: 20px;
+width: 30px;
 height: auto;
 margin: 5px;
 }
@@ -3040,11 +3040,10 @@ padding-bottom: 20px;
 .product-zoom-area {
 position: absolute;
 top: 0;
-left: 0;
-width: 30px;    /* ajusta al área que quieras sensible al clic */
-height: 30px;   /* idem */
+left: 15px;
+width: 50px;
+height: 50px;
 cursor: zoom-in;
-/* sin fondo ni bordes: */
 background: transparent;
 z-index: 2;
 }
@@ -3067,16 +3066,10 @@ top: 50%; left: 50%;
 transform: translate(-50%, -50%);
 background: #fff;
 padding: 1rem;
-max-width: 90vw;
-max-height: 90vh;
+width: 90vw;
+height: 90vh;
 overflow: hidden;
 border-radius: 8px;
-}
-.modal-close-carousel {
-position: absolute;
-top: 8px; right: 12px;
-font-size: 24px;
-cursor: pointer;
 }
 .carousel {
 position: relative;
@@ -3105,6 +3098,10 @@ font-size: 2rem;
 cursor: pointer;
 user-select: none;
 }
+.carousel-next img {
+transform: rotate(180deg);
+transform-origin: center center;
+}
 .carousel-prev { margin-right: 0.5rem; }
 .carousel-next { margin-left: 0.5rem; }
 .product-zoom-btn {
@@ -3124,8 +3121,8 @@ width: 100%;
 text-align: center;
 }
 .carousel-single-image {
-max-width: 90vw;
-max-height: 80vh;
+width: 100%;
+height: auto;
 object-fit: contain;
 }
 
@@ -3413,6 +3410,19 @@ width: 100% !important;
 display: flex;
 justify-content: center;
 align-items: center;
+}
+.carousel{
+display: block;
+}
+.carousel-prev, .carousel-next{
+position: absolute;
+bottom: 25%;
+}
+.carousel-prev{
+left: 0;
+}
+.carousel-next{
+right: 0;
 }
 
 .payment-contado {
