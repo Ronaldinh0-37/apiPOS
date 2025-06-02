@@ -35,4 +35,5 @@
 ## Versión ^4.0.0
 - **Items**: Registro HTML de Items, Importación ultrarrápida de items con una plantilla Excel (.CSV) 100% Offline.
 - **CSS**: Custom Alerts: Success, Warning, Error.
-- **Reportes**: Cierre Full de turno con ganancias por turno, productos vendidos, graficos estadísticos.
+- **Reportes**: Reporte de Ingresos y Cierre Full de turno con ganancias por turno, productos vendidos, graficos estadísticos.
+- **apiERP**: API Email: Envío de Docuemntos, API Integrado con Gmail Personal y Correos Corporativos.

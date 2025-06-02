@@ -29,6 +29,7 @@
 - **PDF Dinámicos**: Formatos Ticket y A4.
 - **Privilegios por Usuario**: Puede/no puede vender sin stock, visualizar items por almacen/todos los almacenes, imprimir automáticamente/manualmente, agregar/no agregar repetidamente un item, series por usuario/por sucursal, impresión online/offline, mostrar/no mostrar el nombre del lote en los PDF, mostrar/no mostrar la fecha de vencimiento del item en los PDF, configurar tipo de operación por default, puede/no puede visualizar el detalle del cierre del turno, puede/no puede ver el stock del item, configurar número de decimales, sincronizar mesas online/offline, modo seguro/modo ultrarrápido, puede/no puede operar sin haber aperturado un turno previo.
 - **Notificaciones**: Alertas de stock mínimo, fecha de vencimiento, cumpleaños de un colaborador, cumpleaños de un cliente, cuentas por cobrar, cuentas por pagar.
+- **apiERP**: API de Facturación Electrónica integrada con Lycet / Greenter. API de Consultas RUC / DNI ilimitadas. API de envío y recepción de Email, se pueden enviar correos electrónicos desde Gmail's Personales o Correos Corporativos. apiPRINT para impresión automática online y en red.
 
 ## Requerimientos
 1. **Registro y Auth Token**: Regístrate en [apiERP.dev](https://apierp.dev/signup/) para obtener tu Auth Token único (USD $3/mes).

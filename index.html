@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=4.0.4" rel="stylesheet">
-<link href="css/apipos.min.css?v=4.0.4" rel="stylesheet">
-<link href="css/apipos_header.css?v=4.0.4" rel="stylesheet">
-<link href="css/apipos_login.css?v=4.0.4" rel="stylesheet">
+<link href="css/apierp.min.css?v=4.0.5" rel="stylesheet">
+<link href="css/apipos.min.css?v=4.0.5" rel="stylesheet">
+<link href="css/apipos_header.css?v=4.0.5" rel="stylesheet">
+<link href="css/apipos_login.css?v=4.0.5" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -117,7 +117,7 @@
 <div class="modal-overlay-carousel"></div>
 <div class="modal-content-carousel">
 <div class="container-buttons">
-<button id="closeModalPay" type="button" class="close closeModal modal-close-carousel margin-left-auto">
+<button type="button" class="close closeModal modal-close-carousel margin-left-auto">
 <span>&times;</span>
 </button>
 </div>
@@ -297,8 +297,18 @@
 <input type="tel" id="phoneNumber" placeholder="Ingrese el número" maxlength="15" class="custom-input-cart form-control">
 </div>
 <button id="sendWhatsApp" class="btnModal btnModalFooter">
-<span style="margin-right: 5px;">Enviar</span>
 <img src="./img/icon-whatsapp.svg" alt="icon-whatsapp" class="icon-width-20">
+</button>
+<div class="div-width-10"></div>
+</div>
+
+
+
+<div class="container-buttons" style="justify-content: center; margin: 0 auto;">
+<div class="div-width-10"></div>
+<input type="email" id="emailDestination" placeholder="Ingrese el correo" class="custom-input-cart form-control">
+<button id="sendEmail" class="btnModal btnModalFooter">
+<i class="bi bi-envelope"></i>
 </button>
 <div class="div-width-10"></div>
 </div>
@@ -714,8 +724,8 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=4.0.4"></script>
-<script src="js/apierp_item.min.js?v=4.0.4"></script>
-<script src="js/apipos.min.js?v=4.0.4"></script>
+<script src="js/apipos_setup.min.js?v=4.0.5"></script>
+<script src="js/apierp_item.min.js?v=4.0.5"></script>
+<script src="js/apipos.min.js?v=4.0.5"></script>
 </body>
 </html>
