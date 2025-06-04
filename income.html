@@ -53,10 +53,10 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=4.0.5" rel="stylesheet">
-<link href="./css/apipos.min.css?v=4.0.5" rel="stylesheet">
-<link href="./css/apierp_header.css?v=4.0.5" rel="stylesheet">
-<link href="./css/apipos_login.css?v=4.0.5" rel="stylesheet">
+<link href="./css/apierp.min.css?v=4.0.6" rel="stylesheet">
+<link href="./css/apipos.min.css?v=4.0.6" rel="stylesheet">
+<link href="./css/apierp_header.css?v=4.0.6" rel="stylesheet">
+<link href="./css/apipos_login.css?v=4.0.6" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 <script src="./js/echarts.min.js"></script>
 </head>
@@ -324,8 +324,11 @@ Ajustes
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-<a href="javascript:void(0)" onclick="" class="btn mb-4 btn-report-new">Crear Nueva Venta</a>
 
+<!-- GRAPHIC INCOMES GENERAL -->
+<div id="salesChartContainer" class="m-auto"></div>
+
+<!-- TABLE INCOMES GENERAL -->
 <div class="table-responsive table-wrapper">
 <table id="reporte-income" class="table table-bordered table-hover table-report">
 <thead>
@@ -344,9 +347,6 @@ Ajustes
 </table>
 </div>
 <div id="pagination-income" class="pagination-table mt-4"></div>
-
-<!-- GRAPHIC -->
-<div id="salesChartContainer"></div>
 
 
 
@@ -368,7 +368,7 @@ Ajustes
 <div id="pagination-products" class="pagination-table mt-4"></div>
 
 <!-- GRAPHIC -->
-<div id="productPieChart" style="width: 400px; height: 400px;"></div>
+<div id="productPieChart" class="m-auto"></div>
 
 </div>
 </div>
@@ -435,8 +435,8 @@ Ajustes
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=4.0.5"></script>
+<script src="./js/apipos_setup.min.js?v=4.0.6"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_income.min.js?v=4.0.5"></script>
+<script src="./js/apierp_income.min.js?v=4.0.6"></script>
 </body>
 </html>
