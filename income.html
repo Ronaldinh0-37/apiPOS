@@ -53,10 +53,10 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=4.0.7" rel="stylesheet">
-<link href="./css/apipos.min.css?v=4.0.7" rel="stylesheet">
-<link href="./css/apierp_header.css?v=4.0.7" rel="stylesheet">
-<link href="./css/apipos_login.css?v=4.0.7" rel="stylesheet">
+<link href="./css/apierp.min.css?v=4.0.8" rel="stylesheet">
+<link href="./css/apipos.min.css?v=4.0.8" rel="stylesheet">
+<link href="./css/apierp_header.css?v=4.0.8" rel="stylesheet">
+<link href="./css/apipos_login.css?v=4.0.8" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 <script src="./js/echarts.min.js"></script>
 </head>
@@ -321,11 +321,13 @@ Ajustes
 <input type="hidden" id="start-date" name="start-date" value="">
 <input type="hidden" id="end-date" name="end-date" value="">
 </div>
+
+<!-- INCOMES GENERAL -->
 <div class="row">
 <div class="col-md-12">
 
 <!-- GRAPHIC INCOMES GENERAL -->
-<div id="salesChartContainer" class="m-auto"></div>
+<div id="divChartIncome" class="m-auto"></div>
 
 <!-- TABLE INCOMES GENERAL -->
 <div class="table-responsive table-wrapper">
@@ -347,31 +349,65 @@ Ajustes
 </table>
 </div>
 <div id="pagination-income" class="pagination-table mt-4"></div>
+</div>
+</div>
 
+<!-- INCOMES X ITEMS -->
+<div class="row row-report-details bg-blue-transparent">
+<div class="col-md-6 col-xs-12 d-flex flex-column justify-content-center">
 
-
-
-
+<!-- TABLE INCOMES X ITEMS -->
 <div class="table-responsive table-wrapper">
 <table id="reporte-income-products" class="table table-bordered table-hover table-report">
 <thead>
 <tr>
-<th style="text-align: center;  min-width: 100px;">Producto</th>
-<th style="text-align: center;  min-width: 100px;">Ventas</th>
-<th style=" min-width: 200px;">Costo</th>
-<th style="text-align: center;  min-width: 150px;">Ganancia</th>
+<th class="th-bg-blue" style="text-align: center;  min-width: 100px;">Producto</th>
+<th class="th-bg-blue" style="text-align: center;  min-width: 100px;">Moneda</th>
+<th class="th-bg-blue" style="text-align: center;  min-width: 100px;">Ventas</th>
+<th class="th-bg-blue" style=" min-width: 200px;">Costo</th>
+<th class="th-bg-blue" style="text-align: center;  min-width: 150px;">Ganancia</th>
 </tr>
 </thead>
 <tbody></tbody>
 </table>
 </div>
 <div id="pagination-products" class="pagination-table mt-4"></div>
+</div>
+<div class="col-md-6 col-xs-12 d-flex flex-column justify-content-center">
 
-<!-- GRAPHIC -->
-<div id="productPieChart" class="m-auto"></div>
-
+<!-- GRAPHIC INCOMES X ITEMS -->
+<div id="divChartItem" class="m-auto"></div>
 </div>
 </div>
+
+<!-- INCOMES X CUSTOMER -->
+<div class="row row-report-details bg-orange-transparent">
+<div class="col-md-6 col-xs-12 d-flex flex-column justify-content-center">
+
+<!-- GRAPHIC INCOMES X CUSTOMER -->
+<div id="divChartCustomer" class="m-auto"></div>
+</div>
+<div class="col-md-6 col-xs-12 d-flex flex-column justify-content-center">
+
+<!-- TABLE INCOMES X CUSTOMER -->
+<div class="table-responsive table-wrapper">
+<table id="reporte-income-customers" class="table table-bordered table-hover table-report">
+<thead>
+<tr>
+<th class="th-bg-orange" style="text-align: center;  min-width: 100px;">Cliente</th>
+<th class="th-bg-orange" style="text-align: center;  min-width: 100px;">Moneda</th>
+<th class="th-bg-orange" style="text-align: center;  min-width: 100px;">Ventas</th>
+<th class="th-bg-orange" style=" min-width: 200px;">Costo</th>
+<th class="th-bg-orange" style="text-align: center;  min-width: 150px;">Ganancia</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div id="pagination-customers" class="pagination-table mt-4"></div>
+</div>
+</div>
+
 <div id="modalOverlayViewDetails"></div>
 <div id="detalleModal" class="modal">
 <div class="modal-content">
@@ -434,8 +470,8 @@ Ajustes
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=4.0.7"></script>
+<script src="./js/apipos_setup.min.js?v=4.0.8"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_income.min.js?v=4.0.7"></script>
+<script src="./js/apierp_income.min.js?v=4.0.8"></script>
 </body>
 </html>

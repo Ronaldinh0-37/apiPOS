@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 4.0.7
+version: 4.0.8
 */
 
 /* Fonts */
@@ -81,9 +81,6 @@ padding-right: 30px !important;
 .img-section{
 width: 60%;
 margin: 30px auto;
-}
-.section-title{
-padding-bottom: 0px !important;
 }
 .video-container-blog{
 position: relative;
@@ -392,7 +389,8 @@ overflow: clip;
 # Global Section Titles
 --------------------------------------------------------------*/
 .section-title {
-padding-bottom: 60px;
+padding-top: 30px;
+padding-bottom: 0;
 position: relative;
 }
 
@@ -1264,8 +1262,8 @@ color: var(--accent-color);
 /*--------------------------------------------------------------
 # POS - apiERP
 --------------------------------------------------------------*/
-html{
-overflow: hidden;
+.html-oh{
+overflow: hidden !important;
 }
 
 .hidden {
@@ -3398,6 +3396,37 @@ padding-right: 8px;
 #status{
 font-size: 13px;
 color: #333;
+}
+
+/* Reports */
+.row-report-details{
+padding-top: 30px;
+padding-right: 10px;
+padding-left: 10px;
+}
+.bg-blue-transparent{
+background: #08006020;
+}
+.bg-orange-transparent{
+background: #FF590020;
+}
+#reporte-income-products{
+border: 1px solid var(--blue);
+}
+#reporte-income-customers{
+border: 1px solid var(--orange);
+}
+.th-bg-blue{
+background-color: var(--blue) !important;
+color: var(--white) !important;
+}
+.th-bg-orange{
+background-color: var(--orange) !important;
+color: var(--white) !important;
+}
+.td-bg-none{
+background-color: none !important;
+background: none !important;
 }
 
 /* Responsive Design */
