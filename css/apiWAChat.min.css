@@ -1,0 +1,55 @@
+/*
+Name: apiPOS
+Author: Luisito Programa
+Website 1: luisitoprograma.com
+Website 2: apiERP.dev
+version: 4.0.9
+*/
+
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body, html { height: 100%; font-family: Arial, sans-serif; }
+.container { display: flex; height: 100%; }
+
+/* Panel izquierdo: QR / login */
+.login-panel {
+width: 30%; background: #f6f6f6;
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+position: relative; padding: 1rem;
+}
+.qr-wrapper { position: relative; }
+#qr-img { width: 200px; height: 200px; }
+.overlay {
+position: absolute; top: 0; left: 0;
+width: 100%; height: 100%;
+background: rgba(255,255,255,0.8);
+display: none; align-items: center;
+justify-content: center; cursor: pointer;
+}
+.overlay span { display: flex; flex-direction: column;
+align-items: center; color: #333; }
+.overlay svg { width: 24px; height: 24px; margin-bottom: .5rem; }
+
+/* Panel derecho: chats */
+.chat-panel {
+flex: 1; display: flex; flex-direction: column;
+background: #fff; visibility: hidden;
+}
+.sidebar { width: 25%; background: #fafafa;
+border-right: 1px solid #e5e5e5;
+padding: 1rem;
+}
+.sidebar .contact { padding: .5rem; cursor: pointer; }
+.sidebar .contact:hover { background: #e5e5e5; }
+.chat-area {
+flex: 1; padding: 1rem;
+display: flex; flex-direction: column;
+justify-content: flex-end;
+}
+.message {
+max-width: 60%; margin-bottom: .5rem;
+padding: .5rem 1rem; border-radius: 1rem;
+}
+.message.sent { background: #dcf8c6; align-self: flex-end; }
+.message.received { background: #ececec; align-self: flex-start; }

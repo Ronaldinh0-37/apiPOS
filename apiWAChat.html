@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- METAS BASICOS -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- TITLE -->
+<title>apiWAChat</title>
+
+<!-- DESCRIPCION -->
+<meta name="description" content="API de Whatsapp con Inteligencia Artificial">
+
+<!-- OPEN GRAPH METADATA FOR SOCIAL SHARING -->
+<meta property="og:image" content="./img/apiPOS.png">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="564">
+<meta property="og:image:alt" content="API de Whatsapp con Inteligencia Artificial">
+
+<!-- TWITTER CARD METADATA -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="./img/apiPOS.png">
+<meta name="twitter:image:alt" content="API de Whatsapp con Inteligencia Artificial">
+<meta name="twitter:image:width" content="800">
+<meta name="twitter:image:height" content="564">
+
+<!-- FAVICONS DINAMICOS-->
+<link rel="icon" type="image/png" sizes="36x36" href="./img/icon/android-icon-36x36.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./img/icon/android-icon-48x48.png">
+<link rel="icon" type="image/png" sizes="72x72" href="./img/icon/android-icon-72x72.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./img/icon/android-icon-96x96.png">
+<link rel="icon" type="image/png" sizes="144x144" href="./img/icon/android-icon-144x144.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./img/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./img/icon/android-icon-512x512.png">
+<link rel="apple-touch-icon" sizes="57x57" href="./img/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="./img/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="./img/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="./img/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="./img/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="./img/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="./img/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./img/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/icon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="./img/icon/apple-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./img/icon/favicon-96x96.png">
+<meta name="msapplication-TileImage" content="./img/icon/ms-icon-144x144.png">
+<link rel="manifest" href="./manifest.json">
+<meta name="msapplication-TileColor" content="#080060">
+<meta name="theme-color" content="#080060">
+<meta name="msapplication-config" content="./browserconfig.xml">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/bootstrap-icons.css" rel="stylesheet">
+<link href="./css/apierp.min.css?v=4.0.9" rel="stylesheet">
+<link href="./css/apipos.min.css?v=4.0.9" rel="stylesheet">
+<link href="./css/apipos_login.css?v=4.0.9" rel="stylesheet">
+<link href="./css/apiWAChat.min.css?v=4.0.9" rel="stylesheet">
+<link href="./css/pdf_viewer.min.css" rel="stylesheet">
+<script src="./js/echarts.min.js"></script>
+</head>
+<body>
+
+<!-- MODAL NOTIFICATIONS -->
+<div id="ntf-notification-modal" class="ntf-modal ntf-hidden">
+<div class="ntf-modal-content">
+<span id="ntf-modal-close" class="ntf-close">&times;</span>
+<div id="ntf-modal-body"></div>
+<div id="ntf-modal-actions" class="ntf-modal-actions"></div>
+</div>
+</div>
+
+<!-- LOGIN -->
+<section id="login" style="padding: 0; margin: 0;"></section>
+
+<header id="header"></header>
+<div id="pos" class="container hidden">
+
+<!-- RESOURCES -->
+<div class="ntf-notification-wrapper hidden">
+<a href="javascript:void(0)" id="tabs-notifications" class="ntf-bell">
+<img src="./img/icon-notification.svg" alt="icon-notifications" class="img-tab-home">
+<span id="ntf-notif-count" class="ntf-badge">0</span>
+</a>
+<div id="ntf-notification-dropdown" class="ntf-dropdown ntf-hidden">
+<ul id="ntf-notifications-list"></ul>
+</div>
+</div>
+<button id="fullscreen-btn" class="custom-input-cart-options form-control hidden" type="button">
+<img src="./img/icon-fullscreen.svg" alt="icon-areas" class="img-tab-home">
+</button>
+<select id="setCredentialsApiWAChat" class="hidden"></select>
+<select id="setBranchId" class="hidden"></select>
+<select id="setWarehouseId" class="hidden"></select>
+<select id="setFloorId" class="hidden"></select>
+<span id="setPlanName" class="plan-title element-header-response hidden"></span>
+<span id="setCashierName" class="user-name element-header-response hidden"></span>
+
+<!-- Login/QR -->
+<section id="loginPanel" class="login-panel">
+<h2>Inicia sesión</h2>
+<div class="qr-wrapper">
+<img id="qr-img" src="" alt="QR Code">
+<div id="qr-overlay" class="overlay">
+<span>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6a6 6 0 01-6 6 6 6 0 01-5.65-4H4.07A8 8 0 0012 20a8 8 0 000-16z"/>
+</svg>
+<small>Actualizar QR</small>
+</span>
+</div>
+</div>
+</section>
+
+<!-- Chats -->
+<section id="chatPanel" class="chat-panel">
+<div class="sidebar">
+<div class="contact"><strong>Juan Pérez</strong><br><small>Hola, ¿cómo estás?</small></div>
+<div class="contact"><strong>María Gómez</strong><br><small>¡Listo para la reunión!</small></div>
+</div>
+<div class="chat-area" id="chat-area">
+<div class="message received">Hola, ¿en qué puedo ayudarte?</div>
+<div class="message sent">Necesito información sobre mi pedido.</div>
+<div class="message received">Claro, déjame verificar.</div>
+</div>
+</section>
+</div>
+
+<!-- SCRIPTS -->
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/setup-pdf-lib.min.js"></script>
+<script src="./js/pdf-lib.min.js"></script>
+<script src="./js/fontkit.umd.min.js"></script>
+<script src="./js/qrcode.min.js"></script>
+<script src="./js/app_pdf.min.js"></script>
+<script src="./js/pos.js"></script>
+<script src="./js/apipos_setup.min.js?v=4.0.9"></script>
+<script src="./js/apiWAChat.min.js?v=4.0.9"></script>
+</body>
+</html>

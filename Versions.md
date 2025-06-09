@@ -37,3 +37,4 @@
 - **CSS**: Custom Alerts: Success, Warning, Error.
 - **Reportes**: Reporte de Ingresos y Cierre Full de turno con ganancias por turno, productos vendidos, graficos estadísticos.
 - **apiERP**: API Email: Envío de Docuemntos, API Integrado con Gmail Personal y Correos Corporativos.
+- **apiWAChat**: Un API de Whatsapp con Inteligencia Artificial.
