@@ -3,7 +3,7 @@ Name: apiPOS
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 4.0.9
+version: 4.1.0
 */
 
 /* Fonts */
@@ -2269,56 +2269,7 @@ cursor: pointer;
 background: #080060;
 }
 
-#countryCode option{
-background-repeat: no-repeat;
-background-position: left center;
-padding-left: 30px;
-}
-.custom-select-pais-flag{
-width: 30%;
-height: 30px;
-font-size: 14px;
-color: #888;
-}
-.select-button-pais-flag {
-background: white;
-padding: 5px;
-width: 100%;
-cursor: pointer;
-text-align: right;
-}
-.dropdown-list-pais-flag {
-position: absolute;
-width: 30%;
-background: white;
-border: 1px solid green;
-display: none;
-max-height: 150px;
-overflow-y: auto;
-z-index: 10;
-scrollbar-width: thin;
-scrollbar-color: #888 transparent; 
-}
-.dropdown-item-pais-flag {
-display: flex;
-align-items: center;
-padding: 5px;
-cursor: pointer;
-}
-.dropdown-item-pais-flag:hover {
-background: #f0f0f0;
-}
-.dropdown-item-pais-flag img {
-width: 20px;
-height: 15px;
-margin-right: 10px;
-}
-#phoneNumber{
-height: 30px !important; width: 70%; border: 1px solid #fff; border-bottom: 1px solid green; font-size: 14px;
-}
-#sendWhatsApp{
-background: green; color: white; flex-direction: row; height: 30px;
-}
+
 
 .ml-auto{
 margin-left: auto;
@@ -3429,6 +3380,173 @@ background-color: none !important;
 background: none !important;
 }
 
+/* apiWAChat Send */
+.whatsapp-form {
+max-width: 600px;
+margin: auto;
+background: #fff;
+border: 1px solid #ddd;
+padding: 1.5rem;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+.whatsapp-form .field {
+margin-bottom: 1rem;
+}
+.whatsapp-form label {
+display: block;
+margin-bottom: .4rem;
+font-weight: 600;
+color: #888;
+font-size: .95rem;
+}
+
+/* Emisor */
+#setCredentialsApiWAChat {
+width: 100%;
+padding: .5rem;
+font-size: .95rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+background: #fff;
+color: #080060;
+}
+
+/* Select país */
+.custom-select-pais-flag {
+position: relative;
+flex: 0 0 30%;
+}
+.select-button-pais-flag {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: #fff;
+padding: .4rem .6rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+cursor: pointer;
+color: #080060;
+}
+.dropdown-list-pais-flag {
+position: absolute;
+top: 100%;
+left: 0;
+width: 100%;
+background: #fff;
+border: 1px solid #080060;
+border-radius: 4px;
+display: none;
+max-height: 140px;
+overflow-y: auto;
+z-index: 10;
+}
+.dropdown-item-pais-flag {
+padding: .4rem .6rem;
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+.dropdown-item-pais-flag:hover {
+background: #f0f0f0;
+}
+.dropdown-item-pais-flag img {
+width: 20px; height: 14px; margin-right: .5rem;
+}
+
+/* Input teléfono */
+#phoneNumber {
+flex: 0 0 40%;
+padding: .4rem .6rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: .95rem;
+}
+
+/* Input email */
+#emailDestination {
+flex: 1;
+padding: .4rem .6rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: .95rem;
+color: #080060;
+}
+
+/* Textarea */
+#waMessage {
+width: 100%;
+min-height: 100px;
+padding: .6rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: .95rem;
+resize: vertical;
+}
+
+/* Área Drag&Drop */
+#waDropArea {
+border: 2px dashed #080060;
+border-radius: 6px;
+padding: 1rem;
+text-align: center;
+color: #888;
+cursor: pointer;
+transition: background .2s;
+}
+#waDropArea.dragover {
+background: rgba(8,0,96, .05);
+}
+#waDropArea input {
+display: none;
+}
+
+/* Preview */
+.preview-list {
+display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem;
+}
+.preview-item {
+position: relative;
+border: 1px solid #ccc;
+border-radius: 4px;
+width: 80px; height: 80px;
+font-size: .75rem;
+text-align: center;
+overflow: hidden;
+background: #fafafa;
+}
+.preview-item img,
+.preview-item video {
+max-width: 100%; max-height: 60px; display: block; margin: auto;
+}
+.remove-btn {
+position: absolute; top: 2px; right: 2px;
+background: #FF5900; color: #fff; border: none;
+border-radius: 50%; width: 18px; height: 18px;
+font-size: 12px; line-height: 18px; text-align: center;
+cursor: pointer;
+}
+
+/* Botones en fila */
+.button-row {
+display: flex; justify-content: flex-end;
+gap: .5rem; align-items: center;
+}
+.button-row button {
+display: flex; align-items: center; gap: .3rem;
+border: none; padding: .6rem 1rem; border-radius: 4px;
+font-size: .95rem; cursor: pointer; color: #fff;
+}
+.button-row button#sendWhatsApp {
+background: #00bb2d;
+}
+.button-row button#sendEmail {
+background: #080060;
+}
+.button-row button.download {
+background: #888;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
 
@@ -3466,15 +3584,6 @@ display: block;
 }
 .div_margen{
 display: none;
-}
-.dropdown-list-pais-flag {
-width: 100%;
-}
-.custom-select-pais-flag{
-width: 40%;
-}
-#phoneNumber{
-width: 60%;
 }
 
 /* MODAL OPTIONS */

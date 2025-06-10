@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=4.0.9" rel="stylesheet">
-<link href="css/apipos.min.css?v=4.0.9" rel="stylesheet">
-<link href="css/apipos_header.css?v=4.0.9" rel="stylesheet">
-<link href="css/apipos_login.css?v=4.0.9" rel="stylesheet">
+<link href="css/apierp.min.css?v=4.1.0" rel="stylesheet">
+<link href="css/apipos.min.css?v=4.1.0" rel="stylesheet">
+<link href="css/apipos_header.css?v=4.1.0" rel="stylesheet">
+<link href="css/apipos_login.css?v=4.1.0" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -211,6 +211,11 @@
 <div class="modal-content" style="border: none;">
 <div class="d-flex mb-3">
 
+<!-- DESCARGAR -->
+<button class="btnModal" onclick="descargarPdf()">
+<img src="./img/icon-download.svg" alt="icon-download" class="img-modal-pay">
+</button>
+
 <!-- INTEGRACION CON APIERP - IMPRESION DIRECTA ONLINE -->
 <div class="btn-group">
 <button type="button" class="btn" id="defaultPrinter">No Disponible</button>
@@ -275,44 +280,69 @@
 </div>
 
 <!-- DOWNLOAD AND SEND -->
-<div class="container-buttons" style="justify-content: center; margin: 0 auto;">
-<div class="div-width-10"></div>
-<button class="btnModal btnModalFooter" onclick="descargarPdf()" style="color: #888; font-size: 25px; font-weight: bolder; margin-right: 10px;">
-<img src="./img/icon-download.svg" alt="icon-download" class="img-modal-pay">
-</button>
-<div class="input-group" style="margin-right: 10px;">
+<form class="whatsapp-form" id="waForm">
+
+<!-- WHATSAPP EMISOR -->
+<div class="field">
+<label for="setCredentialsApiWAChat">Enviar a Whatsapp:</label>
+<select id="setCredentialsApiWAChat"></select>
+</div>
+
+<!-- WHATSAPP RECEPTOR -->
+<div class="field d-flex">
 <div class="custom-select-pais-flag">
 <div class="select-button-pais-flag" id="selectedCountry">
-<img src="./img/pe.png" class="icon-width-20" alt="PE"> +51 
+<img src="./img/pe.png" alt="PE"> +51
 </div>
 <div class="dropdown-list-pais-flag" id="countryList">
-<div class="dropdown-item-pais-flag" data-code="51"><img src="./img/pe.png" class="icon-width-20" alt="PE"> +51 </div>
-<div class="dropdown-item-pais-flag" data-code="52"><img src="./img/mx.png" class="icon-width-20" alt="MX"> +52 </div>
-<div class="dropdown-item-pais-flag" data-code="54"><img src="./img/ar.png" class="icon-width-20" alt="AR"> +54 </div>
-<div class="dropdown-item-pais-flag" data-code="56"><img src="./img/cl.png" class="icon-width-20" alt="CL"> +56 </div>
-<div class="dropdown-item-pais-flag" data-code="57"><img src="./img/co.png" class="icon-width-20" alt="CO"> +57 </div>
-<div class="dropdown-item-pais-flag" data-code="598"><img src="./img/uy.png" class="icon-width-20" alt="UY"> +598 </div>
-<div class="dropdown-item-pais-flag" data-code="1"><img src="./img/us.png" class="icon-width-20" alt="US"> +1 </div>
+<div class="dropdown-item-pais-flag" data-code="51"><img src="./img/pe.png" alt="PE"> +51</div>
+<div class="dropdown-item-pais-flag" data-code="52"><img src="./img/mx.png" alt="MX"> +52</div>
+<div class="dropdown-item-pais-flag" data-code="54"><img src="./img/ar.png" alt="AR"> +54</div>
+<div class="dropdown-item-pais-flag" data-code="56"><img src="./img/cl.png" alt="CL"> +56</div>
+<div class="dropdown-item-pais-flag" data-code="57"><img src="./img/co.png" alt="CO"> +57</div>
+<div class="dropdown-item-pais-flag" data-code="598"><img src="./img/uy.png" alt="UY"> +598</div>
+<div class="dropdown-item-pais-flag" data-code="1"><img src="./img/us.png" alt="US"> +1</div>
 </div>
 </div>
-<input type="tel" id="phoneNumber" placeholder="Ingrese el número" maxlength="15" class="custom-input-cart form-control">
+<input type="tel" id="phoneNumber" placeholder="Número de WhatsApp" maxlength="15">
 </div>
-<button id="sendWhatsApp" class="btnModal btnModalFooter">
-<img src="./img/icon-whatsapp.svg" alt="icon-whatsapp" class="icon-width-20">
+
+<!-- SEND EMAIL -->
+<div class="field">
+<label for="setCredentialsApiWAChat">Enviar a Email:</label>
+</div>
+
+<!-- EMAIL RECEPTOR -->
+<div class="field d-flex">
+<input type="email" id="emailDestination" placeholder="Correo electrónico">
+</div>
+
+<!-- MESSAGE -->
+<div class="field">
+<label for="waMessage">Mensaje:</label>
+<textarea id="waMessage" placeholder="Escribe tu mensaje aquí..."></textarea>
+</div>
+
+<!-- ATTACH FILES -->
+<div class="field">
+<label>Adjuntar archivos:</label>
+<div id="waDropArea">
+<p>Selecciona o arrastra tus archivos aquí</p>
+<input type="file" id="waFiles" multiple accept="image/*,video/*,audio/*,application/*">
+</div>
+<div id="previewList" class="preview-list"></div>
+</div>
+
+<!-- BUTTONS -->
+<div class="field button-row">
+<button type="button" id="sendEmail">
+<i class="bi bi-envelope"></i> Enviar Email
 </button>
-<div class="div-width-10"></div>
-</div>
-
-
-
-<div class="container-buttons" style="justify-content: center; margin: 0 auto;">
-<div class="div-width-10"></div>
-<input type="email" id="emailDestination" placeholder="Ingrese el correo" class="custom-input-cart form-control">
-<button id="sendEmail" class="btnModal btnModalFooter">
-<i class="bi bi-envelope"></i>
+<button type="button" id="sendWhatsApp">
+<img src="./img/icon-whatsapp.svg" alt="" style="width:20px;"> Enviar WhatsApp
 </button>
-<div class="div-width-10"></div>
 </div>
+</form>
 </div>
 
 <!-- ARCHIVOS CONTABLES -->
@@ -734,8 +764,8 @@
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=4.0.9"></script>
-<script src="js/apierp_item.min.js?v=4.0.9"></script>
-<script src="js/apipos.min.js?v=4.0.9"></script>
+<script src="js/apipos_setup.min.js?v=4.1.0"></script>
+<script src="js/apierp_item.min.js?v=4.1.0"></script>
+<script src="js/apipos.min.js?v=4.1.0"></script>
 </body>
 </html>
