@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=4.1.2" rel="stylesheet">
-<link href="css/apipos.min.css?v=4.1.2" rel="stylesheet">
-<link href="css/apipos_header.css?v=4.1.2" rel="stylesheet">
-<link href="css/apipos_login.css?v=4.1.2" rel="stylesheet">
+<link href="css/apierp.min.css?v=4.1.3" rel="stylesheet">
+<link href="css/apipos.min.css?v=4.1.3" rel="stylesheet">
+<link href="css/apipos_header.css?v=4.1.3" rel="stylesheet">
+<link href="css/apipos_login.css?v=4.1.3" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -282,19 +282,16 @@
 <!-- DOWNLOAD AND SEND -->
 <form class="whatsapp-form" id="waForm">
 
-<!-- WHATSAPP EMISOR -->
-<div class="field">
-<label for="setCredentialsApiWAChat">Enviar a Whatsapp:</label>
-<select id="setCredentialsApiWAChat"></select>
-</div>
+<!-- TEMPLATE WHATSAPP -->
+<template id="wa-recipient-template">
+<div class="whatsapp-recipient d-flex align-items-center" style="gap:0.5rem; margin-bottom:0.5rem;">
 
-<!-- WHATSAPP RECEPTOR -->
-<div class="field d-flex">
-<div class="custom-select-pais-flag">
-<div class="select-button-pais-flag" id="selectedCountry">
+<!-- COUNTRY CODE -->
+<div class="custom-select-pais-flag recipient-select" style="flex:0 0 30%; position:relative;">
+<div class="select-button-pais-flag" data-selected-code="51" style="display:flex;justify-content:space-between;align-items:center; background:#fff; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; cursor:pointer; color:#080060;">
 <img src="./img/pe.png" alt="PE"> +51
 </div>
-<div class="dropdown-list-pais-flag" id="countryList">
+<div class="dropdown-list-pais-flag" style="position:absolute; top:100%; left:0; width:100%; background:#fff; border:1px solid #080060; border-radius:4px; display:none; max-height:140px; overflow-y:auto; z-index:10;">
 <div class="dropdown-item-pais-flag" data-code="51"><img src="./img/pe.png" alt="PE"> +51</div>
 <div class="dropdown-item-pais-flag" data-code="52"><img src="./img/mx.png" alt="MX"> +52</div>
 <div class="dropdown-item-pais-flag" data-code="54"><img src="./img/ar.png" alt="AR"> +54</div>
@@ -304,17 +301,51 @@
 <div class="dropdown-item-pais-flag" data-code="1"><img src="./img/us.png" alt="US"> +1</div>
 </div>
 </div>
-<input type="tel" id="phoneNumber" placeholder="Número de WhatsApp" maxlength="15">
+
+<!-- INPUT WHATSAPP -->
+<input type="tel" class="phoneNumber" placeholder="Número de WhatsApp" maxlength="15" style="flex:0 0 60%; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; font-size:.95rem; color:#080060;">
+
+<!-- BUTTON DELETE -->
+<button type="button" class="remove-recipient-btn" style="background: none; border: none; display:none;">
+<img src="./img/icon-trash.svg" alt="icon-trash" class="img-delete-card">
+</button>
+</div>
+</template>
+
+<!-- TEMPLATE EMAIL -->
+<template id="email-recipient-template">
+<div class="email-recipient d-flex align-items-center" style="gap:0.5rem; margin-bottom:0.5rem;">
+<input type="email" class="emailDestination" placeholder="Correo electrónico" style="flex:1; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; font-size:.95rem; color:#080060;">
+<button type="button" class="remove-recipient-btn" style="background: none; border: none; display:none;">
+<img src="./img/icon-trash.svg" alt="icon-trash" class="img-delete-card">
+</button>
+</div>
+</template>
+
+<!-- WHATSAPP EMISOR -->
+<div class="field">
+<label for="setCredentialsApiWAChat">Enviar a Whatsapp:</label>
+<select id="setCredentialsApiWAChat"></select>
 </div>
 
-<!-- SEND EMAIL -->
+<!-- WHATSAPP RECEPTOR -->
 <div class="field">
-<label for="setCredentialsApiWAChat">Enviar a Email:</label>
+<label>Enviar a Whatsapp:
+<button type="button" id="addWhatsAppRecipient" style="background:#00bb2d;color:#fff;border:none;width: 20px;height: 20px;border-radius: 50%;cursor:pointer;font-size: 12px;">
++
+</button>
+</label>
+<div id="whatsappRecipients"></div>
 </div>
 
 <!-- EMAIL RECEPTOR -->
-<div class="field d-flex">
-<input type="email" id="emailDestination" placeholder="Correo electrónico">
+<div class="field">
+<label>Enviar a Email:
+<button type="button" id="addEmailRecipient" style="background:#080060;color:#fff;border:none;width: 20px;height: 20px;border-radius: 50%;cursor:pointer;font-size: 12px;">
++
+</button>
+</label>
+<div id="emailRecipients"></div>
 </div>
 
 <!-- MESSAGE -->
@@ -764,8 +795,8 @@
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=4.1.2"></script>
-<script src="js/apierp_item.min.js?v=4.1.2"></script>
-<script src="js/apipos.min.js?v=4.1.2"></script>
+<script src="js/apipos_setup.min.js?v=4.1.3"></script>
+<script src="js/apierp_item.min.js?v=4.1.3"></script>
+<script src="js/apipos.min.js?v=4.1.3"></script>
 </body>
 </html>
