@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=4.1.5" rel="stylesheet">
-<link href="css/apipos.min.css?v=4.1.5" rel="stylesheet">
-<link href="css/apipos_header.css?v=4.1.5" rel="stylesheet">
-<link href="css/apipos_login.css?v=4.1.5" rel="stylesheet">
+<link href="css/apierp.min.css?v=4.1.6" rel="stylesheet">
+<link href="css/apipos.min.css?v=4.1.6" rel="stylesheet">
+<link href="css/apipos_header.css?v=4.1.6" rel="stylesheet">
+<link href="css/apipos_login.css?v=4.1.6" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -112,7 +112,7 @@
 <section id="pos" style="padding: 0; margin: 0;" class="hidden">
 <div class="pos-container">
 
-<!-- MODAL ITEM -->
+<!-- MODAL DETAIL AND NOTIFICATION -->
 <div id="itemModal" class="image-modal">
 <div class="modal-overlay-carousel"></div>
 <div class="modal-content-carousel">
@@ -676,15 +676,6 @@
 </div>
 </div>
 
-<!-- MODAL NOTIFICATIONS -->
-<div id="ntf-notification-modal" class="ntf-modal ntf-hidden">
-<div class="ntf-modal-content">
-<span id="ntf-modal-close" class="ntf-close">&times;</span>
-<div id="ntf-modal-body"></div>
-<div id="ntf-modal-actions" class="ntf-modal-actions"></div>
-</div>
-</div>
-
 <!-- WINDOW ID -->
 <input id="windowId" type="hidden" value="0">
 
@@ -712,7 +703,7 @@
 <img src="./img/icon-notification.svg" alt="icon-notifications" class="img-tab-home">
 <span id="ntf-notif-count" class="ntf-badge">0</span>
 </a>
-<div id="ntf-notification-dropdown" class="ntf-dropdown ntf-hidden">
+<div id="ntf-notification-dropdown" class="ntf-dropdown hidden">
 <ul id="ntf-notifications-list"></ul>
 </div>
 </div>
@@ -795,8 +786,8 @@
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=4.1.5"></script>
-<script src="js/apierp_item.min.js?v=4.1.5"></script>
-<script src="js/apipos.min.js?v=4.1.5"></script>
+<script src="js/apipos_setup.min.js?v=4.1.6"></script>
+<script src="js/apierp_item.min.js?v=4.1.6"></script>
+<script src="js/apipos.min.js?v=4.1.6"></script>
 </body>
 </html>
