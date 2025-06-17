@@ -243,6 +243,7 @@ left: 50%;
 transform: translateX(-50%);
 z-index: 9999999;
 pointer-events: none;
+text-align: center;
 }
 .ntf-flotante-container-top{
 top: 10%;
