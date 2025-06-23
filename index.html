@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=4.2.0" rel="stylesheet">
-<link href="css/apipos.min.css?v=4.2.0" rel="stylesheet">
-<link href="css/apipos_header.css?v=4.2.0" rel="stylesheet">
-<link href="css/apipos_login.css?v=4.2.0" rel="stylesheet">
+<link href="css/apierp.min.css?v=4.2.1" rel="stylesheet">
+<link href="css/apipos.min.css?v=4.2.1" rel="stylesheet">
+<link href="css/apipos_header.css?v=4.2.1" rel="stylesheet">
+<link href="css/apipos_login.css?v=4.2.1" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -660,13 +660,13 @@
 
 <!-- IMPORT CSV -->
 <div id="importNewItems" class="productType1">
-<label class="newItem-label mb-2">¿Prefieres Importarlos desde Excel?</label>
+<label class="newItem-label">¿Prefieres Importarlos desde Excel?</label>
+<p class="p-dowload-template-excel">Descargar Plantilla <a href="./excel/Plantilla-Items.xlsx" download="Plantilla-Items.xlsx">Aquí</a></p>
 <div class="drop-zone" id="drop-zone">
 <span class="drop-zone__prompt">Arrastra tu Excel aquí o haz clic para seleccionar</span>
 <input type="file" id="file-input" accept=".xlsx,.xls" class="drop-zone__input" />
 <button type="button" id="remove-file" class="drop-zone__remove" hidden>✕</button>
 </div>
-
 <progress id="progress" value="0" max="100" style="display:none"></progress>
 <div id="status"></div>
 <button type="button" id="upload-btn" disabled>Importar</button>
@@ -786,8 +786,8 @@
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=4.2.0"></script>
-<script src="js/apierp_item.min.js?v=4.2.0"></script>
-<script src="js/apipos.min.js?v=4.2.0"></script>
+<script src="js/apipos_setup.min.js?v=4.2.1"></script>
+<script src="js/apierp_item.min.js?v=4.2.1"></script>
+<script src="js/apipos.min.js?v=4.2.1"></script>
 </body>
 </html>
