@@ -7,21 +7,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- TITLE -->
-<title>Settings</title>
+<title>Registro de Compras Electrónico</title>
 
 <!-- DESCRIPCION -->
-<meta name="description" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+<meta name="description" content="Registro de Compras Electrónico.">
 
 <!-- OPEN GRAPH METADATA FOR SOCIAL SHARING -->
 <meta property="og:image" content="./img/apiPOS.png">
 <meta property="og:image:width" content="800">
 <meta property="og:image:height" content="564">
-<meta property="og:image:alt" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+<meta property="og:image:alt" content="Registro de Compras Electrónico.">
 
 <!-- TWITTER CARD METADATA -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="./img/apiPOS.png">
-<meta name="twitter:image:alt" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
+<meta name="twitter:image:alt" content="Registro de Compras Electrónico.">
 <meta name="twitter:image:width" content="800">
 <meta name="twitter:image:height" content="564">
 
@@ -58,6 +58,7 @@
 <link href="./css/apierp_header.css?v=4.2.9" rel="stylesheet">
 <link href="./css/apipos_login.css?v=4.2.9" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
+<script src="./js/echarts.min.js"></script>
 </head>
 <body>
 
@@ -313,11 +314,81 @@ Ajustes
 <main>
 <section id="pos" style="padding: 0; margin: 0;" class="hidden">
 
-<!-- USER PERMISSIONS -->
-<div id="panel_users"></div>
+<!-- RCE -->
+<div class="container section-title" style="position: relative;">
+<h3 class="text-center">
+<b>Registro de Compras Electrónico</b>
+</h3>
+</div>
 
-<!-- OPERATIONS -->
-<div id="panel_operations"></div>
+<!-- RCE GENERAL -->
+<div class="row">
+<div class="col-md-12">
+
+<!-- GRAPHIC INCOMES GENERAL -->
+<div id="divChartIncome" class="m-auto"></div>
+
+<!-- BUTTON EXPORT PLE INCOMES -->
+<button id="btnExport">Exportar</button>
+
+<!-- TABLE RCE GENERAL -->
+<div class="table-responsive table-wrapper">
+<table id="reporte-income" class="table table-bordered table-hover table-report">
+<thead></thead>
+<tbody></tbody>
+</table>
+</div>
+<div id="pagination-income" class="pagination-table mt-4"></div>
+</div>
+</div>
+
+<div id="modalOverlayViewDetails"></div>
+<div id="detalleModal" class="modal">
+<div class="modal-content">
+<span id="closeModalViewDetails" class="close">&times;</span>
+<div id="dynamicContent">
+<table>
+<thead>
+<tr>
+<th>Producto</th>
+<th>Cantidad</th>
+<th>Valor Unitario</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody id="detalleTablaBody"></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Modal Filtrar -->
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="filterModalLabel">Filtrar por fecha</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="filter-start" class="form-label">Fecha desde:</label>
+          <input type="date" class="form-control" id="filter-start">
+        </div>
+        <div class="mb-3">
+          <label for="filter-end" class="form-label">Fecha hasta:</label>
+          <input type="date" class="form-control" id="filter-end">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="apply-filter">Aplicar filtro</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </section>
 </main>
 
@@ -335,6 +406,6 @@ Ajustes
 <script src="./js/pos.js"></script>
 <script src="./js/apipos_setup.min.js?v=4.2.9"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apipos_settings.min.js?v=4.2.9"></script>
+<script src="./js/apierp_rce.min.js?v=4.2.9"></script>
 </body>
 </html>
