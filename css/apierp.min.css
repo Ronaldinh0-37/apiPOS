@@ -3,7 +3,7 @@ Name: apiERP
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 4.3.4
+version: 4.3.5
 */
 
 /* SETUP */
@@ -457,6 +457,20 @@ color: var(--blue);
 .span-table-setTipoComprobante-factura{
 border: 1.5px solid var(--orange);
 color: var(--orange);
+}
+
+/* SNIPPER LOADING */
+#infoLoadingModal{
+color: #333; position: absolute; top: 41%; font-size: 15px !important;
+}
+#imgLoadingModal{
+position: absolute; top: 33%; width: 37px; height: auto;
+}
+#svgLoadingModal{
+animation: spinner-border .75s linear infinite; transform-origin: center; transform-box: fill-box;
+}
+@keyframes spinner-border{
+to { transform: rotate(360deg); }
 }
 
 /* RESPONSIVE */
