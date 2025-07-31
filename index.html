@@ -442,6 +442,170 @@
 </div>
 </div>
 
+<!-- MODAL BIRTHDAY -->
+<div id="modalOverlayBirthday" class="modalOverlay"></div>
+<div id="detalleModalBirthday" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="container-buttons">
+<button id="closeModalBirthday" type="button" class="close closeModal margin-left-auto">
+<img src="./img/icon-close.svg" alt="icon-close" class="icon-close">
+</button>
+</div>
+<div class="container-birthday" id="birthdayContent">
+    <h1>Clientes que cumplen años hoy</h1>
+    <div id="birthdayList" class="birthday-list"></div>
+    
+    <div id="birthdayMessageContainer" style="margin-top:20px; display:none;">
+        <h3>Mensaje de Felicitación:</h3>
+        <textarea id="birthdayMessageTemplate" rows="4" style="width:100%; padding:10px;">
+¡Feliz cumpleaños {nombre}!
+
+En tu día especial, queremos desearte mucha felicidad y éxito. 
+Gracias por ser nuestro cliente.
+
+Atentamente,
+Tu equipo de AUTOMOTRIZ
+        </textarea>
+    </div>
+    
+    <button id="sendBirthdayBtn" class="btn btn-primary" style="display:none; margin-top:15px;">
+        <i class="bi bi-envelope"></i> Enviar felicitaciones
+    </button>
+</div>
+</div>
+</div>
+<script>
+
+    
+
+//APERTURA MODAL (BIRTHDAY)
+function showModalBirthday(){
+const modal = document.getElementById('detalleModalBirthday');
+const overlay = document.getElementById('modalOverlayBirthday');
+modal.classList.add('active');
+overlay.style.display = 'block';
+}
+
+//CIERRE MODAL (BIRTHDAY)
+function hideModalBirthday(){
+const modal = document.getElementById('detalleModalBirthday');
+const overlay = document.getElementById('modalOverlayBirthday');
+modal.classList.remove('active');
+overlay.style.display = 'none';
+}
+document.getElementById('closeModalBirthday').addEventListener('click', hideModalBirthday);
+document.getElementById('modalOverlayBirthday').addEventListener('click', (e) => {
+if (e.target == e.currentTarget) {
+e.stopPropagation();
+}
+});
+
+
+//PROGRAMAR AQUI
+
+const myAuhtToken = 'HV5Teaj66n6sOdpy_z_x0uA9qQCJqV3PIm152yiWp5s';
+const myPort = '3021';
+
+function sendMSG(phoneNumber){
+fetch(`https://apiwachat-1.apierp.dev/wa/${myPort}/send`, {
+method: 'POST',
+headers: { 
+'x-auth-token': myAuhtToken, 
+'Content-Type': 'application/json' 
+},
+body: JSON.stringify({
+to: `${phoneNumber}@s.whatsapp.net`,
+payload: {
+type: 'text',
+content: 'Hola, este es un mensaje de prueba'
+}
+})
+}).then(res => res.json()).then(console.log).catch(console.error);
+}
+
+window.addEventListener('load', () => {
+
+
+function getTodaysBirthdays() {
+    const today = new Date();
+    const currentDay = today.getDate();
+    const currentMonth = today.getMonth() + 1; // Enero es 0
+    
+    // Datos de ejemplo (deberías reemplazar esto con una llamada a tu API)
+    const customers = myCompany.setCustomers;
+    
+    return customers.filter(customer => {
+        if (!customer.setCustomerBirthdate) return false;
+        
+        const [year, month, day] = customer.setCustomerBirthdate.split('-');
+        return (
+            parseInt(day) === currentDay && 
+            parseInt(month) === currentMonth
+        );
+    });
+}
+
+// Función para mostrar la lista de cumpleañeros
+function showBirthdayList() {
+    const clients = getTodaysBirthdays();
+    const listEl = document.getElementById('birthdayList');
+    const messageContainer = document.getElementById('birthdayMessageContainer');
+    const btnEl = document.getElementById('sendBirthdayBtn');
+    
+    if (clients.length > 0) {
+        listEl.innerHTML = clients.map(client => `
+            <div class="birthday-client">
+                <strong>${client.setCustomerName}</strong><br>
+                Teléfono: ${client.setCustomerPhone}<br>
+                Email: ${client.setCustomerEmail}
+            </div>
+        `).join('');
+        
+        messageContainer.style.display = 'block';
+        btnEl.style.display = 'block';
+        
+        // Personalizar mensaje para el primer cliente
+        const messageEl = document.getElementById('birthdayMessageTemplate');
+        messageEl.value = messageEl.value.replace('{nombre}', clients[0].setCustomerName);
+    } else {
+        listEl.innerHTML = "<p>No hay clientes que cumplan años hoy</p>";
+        messageContainer.style.display = 'none';
+        btnEl.style.display = 'none';
+    }
+}
+
+// Modificar la función showModalBirthday original
+const originalShowModal = showModalBirthday;
+showModalBirthday = function() {
+    originalShowModal();
+    showBirthdayList();
+};
+
+// Configurar el botón de enviar
+document.getElementById('sendBirthdayBtn').addEventListener('click', function() {
+    const clients = getTodaysBirthdays();
+    const messageTemplate = document.getElementById('birthdayMessageTemplate').value;
+    
+    clients.forEach(client => {
+        const personalizedMessage = messageTemplate
+            .replace(/{nombre}/g, client.setCustomerName)
+            .replace(/{telefono}/g, client.setCustomerPhone);
+        
+        
+        console.log(`Enviando a ${client.setCustomerName}:`);
+        sendMSG(client.setCustomerPhone);
+        
+        console.log(personalizedMessage);
+        // Aquí iría el código para enviar por WhatsApp/Email
+        
+    });
+    
+    alert('Mensajes de felicitación enviados');
+    hideModalBirthday();
+});
+});
+</script>
+
 <!-- MODAL SHIFT -->
 <div id="modalOverlayShift" class="modalOverlay"></div>
 <div id="detalleModalShift" class="modal">
@@ -786,9 +950,16 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
+<<<<<<< Updated upstream
 <script src="js/pos.js"></script>
 <script src="js/apipos_setup.min.js?v=4.4.0"></script>
 <script src="js/apierp_item.min.js?v=4.4.0"></script>
 <script src="js/apipos.min.js?v=4.4.0"></script>
+=======
+<!--<script src="js/pos.js"></script>  -->
+<script src="js/apipos_setup.min.js?v=4.3.9"></script>
+<script src="js/apierp_item.min.js?v=4.3.9"></script>
+<script src="js/apipos.min.js?v=4.3.9"></script>
+>>>>>>> Stashed changes
 </body>
 </html>
