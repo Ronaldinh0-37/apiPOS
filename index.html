@@ -52,10 +52,10 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-icons.css" rel="stylesheet">
-<link href="css/apierp.min.css?v=4.4.1" rel="stylesheet">
-<link href="css/apipos.min.css?v=4.4.1" rel="stylesheet">
-<link href="css/apipos_header.css?v=4.4.1" rel="stylesheet">
-<link href="css/apipos_login.css?v=4.4.1" rel="stylesheet">
+<link href="css/apierp.min.css?v=4.4.2" rel="stylesheet">
+<link href="css/apipos.min.css?v=4.4.2" rel="stylesheet">
+<link href="css/apipos_header.css?v=4.4.2" rel="stylesheet">
+<link href="css/apipos_login.css?v=4.4.2" rel="stylesheet">
 <link href="css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -740,6 +740,15 @@
 <i class="bi bi-plus" style="font-size: 18px;"></i>
 </button>
 
+<!-- SCAN ITEM -->
+<button id="btnScannerItem" class="custom-input-cart-options form-control custom-input-btn-background" type="button">
+<i class="bi bi-camera" style="font-size: 18px;"></i>
+</button>
+<div id="scanner-container">
+<button id="scanner-close">&times;</button>
+<video id="video-preview"></video>
+</div>
+
 <!-- FULLSCREEN -->
 <button id="fullscreen-btn" class="custom-input-cart-options form-control" type="button">
 <img src="./img/icon-fullscreen.svg" alt="icon-areas" class="img-tab-home">
@@ -787,8 +796,9 @@
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
 <script src="js/pos.js"></script>
-<script src="js/apipos_setup.min.js?v=4.4.1"></script>
-<script src="js/apierp_item.min.js?v=4.4.1"></script>
-<script src="js/apipos.min.js?v=4.4.1"></script>
+<script src="js/zxing.min.js"></script>
+<script src="js/apipos_setup.min.js?v=4.4.2"></script>
+<script src="js/apierp_item.min.js?v=4.4.2"></script>
+<script src="js/apipos.min.js?v=4.4.2"></script>
 </body>
 </html>
