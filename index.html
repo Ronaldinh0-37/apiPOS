@@ -442,6 +442,457 @@
 </div>
 </div>
 
+<!-- MODAL BIRTHDAY -->
+<div id="modalOverlayBirthday" class="modalOverlay"></div>
+<div id="detalleModalBirthday" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="container-buttons">
+<button id="closeModalBirthday" type="button" class="close closeModal margin-left-auto">
+<img src="./img/icon-close.svg" alt="icon-close" class="icon-close">
+</button>
+</div>
+<div class="container-birthday" id="birthdayContent">
+    <h1>Clientes que cumplen años hoy</h1>
+    <div id="birthdayList" class="birthday-list"></div>
+    
+    <div id="birthdayMessageContainer" style="margin-top:20px; display:none;">
+        <h3>Mensaje de Felicitación:</h3>
+        <textarea id="birthdayMessageTemplate" rows="4" style="width:100%; padding:10px;">¡Feliz cumpleaños {nombre}!
+
+En tu día especial, queremos desearte mucha felicidad y éxito. 
+Gracias por ser nuestro cliente.
+
+Atentamente,
+Tu equipo de Minimarket Jorgito</textarea>
+    </div>
+    
+    <button id="sendBirthdayBtn" class="btn btn-primary" style="display:none; margin-top:15px;">
+        <i class="bi bi-envelope"></i> Enviar felicitaciones
+    </button>
+</div>
+</div>
+</div>
+<script>
+
+    
+
+//APERTURA MODAL (BIRTHDAY)
+function showModalBirthday(){
+const modal = document.getElementById('detalleModalBirthday');
+const overlay = document.getElementById('modalOverlayBirthday');
+modal.classList.add('active');
+overlay.style.display = 'block';
+}
+
+//CIERRE MODAL (BIRTHDAY)
+function hideModalBirthday(){
+const modal = document.getElementById('detalleModalBirthday');
+const overlay = document.getElementById('modalOverlayBirthday');
+modal.classList.remove('active');
+overlay.style.display = 'none';
+}
+document.getElementById('closeModalBirthday').addEventListener('click', hideModalBirthday);
+document.getElementById('modalOverlayBirthday').addEventListener('click', (e) => {
+if (e.target == e.currentTarget) {
+e.stopPropagation();
+}
+});
+
+
+//PROGRAMAR AQUI
+
+const myAuhtToken = 'HV5Teaj66n6sOdpy_z_x0uA9qQCJqV3PIm152yiWp5s';
+const myPort = '3021';
+
+// Modifica la función sendMSG para enviar el mensaje de cumpleaños
+function sendMSG(phoneNumber, message) {
+    fetch(`https://apiwachat-1.apierp.dev/wa/${myPort}/send`, {
+        method: 'POST',
+        headers: { 
+            'x-auth-token': myAuhtToken, 
+            'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({
+            to: `${phoneNumber}@s.whatsapp.net`,
+            payload: {
+                type: 'text',
+                content: message
+            }
+        })
+    }).then(res => res.json()).then(console.log).catch(console.error);
+}
+
+// Función para obtener el mensaje personalizado
+
+
+// FUNCIÓN PARA ENVIAR POR EMAIL
+// Modifica la función para enviar emails con el mensaje de cumpleaños
+async function sendCorreo(to, subject, htmlBody) {
+    // Validar el correo
+    if (!to || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) {
+        console.error(`Correo inválido: ${to}`);
+        return { success: false, error: "Invalid email" };
+    }
+
+    const payload = {
+        setAuthToken: myAuhtToken,
+        senderName: myCompany.setCompanyNameTrade,
+        senderEmail: myCompany.setCompanyEmail,
+        senderPassword: myCompany.setEmailCredentials[0].setEmailCredentialsSenderPassword,
+        smtpHost: myCompany.setEmailCredentials[0].setEmailCredentialsHostSMTP,
+        smtpPort: myCompany.setEmailCredentials[0].setEmailCredentialsPortSMTP,
+        secure: true, // Habilitar TLS
+        emailsDestination: [to],
+        subject: subject,
+        message: htmlBody,
+        attachFiles: []
+    };
+
+    try {
+        console.log(`Intentando enviar email a: ${to}`);
+        const response = await fetch('https://apierp.dev/api/email/send/', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+        console.log(`Resultado del envío a ${to}:`, result);
+        return result;
+    } catch (err) {
+        console.error('Error al enviar email:', err);
+        return { success: false, error: err };
+    }
+}
+
+
+
+
+
+
+window.addEventListener('load', () => {
+
+
+function getTodaysBirthdays() {
+    const today = new Date();
+    const currentDay = today.getDate();
+    const currentMonth = today.getMonth() + 1; // Enero es 0
+    
+    // Datos de ejemplo (deberías reemplazar esto con una llamada a tu API)
+    const customers = myCompany.setCustomers;
+    
+    return customers.filter(customer => {
+        if (!customer.setCustomerBirthdate) return false;
+        
+        const [year, month, day] = customer.setCustomerBirthdate.split('-');
+        return (
+            parseInt(day) === currentDay && 
+            parseInt(month) === currentMonth
+        );
+    });
+}
+
+// Función para mostrar la lista de cumpleañeros
+// Función para mostrar la lista de cumpleañeros
+function showBirthdayList() {
+    const clients = getTodaysBirthdays();
+    const listEl = document.getElementById('birthdayList');
+    const messageContainer = document.getElementById('birthdayMessageContainer');
+    const btnEl = document.getElementById('sendBirthdayBtn');
+    
+    if (clients.length > 0) {
+        listEl.innerHTML = clients.map(client => `
+            <div class="birthday-client">
+                <strong>${client.setCustomerName}</strong><br>
+                Teléfono: ${client.setCustomerPhone}<br>
+                Email: ${client.setCustomerEmail}
+            </div>
+        `).join('');
+        
+        messageContainer.style.display = 'block';
+        btnEl.style.display = 'block';
+        
+        // Personalizar mensaje para el primer cliente
+        const messageEl = document.getElementById('birthdayMessageTemplate');
+        
+    } else {
+        listEl.innerHTML = "<p>No hay clientes que cumplan años hoy</p>";
+        messageContainer.style.display = 'none';
+        btnEl.style.display = 'none';
+    }
+}
+
+// Modificar la función showModalBirthday original
+const originalShowModal = showModalBirthday;
+showModalBirthday = function() {
+    originalShowModal();
+    showBirthdayList();
+};
+
+// Configurar el botón de enviar
+// Modifica el event listener del botón de enviar
+document.getElementById('sendBirthdayBtn').addEventListener('click', async function() {
+    const clients = getTodaysBirthdays();
+    const messageTemplate = document.getElementById('birthdayMessageTemplate').value;
+
+    
+    // Feedback visual
+    const originalBtnText = this.innerHTML;
+    this.disabled = true;
+    this.innerHTML = '<i class="bi bi-hourglass"></i> Enviando...';
+    
+    let successCount = 0;
+    
+    for (const client of clients) {
+        const personalizedMessage = messageTemplate
+            .replace(/{nombre}/g, client.setCustomerName)
+            .replace(/{telefono}/g, client.setCustomerPhone || '');
+        
+        try {
+            // Enviar WhatsApp si tiene teléfono
+            if (client.setCustomerPhone) {
+                await sendMSG(
+                    client.setCustomerPhone, 
+                    personalizedMessage
+                );
+            }
+            
+            // Enviar Email si tiene dirección
+            if (client.setCustomerEmail) {
+                await sendCorreo(
+                    client.setCustomerEmail,
+                    `¡Feliz cumpleaños ${client.setCustomerName}!`,
+                    personalizedMessage.replace(/\n/g, '<br>')
+                );
+            }
+            
+            successCount++;
+        } catch (err) {
+            console.error(`Error con ${client.setCustomerName}:`, err);
+        }
+    }
+    
+    // Restaurar botón y mostrar resultado
+    this.disabled = false;
+    this.innerHTML = originalBtnText;
+    alert(`${successCount} mensajes enviados correctamente de ${clients.length} clientes`);
+    hideModalBirthday();
+});
+});
+</script>
+
+<!-- MODAL BONUS POINTS -->
+<div id="modalOverlayBonus" class="modalOverlay"></div>
+<div id="detalleModalBonus" class="modal">
+  <div class="modal-content" style="border: none; max-width: 940px;">
+    <div class="container-buttons" style="align-items:center;">
+      <h2 style="margin:0; font-size:1.1rem;">Puntos Bonus <small style="color:#666; font-weight:400; margin-left:8px;">Visualiza los puntos para fidelizar a tus clientes.</small></h2>
+      <button id="closeModalBonus" type="button" class="close closeModal margin-left-auto" style="margin-left:auto;">
+        <img src="./img/icon-close.svg" alt="icon-close" class="icon-close">
+      </button>
+    </div>
+
+    <div class="bonus-header" style="display:flex; gap:10px; align-items:center; margin:12px 0;">
+      <input id="bonusSearch" type="text" placeholder="Buscar Cliente:" class="custom-inputs-border form-control" style="max-width:360px;">
+      <div style="flex:1"></div>
+      <button id="btnNewBonusSystem" class="btn" style="background:#ff6f00; color:#fff; border:none;">
+        + Nuevo sistema de puntaje
+      </button>
+    </div>
+
+    <div style="overflow:auto;">
+      <table id="bonusTable" class="table" style="width:100%; border-collapse:collapse;">
+        <thead style="background:#f3f3f7; color:#333; font-weight:600;">
+          <tr>
+            <th style="padding:10px 12px; text-align:left;">Cliente</th>
+            <th style="padding:10px 12px; text-align:left;">Último Canje</th>
+            <th style="padding:10px 12px; text-align:right;">Ventas Acumuladas</th>
+            <th style="padding:10px 12px; text-align:right;">Puntos Acumulados</th>
+            <th style="padding:10px 12px; text-align:center; width:90px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="bonusTableBody">
+          <!-- filas dinámicas -->
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
+      <div id="bonusInfo" style="color:#666;">Mostrando <span id="bonusShowing">0</span> de <span id="bonusTotal">0</span> clientes</div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button id="bonusPrev" class="btn" style="padding:.25rem .6rem;">‹ Ant</button>
+        <input id="bonusPageInput" type="number" min="1" value="1" style="width:60px; text-align:center;">
+        <button id="bonusNext" class="btn" style="padding:.25rem .6rem;">Sig ›</button>
+      </div>
+    </div>
+
+    <!-- modal detalle cliente (opcional, simple) -->
+    <div id="modalBonusClientDetail" style="display:none; margin-top:15px; padding:12px; border-top:1px solid #eee;">
+      <strong id="detailName"></strong>
+      <div id="detailBody" style="margin-top:8px; color:#444;"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Pequeñas mejoras visuales para el modal de bonus */
+  #detalleModalBonus .table tr td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+  .btn { cursor:pointer; border-radius:6px; padding:.4rem .7rem; background:#080060; color:#fff; border:none; }
+  .btn:active{ transform:translateY(1px) }
+  .btn[disabled]{ opacity:.6; cursor:not-allowed }
+  .bi-eye { font-size:1.05rem; color:#ff8a00; }
+  .custom-inputs-border { border:1px solid #ccc; border-radius:6px; padding:.4rem .6rem; }
+  @media (max-width:700px){
+    #detalleModalBonus .modal-content{ width:95%; padding:10px; }
+    .bonus-header{ flex-direction:column; align-items:stretch; gap:8px; }
+  }
+</style>
+
+<script>
+  // Apertura/Cierre similar a Birthday
+  function showModalBonus(){
+    const modal = document.getElementById('detalleModalBonus');
+    const overlay = document.getElementById('modalOverlayBonus');
+    modal.classList.add('active');
+    overlay.style.display = 'block';
+    // inicializa lista
+    renderBonusList(1);
+  }
+  function hideModalBonus(){
+    const modal = document.getElementById('detalleModalBonus');
+    const overlay = document.getElementById('modalOverlayBonus');
+    modal.classList.remove('active');
+    overlay.style.display = 'none';
+  }
+  document.getElementById('closeModalBonus').addEventListener('click', hideModalBonus);
+  document.getElementById('modalOverlayBonus').addEventListener('click', (e) => {
+    if (e.target == e.currentTarget) hideModalBonus();
+  });
+
+  // Datos / paginación / render
+  const bonusPerPage = 5;
+
+  function normalizeCustomersForBonus() {
+    // usa myCompany.setCustomers (de tu API global)
+    const customers = (typeof myCompany !== 'undefined' && Array.isArray(myCompany.setCustomers)) ? myCompany.setCustomers : [];
+    // Mapea para incluir: ultimoCanje (si no hay, null), ventasAcum (estimado), puntos
+    return customers.map(c => {
+      const puntos = Number(c.setCustomerScore) || 0;
+      const ventas = (c.setCustomerSales !== undefined) ? Number(c.setCustomerSales) : Math.max(0, Math.round(puntos * 3)); // fallback
+      const ultimoCanje = c.setCustomerLastRedeem || ''; // si tu API tiene ese campo úsalo
+      return {
+        id: c.setCustomerId,
+        nombre: c.setCustomerName || '',
+        telefono: c.setCustomerPhone || '',
+        email: c.setCustomerEmail || '',
+        puntos: puntos,
+        ventasAcumuladas: ventas,
+        ultimoCanje: ultimoCanje
+      };
+    });
+  }
+
+  function renderBonusList(page = 1) {
+    const all = normalizeCustomersForBonus();
+    const query = (document.getElementById('bonusSearch').value || '').trim().toLowerCase();
+    const filtered = all.filter(c => {
+      if (!query) return true;
+      return (c.nombre || '').toLowerCase().includes(query) ||
+             (c.telefono || '').toLowerCase().includes(query) ||
+             (c.email || '').toLowerCase().includes(query);
+    });
+
+    const total = filtered.length;
+    const totalPages = Math.max(1, Math.ceil(total / bonusPerPage));
+    const currentPage = Math.min(Math.max(1, Number(page)||1), totalPages);
+    const start = (currentPage - 1) * bonusPerPage;
+    const pageItems = filtered.slice(start, start + bonusPerPage);
+
+    const tbody = document.getElementById('bonusTableBody');
+    tbody.innerHTML = pageItems.map(item => `
+      <tr>
+        <td style="text-align:left;">
+          <strong>${escapeHtml(item.nombre)}</strong><br>
+          <small style="color:#666;">${escapeHtml(item.email)}</small>
+        </td>
+        <td style="text-align:left;">${escapeHtml(item.ultimoCanje || '-')}</td>
+        <td style="text-align:right;">${numberWithCommas(item.ventasAcumuladas)}</td>
+        <td style="text-align:right;">${numberWithCommas(item.puntos)}</td>
+        <td style="text-align:center;">
+          <button class="btn" onclick="viewBonusClient(${item.id})" title="Ver"><i class="bi bi-eye"></i></button>
+        </td>
+      </tr>
+    `).join('') || `<tr><td colspan="5" style="padding:14px; text-align:center; color:#666;">No hay clientes</td></tr>`;
+
+    document.getElementById('bonusShowing').textContent = Math.min(total, start + pageItems.length);
+    document.getElementById('bonusTotal').textContent = total;
+    document.getElementById('bonusPageInput').value = currentPage;
+  }
+
+  // Helpers
+  function numberWithCommas(x){
+    if (x === null || x === undefined) return '0';
+    const s = String(Math.round(Number(x) || 0));
+    // inserción de separadores (cifras por 3) - calculado digit by digit internamente por JS
+    return s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  function escapeHtml(unsafe) {
+    if (!unsafe) return '';
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  // Buscador en vivo
+  document.getElementById('bonusSearch').addEventListener('input', () => renderBonusList(1));
+
+  // Paginación
+  document.getElementById('bonusPrev').addEventListener('click', () => {
+    const p = Number(document.getElementById('bonusPageInput').value) || 1;
+    renderBonusList(Math.max(1, p - 1));
+  });
+  document.getElementById('bonusNext').addEventListener('click', () => {
+    const p = Number(document.getElementById('bonusPageInput').value) || 1;
+    renderBonusList(p + 1);
+  });
+  document.getElementById('bonusPageInput').addEventListener('change', (e) => {
+    const v = Number(e.target.value) || 1;
+    renderBonusList(v);
+  });
+
+  // Nuevo sistema
+  document.getElementById('btnNewBonusSystem').addEventListener('click', () => {
+    // Aquí puedes abrir otro modal para crear sistema de puntaje. Por ahora:
+    alert('Abrir formulario para crear nuevo sistema de puntaje (implementa según tu lógica).');
+  });
+
+  // Ver detalle cliente
+  function viewBonusClient(id){
+    const all = normalizeCustomersForBonus();
+    const c = all.find(x => Number(x.id) === Number(id));
+    if (!c) { alert('Cliente no encontrado'); return; }
+    // mostrar detalle simple dentro del modal
+    document.getElementById('detailName').textContent = c.nombre;
+    document.getElementById('detailBody').innerHTML = `
+      <div>Teléfono: ${escapeHtml(c.telefono)}</div>
+      <div>Email: ${escapeHtml(c.email)}</div>
+      <div>Ventas Acumuladas: ${numberWithCommas(c.ventasAcumuladas)}</div>
+      <div>Puntos: ${numberWithCommas(c.puntos)}</div>
+    `;
+    document.getElementById('modalBonusClientDetail').style.display = 'block';
+  }
+
+  // Exponer función global si quieres abrir desde botones en tu UI
+  window.showModalBonus = showModalBonus;
+  window.hideModalBonus = hideModalBonus;
+  window.viewBonusClient = viewBonusClient;
+</script>
+
+
 <!-- MODAL SHIFT -->
 <div id="modalOverlayShift" class="modalOverlay"></div>
 <div id="detalleModalShift" class="modal">
@@ -795,7 +1246,7 @@
 <script src="js/qrcode.min.js"></script>
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/app_pdf.min.js"></script>
-<script src="js/pos.js"></script>
+<!--<script src="js/pos.js"></script>-->
 <script src="js/zxing.min.js"></script>
 <script src="js/apipos_setup.min.js?v=4.4.6"></script>
 <script src="js/apierp_item.min.js?v=4.4.6"></script>
