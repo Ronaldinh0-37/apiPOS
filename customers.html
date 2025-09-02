@@ -53,10 +53,10 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=5.0.1" rel="stylesheet">
-<link href="./css/apipos.min.css?v=5.0.1" rel="stylesheet">
-<link href="./css/apierp_header.css?v=5.0.1" rel="stylesheet">
-<link href="./css/apipos_login.css?v=5.0.1" rel="stylesheet">
+<link href="./css/apierp.min.css?v=5.0.2" rel="stylesheet">
+<link href="./css/apipos.min.css?v=5.0.2" rel="stylesheet">
+<link href="./css/apierp_header.css?v=5.0.2" rel="stylesheet">
+<link href="./css/apipos_login.css?v=5.0.2" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -78,6 +78,420 @@
 <button class="carousel-next"><img src="./img/icon-arrow-left-blue.svg" alt="icon-arrow-right-blue" class="img-search-more-products"></button>
 </div>
 <div id="sectionInfoItem"></div>
+</div>
+</div>
+
+<!-- MODAL PDF -->
+<div id="modalOverlay" class="modalOverlay"></div>
+<div id="detalleModal" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="d-flex mb-3">
+
+<!-- DESCARGAR -->
+<button class="btnModal" onclick="descargarPdf()">
+<img src="./img/icon-download.svg" alt="icon-download" class="img-modal-pay">
+</button>
+
+<!-- INTEGRACION CON APIERP - IMPRESION DIRECTA ONLINE -->
+<div class="btn-group">
+<button type="button" class="btn" id="defaultPrinter">No Disponible</button>
+<button type="button" class="btn dropdown-toggle dropdown-toggle-split" id="id_dropdown_impresion" data-bs-toggle="dropdown" aria-expanded="false">
+<span class="div_btn_cliente hint--bottom" style="cursor: pointer;">
+<i class="fas fa-chevron-down" style="font-size: 14px;color: white;"></i>
+</span>
+</button>
+<ul class="dropdown-menu" id="printerDropdown"></ul>
+</div>
+
+<!-- IMPRESION NORMAL -->
+<button id="btnModalPrint" type="button" class="btnModal" onclick="imprimirPdf()">
+<img src="./img/icon-printer.svg" alt="icon-baja" class="img-modal-pay">
+</button>
+
+<!-- NUEVA OPERACION -->
+
+<!-- CERRAR MODAL -->
+<button id="closeModal" type="button" class="close closeModal">
+<span>&times;</span>
+</button>
+</div>
+<h1 class="text-success-modal"><img src="./img/icon-check.svg" alt="icon-check" class="img-modal-pay mb-1"> Vista Previa</h1>
+<div id="dynamicContent" class="dynamicContent">
+<div id="pdfContainer">
+<div id="pdfCanvas"></div>
+</div>
+</div>
+
+<!-- OPTIONS -->
+<div class="container-buttons mb-2" style="display: block !important; justify-content: normal! important; margin: 0 auto;">
+<div class="div-width-10"></div>
+<button id="btnVisualizacion" onclick="optionsPdf(1)" class="btnModalActive btnModalOptions" style="margin-right: 15px;">
+<span>Visualización</span>
+</button>
+<button id="btnArchivosContables" onclick="optionsPdf(2)" class="btnModal btnModalOptions" style="margin-right: 15px;">
+<span>Archivos Contables</span>
+</button>
+<button id="btnOpciones" onclick="optionsPdf(3)" class="btnModal btnModalOptions">
+<span>Opciones</span>
+</button>
+<div class="div-width-10"></div>
+</div>
+
+<!-- VISUALIZACIÓN -->
+<div id="visualizacion">
+
+<!-- PDF -->
+<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
+<div class="div-width-10"></div>
+<button id="btnViewA4" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;" onclick="generatePdfA4()">
+<img src="./img/icon-pdf.svg" alt="icon-pdf" class="img-modal-pay">
+<span>A4</span>
+</button>
+<button id="btnViewTicket" class="btnModal btnModalFooter" style="color: #111; flex-direction: row;" onclick="generatePdfTk()">
+<img src="./img/icon-ticket.svg" alt="icon-ticket" class="img-modal-pay">
+<span>Ticket</span>
+</button>
+<div class="div-width-10"></div>
+</div>
+
+<!-- DOWNLOAD AND SEND -->
+<form class="whatsapp-form" id="waForm">
+
+<!-- TEMPLATE WHATSAPP -->
+<template id="wa-recipient-template">
+<div class="whatsapp-recipient d-flex align-items-center" style="gap:0.5rem; margin-bottom:0.5rem;">
+
+<!-- COUNTRY CODE -->
+<div class="custom-select-pais-flag recipient-select" style="flex:0 0 30%; position:relative;">
+<div class="select-button-pais-flag" data-selected-code="51" style="display:flex;justify-content:space-between;align-items:center; background:#fff; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; cursor:pointer; color:#080060;">
+<img src="./img/pe.png" alt="PE"> +51
+</div>
+<div class="dropdown-list-pais-flag" style="position:absolute; top:100%; left:0; width:100%; background:#fff; border:1px solid #080060; border-radius:4px; display:none; max-height:140px; overflow-y:auto; z-index:10;">
+<div class="dropdown-item-pais-flag" data-code="51"><img src="./img/pe.png" alt="PE"> +51</div>
+<div class="dropdown-item-pais-flag" data-code="52"><img src="./img/mx.png" alt="MX"> +52</div>
+<div class="dropdown-item-pais-flag" data-code="54"><img src="./img/ar.png" alt="AR"> +54</div>
+<div class="dropdown-item-pais-flag" data-code="56"><img src="./img/cl.png" alt="CL"> +56</div>
+<div class="dropdown-item-pais-flag" data-code="57"><img src="./img/co.png" alt="CO"> +57</div>
+<div class="dropdown-item-pais-flag" data-code="598"><img src="./img/uy.png" alt="UY"> +598</div>
+<div class="dropdown-item-pais-flag" data-code="1"><img src="./img/us.png" alt="US"> +1</div>
+</div>
+</div>
+
+<!-- INPUT WHATSAPP -->
+<input type="tel" class="phoneNumber" placeholder="Número de WhatsApp" maxlength="15" style="flex:0 0 60%; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; font-size:.95rem; color:#080060;">
+
+<!-- BUTTON DELETE -->
+<button type="button" class="remove-recipient-btn" style="background: none; border: none; display:none;">
+<img src="./img/icon-trash.svg" alt="icon-trash" class="img-delete-card">
+</button>
+</div>
+</template>
+
+<!-- TEMPLATE EMAIL -->
+<template id="email-recipient-template">
+<div class="email-recipient d-flex align-items-center" style="gap:0.5rem; margin-bottom:0.5rem;">
+<input type="email" class="emailDestination" placeholder="Correo electrónico" style="flex:1; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; font-size:.95rem; color:#080060;">
+<button type="button" class="remove-recipient-btn" style="background: none; border: none; display:none;">
+<img src="./img/icon-trash.svg" alt="icon-trash" class="img-delete-card">
+</button>
+</div>
+</template>
+
+<!-- WHATSAPP EMISOR -->
+<div class="field">
+<label for="setCredentialsApiWAChat">Enviar a Whatsapp:</label>
+<select id="setCredentialsApiWAChat"></select>
+</div>
+
+<!-- WHATSAPP RECEPTOR -->
+<div class="field">
+<label>Enviar a Whatsapp:
+<button type="button" id="addWhatsAppRecipient" style="background:#00bb2d;color:#fff;border:none;width: 20px;height: 20px;border-radius: 50%;cursor:pointer;font-size: 12px;">
++
+</button>
+</label>
+<div id="whatsappRecipients"></div>
+</div>
+
+<!-- EMAIL RECEPTOR -->
+<div class="field">
+<label>Enviar a Email:
+<button type="button" id="addEmailRecipient" style="background:#080060;color:#fff;border:none;width: 20px;height: 20px;border-radius: 50%;cursor:pointer;font-size: 12px;">
++
+</button>
+</label>
+<div id="emailRecipients"></div>
+</div>
+
+<!-- MESSAGE -->
+<div class="field">
+<label for="waMessage">Mensaje:</label>
+<textarea id="waMessage" placeholder="Escribe tu mensaje aquí..."></textarea>
+</div>
+
+<!-- ATTACH FILES -->
+<div class="field">
+<label>Adjuntar archivos:</label>
+<div id="waDropArea">
+<p>Selecciona o arrastra tus archivos aquí</p>
+<input type="file" id="waFiles" multiple accept="image/*,video/*,audio/*,application/*">
+</div>
+<div id="previewList" class="preview-list"></div>
+</div>
+
+<!-- BUTTONS -->
+<div class="field button-row">
+<button type="button" id="sendEmail">
+<i class="bi bi-envelope"></i> Enviar Email
+</button>
+<button type="button" id="sendWhatsApp">
+<img src="./img/icon-whatsapp.svg" alt="" style="width:20px;"> Enviar WhatsApp
+</button>
+</div>
+</form>
+</div>
+
+<!-- ARCHIVOS CONTABLES -->
+<div id="archivos_contables" class="hidden">
+
+<!-- DOCUMENTS -->
+<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
+<div class="div-width-10"></div>
+<button id="btnModalXml" class="btnModal btnModalFooter" onclick="descargarXml()" style="color: #111; flex-direction: row; margin-right: 25px;">
+<img src="./img/icon-xml.svg" alt="icon-baja" class="img-modal-pay">
+<span>XML</span>
+</button>
+<button id="btnModalCdr" class="btnModal btnModalFooter" onclick="descargarCdr()" style="color: #111; flex-direction: row;">
+<img src="./img/icon-cdr.svg" alt="icon-baja" class="img-modal-pay">
+<span>CDR</span>
+</button>
+<div class="div-width-10"></div>
+</div>
+</div>
+
+<!-- OPCIONES -->
+<div id="opciones" class="hidden">
+
+<!-- OPCIONES DE LA OPERACIÓN -->
+<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
+<button id="btnDarBaja" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
+<img src="./img/icon-baja.svg" alt="icon-baja" class="img-modal-pay">
+<span> Dar de baja</span>
+</button>
+<button id="btnAnular" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
+<img src="./img/icon-anular.svg" alt="icon-anular" class="img-modal-pay">
+<span> Anular (Nota de Crédito)</span>
+</button>
+<button id="btnDuplicar" class="btnModal btnModalFooter" style="color: #111; flex-direction: row;" onclick="hideModal()">
+<img src="./img/icon-duplicar.svg" alt="icon-duplicar" class="img-modal-pay">
+<span>Duplicar</span>
+</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- MODAL: Add / Edit Customer -->
+<div id="lob_modal_back" class="lob_modal_back" aria-hidden="true">
+<div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_title">
+<h3 id="lob_modal_title">Nuevo contribuyente</h3>
+<form id="lob_form_customer">
+<div class="lob_form_grid">
+<div>
+<label class="lob_label" for="lob_customer_name">Apellidos y Nombres / Razón social</label>
+<input id="lob_customer_name" class="lob_input" required />
+</div>
+<div>
+<label class="lob_label" for="lob_customer_document">Nº Documento (DNI / RUC / Otro)</label>
+<input id="lob_customer_document" class="lob_input" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_customer_address">Domicilio fiscal / Dirección</label>
+<input id="lob_customer_address" class="lob_input" />
+</div>
+<div>
+<label class="lob_label" for="lob_customer_phone">Teléfono / Celular</label>
+<input id="lob_customer_phone" class="lob_input" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_customer_birthdate">Fecha de Nacimiento (opcional)</label>
+<input id="lob_customer_birthdate" class="lob_input" type="date" />
+</div>
+<div>
+<label class="lob_label" for="lob_customer_ubigeo">Ubigeo (opcional)</label>
+<input id="lob_customer_ubigeo" class="lob_input" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_customer_score">Score / Nota (opcional)</label>
+<input id="lob_customer_score" class="lob_input" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_customer_extra">Observaciones / Datos extra</label>
+<textarea id="lob_customer_extra" class="lob_input"></textarea>
+</div>
+</div>
+
+<div class="lob_modal_footer">
+<button type="button" id="lob_btn_cancel" class="lob_btn ghost">Cancelar</button>
+<button type="submit" class="lob_btn">Guardar</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- MODAL: Manage Properties for customer -->
+<div id="lob_modal_props_back" class="lob_modal_back" aria-hidden="true">
+<div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_props_title">
+<h3 id="lob_modal_props_title">Predios de <span id="lob_props_owner"></span></h3>
+
+<div style="display:flex;gap:8px;margin-bottom:8px;align-items:center">
+<button id="lob_btn_new_prop" class="lob_btn">+ Nuevo predio</button>
+<div class="lob_small" style="margin-left:auto">Total predios: <span id="lob_props_count">0</span></div>
+</div>
+
+<div id="lob_props_list" class="lob_prop_list">
+<!-- lista de propiedades -->
+</div>
+
+<hr style="margin:12px 0">
+
+<div id="lob_prop_form_section" style="display:none">
+<h4 id="lob_prop_form_title">Nuevo predio</h4>
+<form id="lob_form_prop">
+<div class="lob_form_grid">
+<div>
+<label class="lob_label" for="lob_prop_anexo">Anexo / N° Predio</label>
+<input id="lob_prop_anexo" class="lob_input" />
+</div>
+<div>
+<label class="lob_label" for="lob_prop_codigo_catastral">Código catastral</label>
+<input id="lob_prop_codigo_catastral" class="lob_input" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_address">Dirección del predio</label>
+<input id="lob_prop_address" class="lob_input" />
+</div>
+<div>
+<label class="lob_label" for="lob_prop_distrito">Distrito</label>
+<input id="lob_prop_distrito" class="lob_input" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_tipo">Tipo de predio</label>
+<select id="lob_prop_tipo" class="lob_input">
+<option value="">-- seleccionar --</option>
+<option value="independiente">Predio independiente</option>
+<option value="edificio_frentera">Predio en edificio (con frentera)</option>
+<option value="edificio_sin_frentera">Predio en edificio (sin frentera)</option>
+<option value="quinta_frentera">Predio en quinta (con frentera)</option>
+<option value="quinta_sin_frentera">Predio en quinta (sin frentera)</option>
+<option value="vecindad_frentera">Predio en vecindad (con frentera)</option>
+<option value="vecindad_sin_frentera">Predio en vecindad (sin frentera)</option>
+<option value="otro">Otro</option>
+</select>
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_estado">Estado</label>
+<select id="lob_prop_estado" class="lob_input">
+<option value="">-- seleccionar --</option>
+<option value="terreno">Terreno sin construir</option>
+<option value="construccion">En construcción</option>
+<option value="terminado">Terminado</option>
+<option value="ruinas">En ruinas</option>
+</select>
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_uso">Uso del predio</label>
+<input id="lob_prop_uso" class="lob_input" placeholder="Ej: Casa habitación, Comercio ..." />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_area">Área (m²)</label>
+<input id="lob_prop_area" class="lob_input" type="number" step="0.01" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_valorarancel">Valor arancel por m² (S/.)</label>
+<input id="lob_prop_valorarancel" class="lob_input" type="number" step="0.01" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_area_construida">Área construida (m²)</label>
+<input id="lob_prop_area_construida" class="lob_input" type="number" step="0.01" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_valor_construccion">Valor de la construcción (S/.)</label>
+<input id="lob_prop_valor_construccion" class="lob_input" type="number" step="0.01" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_valor_terreno">Valor del terreno (S/.)</label>
+<input id="lob_prop_valor_terreno" class="lob_input" type="number" step="0.01" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_otras_inst">Otras instalaciones (S/.)</label>
+<input id="lob_prop_otras_inst" class="lob_input" type="number" step="0.01" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_condominio">% Condominio (si aplica)</label>
+<input id="lob_prop_condominio" class="lob_input" type="number" step="0.01" />
+</div>
+
+<div>
+<label class="lob_label" for="lob_prop_area_comun">% Área común (si aplica)</label>
+<input id="lob_prop_area_comun" class="lob_input" type="number" step="0.01" />
+</div>
+
+<div style="grid-column:1 / -1">
+<label class="lob_label" for="lob_prop_observaciones">Observaciones / notas</label>
+<textarea id="lob_prop_observaciones" class="lob_input"></textarea>
+</div>
+</div>
+
+<div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end;">
+<button type="button" id="lob_btn_cancel_prop" class="lob_btn ghost">Cancelar</button>
+<button type="submit" class="lob_btn">Guardar predio</button>
+</div>
+</form>
+</div>
+
+<div style="margin-top:12px;display:flex;justify-content:flex-end;">
+<button id="lob_close_props" class="lob_btn ghost">Cerrar</button>
+</div>
+</div>
+</div>
+
+<!-- FILTERS MODAL -->
+<div id="lob_modal_filters_back" class="lob_modal_back" aria-hidden="true">
+<div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_filters_title">
+<h3 id="lob_modal_filters_title">Filtros avanzados</h3>
+<div style="margin-top:8px;">
+<div class="lob_small">Sistemas de puntaje (seleccione uno o varios)</div>
+<div id="lob_filters_scoring" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+<!-- checkboxes generados por JS -->
+</div>
+</div>
+
+<div style="margin-top:12px;">
+<label class="lob_label" for="lob_filter_distrito">Distrito (futuro)</label>
+<input id="lob_filter_distrito" class="lob_input" placeholder="(opcional)"/>
+</div>
+
+<div class="lob_modal_footer" style="margin-top:14px;">
+<button type="button" id="lob_btn_filters_cancel" class="lob_btn ghost">Cancelar</button>
+<button type="button" id="lob_btn_filters_apply" class="lob_btn">Consultar</button>
+</div>
 </div>
 </div>
 
@@ -313,217 +727,6 @@ Ajustes
 <main>
 <section id="pos" style="padding: 0; margin: 0;" class="hidden">
 
-<!-- MODAL PDF -->
-<div id="modalOverlay" class="modalOverlay"></div>
-<div id="detalleModal" class="modal">
-<div class="modal-content" style="border: none;">
-<div class="d-flex mb-3">
-
-<!-- DESCARGAR -->
-<button class="btnModal" onclick="descargarPdf()">
-<img src="./img/icon-download.svg" alt="icon-download" class="img-modal-pay">
-</button>
-
-<!-- INTEGRACION CON APIERP - IMPRESION DIRECTA ONLINE -->
-<div class="btn-group">
-<button type="button" class="btn" id="defaultPrinter">No Disponible</button>
-<button type="button" class="btn dropdown-toggle dropdown-toggle-split" id="id_dropdown_impresion" data-bs-toggle="dropdown" aria-expanded="false">
-<span class="div_btn_cliente hint--bottom" style="cursor: pointer;">
-<i class="fas fa-chevron-down" style="font-size: 14px;color: white;"></i>
-</span>
-</button>
-<ul class="dropdown-menu" id="printerDropdown"></ul>
-</div>
-
-<!-- IMPRESION NORMAL -->
-<button id="btnModalPrint" type="button" class="btnModal" onclick="imprimirPdf()">
-<img src="./img/icon-printer.svg" alt="icon-baja" class="img-modal-pay">
-</button>
-
-<!-- NUEVA OPERACION -->
-
-<!-- CERRAR MODAL -->
-<button id="closeModal" type="button" class="close closeModal">
-<span>&times;</span>
-</button>
-</div>
-<h1 class="text-success-modal"><img src="./img/icon-check.svg" alt="icon-check" class="img-modal-pay mb-1"> Vista Previa</h1>
-<div id="dynamicContent" class="dynamicContent">
-<div id="pdfContainer">
-<div id="pdfCanvas"></div>
-</div>
-</div>
-
-<!-- OPTIONS -->
-<div class="container-buttons mb-2" style="display: block !important; justify-content: normal! important; margin: 0 auto;">
-<div class="div-width-10"></div>
-<button id="btnVisualizacion" onclick="optionsPdf(1)" class="btnModalActive btnModalOptions" style="margin-right: 15px;">
-<span>Visualización</span>
-</button>
-<button id="btnArchivosContables" onclick="optionsPdf(2)" class="btnModal btnModalOptions" style="margin-right: 15px;">
-<span>Archivos Contables</span>
-</button>
-<button id="btnOpciones" onclick="optionsPdf(3)" class="btnModal btnModalOptions">
-<span>Opciones</span>
-</button>
-<div class="div-width-10"></div>
-</div>
-
-<!-- VISUALIZACIÓN -->
-<div id="visualizacion">
-
-<!-- PDF -->
-<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
-<div class="div-width-10"></div>
-<button id="btnViewA4" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;" onclick="generatePdfA4()">
-<img src="./img/icon-pdf.svg" alt="icon-pdf" class="img-modal-pay">
-<span>A4</span>
-</button>
-<button id="btnViewTicket" class="btnModal btnModalFooter" style="color: #111; flex-direction: row;" onclick="generatePdfTk()">
-<img src="./img/icon-ticket.svg" alt="icon-ticket" class="img-modal-pay">
-<span>Ticket</span>
-</button>
-<div class="div-width-10"></div>
-</div>
-
-<!-- DOWNLOAD AND SEND -->
-<form class="whatsapp-form" id="waForm">
-
-<!-- TEMPLATE WHATSAPP -->
-<template id="wa-recipient-template">
-<div class="whatsapp-recipient d-flex align-items-center" style="gap:0.5rem; margin-bottom:0.5rem;">
-
-<!-- COUNTRY CODE -->
-<div class="custom-select-pais-flag recipient-select" style="flex:0 0 30%; position:relative;">
-<div class="select-button-pais-flag" data-selected-code="51" style="display:flex;justify-content:space-between;align-items:center; background:#fff; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; cursor:pointer; color:#080060;">
-<img src="./img/pe.png" alt="PE"> +51
-</div>
-<div class="dropdown-list-pais-flag" style="position:absolute; top:100%; left:0; width:100%; background:#fff; border:1px solid #080060; border-radius:4px; display:none; max-height:140px; overflow-y:auto; z-index:10;">
-<div class="dropdown-item-pais-flag" data-code="51"><img src="./img/pe.png" alt="PE"> +51</div>
-<div class="dropdown-item-pais-flag" data-code="52"><img src="./img/mx.png" alt="MX"> +52</div>
-<div class="dropdown-item-pais-flag" data-code="54"><img src="./img/ar.png" alt="AR"> +54</div>
-<div class="dropdown-item-pais-flag" data-code="56"><img src="./img/cl.png" alt="CL"> +56</div>
-<div class="dropdown-item-pais-flag" data-code="57"><img src="./img/co.png" alt="CO"> +57</div>
-<div class="dropdown-item-pais-flag" data-code="598"><img src="./img/uy.png" alt="UY"> +598</div>
-<div class="dropdown-item-pais-flag" data-code="1"><img src="./img/us.png" alt="US"> +1</div>
-</div>
-</div>
-
-<!-- INPUT WHATSAPP -->
-<input type="tel" class="phoneNumber" placeholder="Número de WhatsApp" maxlength="15" style="flex:0 0 60%; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; font-size:.95rem; color:#080060;">
-
-<!-- BUTTON DELETE -->
-<button type="button" class="remove-recipient-btn" style="background: none; border: none; display:none;">
-<img src="./img/icon-trash.svg" alt="icon-trash" class="img-delete-card">
-</button>
-</div>
-</template>
-
-<!-- TEMPLATE EMAIL -->
-<template id="email-recipient-template">
-<div class="email-recipient d-flex align-items-center" style="gap:0.5rem; margin-bottom:0.5rem;">
-<input type="email" class="emailDestination" placeholder="Correo electrónico" style="flex:1; padding:.4rem .6rem; border:1px solid #ccc; border-radius:4px; font-size:.95rem; color:#080060;">
-<button type="button" class="remove-recipient-btn" style="background: none; border: none; display:none;">
-<img src="./img/icon-trash.svg" alt="icon-trash" class="img-delete-card">
-</button>
-</div>
-</template>
-
-<!-- WHATSAPP EMISOR -->
-<div class="field">
-<label for="setCredentialsApiWAChat">Enviar a Whatsapp:</label>
-<select id="setCredentialsApiWAChat"></select>
-</div>
-
-<!-- WHATSAPP RECEPTOR -->
-<div class="field">
-<label>Enviar a Whatsapp:
-<button type="button" id="addWhatsAppRecipient" style="background:#00bb2d;color:#fff;border:none;width: 20px;height: 20px;border-radius: 50%;cursor:pointer;font-size: 12px;">
-+
-</button>
-</label>
-<div id="whatsappRecipients"></div>
-</div>
-
-<!-- EMAIL RECEPTOR -->
-<div class="field">
-<label>Enviar a Email:
-<button type="button" id="addEmailRecipient" style="background:#080060;color:#fff;border:none;width: 20px;height: 20px;border-radius: 50%;cursor:pointer;font-size: 12px;">
-+
-</button>
-</label>
-<div id="emailRecipients"></div>
-</div>
-
-<!-- MESSAGE -->
-<div class="field">
-<label for="waMessage">Mensaje:</label>
-<textarea id="waMessage" placeholder="Escribe tu mensaje aquí..."></textarea>
-</div>
-
-<!-- ATTACH FILES -->
-<div class="field">
-<label>Adjuntar archivos:</label>
-<div id="waDropArea">
-<p>Selecciona o arrastra tus archivos aquí</p>
-<input type="file" id="waFiles" multiple accept="image/*,video/*,audio/*,application/*">
-</div>
-<div id="previewList" class="preview-list"></div>
-</div>
-
-<!-- BUTTONS -->
-<div class="field button-row">
-<button type="button" id="sendEmail">
-<i class="bi bi-envelope"></i> Enviar Email
-</button>
-<button type="button" id="sendWhatsApp">
-<img src="./img/icon-whatsapp.svg" alt="" style="width:20px;"> Enviar WhatsApp
-</button>
-</div>
-</form>
-</div>
-
-<!-- ARCHIVOS CONTABLES -->
-<div id="archivos_contables" class="hidden">
-
-<!-- DOCUMENTS -->
-<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
-<div class="div-width-10"></div>
-<button id="btnModalXml" class="btnModal btnModalFooter" onclick="descargarXml()" style="color: #111; flex-direction: row; margin-right: 25px;">
-<img src="./img/icon-xml.svg" alt="icon-baja" class="img-modal-pay">
-<span>XML</span>
-</button>
-<button id="btnModalCdr" class="btnModal btnModalFooter" onclick="descargarCdr()" style="color: #111; flex-direction: row;">
-<img src="./img/icon-cdr.svg" alt="icon-baja" class="img-modal-pay">
-<span>CDR</span>
-</button>
-<div class="div-width-10"></div>
-</div>
-</div>
-
-<!-- OPCIONES -->
-<div id="opciones" class="hidden">
-
-<!-- OPCIONES DE LA OPERACIÓN -->
-<div class="d-flex mb-2" style="justify-content: center; margin: 0 auto;">
-<button id="btnDarBaja" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
-<img src="./img/icon-baja.svg" alt="icon-baja" class="img-modal-pay">
-<span> Dar de baja</span>
-</button>
-<button id="btnAnular" class="btnModal btnModalFooter" style="color: #111; flex-direction: row; margin-right: 25px;">
-<img src="./img/icon-anular.svg" alt="icon-anular" class="img-modal-pay">
-<span> Anular (Nota de Crédito)</span>
-</button>
-<button id="btnDuplicar" class="btnModal btnModalFooter" style="color: #111; flex-direction: row;" onclick="hideModal()">
-<img src="./img/icon-duplicar.svg" alt="icon-duplicar" class="img-modal-pay">
-<span>Duplicar</span>
-</button>
-</div>
-</div>
-
-</div>
-</div>
-
 <!-- CONTENT -->
 <style>
 /* ---------- RESET / BASE ---------- */
@@ -675,42 +878,25 @@ textarea.lob_input{min-height:80px;resize:vertical}
 <div class="lob_container">
 <div class="lob_header">
 <div>
-<div class="lob_title">Contribuyentes — Lobitos, Talara</div>
-<div class="lob_small">Administra contribuyentes y sus propiedades (predios). Genera sus Declaraciones Juradas HR / PU.</div>
+<div id="report_title" class="lob_title"></div>
+<div id="report_description" class="lob_small"></div>
 </div>
 <div class="lob_actions">
-<button id="lob_btn_new" class="lob_btn">+ Nuevo contribuyente</button>
+<button id="lob_btn_new" class="lob_btn"></button>
 <button id="lob_btn_import" class="lob_btn ghost" title="Importar JSON (opcional)">Importar / Exportar</button>
 </div>
 </div>
 
 <div class="lob_card">
-<div style="display:flex;justify-content:space-between;align-items:center;">
-<div class="lob_small">Lista de contribuyentes</div>
-<div class="lob_small">Total: <span id="lob_count">0</span></div>
-</div>
 
 <!-- quick search + filtros -->
 <div style="display:flex;gap:8px;align-items:center;margin-top:12px;">
-  <input id="lob_quick_search" class="lob_input" placeholder="Buscar por nombre o documento..." style="flex:1;max-width:520px;" />
+  <input id="lob_quick_search" class="lob_input" placeholder="Buscar..." style="flex:1;max-width:520px;" />
   <button id="lob_btn_filters" class="lob_btn ghost" title="Filtros avanzados">Filtros</button>
 </div>
 
 <div class="lob_table_wrap" style="margin-top:12px;">
-<table class="lob_table" aria-describedby="lob_count">
-<thead>
-<tr>
-<th>Contribuyente</th>
-<th>Documento</th>
-<th>Dirección</th>
-<th>Predios</th>
-<th style="width:120px">Acciones</th>
-</tr>
-</thead>
-<tbody id="lob_tbody">
-<!-- filas generadas por JS -->
-</tbody>
-</table>
+<table id="report_table" class="lob_table" aria-describedby="lob_count"></table>
 </div>
 
 <!-- pagination -->
@@ -727,209 +913,6 @@ textarea.lob_input{min-height:80px;resize:vertical}
 <!-- GOOGLE MAPS -->
 <div class="lob_maps" id="maps_locations" style="width: 100%; height: 700px;"></div>
 </div>
-
-<!-- MODAL: Add / Edit Customer -->
-<div id="lob_modal_back" class="lob_modal_back" aria-hidden="true">
-<div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_title">
-<h3 id="lob_modal_title">Nuevo contribuyente</h3>
-<form id="lob_form_customer">
-<div class="lob_form_grid">
-<div>
-<label class="lob_label" for="lob_customer_name">Apellidos y Nombres / Razón social</label>
-<input id="lob_customer_name" class="lob_input" required />
-</div>
-<div>
-<label class="lob_label" for="lob_customer_document">Nº Documento (DNI / RUC / Otro)</label>
-<input id="lob_customer_document" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_customer_address">Domicilio fiscal / Dirección</label>
-<input id="lob_customer_address" class="lob_input" />
-</div>
-<div>
-<label class="lob_label" for="lob_customer_phone">Teléfono / Celular</label>
-<input id="lob_customer_phone" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_customer_birthdate">Fecha de Nacimiento (opcional)</label>
-<input id="lob_customer_birthdate" class="lob_input" type="date" />
-</div>
-<div>
-<label class="lob_label" for="lob_customer_ubigeo">Ubigeo (opcional)</label>
-<input id="lob_customer_ubigeo" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_customer_score">Score / Nota (opcional)</label>
-<input id="lob_customer_score" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_customer_extra">Observaciones / Datos extra</label>
-<textarea id="lob_customer_extra" class="lob_input"></textarea>
-</div>
-</div>
-
-<div class="lob_modal_footer">
-<button type="button" id="lob_btn_cancel" class="lob_btn ghost">Cancelar</button>
-<button type="submit" class="lob_btn">Guardar</button>
-</div>
-</form>
-</div>
-</div>
-
-<!-- MODAL: Manage Properties for customer -->
-<div id="lob_modal_props_back" class="lob_modal_back" aria-hidden="true">
-<div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_props_title">
-<h3 id="lob_modal_props_title">Predios de <span id="lob_props_owner"></span></h3>
-
-<div style="display:flex;gap:8px;margin-bottom:8px;align-items:center">
-<button id="lob_btn_new_prop" class="lob_btn">+ Nuevo predio</button>
-<div class="lob_small" style="margin-left:auto">Total predios: <span id="lob_props_count">0</span></div>
-</div>
-
-<div id="lob_props_list" class="lob_prop_list">
-<!-- lista de propiedades -->
-</div>
-
-<hr style="margin:12px 0">
-
-<div id="lob_prop_form_section" style="display:none">
-<h4 id="lob_prop_form_title">Nuevo predio</h4>
-<form id="lob_form_prop">
-<div class="lob_form_grid">
-<div>
-<label class="lob_label" for="lob_prop_anexo">Anexo / N° Predio</label>
-<input id="lob_prop_anexo" class="lob_input" />
-</div>
-<div>
-<label class="lob_label" for="lob_prop_codigo_catastral">Código catastral</label>
-<input id="lob_prop_codigo_catastral" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_address">Dirección del predio</label>
-<input id="lob_prop_address" class="lob_input" />
-</div>
-<div>
-<label class="lob_label" for="lob_prop_distrito">Distrito</label>
-<input id="lob_prop_distrito" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_tipo">Tipo de predio</label>
-<select id="lob_prop_tipo" class="lob_input">
-<option value="">-- seleccionar --</option>
-<option value="independiente">Predio independiente</option>
-<option value="edificio_frentera">Predio en edificio (con frentera)</option>
-<option value="edificio_sin_frentera">Predio en edificio (sin frentera)</option>
-<option value="quinta_frentera">Predio en quinta (con frentera)</option>
-<option value="quinta_sin_frentera">Predio en quinta (sin frentera)</option>
-<option value="vecindad_frentera">Predio en vecindad (con frentera)</option>
-<option value="vecindad_sin_frentera">Predio en vecindad (sin frentera)</option>
-<option value="otro">Otro</option>
-</select>
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_estado">Estado</label>
-<select id="lob_prop_estado" class="lob_input">
-<option value="">-- seleccionar --</option>
-<option value="terreno">Terreno sin construir</option>
-<option value="construccion">En construcción</option>
-<option value="terminado">Terminado</option>
-<option value="ruinas">En ruinas</option>
-</select>
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_uso">Uso del predio</label>
-<input id="lob_prop_uso" class="lob_input" placeholder="Ej: Casa habitación, Comercio ..." />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_area">Área (m²)</label>
-<input id="lob_prop_area" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_valorarancel">Valor arancel por m² (S/.)</label>
-<input id="lob_prop_valorarancel" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_area_construida">Área construida (m²)</label>
-<input id="lob_prop_area_construida" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_valor_construccion">Valor de la construcción (S/.)</label>
-<input id="lob_prop_valor_construccion" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_valor_terreno">Valor del terreno (S/.)</label>
-<input id="lob_prop_valor_terreno" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_otras_inst">Otras instalaciones (S/.)</label>
-<input id="lob_prop_otras_inst" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_condominio">% Condominio (si aplica)</label>
-<input id="lob_prop_condominio" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_area_comun">% Área común (si aplica)</label>
-<input id="lob_prop_area_comun" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div style="grid-column:1 / -1">
-<label class="lob_label" for="lob_prop_observaciones">Observaciones / notas</label>
-<textarea id="lob_prop_observaciones" class="lob_input"></textarea>
-</div>
-</div>
-
-<div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end;">
-<button type="button" id="lob_btn_cancel_prop" class="lob_btn ghost">Cancelar</button>
-<button type="submit" class="lob_btn">Guardar predio</button>
-</div>
-</form>
-</div>
-
-<div style="margin-top:12px;display:flex;justify-content:flex-end;">
-<button id="lob_close_props" class="lob_btn ghost">Cerrar</button>
-</div>
-</div>
-</div>
-
-<!-- FILTERS MODAL -->
- <div id="lob_modal_filters_back" class="lob_modal_back" aria-hidden="true">
-   <div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_filters_title">
-     <h3 id="lob_modal_filters_title">Filtros avanzados</h3>
-     <div style="margin-top:8px;">
-       <div class="lob_small">Sistemas de puntaje (seleccione uno o varios)</div>
-       <div id="lob_filters_scoring" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
-         <!-- checkboxes generados por JS -->
-       </div>
-     </div>
- 
-     <div style="margin-top:12px;">
-       <label class="lob_label" for="lob_filter_distrito">Distrito (futuro)</label>
-       <input id="lob_filter_distrito" class="lob_input" placeholder="(opcional)"/>
-     </div>
- 
-     <div class="lob_modal_footer" style="margin-top:14px;">
-       <button type="button" id="lob_btn_filters_cancel" class="lob_btn ghost">Cancelar</button>
-       <button type="button" id="lob_btn_filters_apply" class="lob_btn">Consultar</button>
-     </div>
-   </div>
- </div>
 </section>
 </main>
 
@@ -945,8 +928,8 @@ textarea.lob_input{min-height:80px;resize:vertical}
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=5.0.1"></script>
+<script src="./js/apipos_setup.min.js?v=5.0.2"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_customers.min.js?v=5.0.1"></script>
+<script src="./js/apierp_customers.min.js?v=5.0.2"></script>
 </body>
 </html>
