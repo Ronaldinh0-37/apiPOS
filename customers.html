@@ -53,10 +53,10 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=5.0.3" rel="stylesheet">
-<link href="./css/apipos.min.css?v=5.0.3" rel="stylesheet">
-<link href="./css/apierp_header.css?v=5.0.3" rel="stylesheet">
-<link href="./css/apipos_login.css?v=5.0.3" rel="stylesheet">
+<link href="./css/apierp.min.css?v=5.0.4" rel="stylesheet">
+<link href="./css/apipos.min.css?v=5.0.4" rel="stylesheet">
+<link href="./css/apierp_header.css?v=5.0.4" rel="stylesheet">
+<link href="./css/apipos_login.css?v=5.0.4" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -292,56 +292,9 @@
 </div>
 </div>
 
-<!-- MODAL: Add / Edit Customer -->
+<!-- MODAL ADD/EDIT -->
 <div id="lob_modal_back" class="lob_modal_back" aria-hidden="true">
-<div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_title">
-<h3 id="lob_modal_title">Nuevo contribuyente</h3>
-<form id="lob_form_customer">
-<div class="lob_form_grid">
-<div>
-<label class="lob_label" for="lob_customer_name">Apellidos y Nombres / Razón social</label>
-<input id="lob_customer_name" class="lob_input" required />
-</div>
-<div>
-<label class="lob_label" for="lob_customer_document">Nº Documento (DNI / RUC / Otro)</label>
-<input id="lob_customer_document" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_customer_address">Domicilio fiscal / Dirección</label>
-<input id="lob_customer_address" class="lob_input" />
-</div>
-<div>
-<label class="lob_label" for="lob_customer_phone">Teléfono / Celular</label>
-<input id="lob_customer_phone" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_customer_birthdate">Fecha de Nacimiento (opcional)</label>
-<input id="lob_customer_birthdate" class="lob_input" type="date" />
-</div>
-<div>
-<label class="lob_label" for="lob_customer_ubigeo">Ubigeo (opcional)</label>
-<input id="lob_customer_ubigeo" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_customer_score">Score / Nota (opcional)</label>
-<input id="lob_customer_score" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_customer_extra">Observaciones / Datos extra</label>
-<textarea id="lob_customer_extra" class="lob_input"></textarea>
-</div>
-</div>
-
-<div class="lob_modal_footer">
-<button type="button" id="lob_btn_cancel" class="lob_btn ghost">Cancelar</button>
-<button type="submit" class="lob_btn">Guardar</button>
-</div>
-</form>
-</div>
+<div id="form_record" class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_title"></div>
 </div>
 
 <!-- MODAL: Manage Properties for customer -->
@@ -928,8 +881,8 @@ textarea.lob_input{min-height:80px;resize:vertical}
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=5.0.3"></script>
+<script src="./js/apipos_setup.min.js?v=5.0.4"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_records.min.js?v=5.0.3"></script>
+<script src="./js/apierp_records.min.js?v=5.0.4"></script>
 </body>
 </html>
