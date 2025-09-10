@@ -3,7 +3,7 @@ Name: apiERP
 Author: Luisito Programa
 Website 1: luisitoprograma.com
 Website 2: apiERP.dev
-version: 5.0.5
+version: 5.0.6
 */
 
 /* SETUP */
@@ -442,21 +442,75 @@ border-radius: 5px;
 font-weight: normal;
 font-size: 12.5px;
 }
-.span-table-setTipoComprobante-pedido{
-border: 1.5px solid var(--blue);
-color: var(--blue);
+
+/* REPORTS - BUTTONS TABLE GENERAL */
+.container-report-buttons{
+text-align: right;
+padding-right: 5px;
+margin-bottom: 10px;
 }
-.span-table-setTipoComprobante-recibo{
-border: 1.5px solid var(--lead);
-color: var(--lead);
+.export-drop.dropdown {
+display: inline-flex;
+position: relative;
+align-items: center;
+gap: 0;
+font-family: inherit;
 }
-.span-table-setTipoComprobante-boleta{
-border: 1.5px solid var(--blue);
-color: var(--blue);
+.export-btn,
+.export-toggle {
+font-size: 13px;
+color: green;
+border: 2px solid green;
+background: #fff;
+padding: 8px 12px;           /* idéntico para ambos */
+box-sizing: border-box;      /* asegurar cálculo consistente de tamaño */
+min-height: 40px;            /* fuerza la misma altura visual */
+display: inline-flex;
+align-items: center;
+gap: .5rem;
+cursor: pointer;
+line-height: 1;
+vertical-align: middle;
 }
-.span-table-setTipoComprobante-factura{
-border: 1.5px solid var(--orange);
-color: var(--orange);
+.export-btn {
+border-radius: 6px 0 0 6px;
+}
+.export-toggle {
+border-left: 0;
+padding-left: 10px;          /* un poco menos a la izquierda si quieres */
+border-radius: 0 6px 6px 0;
+justify-content: center;
+}
+.bi-file-earmark-excel-fill{
+font-size: 15px;
+color: green;
+}
+.export-label { display: inline-block; }
+.export-menu {
+min-width: 220px;
+margin-top: 6px;
+box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+border-radius: 8px;
+overflow: hidden;
+border: 1px solid rgba(0,0,0,0.06);
+}
+.export-btn:hover,
+.export-toggle:hover,
+.export-btn:focus,
+.export-toggle:focus {
+background: #f6fff6;
+outline: none;
+}
+.export-menu .dropdown-item {
+display: flex; align-items: center; gap: .5rem; 
+}
+.export-btn:focus-visible,
+.export-toggle:focus-visible {
+box-shadow: 0 0 0 3px rgba(33, 115, 70, 0.12);
+}
+@media (max-width: 420px){
+.export-label { display: none; }
+.export-btn { padding: 7px; }
 }
 
 /* SNIPPER LOADING */

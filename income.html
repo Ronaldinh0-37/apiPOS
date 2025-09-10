@@ -53,10 +53,10 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=5.0.5" rel="stylesheet">
-<link href="./css/apipos.min.css?v=5.0.5" rel="stylesheet">
-<link href="./css/apierp_header.css?v=5.0.5" rel="stylesheet">
-<link href="./css/apipos_login.css?v=5.0.5" rel="stylesheet">
+<link href="./css/apierp.min.css?v=5.0.6" rel="stylesheet">
+<link href="./css/apipos.min.css?v=5.0.6" rel="stylesheet">
+<link href="./css/apierp_header.css?v=5.0.6" rel="stylesheet">
+<link href="./css/apipos_login.css?v=5.0.6" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 <script src="./js/echarts.min.js"></script>
 </head>
@@ -645,8 +645,22 @@ Ajustes
 <!-- GRAPHIC INCOMES GENERAL -->
 <div id="divChartIncome" class="m-auto"></div>
 
-<!-- BUTTON EXPORT PLE INCOMES -->
-<button id="btnExport">Exportar PLE</button>
+<!-- BUTTON EXPORT REPORT -->
+<div class="container-report-buttons">
+<div class="export-drop dropdown">
+<button id="btnExport" type="button" class="export-btn" title="Exportar">
+<i class="bi bi-file-earmark-excel-fill" aria-hidden="true"></i>
+<span class="export-label">Exportar</span>
+</button>
+<button id="btnExportToggle" type="button" class="export-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Mostrar opciones">
+<i class="bi bi-caret-down-fill" aria-hidden="true"></i>
+</button>
+<ul class="dropdown-menu export-menu dropdown-menu-end">
+<li><a class="dropdown-item" href="javascript:void(0)" id="btnExportEmail"><i class="bi bi-envelope-fill me-2"></i>Enviar por Email</a></li>
+<li><a class="dropdown-item" href="javascript:void(0)" id="btnExportWhatsapp"><i class="bi bi-whatsapp me-2"></i>Enviar por WhatsApp</a></li>
+</ul>
+</div>
+</div>
 
 <!-- TABLE INCOMES GENERAL -->
 <div class="table-responsive table-wrapper">
@@ -726,8 +740,8 @@ Ajustes
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=5.0.5"></script>
+<script src="./js/apipos_setup.min.js?v=5.0.6"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_reports.min.js?v=5.0.5"></script>
+<script src="./js/apierp_reports.min.js?v=5.0.6"></script>
 </body>
 </html>
