@@ -53,10 +53,10 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=5.0.7" rel="stylesheet">
-<link href="./css/apipos.min.css?v=5.0.7" rel="stylesheet">
-<link href="./css/apierp_header.css?v=5.0.7" rel="stylesheet">
-<link href="./css/apipos_login.css?v=5.0.7" rel="stylesheet">
+<link href="./css/apierp.min.css?v=5.0.8" rel="stylesheet">
+<link href="./css/apipos.min.css?v=5.0.8" rel="stylesheet">
+<link href="./css/apierp_header.css?v=5.0.8" rel="stylesheet">
+<link href="./css/apipos_login.css?v=5.0.8" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 </head>
 <body>
@@ -452,229 +452,8 @@
 <section id="login" style="padding: 0; margin: 0;"></section>
 
 <!-- HEADER -->
-<header id="header" class="header dark-background d-flex flex-column hidden">
-<a href="#">
-<div class="profile-img">
-<img src="./img/icon/android-icon-192x192.png" alt="" class="img-fluid">
-</div>
-</a>
-<nav id="navmenu" class="navmenu">
-<ul>
-
-<!-- PUNTO DE VENTA -->
-<li class="has-submenu">
-<a href="javascript:void(0)" class="active">
-<img src="./img/icon-point-of-sale.svg" alt="icon-point-of-sale" class="icon-main">
-<img src="./img/icon-point-of-sale-lead.svg" alt="icon-point-of-sale-lead" class="icon-main-lead">
-Punto de Venta
-<span class="arrow">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
-</span>
-</a>
-<ul class="submenu">
-<li><a href="./">Acceder a apiPOS</a></li>
-<li><a href="javascript:void(0)">Gestión de Turnos</a></li>
-<li><a href="javascript:void(0)">Gestión de Reservas</a></li>
-<li><a href="javascript:void(0)">Gestión de Ambientes</a></li>
-<li><a href="javascript:void(0)">Programa de Puntos</a></li>
-<li><a href="javascript:void(0)">Vales de descuento</a></li>
-</ul>
-</li>
-
-<!-- REPORTE GENERAL -->
-<li class="has-submenu">
-<a href="javascript:void(0)">
-<img src="./img/icon-reports.svg" alt="icon-reports" class="icon-main">
-<img src="./img/icon-reports-lead.svg" alt="icon-reports-lead" class="icon-main-lead">
-Reporte General
-<span class="arrow">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
-</span>
-</a>
-<ul class="submenu">
-<li><a href="javascript:void(0)">Reporte de Ingresos</a></li>
-<li><a href="javascript:void(0)">Reporte de Cobros Realizados</a></li>
-<li><a href="javascript:void(0)">Reporte de Cobros Pendientes</a></li>
-<li><a href="javascript:void(0)">Reporte de Gastos</a></li>
-<li><a href="javascript:void(0)">Reporte de Pagos Realizados</a></li>
-<li><a href="javascript:void(0)">Reporte de Pagos Pendientes</a></li>
-<li><a href="javascript:void(0)">Reporte de Inventario</a></li>
-<li><a href="javascript:void(0)">Reporte de Producción</a></li>
-<li><a href="javascript:void(0)">Reporte de Impuestos</a></li>
-<li><a href="javascript:void(0)">Reporte de Cuentas Bancarias</a></li>
-<li><a href="javascript:void(0)">Flujo de Caja Financiero</a></li>
-</ul>
-</li>
-
-<!-- REGISTROS DE DATOS -->
-<li class="has-submenu">
-<a href="javascript:void(0)">
-<img src="./img/icon-records.svg" alt="icon-records" class="icon-main">
-<img src="./img/icon-records-lead.svg" alt="icon-records-lead" class="icon-main-lead">
-Registros
-<span class="arrow">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
-</span>
-</a>
-<ul class="submenu">
-<li><a href="javascript:void(0)">Productos y Servicios</a></li>
-<li><a href="javascript:void(0)">Clientes </a></li>
-<li><a href="javascript:void(0)">Proveedores</a></li>
-<li><a href="javascript:void(0)">Colaboradores</a></li>
-<li><a href="javascript:void(0)">Usuarios</a></li>
-<li><a href="javascript:void(0)">Sucursales</a></li>
-</ul>
-</li>
-
-<!-- LOGISTICA -->
-<li class="has-submenu">
-<a href="javascript:void(0)">
-<img src="./img/icon-logistics.svg" alt="icon-logistics" class="icon-main">
-<img src="./img/icon-logistics-lead.svg" alt="icon-logistics-lead" class="icon-main-lead">
-Logística y Op.
-<span class="arrow">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
-</span>
-</a>
-<ul class="submenu">
-<li><a href="javascript:void(0)">Gestión de Inventarios</a></li>
-<li><a href="javascript:void(0)">Gestión de Almacenes</a></li>
-<li><a href="javascript:void(0)">Guias de Remisión Remitente</a></li>
-<li><a href="javascript:void(0)">Guias de Remisión Transportista</a></li>
-<li><a href="javascript:void(0)">Transferencias entre Sucursales</a></li>
-<li><a href="javascript:void(0)">Compras pendientes por ingresar</a></li>
-<li><a href="javascript:void(0)">Ventas pendientes por despachar</a></li>
-<li><a href="javascript:void(0)">Productos por Caducar</a></li>
-<li><a href="javascript:void(0)">Gestión de Producción</a></li>
-</ul>
-</li>
-
-<!-- INGRESOS -->
-<li class="has-submenu">
-<a href="javascript:void(0)">
-<img src="./img/icon-income.svg" alt="icon-income" class="icon-main">
-<img src="./img/icon-income-lead.svg" alt="icon-income-lead" class="icon-main-lead">
-Ingresos
-<span class="arrow">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
-</span>
-</a>
-<ul class="submenu">
-<li><a href="javascript:void(0)">Gestión de Ventas</a></li>
-<li><a href="javascript:void(0)">Ingresos</a></li>
-<li><a href="javascript:void(0)">Notas de crédito y débito</a></li>
-<li><a href="javascript:void(0)">Proformas</a></li>
-<li><a href="javascript:void(0)">Registro de Pedidos</a></li>
-</ul>
-</li>
-
-<!-- GASTOS -->
-<li class="has-submenu">
-<a href="javascript:void(0)">
-<img src="./img/icon-expenses.svg" alt="icon-expenses" class="icon-main">
-<img src="./img/icon-expenses-lead.svg" alt="icon-expenses-lead" class="icon-main-lead">
-Gastos
-<span class="arrow">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
-</span>
-</a>
-<ul class="submenu">
-<li><a href="javascript:void(0)">Registro de compras</a></li>
-<li><a href="javascript:void(0)">Gastos</a></li>
-<li><a href="javascript:void(0)">Notas de crédito</a></li>
-<li><a href="javascript:void(0)">Registro de pagos</a></li>
-</ul>
-</li>
-
-<!-- SIRE -->
-<li class="has-submenu">
-<a href="javascript:void(0)">
-<img src="./img/icon-accounting.svg" alt="icon-accounting" class="icon-main">
-<img src="./img/icon-accounting-lead.svg" alt="icon-accounting-lead" class="icon-main-lead">
-SIRE
-<span class="arrow">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
-</span>
-</a>
-<ul class="submenu">
-<li><a href="./RVIE.html">Registro de Ventas e Ingresos Electrónico</a></li>
-<li><a href="./RCE.html">Registro de Compras Electrónico</a></li>
-</ul>
-</li>
-
-<!-- AJUSTES -->
-<li class="has-submenu">
-<a href="javascript:void(0)">
-<img src="./img/icon-settings.svg" alt="icon-settings" class="icon-main">
-<img src="./img/icon-settings-lead.svg" alt="icon-settings" class="icon-main-lead">
-Ajustes
-<span class="arrow">
-<img src="./img/icon-arrow-right.svg" alt="icon-arrow-right" class="icon-arrow-right">
-<img src="./img/icon-arrow-right-white.svg" alt="icon-arrow-right-white" class="icon-arrow-right-white">
-</span>
-</a>
-<ul class="submenu">
-<li><a href="javascript:void(0)">Información</a></li>
-<li><a href="javascript:void(0)">Historial de Actividad</a></li>
-<li><a href="javascript:void(0)">Correo</a></li>
-<li><a href="javascript:void(0)">Planes y Suscripciones</a></li>
-<li><a href="javascript:void(0)">Asistencia al Cliente</a></li>
-<li><a href="javascript:void(0)">Más  Ajustes</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</header>
-<header id="topbar" class="topbar hidden">
-<div class="topbar-left">
-<i class="header-toggle bi bi-list"></i>
-
-<!-- HOME -->
-<a href="javascript:void(0)" class="home-icon"><i class="bi bi-house"></i></a>
-<span class="panel-title element-header-response">Panel Principal</span>
-
-<!-- SUCURSALES, ALMACENES, AMBIENTES -->
-<span class="separator">|</span>
-<select id="setBranchId"></select>
-<select id="setWarehouseId"></select>
-<select id="setFloorId"></select>
-</div>
-<div class="topbar-right">
-
-<!-- NOTIFICATIONS -->
-<div class="ntf-notification-wrapper">
-<a href="javascript:void(0)" id="tabs-notifications" class="ntf-bell">
-<img src="./img/icon-notification.svg" alt="icon-notifications" class="img-tab-home">
-<span id="ntf-notif-count" class="ntf-badge">0</span>
-</a>
-<div id="ntf-notification-dropdown" class="ntf-dropdown ntf-hidden">
-<ul id="ntf-notifications-list"></ul>
-</div>
-</div>
-
-<span class="separator">|</span>
-
-<!-- FULLSCREEN -->
-<button id="fullscreen-btn" class="custom-input-cart-options form-control" type="button">
-<img src="./img/icon-fullscreen.svg" alt="icon-areas" class="img-tab-home">
-</button>
-
-<span class="separator">|</span>
-
-<a href="#" class="check-icon"><i class="bi bi-check"></i></a>
-<span id="setPlanName" class="plan-title element-header-response"></span>
-<span class="separator">|</span>
-<span id="setCashierName" class="user-name element-header-response"></span>
-<a href="#" class="user-icon"><i class="bi bi-person"></i></a>
-</div>
-</header>
+<header id="header" class="header dark-background d-flex flex-column hidden"></header>
+<header id="topbar" class="topbar hidden"></header>
 
 <!-- MAIN -->
 <main>
@@ -873,6 +652,7 @@ textarea.lob_input{min-height:80px;resize:vertical}
 <div id="ntf-flotante-container"></div>
 
 <!-- SCRIPTS -->
+<script src="./js/apierp_main.js?v=5.0.8"></script>
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/pos-main.js"></script>
 <script src="./js/setup-pdf-lib.min.js"></script>
@@ -881,8 +661,8 @@ textarea.lob_input{min-height:80px;resize:vertical}
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=5.0.7"></script>
+<script src="./js/apipos_setup.min.js?v=5.0.8"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_records.min.js?v=5.0.7"></script>
+<script src="./js/apierp_records.min.js?v=5.0.8"></script>
 </body>
 </html>

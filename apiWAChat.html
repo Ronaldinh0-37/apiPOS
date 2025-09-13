@@ -53,10 +53,11 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=5.0.7" rel="stylesheet">
-<link href="./css/apipos.min.css?v=5.0.7" rel="stylesheet">
-<link href="./css/apipos_login.css?v=5.0.7" rel="stylesheet">
-<link href="./css/apiWAChat.min.css?v=5.0.7" rel="stylesheet">
+<link href="./css/apierp.min.css?v=5.0.8" rel="stylesheet">
+<link href="./css/apipos.min.css?v=5.0.8" rel="stylesheet">
+<link href="./css/apierp_header.css?v=5.0.8" rel="stylesheet">
+<link href="./css/apipos_login.css?v=5.0.8" rel="stylesheet">
+<link href="./css/apiWAChat.min.css?v=5.0.8" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
 <script src="./js/echarts.min.js"></script>
 </head>
@@ -85,7 +86,12 @@
 <!-- LOGIN -->
 <section id="login" style="padding: 0; margin: 0;"></section>
 
-<header id="header"></header>
+<!-- HEADER -->
+<header id="header" class="header dark-background d-flex flex-column hidden"></header>
+<header id="topbar" class="topbar hidden"></header>
+
+<!-- MAIN -->
+<main>
 <div id="pos" class="container hidden">
 
 <!-- RESOURCES -->
@@ -137,19 +143,23 @@
 </div>
 </section>
 </div>
+</main>
 
 <!-- ALERTS -->
 <div id="ntf-flotante-container"></div>
 
 <!-- SCRIPTS -->
+<script src="./js/apierp_main.js?v=5.0.8"></script>
 <script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/pos-main.js"></script>
 <script src="./js/setup-pdf-lib.min.js"></script>
 <script src="./js/pdf-lib.min.js"></script>
 <script src="./js/fontkit.umd.min.js"></script>
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=5.0.7"></script>
-<script src="./js/apiWAChat.min.js?v=5.0.7"></script>
+<script src="./js/apipos_setup.min.js?v=5.0.8"></script>
+<script src="./js/apierp_header.js"></script>
+<script src="./js/apiWAChat.min.js?v=5.0.8"></script>
 </body>
 </html>
