@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- TITLE -->
-<title>Customers</title>
+<title>Income</title>
 
 <!-- DESCRIPCION -->
 <meta name="description" content="Punto de Venta Integrable y Ultrarrápido con tecnología web offline que permite operar con o sin conexión a internet.">
@@ -53,11 +53,12 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/bootstrap-icons.css" rel="stylesheet">
-<link href="./css/apierp.min.css?v=5.1.1" rel="stylesheet">
-<link href="./css/apipos.min.css?v=5.1.1" rel="stylesheet">
-<link href="./css/apierp_header.css?v=5.1.1" rel="stylesheet">
-<link href="./css/apipos_login.css?v=5.1.1" rel="stylesheet">
+<link href="./css/apierp.min.css?v=5.1.2" rel="stylesheet">
+<link href="./css/apipos.min.css?v=5.1.2" rel="stylesheet">
+<link href="./css/apierp_header.css?v=5.1.2" rel="stylesheet">
+<link href="./css/apipos_login.css?v=5.1.2" rel="stylesheet">
 <link href="./css/pdf_viewer.min.css" rel="stylesheet">
+<script src="./js/echarts.min.js"></script>
 </head>
 <body>
 
@@ -292,159 +293,16 @@
 </div>
 </div>
 
-<!-- MODAL ADD/EDIT -->
-<div id="lob_modal_back" class="lob_modal_back" aria-hidden="true">
-<div id="form_record" class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_title"></div>
+<!-- MODAL OPTIONS -->
+<div id="modalOverlayOptions" class="modalOverlay"></div>
+<div id="detalleModalOptions" class="modal">
+<div class="modal-content" style="border: none;">
+<div class="container-buttons">
+<button id="closeModalOptions" type="button" class="close closeModal margin-left-auto">
+<img src="./img/icon-close.svg" alt="icon-close" class="icon-close">
+</button>
 </div>
-
-<!-- MODAL: Manage Properties for customer -->
-<div id="lob_modal_props_back" class="lob_modal_back" aria-hidden="true">
-<div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_props_title">
-<h3 id="lob_modal_props_title">Predios de <span id="lob_props_owner"></span></h3>
-
-<div style="display:flex;gap:8px;margin-bottom:8px;align-items:center">
-<button id="lob_btn_new_prop" class="lob_btn">+ Nuevo predio</button>
-<div class="lob_small" style="margin-left:auto">Total predios: <span id="lob_props_count">0</span></div>
-</div>
-
-<div id="lob_props_list" class="lob_prop_list">
-<!-- lista de propiedades -->
-</div>
-
-<hr style="margin:12px 0">
-
-<div id="lob_prop_form_section" style="display:none">
-<h4 id="lob_prop_form_title">Nuevo predio</h4>
-<form id="lob_form_prop">
-<div class="lob_form_grid">
-<div>
-<label class="lob_label" for="lob_prop_anexo">Anexo / N° Predio</label>
-<input id="lob_prop_anexo" class="lob_input" />
-</div>
-<div>
-<label class="lob_label" for="lob_prop_codigo_catastral">Código catastral</label>
-<input id="lob_prop_codigo_catastral" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_address">Dirección del predio</label>
-<input id="lob_prop_address" class="lob_input" />
-</div>
-<div>
-<label class="lob_label" for="lob_prop_distrito">Distrito</label>
-<input id="lob_prop_distrito" class="lob_input" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_tipo">Tipo de predio</label>
-<select id="lob_prop_tipo" class="lob_input">
-<option value="">-- seleccionar --</option>
-<option value="independiente">Predio independiente</option>
-<option value="edificio_frentera">Predio en edificio (con frentera)</option>
-<option value="edificio_sin_frentera">Predio en edificio (sin frentera)</option>
-<option value="quinta_frentera">Predio en quinta (con frentera)</option>
-<option value="quinta_sin_frentera">Predio en quinta (sin frentera)</option>
-<option value="vecindad_frentera">Predio en vecindad (con frentera)</option>
-<option value="vecindad_sin_frentera">Predio en vecindad (sin frentera)</option>
-<option value="otro">Otro</option>
-</select>
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_estado">Estado</label>
-<select id="lob_prop_estado" class="lob_input">
-<option value="">-- seleccionar --</option>
-<option value="terreno">Terreno sin construir</option>
-<option value="construccion">En construcción</option>
-<option value="terminado">Terminado</option>
-<option value="ruinas">En ruinas</option>
-</select>
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_uso">Uso del predio</label>
-<input id="lob_prop_uso" class="lob_input" placeholder="Ej: Casa habitación, Comercio ..." />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_area">Área (m²)</label>
-<input id="lob_prop_area" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_valorarancel">Valor arancel por m² (S/.)</label>
-<input id="lob_prop_valorarancel" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_area_construida">Área construida (m²)</label>
-<input id="lob_prop_area_construida" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_valor_construccion">Valor de la construcción (S/.)</label>
-<input id="lob_prop_valor_construccion" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_valor_terreno">Valor del terreno (S/.)</label>
-<input id="lob_prop_valor_terreno" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_otras_inst">Otras instalaciones (S/.)</label>
-<input id="lob_prop_otras_inst" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_condominio">% Condominio (si aplica)</label>
-<input id="lob_prop_condominio" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div>
-<label class="lob_label" for="lob_prop_area_comun">% Área común (si aplica)</label>
-<input id="lob_prop_area_comun" class="lob_input" type="number" step="0.01" />
-</div>
-
-<div style="grid-column:1 / -1">
-<label class="lob_label" for="lob_prop_observaciones">Observaciones / notas</label>
-<textarea id="lob_prop_observaciones" class="lob_input"></textarea>
-</div>
-</div>
-
-<div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end;">
-<button type="button" id="lob_btn_cancel_prop" class="lob_btn ghost">Cancelar</button>
-<button type="submit" class="lob_btn">Guardar predio</button>
-</div>
-</form>
-</div>
-
-<div style="margin-top:12px;display:flex;justify-content:flex-end;">
-<button id="lob_close_props" class="lob_btn ghost">Cerrar</button>
-</div>
-</div>
-</div>
-
-<!-- FILTERS MODAL -->
-<div id="lob_modal_filters_back" class="lob_modal_back" aria-hidden="true">
-<div class="lob_modal" role="dialog" aria-modal="true" aria-labelledby="lob_modal_filters_title">
-<h3 id="lob_modal_filters_title">Filtros avanzados</h3>
-<div style="margin-top:8px;">
-<div class="lob_small">Sistemas de puntaje (seleccione uno o varios)</div>
-<div id="lob_filters_scoring" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
-<!-- checkboxes generados por JS -->
-</div>
-</div>
-
-<div style="margin-top:12px;">
-<label class="lob_label" for="lob_filter_distrito">Distrito (futuro)</label>
-<input id="lob_filter_distrito" class="lob_input" placeholder="(opcional)"/>
-</div>
-
-<div class="lob_modal_footer" style="margin-top:14px;">
-<button type="button" id="lob_btn_filters_cancel" class="lob_btn ghost">Cancelar</button>
-<button type="button" id="lob_btn_filters_apply" class="lob_btn">Consultar</button>
-</div>
+<div id="div_section_options" class="d-flex flex-column flex-grow-1"></div>
 </div>
 </div>
 
@@ -459,191 +317,108 @@
 <main>
 <section id="pos" style="padding: 0; margin: 0;" class="hidden">
 
-<!-- CONTENT -->
-<style>
-/* ---------- RESET / BASE ---------- */
-:root{
---primary:#0f62fe;
---muted:#666;
---bg:#f6f8fa;
---card:#fff;
---danger:#e53935;
---success:#1e8e3e;
---radius:10px;
---gap:12px;
-font-family: Inter, system-ui, "Helvetica Neue", Arial;
-}
-*{box-sizing:border-box}
-body{
-margin:0;
-background:var(--bg);
-color:#111;
-padding:20px;
--webkit-font-smoothing:antialiased;
-}
-.lob_container{
-max-width:1200px;
-margin:0 auto;
-}
-
-/* ---------- HEADER ---------- */
-.lob_header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:16px;
-margin-bottom:16px;
-}
-.lob_title{
-font-size:1.25rem;
-font-weight:600;
-}
-.lob_actions{display:flex;gap:8px;align-items:center}
-
-.lob_btn{
-background:var(--primary);
-color:white;
-border:none;
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
-font-weight:600;
-}
-.lob_btn.ghost{
-background:transparent;
-color:var(--primary);
-border:2px solid var(--primary);
-}
-
-/* ---------- CARD / TABLE ---------- */
-.lob_card{
-background:var(--card);
-padding:16px;
-border-radius:var(--radius);
-box-shadow: 0 6px 18px rgba(12,20,30,0.06);
-}
-.lob_table_wrap{
-overflow:auto;
-margin-top:8px;
-min-height: 240px;
-}
-/* pagination */
-.lob_pagination{display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:12px 0}
-.lob_page_btn{border:1px solid #e6e9ef;padding:6px 10px;border-radius:8px;background:white;cursor:pointer}
-.lob_page_btn[disabled]{opacity:.5;cursor:not-allowed}
-.lob_page_info{font-size:0.85rem;color:var(--muted)}
-table.lob_table{
-width:100%;
-border-collapse:collapse;
-min-width:720px;
-}
-table.lob_table th, table.lob_table td{
-text-align:left;
-padding:10px 12px;
-border-bottom:1px solid #eee;
-vertical-align: middle;
-}
-table.lob_table th{
-font-size:0.85rem;
-color:var(--muted);
-font-weight:600;
-}
-.lob_avatar{
-width:36px;height:36px;border-radius:8px;background:#eee;
-display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:#666;
-margin-right:8px;
-}
-.lob_actions_cell{display:flex;gap:6px;align-items:center}
-
-/* three-dot menu */
-.lob_kebab{
-background:transparent;border:0;padding:6px;border-radius:6px;cursor:pointer;font-size:18px;
-}
-.lob_dropdown{
-position:absolute;
-background:var(--card);
-border-radius:8px;
-box-shadow:0 8px 24px rgba(12,20,30,0.12);
-padding:8px;
-z-index:50;
-display:none;
-min-width:160px;
-}
-.lob_dropdown button{display:block;width:100%;text-align:left;padding:8px;border-radius:6px;border:0;background:transparent;cursor:pointer}
-.lob_dropdown button[disabled]{opacity:.45;cursor:not-allowed}
-
-/* ---------- MODAL ---------- */
-.lob_modal_back{
-position:fixed;inset:0;background:rgba(10,10,12,0.45);display:none;align-items:center;justify-content:center;z-index:60;padding:20px;
-}
-.lob_modal{
-width:100%;max-width:920px;background:var(--card);border-radius:12px;padding:18px;box-shadow:0 12px 30px rgba(2,6,23,0.2);
-max-height:90vh;overflow:auto;
-}
-.lob_modal h3{margin:0 0 10px 0}
-.lob_form_grid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
-}
-@media (max-width:720px){
-.lob_form_grid{grid-template-columns:1fr}
-}
-label.lob_label{display:block;font-size:0.8rem;color:var(--muted);margin-bottom:6px}
-input.lob_input, select.lob_input, textarea.lob_input{
-width:100%;padding:8px;border-radius:8px;border:1px solid #e4e7eb;background:white;
-}
-textarea.lob_input{min-height:80px;resize:vertical}
-
-.lob_modal_footer{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
-.lob_small{font-size:0.85rem;color:var(--muted)}
-
-/* properties list inside modal */
-.lob_prop_list{margin-top:10px;border-top:1px dashed #eee;padding-top:12px}
-.lob_prop_card{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:8px;border-radius:8px;border:1px solid #f0f0f0;margin-bottom:8px}
-.lob_chip{background:#f4f6fb;padding:6px 8px;border-radius:999px;font-size:0.85rem;color:var(--muted)}
-
-/* responsive tweaks */
-@media (max-width:900px){
-.lob_title{font-size:1.05rem}
-}
-
-</style>
-<div class="lob_container">
-<div class="lob_header">
-<div>
-<div id="report_title" class="lob_title"></div>
-<div id="report_description" class="lob_small"></div>
+<!-- INCOME -->
+<div class="container section-title" style="position: relative;">
+<h3 class="text-center">
+<b id="report_title"></b><span id="date-range-label"><i class="bi bi-caret-down-fill date-range-label-icon" style="color: #FF5900;"></i></span>
+</h3>
+<ul id="date-range-options">
+<li data-value="day">del d&iacute;a</li>
+<li data-value="week">de la semana</li>
+<li data-value="month">del mes</li>
+<li data-value="year">del a&ntilde;o</li>
+<li data-value="filtrar" class="li-filter-active">
+Filtrar
+</li>
+</ul>
 </div>
-<div class="lob_actions">
-<button id="lob_btn_new" class="lob_btn"></button>
-<button id="lob_btn_import" class="lob_btn ghost" title="Importar JSON (opcional)">Importar / Exportar</button>
+
+<!-- INCOMES GENERAL -->
+<div class="row">
+<div class="col-md-12">
+
+<!-- GRAPHIC INCOMES GENERAL -->
+<div id="divChartIncome" class="m-auto"></div>
+
+<!-- BUTTON EXPORT REPORT -->
+<div class="container-report-buttons">
+<div class="export-drop dropdown">
+<button id="btnExport" type="button" class="export-btn" title="Exportar">
+<i class="bi bi-file-earmark-excel-fill" aria-hidden="true"></i>
+<span class="export-label">Exportar</span>
+</button>
+<button id="btnExportToggle" type="button" class="export-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Mostrar opciones">
+<i class="bi bi-caret-down-fill" aria-hidden="true"></i>
+</button>
+<ul class="dropdown-menu export-menu dropdown-menu-end">
+<li><a class="dropdown-item" href="javascript:void(0)" id="btnExportEmail"><i class="bi bi-envelope-fill me-2"></i>Enviar por Email</a></li>
+<li><a class="dropdown-item" href="javascript:void(0)" id="btnExportWhatsapp"><i class="bi bi-whatsapp me-2"></i>Enviar por WhatsApp</a></li>
+</ul>
 </div>
 </div>
 
-<div class="lob_card">
-
-<!-- quick search + filtros -->
-<div style="display:flex;gap:8px;align-items:center;margin-top:12px;">
-  <input id="lob_quick_search" class="lob_input" placeholder="Buscar..." style="flex:1;max-width:520px;" />
-  <button id="lob_btn_filters" class="lob_btn ghost" title="Filtros avanzados">Filtros</button>
+<!-- TABLE INCOMES GENERAL -->
+<div class="table-responsive table-wrapper">
+<table id="report_table" class="table table-bordered table-hover table-report"></table>
+</div>
+<div id="pagination-income" class="pagination-table mt-4"></div>
+</div>
 </div>
 
-<div class="lob_table_wrap" style="margin-top:12px;">
-<table id="report_table" class="lob_table" aria-describedby="lob_count"></table>
+<!-- INCOMES X ITEMS -->
+<div class="row row-report-details bg-blue-transparent">
+<div class="col-md-6 col-xs-12 d-flex flex-column justify-content-center">
+
+<!-- TABLE INCOMES X ITEMS -->
+<div class="table-responsive table-wrapper">
+<table id="reporte-income-products" class="table table-bordered table-hover table-report">
+<thead>
+<tr>
+<th class="th-bg-blue" style="text-align: center;  min-width: 100px;">Producto</th>
+<th class="th-bg-blue" style="text-align: center;  min-width: 100px;">Moneda</th>
+<th class="th-bg-blue" style="text-align: center;  min-width: 100px;">Ventas</th>
+<th class="th-bg-blue" style=" min-width: 200px;">Costo</th>
+<th class="th-bg-blue" style="text-align: center;  min-width: 150px;">Ganancia</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div id="pagination-products" class="pagination-table mt-4"></div>
+</div>
+<div class="col-md-6 col-xs-12 d-flex flex-column justify-content-center">
+
+<!-- GRAPHIC INCOMES X ITEMS -->
+<div id="divChartItem" class="m-auto"></div>
+</div>
 </div>
 
-<!-- pagination -->
-<div class="lob_pagination" id="lob_pagination" style="display:none;">
-  <div class="lob_page_info" id="lob_page_info">1 / 1</div>
-  <div style="margin-left:auto;display:flex;gap:6px;">
-    <button class="lob_page_btn" id="lob_prev_page">Anterior</button>
-    <button class="lob_page_btn" id="lob_next_page">Siguiente</button>
-  </div>
-</div>
+<!-- INCOMES X CUSTOMER -->
+<div class="row row-report-details bg-orange-transparent">
+<div class="col-md-6 col-xs-12 d-flex flex-column justify-content-center">
 
+<!-- GRAPHIC INCOMES X CUSTOMER -->
+<div id="divChartCustomer" class="m-auto"></div>
 </div>
+<div class="col-md-6 col-xs-12 d-flex flex-column justify-content-center">
 
-<!-- GOOGLE MAPS -->
-<div class="lob_maps" id="maps_locations" style="width: 100%; height: 700px;"></div>
+<!-- TABLE INCOMES X CUSTOMER -->
+<div class="table-responsive table-wrapper">
+<table id="reporte-income-customers" class="table table-bordered table-hover table-report">
+<thead>
+<tr>
+<th class="th-bg-orange" style="text-align: center;  min-width: 100px;">Cliente</th>
+<th class="th-bg-orange" style="text-align: center;  min-width: 100px;">Moneda</th>
+<th class="th-bg-orange" style="text-align: center;  min-width: 100px;">Ventas</th>
+<th class="th-bg-orange" style=" min-width: 200px;">Costo</th>
+<th class="th-bg-orange" style="text-align: center;  min-width: 150px;">Ganancia</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div id="pagination-customers" class="pagination-table mt-4"></div>
+</div>
 </div>
 </section>
 </main>
@@ -652,7 +427,7 @@ textarea.lob_input{min-height:80px;resize:vertical}
 <div id="ntf-flotante-container"></div>
 
 <!-- SCRIPTS -->
-<script src="./js/apierp_main.js?v=5.1.1"></script>
+<script src="./js/apierp_main.js?v=5.1.2"></script>
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/pos-main.js"></script>
 <script src="./js/setup-pdf-lib.min.js"></script>
@@ -661,8 +436,8 @@ textarea.lob_input{min-height:80px;resize:vertical}
 <script src="./js/qrcode.min.js"></script>
 <script src="./js/app_pdf.min.js"></script>
 <script src="./js/pos.js"></script>
-<script src="./js/apipos_setup.min.js?v=5.1.1"></script>
+<script src="./js/apipos_setup.min.js?v=5.1.2"></script>
 <script src="./js/apierp_header.js"></script>
-<script src="./js/apierp_records.min.js?v=5.1.1"></script>
+<script src="./js/apierp_reports.min.js?v=5.1.2"></script>
 </body>
 </html>
