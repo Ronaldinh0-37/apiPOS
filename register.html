@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fasyb — Registro</title>
+<!-- FAVICONS DINAMICOS-->
+<link rel="icon" type="image/png" sizes="36x36" href="./img/icon/android-icon-36x36.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./img/icon/android-icon-48x48.png">
+<link rel="icon" type="image/png" sizes="72x72" href="./img/icon/android-icon-72x72.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./img/icon/android-icon-96x96.png">
+<link rel="icon" type="image/png" sizes="144x144" href="./img/icon/android-icon-144x144.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./img/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./img/icon/android-icon-512x512.png">
+<link rel="apple-touch-icon" sizes="57x57" href="./img/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="./img/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="./img/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="./img/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="./img/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="./img/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="./img/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./img/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/icon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="./img/icon/apple-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./img/icon/favicon-96x96.png">
+<meta name="msapplication-TileImage" content="./img/icon/ms-icon-144x144.png">
+<link rel="manifest" href="./manifest.json">
+<meta name="msapplication-TileColor" content="#080060">
+<meta name="theme-color" content="#080060">
+<meta name="msapplication-config" content="./browserconfig.xml">
+
+<!-- FONTS AND LIBRARIES -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- STYLES -->
+<link rel="stylesheet" href="css/register_styles.css">
+</head>
+<body>
+
+<!-- NOTIFICATIONS -->
+<div class="notification" id="requiredFieldsNotification">Ingrese la Información Solicitada.</div>
+<div class="notification-success" id="successNotification">¡Registro completado exitosamente!</div>
+<div class="notification" id="emailNotification">El correo electrónico debe contener '@''.'</div>
+
+<!-- HEADER -->
+<header>
+<div class="container topbar">
+<a class="brand" href="#">
+<img src="https://www.fasyb.com/web/image/website/2/logo/fasyb?unique=e619ba3" alt="Fasyb"/>
+</a>
+<nav>
+<a onclick="window.open('https://www.fasyb.com/#Refiere')" style="color:#FF5900; font-weight:bold;">!Recomiéndanos! </a>
+<button class="btn btn-outline ocultar-movil" style="font-size: 14px;">Contactar a Ventas</button>
+<a class="btn btn-primary" href="./" rel="noopener noreferrer">Iniciar Sesión</a>
+</nav>
+</div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="hero">
+<section class="container hero-grid">
+
+<!-- WELCOME + GUIDES -->
+<div class="card">
+<div class="welcome">
+<br>
+<h1 class="titulo-principal"><span class="highlight">¡Bienvenido </span>a Fasyb!</h1><br>
+<p style="font-weight:300; color:#080060;">Registra tu negocio y empieza a disfrutar de beneficios exclusivos y una experiencia adaptada a ti.</p>
+</div>
+<div class="panel"> 
+<h4>
+<a class="btn btn-guia" href="#registro" style="color:#080060; margin-right:12px;">Guías y manuales ⏯</a>
+<a class="btn btn-guia" style="background:#080060; color:#fff; padding:10px 18px; height:38px; display:inline-flex; align-items:center; border-radius:6px; text-decoration:none;" onclick="window.open('https://wa.me/942328698?text=%C2%A1Hola!%20Estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n.%20%C2%BFPodr%C3%ADan%20asesorarme%3F','_blank')" style="color:#FF5900;">Solicita una Demo</a>
+</h4>
+<br>
+<div class="guides">
+<div class="guide">
+<img src="img/icon-invoice-certificate.svg" alt="Certificado Digital" class="icono-pequeno" />
+<div>
+<b>Certificado digital</b>
+<small> <p style="font-weight:100; color:#000000;">Aprende cómo descargar tu certificado digital.</p></small>
+<small><a href="https://youtu.be/WuEXh8vvc-E" target="_blank" rel="noopener noreferrer" style="font-weight:100; color:#FF5900; text-decoration:none;">Ver guía en YouTube -></a></small>
+</div>
+</div>
+<div class="guide">
+<img src="img/icon-user.svg" alt="Certificado Digital" class="icono-pequeno" />
+<div>
+<b>Usuario Secundario</b>
+<small> <p style="font-weight:100; color:#000000;">Guía para gestionar el Usuario Secundario.</p></small>
+<small><a href="https://youtu.be/07o8zmVQ75Q" target="_blank" rel="noopener noreferrer" style="font-weight:100; color:#FF5900; text-decoration:none;">Ver guía en YouTube -></a></small>
+</div>
+</div>
+<div class="guide">
+<img src="img/icon-SUNAT.svg" alt="Certificado Digital" class="icono-pequeno" />
+<div><b>Activar apiSUNAT</b>
+<small> <p style="font-weight:100; color:#000000;">Ver Instrucciones para habilitar la API SUNAT.</p></small>
+<small><a href="https://drive.google.com/file/d/1XdnfTQ8SBjwNTkQFUWcmaR0YYX_QduFY/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-weight:100; color:#FF5900; text-decoration:none;">Descargar Manual -></a></small>
+</div>
+</div>
+</div>
+</div> <br>
+</div>
+
+<!-- FORM -->
+<div class="card" id="registro"><br><br>
+<div class="stepper">
+<div class="bullet active" data-step="1"><div class="num">1</div><span></span></div>
+<div class="bullet" data-step="2"><div class="num">2</div><span></span></div>
+<div class="bullet" data-step="3"><div class="num">3</div><span></span></div>
+<div class="bullet" data-step="4"><div class="num">4</div><span></span></div>
+<div class="bullet" data-step="5"><div class="num">5</div><span></span></div>
+</div>
+<form class="form" id="form-registro" onsubmit="event.preventDefault(); validateAndSubmit();">
+    
+<!-- STEP 1: BUSINESS -->
+<div class="step" data-step="1">
+<div class="step-content">
+<strong style="font-size:15px; color:#FF5900; display:block; margin-bottom:30px;">➡️ Información del Negocio:</strong>
+<div class="grid-2">
+<div style="text-align: left;">
+<label for="tipo_documento_empresa" class="required">Tipo de Documento:</label>
+<select id="tipo_documento_empresa" name="tipo_documento_empresa" required class="custom-select">
+<option value="" disabled selected hidden>Seleccione una opción</option>
+<option value="1">DNI</option>
+<option value="2">RUC</option>
+<option value="3">CE</option>
+<option value="4">PP</option>
+<option value="5">DTNDSR</option>
+</select>
+</div>    
+<div>
+<label class="required">N° de Documento:</label>
+<input type="text" id="n_documento_empresa" required>
+</div><div>
+<label class="required">Razón Social:</label>
+<input type="text" id="nombre_crear_cuenta" required>
+</div><div>
+<label>Nombre Comercial:</label>
+<input type="text" id="nombre_empresa_crear_cuenta">
+</div>
+<div style="text-align: left;">
+<label for="rubro_crear_cuenta" class="required">Sector de Negocio:</label>
+<select id="rubro_crear_cuenta" name="rubro_crear_cuenta" required class="custom-select">
+<option value="" disabled selected hidden>Seleccione una opción</option>                 
+<option value="1">Distribuidor</option>
+<option value="2">Agroindustria</option>
+<option value="3">Servicios Empresariales</option>
+<option value="4">Exportaciones</option>
+<option value="5">Agencia de Viajes</option>
+<option value="6">Comercial</option>
+<option value="7">Bodega</option>
+<option value="8">Minimarket</option>
+<option value="17">Bar</option>
+<option value="18">Restaurante</option>
+<option value="9">Bar / Restaurante</option>
+<option value="10">Hotel</option>
+<option value="11">Educación</option>
+<option value="12">ONG - Fundación</option>
+<option value="13">Construcción</option>
+<option value="14">Ferreteria</option>
+<option value="15">Óptica</option>
+<option value="16">Municipalidad</option>
+</select>
+</div>  
+<div>
+<label>Logo:</label>
+<label for="logo" class="btn-seleccionar">Seleccionar</label>
+<input type="file" id="logo" accept="image/*" style="display:none;">
+<div id="logo_info" class="file-info">Sin selección</div>
+</div>
+</div>
+</div>
+<div class="actions">
+<button type="button" class="btn btn-primary" onclick="validateStep(1)">Siguiente</button>
+</div>
+</div>
+
+<!-- STEP 2: LOCATION -->
+<div class="step" data-step="2" hidden>
+<div class="step-content">
+<strong style="font-size:15px; color:#FF5900; display:block; margin-bottom:30px;">➡️ Ubicación y Descripción:</strong>
+<div class="grid-2">
+<div>
+<label class="required">Dirección:</label>
+<input type="text" id="direccion" required>
+</div>
+<label class="checkbox-option">
+<input type="checkbox" id="zona_selva" name="zona_selva" value="si">
+<span>¿Es zona selva exonerada del IGV?</span>
+</label> 
+</div>
+<div class="ubicacion" style="margin-top:10px">
+<div>
+<label class="required">Departamento</label>
+<select id="departamento" required>
+<option value="" disabled selected>Departamento</option>
+</select>
+</div>
+<div>
+<label class="required">Provincia</label>
+<select id="provincia" required>
+<option value="" disabled selected>Provincia</option>
+</select>
+</div>
+<div>
+<label class="required">Distrito</label>
+<select id="distrito" required>
+<option value="" disabled selected>Distrito</option>
+</select>
+</div></div><br>
+<div class="grid-2">
+<div>
+<label>Sitio Web:</label>
+<input type="text" id="sitio_web">
+</div>
+<div style="text-align: left;">
+<label>Descripción:</label>
+<textarea id="descripcion" placeholder=" " style="width:100%; height:30px; resize: vertical; border-radius: 8px; padding: 4px; border: 1px solid #cfcfcf; font-size:13px;"></textarea>
+</div>
+</div>
+</div>
+<div class="actions">
+<button type="button" class="btn pill" onclick="goto(1)">Anterior</button>
+<button type="button" class="btn btn-primary" onclick="validateStep(2)">Siguiente</button>
+</div>
+</div>
+
+<!-- STEP 3: ACCOUNT -->
+<div class="step" data-step="3" hidden>
+<div class="step-content">
+<strong style="font-size:15px; color:#FF5900; display:block; margin-bottom:30px;">➡️ Cuenta de Acceso:</strong>
+<div class="grid-2">
+<div>
+<label class="required">Correo electrónico:</label>
+<input type="email_crear_cuenta" id="email_crear_cuenta" required>
+</div>
+<div>
+<label class="required">Contraseña:</label>
+<div class="password-container">
+<input type="password" id="password_crear_cuenta" required>
+<i class="fas fa-eye toggle-password" id="togglePassword"></i>
+</div>
+</div>
+</div>
+
+<!-- OPTION TO REMEMBER DATA -->
+<div class="remember-container">
+<input type="checkbox" id="remember">
+<label for="remember">Recordar correo y contraseña</label>
+</div>
+<br>
+<label class="checkbox-terminos">
+<input type="checkbox" id="terminos_condiciones" required>
+<span class="required">Acepto los Términos de Servicio y <a onclick="window.open('https://apierp.dev/terminos-y-condiciones/')" target="_blank" style="color:#080060; text-decoration:none;">Condiciones de Uso</a></span>
+</label> 
+</div>
+<div class="actions">
+<button type="button" class="btn pill" onclick="goto(2)">Anterior</button>
+<button type="button" class="btn btn-primary" onclick="validateStep(3)">Siguiente</button>
+</div>
+</div>
+
+<!-- STEP 4: PERSONAL -->
+<div class="step" data-step="4" hidden>
+<div class="step-content">
+<strong style="font-size:15px; color:#FF5900; display:block; margin-bottom:30px;">➡️ Datos Personales:</strong>
+<div class="grid-2">
+<div>
+<label class="required">Tipo de Documento:</label>
+<select required id="tipo_documento_cliente">
+<option value="" disabled selected>Seleccionar</option>
+<option value="1">DNI</option>
+<option value="2">RUC</option>
+<option value="3">CE</option>
+<option value="4">PP</option>
+<option value="5">DTNDSR</option>
+</select>
+</div>
+<div>
+<label class="required">N° de Documento:</label>
+<input type="text" inputmode="numeric" id="n_documento_cliente" required>
+</div>
+<div>
+<label class="required">Nombre y Apellidos:</label>
+<input type="text"  id="apellido_crear_cuenta" required>
+</div>
+<div>
+<label class="required">Cumpleaños - Ofertas y Promos:</label>
+<input type="date" class="fecha" id="cumpleanos" required>
+</div>
+<div>
+<label class="required">Correo - Envíos de Reportes:</label>
+<input type="email" id="correo_envio" required>
+</div>
+<div>
+<label class="required">Celular:</label>
+<input type="tel" id="telefono_crear_cuenta" required>
+</div>
+</div>
+</div>
+<div class="actions">
+<button type="button" class="btn pill" onclick="goto(3)">Anterior</button>
+<button type="button" class="btn btn-primary" onclick="validateStep(4)">Siguiente</button>
+</div>
+</div>
+
+<!-- STEP 5: SUPPORT -->
+<div class="step" data-step="5" hidden>
+<div class="step-content">
+<strong style="font-size:15px; color:#FF5900; display:block; margin-bottom:30px;">➡️ Soporte:</strong>
+
+<!-- EXCEL OF PRODUCTS, CLIENTS AND SUPPLIERS -->
+<div class="benefit-card" style="margin-bottom:12px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<div>
+<strong>Excel de Productos, Clientes y Proveedores:</strong>
+<p style="color:#959595; margin:.25rem 0 0">Facilita la información para subirla al sistema.</p>
+</div>
+<div>
+<label for="archivo_excel" class="btn-seleccionar-angosto" style="cursor: pointer;">Seleccionar</label>
+<input type="file" id="archivo_excel" accept=".xlsx, .xls, .csv" style="display:none;">
+</div>
+</div>
+<div id="archivo_excel_info" class="file-info">Sin selección</div>
+</div>
+
+<!-- DOWNLOAD DIGITAL CERTIFICATE, SECONDARY USER AND APISUNAT -->
+<div class="benefit-card" style="margin-bottom:12px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<div>
+<strong>Certificado, Usuario Secundario, apiSUNAT:</strong>
+<p style="color:#959595; margin:.25rem 0 0">Sube los documentos requeridos. Se recomienda apoyo del contador.</p>
+</div>
+<div>
+<label for="archivo_sunat" class="btn-seleccionar-angosto" style="cursor: pointer;">Seleccionar</label>
+<input type="file" id="archivo_sunat" accept=".p12, .pdf, .doc, .docx, image/*" multiple style="display:none;">
+</div>
+</div>
+<div id="archivo_sunat_info" class="file-info">Sin selección</div>
+</div>
+
+<!-- ADDITIONAL SUPPORT -->
+<div class="benefit-card">
+<div class="checkbox-card">
+<input type="checkbox" id="soporte">
+<label for="soporte" class="checkbox-label">
+<span style="color: #FF5900;">Marca la casilla si requieres soporte </span>
+<span style="color: #080060;">para descargar el certificado digital y crear el usuario secundario.</span>
+</label>
+</div>
+</div>
+</div>
+<div class="actions">
+<button type="button" class="btn pill" onclick="goto(4)">Anterior</button>
+<button type="submit" class="btn btn-primary">Completar Registro</button>
+</div>
+</div>
+</form>
+</div>
+</section>
+
+<!-- LOGOS + VIDEOS -->
+<section class="container">
+<div class="trust">
+<p style="font-size: 19px;">
+<strong style="color:#080060;" >Potencia tu negocio y</strong>
+<strong class="highlight" style="font-size:19px;"> únete a las empresas</strong>
+<strong style="color:#080060;"> que confían en Fasyb. 🚀</strong>
+<br><br><br>
+<div class="vid">
+<iframe src="//player.vimeo.com/video/1087585260?autoplay=1&muted=1&autopause=0&controls=0&loop=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+</div>
+</p>
+</div>
+</section>
+
+<!-- REFER & BENEFITS -->
+<section class="belt">
+<div class="container benefits">
+<div>
+<br><br><br>
+<div class="title"><span class="highlight">Refiere y Gana</span> con Fasyb</div>
+<p style="color:var(--muted)">Recomienda Fasyb y obtén 1 mes gratis por cada referido. ¡Cuantas más recomendaciones hagas, más ganas!</p>
+<a class="btn btn-primary" onclick="window.open('https://wa.me/942328698?text=%C2%A1Hola!%20Estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n.%20%C2%BFPodr%C3%ADan%20asesorarme%3F','_blank')">¡Descubre cómo hacerlo!</a>
+</div>
+<div class="benefit-card benefit-card-lg">
+<ul class="list">
+<li><div class="title">Beneficios <span class="highlight"></span></div></li><br>
+<li><div class="badge">1</div><div><b style="color:var(--muted)">Gana descuentos en tu mensualidad</b><br><small style="color:var(--muted)">1 mes gratis por cada referido.</small></div></li>
+<li><div class="badge">2</div><div><b style="color:var(--muted)">Regala descuentos</b><br><small style="color:var(--muted)">Tus referidos obtienen 30% de dcto. en el alta de plan.</small></div></li>
+<li><div class="badge">3</div><div><b style="color:var(--muted)">Seguimiento transparente</b><br><small style="color:var(--muted)">Consulta el estado de tus referidos cuando quieras.</small></div></li>
+</ul><br><br>
+</div>
+</div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer id="contacto">
+<div class="container foot">
+<div>
+<h4>Enlaces</h4>
+<div style="display:grid;gap:6px">
+<a href="#">Inicio</a>
+<a href="#">Sobre nosotros</a>
+<a href="#">Servicios</a>
+<a href="#">Libro de Reclamación</a>
+<a onclick="window.open('https://wa.me/942328698?text=%C2%A1Hola!%20Estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n.%20%C2%BFPodr%C3%ADan%20asesorarme%3F','_blank')">Contáctanos</a>
+</div>
+</div>
+<div class="about-section">
+<div class="about-text">
+<h4>Sobre Nosotros</h4>
+<p>Impulsamos el crecimiento de tu negocio con facturación electrónica ilimitada, ERP eficiente y punto de venta ultrarápido, respaldados por la seguridad de AWS. Soluciones fáciles de usar y orientadas a resultados.</p>
+</div>
+</div><br>
+<div style="text-align:left; margin-left:5;">
+<h4>Conecta con nosotros</h4>
+<div style="display:grid; gap:6px;">
+<a href="">contacto@fasyb.com</a>
+<a href="">fasyb.com@gmail.com</a>
+<a href="https://api.whatsapp.com/send/?phone=942328698&text=%C2%A1Hola%21+Estoy+interesado+en+sus+servicios+y+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n.+%C2%BFPodr%C3%ADan+asesorarme%3F&type=phone_number&app_absent=0">+51 942328698</a>
+</div>
+<div class="social-footer">
+<a href="https://www.facebook.com/FasybERP" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.fasyb.com/" target="_blank" class="home"><i class="fa-solid fa-house"></i></a>
+<a href="https://www.youtube.com/@Fasyberp" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+<a href="https://www.tiktok.com/@fasyb.com" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+</div>
+</footer>
+<div class="developed-by">
+<span style="padding-left:170px;">Desarrollado con la tecnología de apiERP © <span id="year"></span></span>
+</div>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/51942328698?text=¡Hola!%20Estoy%20interesado%20en%20sus%20servicios.%20¿Podrían%20asesorarme?" class="whatsapp-float" target="_blank" aria-label="Chatea con nosotros en WhatsApp">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- SCRIPTS -->
+<script src="js/register_form.js"></script>
+<script src="js/register_ubigeo.js"></script>
+</body>
+</html>
