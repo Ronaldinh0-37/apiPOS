@@ -1,0 +1,14 @@
+[
+    {
+        "setShiftId": 1,
+        "setCashInitial": 1000,
+        "setShiftDateStart": "2028-01-01 08:00:00",
+        "setShiftStatus": "1",
+        "setBranchId": 130,
+        "setCashierId": 1,
+        "setShiftDateEnd": null,
+        "setShiftCount": 0,
+        "setShiftCashAmount": 0,
+        "setShiftNotes": ""
+    }
+]
