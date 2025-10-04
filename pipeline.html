@@ -1,0 +1,2718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión - Negocios Ronaldinho</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --danger-color: #dc2626;
+            --success-color: #16a34a;
+            --warning-color: #d97706;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: 30px;
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .company-details h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .company-details p {
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--gray-800);
+        }
+
+        /* Pipeline Styles */
+        .pipeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .pipeline-header h2 {
+            font-size: 22px;
+            color: var(--gray-800);
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+        }
+
+        .btn-danger:hover {
+            background-color: #b91c1c;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+
+        .pipeline-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .etapa {
+            background-color: white;
+            border-radius: 10px;
+            width: 320px;
+            min-width: 320px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100vh - 300px);
+        }
+
+        .etapa-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .etapa-title {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .etapa-count {
+            background-color: var(--gray-200);
+            color: var(--gray-700);
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .etapa-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .etapa-actions button {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .etapa-actions button:hover {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .tickets-container {
+            padding: 15px;
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ticket {
+            background-color: var(--gray-50);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            border-left: 3px solid var(--primary-color);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            gap: 12px;
+            position: relative;
+        }
+
+        .ticket:hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .ticket.dragging {
+            opacity: 0.5;
+            transform: rotate(5deg);
+        }
+
+        .ticket-thumbnail {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .ticket-body {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .ticket-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--gray-800);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .status-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .status-completed {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .status-pending {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .status-overdue {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .ticket-desc {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .ticket-meta {
+            font-size: 11px;
+            color: var(--gray-500);
+        }
+
+        .ticket-meta div {
+            margin-bottom: 2px;
+        }
+
+        .ticket-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .ticket-actions button {
+            background: none;
+            border: none;
+            color: var(--gray-400);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ticket-actions button:hover {
+            background-color: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        .add-ticket-btn {
+            background: none;
+            border: none;
+            padding: 12px 15px;
+            color: var(--gray-500);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            border-top: 1px solid var(--gray-200);
+            transition: all 0.2s;
+        }
+
+        .add-ticket-btn:hover {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .etapa.highlight {
+            background-color: rgba(37, 99, 235, 0.05);
+            border: 2px dashed var(--primary-color);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+            color: var(--gray-800);
+        }
+
+        .close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+        }
+
+        .close:hover {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        /* Nuevo diseño para tickets basado en las imágenes */
+        .ticket-detail-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .ticket-left-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ticket-right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ticket-section {
+            background-color: var(--gray-50);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .ticket-section h4 {
+            margin-bottom: 15px;
+            color: var(--gray-700);
+            font-size: 16px;
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 8px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .info-item:hover {
+            background-color: var(--gray-100);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--gray-700);
+            min-width: 140px;
+        }
+
+        .info-value {
+            color: var(--gray-600);
+            flex-grow: 1;
+        }
+
+        .add-field-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .add-field-btn:hover {
+            text-decoration: underline;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .date-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .date-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .date-label {
+            color: var(--gray-600);
+        }
+
+        .date-value {
+            color: var(--gray-800);
+            font-weight: 500;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item input {
+            width: auto;
+        }
+
+        .meeting-item, .task-item, .comment-item {
+            background-color: white;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .meeting-header, .task-header, .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .meeting-title, .task-title, .comment-author {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .meeting-date, .task-date, .comment-date {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
+        .meeting-responsible, .task-responsible {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-bottom: 5px;
+        }
+
+        .progress-container {
+            margin: 10px 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            color: var(--gray-600);
+            text-align: right;
+        }
+
+        .comment-text {
+            color: var(--gray-700);
+            margin-top: 5px;
+        }
+
+        .add-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .add-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .plazo-status {
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .plazo-vigente {
+            background-color: rgba(22, 163, 74, 0.1);
+            color: var(--success-color);
+        }
+
+        .plazo-vencido {
+            background-color: rgba(220, 38, 38, 0.1);
+            color: var(--danger-color);
+        }
+
+        /* ESTILOS CUSTOM MULTI-SELECT (MÁS REFINADOS) */
+        .custom-multi-select {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 4px 10px 4px 4px; 
+            min-height: 40px;
+            cursor: pointer;
+            z-index: 2; 
+            position: relative;
+            background: #fbfdff;
+            border: 1px solid #eef2f7;
+            border-radius: 6px;
+        }
+        .select-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            flex-grow: 1;
+            align-items: center;
+        }
+        .select-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+        .select-tag-placeholder {
+            color: var(--gray-400);
+            font-size: 14px;
+        }
+        .select-list-dropdown {
+            position: absolute;
+            top: 100%;
+            left: -1px; 
+            right: -1px;
+            background: white;
+            border: 1px solid var(--primary-color);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1001; 
+        }
+        .custom-multi-select.open .select-list-dropdown {
+            display: block;
+        }
+        .select-list-dropdown div {
+            padding: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text);
+            transition: background 0.1s;
+        }
+        .select-list-dropdown div:hover {
+            background: #f3f4f6;
+        }
+        .select-list-dropdown div.selected {
+            background: #eef2ff; 
+            font-weight: 700;
+            color: var(--primary-color);
+            position: relative;
+        }
+        .select-list-dropdown div.selected::after {
+            content: "✓";
+            color: var(--primary-color);
+            position: absolute;
+            right: 10px;
+            font-weight: 900;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .pipeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .ticket-detail-container {
+                flex-direction: column;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        /* Sub-modal Styles */
+        .sub-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sub-modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .sub-modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sub-modal-header h4 {
+            font-size: 16px;
+            color: var(--gray-800);
+        }
+
+        .sub-modal-body {
+            padding: 20px;
+        }
+
+        .sub-modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="company-info">
+                <div class="company-logo">NR</div>
+                <div class="company-details">
+                    <h1 id="companyName">Negocios Ronaldinho</h1>
+                    <p id="companyRuc">RUC: 10888889999</p>
+                    <p id="companyAddress">Av. Lima</p>
+                    <p id="companyPhone">916173721</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Total Tickets</h3>
+                <div class="value" id="totalTickets">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Usuarios</h3>
+                <div class="value" id="totalUsers">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Clientes</h3>
+                <div class="value" id="totalCustomers">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Tareas Pendientes</h3>
+                <div class="value" id="pendingTasks">0</div>
+            </div>
+        </div>
+
+        <div class="pipeline-header">
+            <h2>Pipeline de Gestión</h2>
+            <button class="btn" id="addEtapaBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Nueva Etapa
+            </button>
+        </div>
+
+        <div class="pipeline-container" id="pipelineContainer">
+            <!-- Las etapas se renderizarán aquí dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Modal para crear/editar etapa -->
+    <div class="modal" id="etapaModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Nueva Etapa</h3>
+                <button class="close">&times;</button>
+            </div>
+            <form id="etapaForm">
+                <div class="modal-body">
+                    <input type="hidden" id="etapaId">
+                    <div class="form-group">
+                        <label for="etapaNombre">Nombre de la etapa</label>
+                        <input type="text" id="etapaNombre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="etapaColor">Color</label>
+                        <input type="color" id="etapaColor" class="form-control" value="#4CAF50">
+                        <span class="color-preview" id="colorPreview">#4CAF50</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="cancelEtapaBtn">Cancelar</button>
+                    <button type="submit" class="btn">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para crear/editar ticket - NUEVO DISEÑO UNIFICADO -->
+    <div class="modal" id="ticketModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="ticketModalTitle"><span>Nuevo Ticket</span></h3>
+                <button class="close">&times;</button>
+            </div>
+            <form id="ticketForm">
+                <div class="modal-body">
+                    <input type="hidden" id="ticketId">
+                    <input type="hidden" id="ticketEtapaId">
+                    
+                    <div class="ticket-detail-container">
+                        <!-- Columna izquierda -->
+                        <div class="ticket-left-column">
+                            <!-- Información General -->
+                            <div class="ticket-section">
+                                <h4>Información General</h4>
+                                
+                                <!-- Campos del formulario original -->
+                                <div class="form-group">
+                                    <label for="ticketNombre">Nombre del ticket</label>
+                                    <input type="text" id="ticketNombre" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="ticketDescripcion">Descripción</label>
+                                    <textarea id="ticketDescripcion" class="form-control" rows="3"></textarea>
+                                </div>
+                                
+                                <!-- CAMPO AGREGADO POR CON SELECCIÓN MÚLTIPLE -->
+                                <div class="form-group">
+                                    <label for="ticketAgregadoPor">Agregado por (Múltiple):</label>
+                                    <div class="custom-multi-select" id="multiSelect_AgregadoPor">
+                                        <span class="icon" aria-hidden style="margin-top:2px;">
+                                            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM4 20a8 8 0 0 1 16 0" stroke="#9aa3ad" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                                        </span>
+                                        <div class="select-tags-container"></div>
+                                        <div class="select-list-dropdown"></div>
+                                    </div>
+                                    <input type="hidden" id="ticketAgregadoPorIds" value="">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="ticketCliente">Cliente/Contacto</label>
+                                    <select id="ticketCliente" class="form-control">
+                                        <!-- Opciones se llenan dinámicamente -->
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="ticketResponsables">Responsable</label>
+                                    <select id="ticketResponsables" class="form-control">
+                                        <!-- Opciones se llenan dinámicamente -->
+                                    </select>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="ticketFechaCreacion">Fecha de creación</label>
+                                        <input type="datetime-local" id="ticketFechaCreacion" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ticketFechaVencimiento">Fecha de vencimiento</label>
+                                        <input type="date" id="ticketFechaVencimiento" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="ticketCompletado">
+                                    <label for="ticketCompletado">Ticket completado</label>
+                                </div>
+                                
+                                <div class="plazo-status" id="plazoStatus"></div>
+                                
+                                <!-- Campos adicionales del diseño de imágenes -->
+                                <div class="info-item">
+                                    <span class="info-label">Reuniones</span>
+                                    <span class="info-value" id="ticketReunionesDisplay">0</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Lista de tareas</span>
+                                    <span class="info-value" id="ticketTareasDisplay">0</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Etiquetas</span>
+                                    <span class="info-value" id="ticketEtiquetasDisplay">No hay etiquetas</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Comentarios</span>
+                                    <span class="info-value" id="ticketComentariosDisplay">0</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Archivos Adjuntos</span>
+                                    <span class="info-value" id="ticketArchivosDisplay">0</span>
+                                </div>
+                                
+                                <button type="button" class="add-field-btn" id="addFieldBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Crear nuevo Campo
+                                </button>
+                            </div>
+
+                            <!-- Información adicional -->
+                            <div class="ticket-section">
+                                <div class="info-item">
+                                    <span class="info-label">Creado por:</span>
+                                    <span class="info-value" id="ticketCreadoPorDisplay">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Cliente o Contacto:</span>
+                                    <span class="info-value" id="ticketClienteContactoDisplay">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Columna derecha -->
+                        <div class="ticket-right-column">
+                            <!-- Reuniones -->
+                            <div class="ticket-section">
+                                <h4>Reuniones</h4>
+                                <button type="button" class="add-button" id="addReunionBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Agregar Reunión
+                                </button>
+                                <div id="reunionesList">
+                                    <!-- Las reuniones se mostrarán aquí -->
+                                </div>
+                            </div>
+
+                            <!-- Lista de Tareas -->
+                            <div class="ticket-section">
+                                <h4>Lista de Tareas</h4>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="tareasProgressFill" style="width: 0%;"></div>
+                                    </div>
+                                    <div class="progress-text" id="tareasProgressText">0% completado</div>
+                                </div>
+                                
+                                <!-- Formulario para agregar tareas (del código original) -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="nuevaTareaNombre">Nueva tarea</label>
+                                        <input type="text" id="nuevaTareaNombre" class="form-control" placeholder="Descripción de la tarea">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nuevaTareaFecha">Fecha límite</label>
+                                        <input type="date" id="nuevaTareaFecha" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="nuevaTareaResponsable">Responsable</label>
+                                    <select id="nuevaTareaResponsable" class="form-control">
+                                        <!-- Opciones se llenan dinámicamente -->
+                                    </select>
+                                </div>
+                                
+                                <button type="button" class="add-button" id="agregarTareaBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Agregar Tarea
+                                </button>
+                                
+                                <div id="tareasList">
+                                    <!-- Las tareas se mostrarán aquí -->
+                                </div>
+                            </div>
+
+                            <!-- Comentarios -->
+                            <div class="ticket-section">
+                                <h4>Comentarios</h4>
+                                <div class="form-group">
+                                    <textarea id="nuevoComentario" class="form-control" rows="3" placeholder="Agrega un comentario..."></textarea>
+                                </div>
+                                <button type="button" class="add-button" id="addComentarioBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Añadir Comentario
+                                </button>
+                                <div id="comentariosList">
+                                    <!-- Los comentarios se mostrarán aquí -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="cancelTicketBtn">Cerrar</button>
+                    <button type="submit" class="btn">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sub-modal para agregar reunión -->
+    <div class="sub-modal" id="reunionModal">
+        <div class="sub-modal-content">
+            <div class="sub-modal-header">
+                <h4>Agregar Reunión</h4>
+                <button class="close">&times;</button>
+            </div>
+            <div class="sub-modal-body">
+                <div class="form-group">
+                    <label for="reunionTitulo">Título de la reunión</label>
+                    <input type="text" id="reunionTitulo" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="reunionFecha">Fecha</label>
+                    <input type="date" id="reunionFecha" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="reunionResponsable">Responsable</label>
+                    <input type="text" id="reunionResponsable" class="form-control" required>
+                </div>
+            </div>
+            <div class="sub-modal-footer">
+                <button type="button" class="btn btn-danger" id="cancelReunionBtn">Cancelar</button>
+                <button type="button" class="btn" id="guardarReunionBtn">Guardar Reunión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmar acción</h3>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmModalMessage">¿Estás seguro de que deseas realizar esta acción?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" id="confirmCancelBtn">Cancelar</button>
+                <button class="btn" id="confirmOkBtn">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =========================================================================================
+        // DATOS DE LA EMPRESA (MANTENIDOS DEL CÓDIGO ORIGINAL)
+        // =========================================================================================
+        const company = [{
+            setLogoUrl: "",
+            setDocTypeId: 2,
+            setDocTypeCode: "6",
+            setDocTypeName: "RUC",
+            setEmpresaRuc: "10888889999",
+            setEmpresaNombre: "Negocios Ronaldinho",
+            setEmpresaNombreComercial: "Negocios Ronaldinho",
+            setEmpresaDireccion: "Av. Lima",
+            setEmpresaTelefono: "916173721",
+            setCompanyTokenGoogleMaps: "https://maps.app.goo.gl/b7mbvVHKyyWCjFRh8",
+            setEmpresaEmail: "rpintadoaguilar@gmail.com",
+            setEmpresaSitioWeb: "https://apierp.dev/website/negocios-ronaldinho",
+            setApiEndPoint: "http://localhost/githat/apiPOS/api.php",
+            setWebhook: "http://localhost/githat/apiPOS/webhook.php",
+            setEmpresaDomainWork: "localhost",
+            setCompanySectorId: 1,
+            setTaxIdDefault: 1,
+            setEmailNotification: [],
+            setWarehouses: [],
+            setTipoOperaciones: [
+                { setTipoOperacionCodigo: 1, setTipoOperacionName: "Pedido", setTipoOperacionCodigoFiscal: "" },
+                { setTipoOperacionCodigo: 2, setTipoOperacionName: "Recibo Venta", setTipoOperacionCodigoFiscal: "" },
+                { setTipoOperacionCodigo: 3, setTipoOperacionName: "Boleta Electrónica", setTipoOperacionCodigoFiscal: "03" },
+                { setTipoOperacionCodigo: 4, setTipoOperacionName: "Factura Electrónica", setTipoOperacionCodigoFiscal: "01" },
+                { setTipoOperacionCodigo: 25, setTipoOperacionName: "Recibo Compra", setTipoOperacionCodigoFiscal: "" },
+                { setTipoOperacionCodigo: 26, setTipoOperacionName: "Boleta Compra", setTipoOperacionCodigoFiscal: "" },
+                { setTipoOperacionCodigo: 27, setTipoOperacionName: "Factura Compra", setTipoOperacionCodigoFiscal: "" },
+                { setTipoOperacionCodigo: 41, setTipoOperacionName: "Cotización", setTipoOperacionCodigoFiscal: "" },
+                { setTipoOperacionCodigo: 48, setTipoOperacionName: "Orden de Compra", setTipoOperacionCodigoFiscal: "" },
+                { setTipoOperacionCodigo: 55, setTipoOperacionName: "Guía Remitente", setTipoOperacionCodigoFiscal: "" }
+            ],
+            setMonedas: [
+                { setMonedaCodigo: "PEN", setMonedaName: "Soles", setMonedaSimbol: "S/" },
+                { setMonedaCodigo: "USD", setMonedaName: "Dólares", setMonedaSimbol: "$" },
+                { setMonedaCodigo: "MXN", setMonedaName: "Pesos Mexicanos", setMonedaSimbol: "$" },
+                { setMonedaCodigo: "ARS", setMonedaName: "Pesos Argentinos", setMonedaSimbol: "$" },
+                { setMonedaCodigo: "CLP", setMonedaName: "Pesos Chilenos", setMonedaSimbol: "$" },
+                { setMonedaCodigo: "COP", setMonedaName: "Pesos Colombianos", setMonedaSimbol: "$" },
+                { setMonedaCodigo: "UYU", setMonedaName: "Pesos Uruguayos", setMonedaSimbol: "$" }
+            ],
+            setTipoDocumentosCliente: [
+                { setTipoDocCodigo: "DNI", setTipoDocName: "Documento Nacional de Identidad", setTipoDocCodigoFiscal: "1" },
+                { setTipoDocCodigo: "RUC", setTipoDocName: "Registro Único de Contribuyentes", setTipoDocCodigoFiscal: "6" },
+                { setTipoDocCodigo: "CE", setTipoDocName: "Carnet de Extranjería", setTipoDocCodigoFiscal: "4" },
+                { setTipoDocCodigo: "PP", setTipoDocName: "Pasaporte", setTipoDocCodigoFiscal: "7" },
+                { setTipoDocCodigo: "DTNDSR", setTipoDocName: "Doc.trib.no.dom.sin.ruc", setTipoDocCodigoFiscal: "0" }
+            ],
+            setImpuestos: [
+                { setTaxId: 1, setImpuestoCode: "10", setImpuestoName: "Gravado", setImpuestoValue: 18 },
+                { setTaxId: 2, setImpuestoCode: "20", setImpuestoName: "Exonerado", setImpuestoValue: 0 },
+                { setTaxId: 3, setImpuestoCode: "30", setImpuestoName: "Inafecto", setImpuestoValue: 0 },
+                { setTaxId: 4, setImpuestoCode: "13", setImpuestoName: "Gravado Gratuito", setImpuestoValue: 18 },
+                { setTaxId: 5, setImpuestoCode: "32", setImpuestoName: "Inafecto Gratuito", setImpuestoValue: 0 },
+                { setTaxId: 6, setImpuestoCode: "10", setImpuestoName: "Gravado", setImpuestoValue: 10 },
+                { setTaxId: 7, setImpuestoCode: "21", setImpuestoName: "Exonerado Gratuito", setImpuestoValue: 0 },
+                { setTaxId: 8, setImpuestoCode: "40", setImpuestoName: "Exportación", setImpuestoValue: 0 },
+                { setTaxId: 9, setImpuestoCode: "13", setImpuestoName: "Gravado Gratuito", setImpuestoValue: 10 }
+            ],
+            setPayments: [
+                { setPaymentId: 1, setPaymentCode: "efectivo", setPaymentName: "Efectivo", isCommission: 0 },
+                { setPaymentId: 2, setPaymentCode: "tarjeta-credito", setPaymentName: "Tarjeta de Crédito", isCommission: 1 },
+                { setPaymentId: 3, setPaymentCode: "tarjeta-debito", setPaymentName: "Tarjeta de Débito", isCommission: 1 },
+                { setPaymentId: 4, setPaymentCode: "yape", setPaymentName: "Yape", isCommission: 0 },
+                { setPaymentId: 5, setPaymentCode: "plin", setPaymentName: "Plin", isCommission: 0 },
+                { setPaymentId: 6, setPaymentCode: "transferencia", setPaymentName: "Transferencia Bancaria", isCommission: 0 },
+                { setPaymentId: 7, setPaymentCode: "deposito", setPaymentName: "Depósito Bancario", isCommission: 0 },
+                { setPaymentId: 8, setPaymentCode: "izipay-online", setPaymentName: "Izipay Online", isCommission: 1 },
+                { setPaymentId: 9, setPaymentCode: "mercado-pago", setPaymentName: "Mercado Pago", isCommission: 1 },
+                { setPaymentId: 10, setPaymentCode: "paypal", setPaymentName: "Paypal", isCommission: 1 }
+            ],
+            setLayout: [],
+            setPrintServers: [],
+            setAccountingAccounts: [
+                { setAccountingAccountId: 363, setAccountingAccountCode: "701", setAccountingAccountType: 1, setAccountingAccountName: "Ventas de Productos" },
+                { setAccountingAccountId: 364, setAccountingAccountCode: "704", setAccountingAccountType: 1, setAccountingAccountName: "Prestación de Servicios" },
+                { setAccountingAccountId: 365, setAccountingAccountCode: "691", setAccountingAccountType: 2, setAccountingAccountName: "Costo de Mercaderías" },
+                { setAccountingAccountId: 366, setAccountingAccountCode: "6211", setAccountingAccountType: 2, setAccountingAccountName: "Sueldos y Salarios" },
+                { setAccountingAccountId: 367, setAccountingAccountCode: "6321", setAccountingAccountType: 2, setAccountingAccountName: "Asesoría y Consultoría" },
+                { setAccountingAccountId: 368, setAccountingAccountCode: "635", setAccountingAccountType: 2, setAccountingAccountName: "Alquileres" },
+                { setAccountingAccountId: 369, setAccountingAccountCode: "636", setAccountingAccountType: 2, setAccountingAccountName: "Servicios Básicos" },
+                { setAccountingAccountId: 370, setAccountingAccountCode: "637", setAccountingAccountType: 2, setAccountingAccountName: "Publicidad, Publicaciones y Relaciones Públicas" }
+            ],
+            setDefaultNotes: [],
+            setEmailCredentials: [
+                {
+                    setEmailCredentialsId: 3,
+                    setEmailCredentialsSenderName: "Ronaldinho",
+                    setEmailCredentialsSenderEmail: "rpintadoaguilar@gmail.com",
+                    setEmailCredentialsSenderPassword: "sthm vafp mjyu qadn",
+                    setEmailCredentialsHostSMTP: "smtp.gmail.com",
+                    setEmailCredentialsPortSMTP: 587
+                }
+            ],
+            setCodeBarTypes: [
+                { setCodeBarTypeId: 1, setCodeBarTypeName: "EAN13", setCodeBarTypeDescription: "Retail internacional, supermercados GS1. Solo numérico (13 dígitos)" },
+                { setCodeBarTypeId: 2, setCodeBarTypeName: "CODE128", setCodeBarTypeDescription: "Logística, bodegas, etiquetas internas, envíos. Alfanumérico (cualquier ASCII)" },
+                { setCodeBarTypeId: 3, setCodeBarTypeName: "EAN8", setCodeBarTypeDescription: "Artículos muy pequeños en retail GS1. Solo numérico (8 dígitos)" },
+                { setCodeBarTypeId: 4, setCodeBarTypeName: "CODE39", setCodeBarTypeDescription: "Entornos industriales, laboratorios, controles. Alfanumérico limitado" },
+                { setCodeBarTypeId: 5, setCodeBarTypeName: "Pharmacode", setCodeBarTypeDescription: "Industria farmacéutica. Solo numérico" },
+                { setCodeBarTypeId: 6, setCodeBarTypeName: "UPC-A", setCodeBarTypeDescription: "Retail EE UU/Canadá. Solo numérico (12 dígitos)" },
+                { setCodeBarTypeId: 7, setCodeBarTypeName: "UPC-E", setCodeBarTypeDescription: "Retail EE UU/Canadá en espacios reducidos. Solo numérico (8 dígitos)" },
+                { setCodeBarTypeId: 8, setCodeBarTypeName: "MSI", setCodeBarTypeDescription: "Inventarios en minoristas de Asia, bibliotecas. Solo numérico (checksum opcional)" }
+            ],
+            setCredentialsApiWAChat: [
+                {
+                    setCredentialsApiWAChatId: 21,
+                    setCredentialsApiWAChatAlias: "Whatsapp 1",
+                    setCredentialsApiWAChatSubdomain: "apiwachat-1.apierp.dev",
+                    setCredentialsApiWAChatServer: "44.247.188.89",
+                    setCredentialsApiWAChatPort: 3021,
+                    setCredentialsApiWAChatIsChat: 0,
+                    setCredentialsApiWAChatStatus: 1
+                }
+            ],
+            setUnits: [
+                { setUnitId: 1, setUnitCode: "4A", setUnitName: "BOBINAS", setUnitAbbreviation: "BOB" },
+                { setUnitId: 2, setUnitCode: "BJ", setUnitName: "BALDE", setUnitAbbreviation: "BLD" },
+            ],
+            setAuthToken: "HV5Teaj66n6sOdpy_z_x0uA9qQCJqV3PIm152yiWp5s",
+            expiress_token: "2025-11-08 16:22:49",
+            setUser_Local: {
+                setUserId: 166,
+                setUserCodigo: "166",
+                setUserDocNumber: "",
+                setUserNombres: "RonaldinhoPintado",
+                setUserName: "rpintadoaguilar@gmail.com",
+                setUserPassw: "$2y$10$TzTJ3DdcDTlopnd8fESiAuN9Xxa7mBc/qHuXKCzwiwNxyvjTvGz/6",
+                setUserSessionToken: "90df128e92c0b52d16dfa0c6d13bdeb6bff829713438f6803a8ea32fdf994920"
+            },
+            setCompanyDoc: "10724753099",
+            setCompanyName: "AUTOMOTRIZ PERUANA S.A.",
+            setCompanyNameTrade: "AUTOMOTRIZ PERU",
+            setCompanyAddress: "Av. 123, Lima, Perú",
+            setCompanyPhone: "+51916173721",
+            setCompanyEmail: "ventas@automotrizperu.com",
+            setCompanyWebsite: "www.automotrizperu.com",
+            setBranches: [
+                {
+                    setBranchId: 130,
+                    setBranchCode: "001",
+                    setBranchName: "Sucursal Principal",
+                    setBranchAddress: "Av. Principal 456, Lima",
+                    setPrinters: [
+                        { setPrinterId: 1, setPrinterName: "Impresora Principal", setPrinterAlias: "Ticket" }
+                    ],
+                    setWarehouses: [
+                        { setWarehouseId: 1, setWarehouseName: "Almacen Principal" }
+                    ]
+                }
+            ],
+
+            setPrinters: [],
+            setUsuarios: [
+                {
+                    setUserCodigo: 1,
+                    setUserDocNumber: "12345678",
+                    setUserNombres: "Administrador Demo",
+                    setUserName: "admin",
+                    setUserPassw: "demo123",
+                    permSellNoStock: 1,
+                    permViewBranchProducts: 1,
+                    setBranches: [{ setBranchId: 130 }]
+                },
+                {
+                    setUserCodigo: 2,
+                    setUserDocNumber: "87654321",
+                    setUserNombres: "Carlos Rodríguez",
+                    setUserName: "carlos",
+                    setUserPassw: "demo123",
+                    permSellNoStock: 0,
+                    permViewBranchProducts: 1,
+                    setBranches: [{ setBranchId: 130 }]
+                },
+                {
+                    setUserCodigo: 3,
+                    setUserDocNumber: "11223344",
+                    setUserNombres: "Ana García",
+                    setUserName: "ana",
+                    setUserPassw: "demo123",
+                    permSellNoStock: 1,
+                    permViewBranchProducts: 0,
+                    setBranches: [{ setBranchId: 130 }]
+                }
+            ],
+            setSeries: [
+                {
+                    ID_SERIE: 1,
+                    setSerie: "F001",
+                    setSerieTipo: "3",
+                    setCorrelativoInicial: 1234,
+                    setIdSucursal: 130,
+                    setSeriesNumberInitial: 1
+                }
+            ],
+            setBankAccounts: [
+                {
+                    setBankId: 1,
+                    setBankType: 1,
+                    setBankName: "Banco de Crédito",
+                    setBankNumber: "193-12345678-1-23",
+                    setBankCCI: "00219300123456781234",
+                    setBankCurrency: "PEN",
+                    setBankBalance: 15000.5
+                }
+            ],
+            setCustomers: [
+                {
+                    setCustomerId: 1,
+                    setCustomerDocumentNumber: "87654321",
+                    setCustumerPhone: "916173721",
+                    setCustumerEmail: "rpintadoaguilar@gmail.com",
+                    setCustomerName: "Ronaldinho Pintado",
+                    setCustomerAddress: "Jr. Cliente 789, Lima",
+                    setCustomerUbigeo: "150101",
+                    setCustomerBirthdate: "1980-07-25"
+                },
+                {
+                    setCustomerId: 2,
+                    setCustomerDocumentNumber: "87654321",
+                    setCustumerPhone: "920392176",
+                    setCustumerEmail: "leonardogironvillegas@gmail.com",
+                    setCustomerName: "Josué López",
+                    setCustomerAddress: "Jr. Cliente 789, Lima",
+                    setCustomerUbigeo: "150101",
+                    setCustomerBirthdate: "2000-07-26"
+                },
+                {
+                    setCustomerId: 3,
+                    setCustomerDocumentNumber: "11223344",
+                    setCustumerPhone: "987654321",
+                    setCustumerEmail: "leiosnsggvrbrgmail.com",
+                    setCustomerName: "Leonardo Giron",
+                    setCustomerAddress: "Av. Los Olivos 123, Lima",
+                    setCustomerUbigeo: "150101",
+                    setCustomerBirthdate: "1985-03-15"
+                },
+                {
+                    setCustomerId: 4,
+                    setCustomerDocumentNumber: "55667788",
+                    setCustumerPhone: "955444333",
+                    setCustumerEmail: "eydihhueref@gmail.com",
+                    setCustomerName: "Ana Martínez",
+                    setCustomerAddress: "Jr. Las Flores 456, Lima",
+                    setCustomerUbigeo: "150101",
+                    setCustomerBirthdate: "1990-11-20"
+                },
+                {
+                    setCustomerId: 5,
+                    setCustomerDocumentNumber: "99887766",
+                    setCustumerPhone: "944333222",
+                    setCustumerEmail: "erwinbbfhf@gmail.com",
+                    setCustomerName: "Erwin Sánchez",
+                    setCustomerAddress: "Av. Primavera 789, Lima",
+                    setCustomerUbigeo: "150101",
+                    setCustomerBirthdate: "1982-05-10"
+                },
+                {
+                    setCustomerId: 6,
+                    setCustomerDocumentNumber: "33445566",
+                    setCustumerPhone: "933222111",
+                    setCustumerEmail: "mariagonzalez@gmail.com",
+                    setCustomerName: "María González",
+                    setCustomerAddress: "Jr. San Martín 321, Lima",
+                    setCustomerUbigeo: "150101",
+                    setCustomerBirthdate: "1978-12-05"
+                },
+                {
+                    setCustomerId: 7,
+                    setCustomerDocumentNumber: "77889900",
+                    setCustumerPhone: "922111000",
+                    setCustumerEmail: "juanperez@gmail.com",
+                    setCustomerName: "Juan Pérez",
+                    setCustomerAddress: "Av. Central 654, Lima",
+                    setCustomerUbigeo: "150101",
+                    setCustomerBirthdate: "1987-09-30"
+                }
+            ],
+            setSuppliers: [
+                {
+                    setSupplierId: 1,
+                    setSupplierDocumentNumber: "20198765432",
+                    setSupplierName: "Proveedor Demo SAC",
+                    setSupplierAddress: "Av. Proveedor 321, Lima",
+                    setSupplierUbigeo: "150102",
+                    setSupplierBirthdate: "1990-01-01"
+                }
+            ],
+            setShifts: [
+                {
+                    setShiftId: 1,
+                    setCashInitial: 1000,
+                    setShiftDateStart: "2028-01-01 08:00:00",
+                    setShiftStatus: "1",
+                    setBranchId: 130
+                }
+            ],
+            setCollaborators: [
+                {
+                    setCollaboratorId: 1,
+                    setCollaboratorDocNumber: "76543210",
+                    setCollaboratorFullName: "Daniel Castillo",
+                    setCollaboratorAddress: "Jr. Colaborador 654, Lima",
+                    setCollaboratorUbigeo: "150103",
+                    setCollaboratorBirthdate: "1985-01-01"
+                },
+                {
+                    setCollaboratorId: 2,
+                    setCollaboratorDocNumber: "76548410",
+                    setCollaboratorFullName: "Carlos Mendoza",
+                    setCollaboratorAddress: "Av. Trabajador 123, Lima",
+                    setCollaboratorUbigeo: "150103",
+                    setCollaboratorBirthdate: "1992-08-15"
+                },
+                {
+                    setCollaboratorId: 3,
+                    setCollaboratorDocNumber: "76545210",
+                    setCollaboratorFullName: "María López",
+                    setCollaboratorAddress: "Jr. Colaborador 654, Lima",
+                    setCollaboratorUbigeo: "150103",
+                    setCollaboratorBirthdate: "1988-04-22"
+                },
+                {
+                    setCollaboratorId: 4,
+                    setCollaboratorDocNumber: "87651234",
+                    setCollaboratorFullName: "Roberto Silva",
+                    setCollaboratorAddress: "Av. Los Pinos 789, Lima",
+                    setCollaboratorUbigeo: "150103",
+                    setCollaboratorBirthdate: "1991-07-10"
+                },
+                {
+                    setCollaboratorId: 5,
+                    setCollaboratorDocNumber: "12348765",
+                    setCollaboratorFullName: "Laura Torres",
+                    setCollaboratorAddress: "Jr. Las Gardenias 321, Lima",
+                    setCollaboratorUbigeo: "150103",
+                    setCollaboratorBirthdate: "1983-11-18"
+                }
+            ],
+            setPlacesStart: [
+                {
+                    setPlaceStartId: 1,
+                    setPlaceStartBranchId: 1,
+                    setPlaceStartCode: "001",
+                    setPlaceStartAddress: "Av. Partida 123, Lima",
+                    setPlaceStartUbigeo: "150101"
+                }
+            ],
+            setVehicles: [
+                { setVehicleId: 1, setVehicleName: "Camión de reparto", setVehiclePlate: "ABC-123", setVehicleBrand: "Toyota" }
+            ],
+            setDrivers: [
+                {
+                    setDriverId: 1,
+                    setDriverDocType: "DNI",
+                    setDriverDocNumber: "65432109",
+                    setDriverName: "Conductor Demo",
+                    setDriverLicense: "B12345678",
+                    setDriverCertificate: "CERT-12345"
+                }
+            ],
+            setItemBrands: [
+                { setItemBrandId: 1, setItemBrandName: "KARPIX" },
+                { setItemBrandId: 2, setItemBrandName: "KARPIX" },
+                { setItemBrandId: 3, setItemBrandName: "KARPIX" },
+                { setItemBrandId: 4, setItemBrandName: "KARPIX" },
+                { setItemBrandId: 5, setItemBrandName: "KARPIX" }
+            ],
+            setItemCategories: [
+                { setItemCategoryId: 1, setItemCategoryName: "Tratamientos" },
+                { setItemCategoryId: 2, setItemCategoryName: "limpieza" },
+                { setItemCategoryId: 3, setItemCategoryName: "Tratamientos" },
+                { setItemCategoryId: 4, setItemCategoryName: "limpieza" },
+                { setItemCategoryId: 5, setItemCategoryName: "limpieza" }
+            ],
+            setCurrencyDefault: "PEN",
+            setPaymentMethodBanks: [{ setPaymentId: 2, setBankId: 1 }],
+            setWindows: [
+                {
+                    setWindowId: 302,
+                    setWindowName: "V1",
+                    setWindowType: "window",
+                    setWindowStatus: "free",
+                    setFloorId: "113",
+                    setFloorName: "Ambiente Principal",
+                    setBranchId: "130",
+                    setLastDateUpdate: "2025-07-04 18:22:49.224487",
+                    setCartTmpInitial: [],
+                    setShifts: []
+                }
+            ],
+            setUsers: [
+                {
+                    setUserId: 166,
+                    setUserCode: "166",
+                    setUserFullName: "Ronaldinho Pintado",
+                    setUserEmail: "rpintadoaguilar@gmail.com",
+                    setUserPassword: "$2y$10$TzTJ3DdcDTlopnd8fESiAuN9Xxa7mBc/qHuXKCzwiwNxyvjTvGz/6",
+                    setSeries: [],
+                    setPermissions: [
+                        { setPermissionId: 1, setPermissionNameTrue: "Puede vender sin stock.", setPermissionNameFalse: "No puede vender sin stock.", setPermissionValue: "1" },
+                    ],
+                    setBranches: [{ setBranchId: "130", setPrinterId: "0" }]
+                },
+                {
+                    setUserId: 186,
+                    setUserCode: "1",
+                    setUserFullName: "ronald",
+                    setUserEmail: "admin",
+                    setUserPassword: "demo123",
+                    setSeries: [],
+                    setPermissions: [
+                        { setPermissionId: 1, setPermissionNameTrue: "Puede vender sin stock.", setPermissionNameFalse: "No puede vender sin stock.", setPermissionValue: "1" },
+                    ],
+                    setBranches: [{ setBranchId: "130", setPrinterId: "0" }]
+                }
+            ],
+            id: 1,
+            setBranchDefault: 130,
+            setCredentialsApiWAChatIdDefault: 21
+        }];
+
+        // Variables globales
+        let etapas = [];
+        let tickets = [];
+        let currentEtapaId = null;
+        let currentTicketId = null;
+        let confirmCallback = null;
+        let draggedTicket = null;
+
+        // Tareas temporales para el formulario
+        let tempTasks = [];
+        let tempTaskCounter = 0;
+
+        // =========================================================================================
+        // DATA SIMULADA (MANTENIDA DEL CÓDIGO ORIGINAL)
+        // =========================================================================================
+        const dataUsers = company[0].setUsuarios.map(user => ({
+            id: user.setUserCodigo,
+            name: user.setUserNombres
+        }));
+
+        const dataCustomers = company[0].setCustomers.map(customer => ({
+            id: customer.setCustomerId,
+            name: customer.setCustomerName
+        }));
+
+        const dataCollaborators = company[0].setCollaborators.map(collaborator => ({
+            id: collaborator.setCollaboratorId,
+            name: collaborator.setCollaboratorFullName
+        }));
+
+        // Elementos DOM
+        const pipelineContainer = document.getElementById('pipelineContainer');
+        const addEtapaBtn = document.getElementById('addEtapaBtn');
+        const etapaModal = document.getElementById('etapaModal');
+        const ticketModal = document.getElementById('ticketModal');
+        const confirmModal = document.getElementById('confirmModal');
+        const reunionModal = document.getElementById('reunionModal');
+        const etapaForm = document.getElementById('etapaForm');
+        const ticketForm = document.getElementById('ticketForm');
+        const etapaNombreInput = document.getElementById('etapaNombre');
+        const etapaColorInput = document.getElementById('etapaColor');
+        const etapaIdInput = document.getElementById('etapaId');
+        const ticketNombreInput = document.getElementById('ticketNombre');
+        const ticketIdInput = document.getElementById('ticketId');
+        const ticketEtapaIdInput = document.getElementById('ticketEtapaId');
+        const modalTitle = document.getElementById('modalTitle');
+        const ticketModalTitle = document.getElementById('ticketModalTitle');
+        const confirmOkBtn = document.getElementById('confirmOkBtn');
+        const confirmCancelBtn = document.getElementById('confirmCancelBtn');
+        const cancelEtapaBtn = document.getElementById('cancelEtapaBtn');
+        const cancelTicketBtn = document.getElementById('cancelTicketBtn');
+        const cancelReunionBtn = document.getElementById('cancelReunionBtn');
+        const guardarReunionBtn = document.getElementById('guardarReunionBtn');
+        const colorPreview = document.getElementById('colorPreview');
+
+        // Elementos de estadísticas
+        const totalTicketsEl = document.getElementById('totalTickets');
+        const totalUsersEl = document.getElementById('totalUsers');
+        const totalCustomersEl = document.getElementById('totalCustomers');
+        const pendingTasksEl = document.getElementById('pendingTasks');
+
+        // Elementos del formulario original (mantenidos)
+        const ticketDescripcionInput = document.getElementById('ticketDescripcion');
+        const ticketClienteSelect = document.getElementById('ticketCliente');
+        const ticketResponsablesSelect = document.getElementById('ticketResponsables');
+        const ticketFechaCreacionInput = document.getElementById('ticketFechaCreacion');
+        const ticketFechaVencimientoInput = document.getElementById('ticketFechaVencimiento');
+        const plazoStatusSpan = document.getElementById('plazoStatus');
+        const ticketCompletadoCheckbox = document.getElementById('ticketCompletado');
+        const nuevaTareaNombreInput = document.getElementById('nuevaTareaNombre');
+        const nuevaTareaFechaInput = document.getElementById('nuevaTareaFecha');
+        const nuevaTareaResponsableSelect = document.getElementById('nuevaTareaResponsable');
+        const agregarTareaBtn = document.getElementById('agregarTareaBtn');
+        const tareasList = document.getElementById('tareasList');
+
+        // NUEVOS ELEMENTOS PARA AGREGADO POR CON SELECCIÓN MÚLTIPLE
+        const multiSelect_AgregadoPor = document.getElementById('multiSelect_AgregadoPor');
+        const ticketAgregadoPorIdsInput = document.getElementById('ticketAgregadoPorIds');
+
+        // Nuevos elementos del diseño de imágenes
+        const addReunionBtn = document.getElementById('addReunionBtn');
+        const addComentarioBtn = document.getElementById('addComentarioBtn');
+        const nuevoComentarioInput = document.getElementById('nuevoComentario');
+        const reunionesList = document.getElementById('reunionesList');
+        const comentariosList = document.getElementById('comentariosList');
+        const tareasProgressFill = document.getElementById('tareasProgressFill');
+        const tareasProgressText = document.getElementById('tareasProgressText');
+
+        // Elementos de información general
+        const ticketReunionesDisplay = document.getElementById('ticketReunionesDisplay');
+        const ticketTareasDisplay = document.getElementById('ticketTareasDisplay');
+        const ticketEtiquetasDisplay = document.getElementById('ticketEtiquetasDisplay');
+        const ticketComentariosDisplay = document.getElementById('ticketComentariosDisplay');
+        const ticketArchivosDisplay = document.getElementById('ticketArchivosDisplay');
+        const ticketCreadoPorDisplay = document.getElementById('ticketCreadoPorDisplay');
+        const ticketClienteContactoDisplay = document.getElementById('ticketClienteContactoDisplay');
+
+        // Elementos del modal de reunión
+        const reunionTituloInput = document.getElementById('reunionTitulo');
+        const reunionFechaInput = document.getElementById('reunionFecha');
+        const reunionResponsableInput = document.getElementById('reunionResponsable');
+
+        // =========================================================================================
+        // FUNCIONES DE UTILIDAD (MANTENIDAS DEL CÓDIGO ORIGINAL)
+        // =========================================================================================
+        function populateSelect(selectElement, data, defaultOptionText, multiple = false) {
+            selectElement.innerHTML = '';
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = defaultOptionText;
+            defaultOption.disabled = true;
+            if (!multiple) defaultOption.selected = true;
+            selectElement.appendChild(defaultOption);
+
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = item.name;
+                selectElement.appendChild(option);
+            });
+        }
+
+        // =========================================================================================
+        // FUNCIÓN PARA CUSTOM MULTI-SELECT UI (NUEVA)
+        // =========================================================================================
+        function createMultiSelectUI(containerElement, dataArray, initialSelectedIds, hiddenInput) {
+            // Limpiar el contenedor y preparar la estructura
+            containerElement.innerHTML = '';
+            
+            const tagsContainer = document.createElement('div');
+            tagsContainer.className = 'select-tags-container';
+            containerElement.appendChild(tagsContainer);
+
+            const dropdownList = document.createElement('div');
+            dropdownList.className = 'select-list-dropdown';
+            containerElement.appendChild(dropdownList);
+
+            // Inicializar datos
+            let selectedIds = new Set(initialSelectedIds);
+            
+            // Renderizar la lista de opciones
+            function renderDropdown() {
+                dropdownList.innerHTML = '';
+                dataArray.forEach(item => {
+                    const isSelected = selectedIds.has(item.id);
+                    const option = document.createElement('div');
+                    option.textContent = item.name;
+                    option.dataset.id = item.id;
+                    if (isSelected) {
+                        option.classList.add('selected');
+                    }
+                    dropdownList.appendChild(option);
+                });
+            }
+
+            // Renderizar las etiquetas seleccionadas
+            function renderTags() {
+                tagsContainer.innerHTML = '';
+                const idsArray = Array.from(selectedIds);
+                hiddenInput.value = JSON.stringify(idsArray);
+                
+                if (idsArray.length === 0) {
+                    const placeholder = document.createElement('span');
+                    placeholder.className = 'select-tag-placeholder';
+                    placeholder.textContent = 'Seleccionar...';
+                    tagsContainer.appendChild(placeholder);
+                } else {
+                    idsArray.forEach(id => {
+                        const item = dataArray.find(d => d.id === id);
+                        if (item) {
+                            const tag = document.createElement('div');
+                            tag.className = 'select-tag';
+                            tag.textContent = item.name;
+
+                            const closeBtn = document.createElement('span');
+                            closeBtn.innerHTML = '&#10005;';
+                            closeBtn.style.cursor = 'pointer';
+                            closeBtn.style.marginLeft = '4px';
+                            closeBtn.dataset.id = id;
+                            closeBtn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                const idToRemove = parseInt(e.target.dataset.id);
+                                selectedIds.delete(idToRemove);
+                                renderTags();
+                                renderDropdown();
+                            });
+
+                            tag.appendChild(closeBtn);
+                            tagsContainer.appendChild(tag);
+                        }
+                    });
+                }
+            }
+            
+            // Delegación de eventos para la selección en el dropdown
+            dropdownList.addEventListener('click', (e) => {
+                const optionEl = e.target.closest('div'); 
+                if (!optionEl || !optionEl.dataset.id) return;
+                
+                e.stopPropagation();
+                const itemId = parseInt(optionEl.dataset.id);
+                
+                if (selectedIds.has(itemId)) {
+                    selectedIds.delete(itemId);
+                } else {
+                    selectedIds.add(itemId);
+                }
+                
+                renderTags();
+                renderDropdown();
+            });
+
+            // Toggle del dropdown al hacer clic en el contenedor principal
+            containerElement.addEventListener('click', (e) => {
+                if (e.target.closest('.select-tag span')) return;
+
+                document.querySelectorAll('.custom-multi-select.open').forEach(openEl => {
+                    if (openEl !== containerElement) {
+                        openEl.classList.remove('open');
+                    }
+                });
+                
+                containerElement.classList.toggle('open');
+                
+                if (containerElement.classList.contains('open')) {
+                    renderDropdown();
+                }
+            });
+
+            // Cerrar el dropdown si se hace click fuera
+            document.addEventListener('click', (e) => {
+                if (!containerElement.contains(e.target)) {
+                    containerElement.classList.remove('open');
+                }
+            });
+
+            // Inicializar la vista
+            renderTags();
+        }
+
+        // Función auxiliar para leer IDs del hidden input
+        function getSelectedIdsFromCustomUI(hiddenInput) {
+            try {
+                const value = hiddenInput.value;
+                return value ? JSON.parse(value) : [];
+            } catch (e) {
+                console.error("Error al parsear IDs seleccionados:", e);
+                return [];
+            }
+        }
+
+        function updatePlazoStatus(fechaVencimientoStr, isCompleted) {
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            const vencimiento = fechaVencimientoStr ? new Date(fechaVencimientoStr) : null;
+            plazoStatusSpan.classList.remove('plazo-vencido','plazo-vigente');
+
+            if (isCompleted) {
+                plazoStatusSpan.textContent = 'Completado (Vigente)';
+                plazoStatusSpan.classList.add('plazo-vigente');
+            } else if (vencimiento && vencimiento < today) {
+                plazoStatusSpan.textContent = '¡VENCIDO!';
+                plazoStatusSpan.classList.add('plazo-vencido');
+            } else {
+                plazoStatusSpan.textContent = 'Vigente';
+                plazoStatusSpan.classList.add('plazo-vigente');
+            }
+        }
+
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        function formatDate(date) {
+            return date.toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+        }
+
+        function formatInputDate(date) {
+            const yyyy = date.getFullYear();
+            const mm = String(date.getMonth() + 1).padStart(2,'0');
+            const dd = String(date.getDate()).padStart(2,'0');
+            return `${yyyy}-${mm}-${dd}`;
+        }
+
+        function formatInputDateTime(date) {
+            const yyyy = date.getFullYear();
+            const mm = String(date.getMonth() + 1).padStart(2,'0');
+            const dd = String(date.getDate()).padStart(2,'0');
+            const hh = String(date.getHours()).padStart(2,'0');
+            const mi = String(date.getMinutes()).padStart(2,'0');
+            return `${yyyy}-${mm}-${dd}T${hh}:${mi}`;
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
+        }
+
+        // =========================================================================================
+        // ACTUALIZAR INFORMACIÓN DE LA EMPRESA
+        // =========================================================================================
+        function updateCompanyInfo() {
+            const companyData = company[0];
+            
+            // Actualizar header
+            document.getElementById('companyName').textContent = companyData.setEmpresaNombre;
+            document.getElementById('companyRuc').textContent = `RUC: ${companyData.setEmpresaRuc}`;
+            document.getElementById('companyAddress').textContent = companyData.setEmpresaDireccion;
+            document.getElementById('companyPhone').textContent = companyData.setEmpresaTelefono;
+            
+            // Actualizar estadísticas
+            totalTicketsEl.textContent = tickets.length;
+            totalUsersEl.textContent = companyData.setUsuarios.length;
+            totalCustomersEl.textContent = companyData.setCustomers.length;
+            
+            // Calcular tareas pendientes
+            const pendingTasks = tickets.reduce((total, ticket) => {
+                return total + (ticket.tasks ? ticket.tasks.filter(task => !task.completed).length : 0);
+            }, 0);
+            pendingTasksEl.textContent = pendingTasks;
+        }
+
+        // =========================================================================================
+        // RENDERIZAR SECCIONES DEL TICKET (NUEVO DISEÑO)
+        // =========================================================================================
+        function renderReuniones(reuniones) {
+            reunionesList.innerHTML = '';
+            
+            if (!reuniones || reuniones.length === 0) {
+                reunionesList.innerHTML = '<div style="text-align: center; color: #6b7280; font-style: italic; padding: 10px;">No hay reuniones programadas</div>';
+                return;
+            }
+            
+            reuniones.forEach(reunion => {
+                const reunionElement = document.createElement('div');
+                reunionElement.className = 'meeting-item';
+                reunionElement.innerHTML = `
+                    <div class="meeting-header">
+                        <div class="meeting-title">${escapeHtml(reunion.titulo)}</div>
+                        <div class="meeting-date">${formatDate(new Date(reunion.fecha))}</div>
+                    </div>
+                    <div class="meeting-responsible">Responsable: ${escapeHtml(reunion.responsable)}</div>
+                    <div style="margin-top: 8px;">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="eliminarReunion('${reunion.id}')">Eliminar</button>
+                    </div>
+                `;
+                reunionesList.appendChild(reunionElement);
+            });
+        }
+
+        function renderTareas(tareas) {
+            tareasList.innerHTML = '';
+            
+            if (!tareas || tareas.length === 0) {
+                tareasList.innerHTML = '<div style="text-align: center; color: #6b7280; font-style: italic; padding: 10px;">No hay tareas asignadas</div>';
+                tareasProgressFill.style.width = '0%';
+                tareasProgressText.textContent = '0% completado';
+                return;
+            }
+            
+            const totalTareas = tareas.length;
+            const tareasCompletadas = tareas.filter(t => t.completed).length;
+            const porcentaje = Math.round((tareasCompletadas / totalTareas) * 100);
+            
+            tareasProgressFill.style.width = `${porcentaje}%`;
+            tareasProgressText.textContent = `${porcentaje}% completado (${tareasCompletadas}/${totalTareas} tareas)`;
+            
+            tareas.forEach(tarea => {
+                const tareaElement = document.createElement('div');
+                tareaElement.className = 'task-item';
+                tareaElement.innerHTML = `
+                    <div class="task-header">
+                        <div class="task-title">${escapeHtml(tarea.nombre)}</div>
+                        <div class="task-date">${tarea.fechaLimite ? formatDate(new Date(tarea.fechaLimite)) : 'Sin fecha'}</div>
+                    </div>
+                    <div class="task-responsible">Responsable: ${escapeHtml(tarea.responsable)}</div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" ${tarea.completed ? 'checked' : ''} onchange="cambiarEstadoTarea('${tarea.id}', this.checked)">
+                        <label>Completada</label>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="eliminarTarea('${tarea.id}')">Eliminar</button>
+                    </div>
+                `;
+                tareasList.appendChild(tareaElement);
+            });
+        }
+
+        function renderComentarios(comentarios) {
+            comentariosList.innerHTML = '';
+            
+            if (!comentarios || comentarios.length === 0) {
+                comentariosList.innerHTML = '<div style="text-align: center; color: #6b7280; font-style: italic; padding: 10px;">No hay comentarios</div>';
+                return;
+            }
+            
+            comentarios.forEach(comentario => {
+                const comentarioElement = document.createElement('div');
+                comentarioElement.className = 'comment-item';
+                comentarioElement.innerHTML = `
+                    <div class="comment-header">
+                        <div class="comment-author">${escapeHtml(comentario.autor)}</div>
+                        <div class="comment-date">${formatDate(new Date(comentario.fecha))}</div>
+                    </div>
+                    <div class="comment-text">${escapeHtml(comentario.texto)}</div>
+                    <div style="margin-top: 8px;">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="eliminarComentario('${comentario.id}')">Eliminar</button>
+                    </div>
+                `;
+                comentariosList.appendChild(comentarioElement);
+            });
+        }
+
+        function actualizarInformacionGeneral(ticket) {
+            // Información general
+            ticketReunionesDisplay.textContent = ticket.reuniones ? ticket.reuniones.length : '0';
+            ticketTareasDisplay.textContent = ticket.tasks ? ticket.tasks.length : '0';
+            ticketEtiquetasDisplay.textContent = ticket.etiquetas ? ticket.etiquetas.join(', ') : 'No hay etiquetas';
+            ticketComentariosDisplay.textContent = ticket.comentarios ? ticket.comentarios.length : '0';
+            ticketArchivosDisplay.textContent = ticket.archivos ? ticket.archivos.length : '0';
+            
+            // Información adicional
+            const agregadoPorIds = Array.isArray(ticket.agregadoPorIds) ? ticket.agregadoPorIds : [];
+            const creadoPor = agregadoPorIds.length > 0 ? 
+                dataUsers.filter(u => agregadoPorIds.includes(u.id)).map(u => u.name).join(', ') : 
+                'No asignado';
+            ticketCreadoPorDisplay.textContent = creadoPor;
+            
+            const clienteContacto = ticket.clienteId ? 
+                dataCustomers.find(c => c.id == ticket.clienteId)?.name : 
+                'No asignado';
+            ticketClienteContactoDisplay.textContent = clienteContacto;
+        }
+
+        // =========================================================================================
+        // FUNCIONES PARA MANEJAR EVENTOS (NUEVO DISEÑO)
+        // =========================================================================================
+        function agregarReunion() {
+            // Limpiar formulario
+            reunionTituloInput.value = '';
+            reunionFechaInput.value = '';
+            reunionResponsableInput.value = '';
+            
+            // Mostrar modal de reunión
+            reunionModal.style.display = 'flex';
+        }
+
+        function guardarReunion() {
+            const titulo = reunionTituloInput.value.trim();
+            const fecha = reunionFechaInput.value;
+            const responsable = reunionResponsableInput.value.trim();
+
+            if (!titulo || !fecha || !responsable) {
+                alert('Por favor, complete todos los campos.');
+                return;
+            }
+
+            const nuevaReunion = {
+                id: generateId(),
+                titulo: titulo,
+                fecha: fecha,
+                responsable: responsable
+            };
+            
+            const ticketId = ticketIdInput.value;
+            if (ticketId) {
+                const ticket = tickets.find(t => t.id === ticketId);
+                if (!ticket.reuniones) ticket.reuniones = [];
+                ticket.reuniones.push(nuevaReunion);
+                renderReuniones(ticket.reuniones);
+                actualizarInformacionGeneral(ticket);
+                reunionModal.style.display = 'none';
+            }
+        }
+
+        function eliminarReunion(id) {
+            showConfirm('¿Estás seguro de que deseas eliminar esta reunión?', () => {
+                const ticketId = ticketIdInput.value;
+                if (ticketId) {
+                    const ticket = tickets.find(t => t.id === ticketId);
+                    if (ticket && ticket.reuniones) {
+                        ticket.reuniones = ticket.reuniones.filter(r => r.id !== id);
+                        renderReuniones(ticket.reuniones);
+                        actualizarInformacionGeneral(ticket);
+                    }
+                }
+            });
+        }
+
+        function agregarComentario() {
+            const texto = nuevoComentarioInput.value.trim();
+            if (!texto) {
+                alert('Por favor, ingrese un comentario.');
+                return;
+            }
+            
+            const nuevoComentario = {
+                id: generateId(),
+                texto: texto,
+                autor: 'Usuario Actual',
+                fecha: new Date().toISOString()
+            };
+            
+            const ticketId = ticketIdInput.value;
+            if (ticketId) {
+                const ticket = tickets.find(t => t.id === ticketId);
+                if (!ticket.comentarios) ticket.comentarios = [];
+                ticket.comentarios.push(nuevoComentario);
+                renderComentarios(ticket.comentarios);
+                actualizarInformacionGeneral(ticket);
+                nuevoComentarioInput.value = '';
+            }
+        }
+
+        function eliminarComentario(id) {
+            showConfirm('¿Estás seguro de que deseas eliminar este comentario?', () => {
+                const ticketId = ticketIdInput.value;
+                if (ticketId) {
+                    const ticket = tickets.find(t => t.id === ticketId);
+                    if (ticket && ticket.comentarios) {
+                        ticket.comentarios = ticket.comentarios.filter(c => c.id !== id);
+                        renderComentarios(ticket.comentarios);
+                        actualizarInformacionGeneral(ticket);
+                    }
+                }
+            });
+        }
+
+        function cambiarEstadoTarea(id, completada) {
+            const ticketId = ticketIdInput.value;
+            if (ticketId) {
+                const ticket = tickets.find(t => t.id === ticketId);
+                if (ticket && ticket.tasks) {
+                    const tarea = ticket.tasks.find(t => t.id === id);
+                    if (tarea) {
+                        tarea.completed = completada;
+                        renderTareas(ticket.tasks);
+                    }
+                }
+            }
+        }
+
+        function eliminarTarea(id) {
+            showConfirm('¿Estás seguro de que deseas eliminar esta tarea?', () => {
+                const ticketId = ticketIdInput.value;
+                if (ticketId) {
+                    const ticket = tickets.find(t => t.id === ticketId);
+                    if (ticket && ticket.tasks) {
+                        ticket.tasks = ticket.tasks.filter(t => t.id !== id);
+                        renderTareas(ticket.tasks);
+                        actualizarInformacionGeneral(ticket);
+                    }
+                }
+            });
+        }
+
+        // =========================================================================================
+        // FUNCIONES DEL CÓDIGO ORIGINAL (MANTENIDAS)
+        // =========================================================================================
+        function addTask() {
+            const nombre = nuevaTareaNombreInput.value.trim();
+            const fechaLimite = nuevaTareaFechaInput.value || null;
+            const responsableId = nuevaTareaResponsableSelect.value ? parseInt(nuevaTareaResponsableSelect.value) : null;
+
+            if (!nombre) {
+                alert('La descripción de la tarea no puede estar vacía.');
+                return;
+            }
+
+            if (ticketIdInput.value) {
+                const tId = ticketIdInput.value;
+                const ticket = tickets.find(t => t.id === tId);
+                if (!ticket.tasks) ticket.tasks = [];
+                const nueva = { 
+                    id: generateId(), 
+                    nombre, 
+                    fechaLimite, 
+                    responsableId,
+                    responsable: dataCollaborators.find(c => c.id == responsableId)?.name || 'Sin asignar',
+                    completed: false
+                };
+                ticket.tasks.push(nueva);
+                renderTareas(ticket.tasks);
+                actualizarInformacionGeneral(ticket);
+            } else {
+                const nueva = { 
+                    id: 'tmp_' + (++tempTaskCounter), 
+                    nombre, 
+                    fechaLimite, 
+                    responsableId,
+                    responsable: dataCollaborators.find(c => c.id == responsableId)?.name || 'Sin asignar',
+                    completed: false
+                };
+                tempTasks.push(nueva);
+                renderTareas(tempTasks);
+            }
+
+            nuevaTareaNombreInput.value = '';
+            nuevaTareaFechaInput.value = '';
+            nuevaTareaResponsableSelect.selectedIndex = 0;
+        }
+
+        // =========================================================================================
+        // LÓGICA UI Y MODALES (COMBINACIÓN DE CÓDIGO ORIGINAL Y NUEVO)
+        // =========================================================================================
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                this.closest('.modal, .sub-modal').style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal') || event.target.classList.contains('sub-modal')) {
+                event.target.style.display = 'none';
+            }
+        });
+
+        cancelEtapaBtn.addEventListener('click', () => {
+            etapaModal.style.display = 'none';
+        });
+        
+        cancelTicketBtn.addEventListener('click', () => {
+            ticketModal.style.display = 'none';
+        });
+
+        cancelReunionBtn.addEventListener('click', () => {
+            reunionModal.style.display = 'none';
+        });
+
+        guardarReunionBtn.addEventListener('click', guardarReunion);
+
+        etapaColorInput.addEventListener('input', () => {
+            colorPreview.textContent = etapaColorInput.value;
+        });
+
+        agregarTareaBtn.addEventListener('click', addTask);
+
+        addReunionBtn.addEventListener('click', agregarReunion);
+
+        addComentarioBtn.addEventListener('click', agregarComentario);
+
+        ticketFechaVencimientoInput.addEventListener('change', () => {
+            const isCompleted = ticketCompletadoCheckbox.checked;
+            updatePlazoStatus(ticketFechaVencimientoInput.value, isCompleted);
+        });
+
+        ticketCompletadoCheckbox.addEventListener('change', () => {
+            updatePlazoStatus(ticketFechaVencimientoInput.value, ticketCompletadoCheckbox.checked);
+        });
+
+        addEtapaBtn.addEventListener('click', () => {
+            etapaIdInput.value = '';
+            etapaNombreInput.value = '';
+            etapaColorInput.value = '#4CAF50';
+            colorPreview.textContent = '#4CAF50';
+            modalTitle.textContent = 'Nueva Etapa';
+            etapaModal.style.display = 'flex';
+        });
+
+        etapaForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = etapaNombreInput.value.trim();
+            const color = etapaColorInput.value;
+            if (nombre) {
+                if (etapaIdInput.value) {
+                    const etapaId = etapaIdInput.value;
+                    const etapaIndex = etapas.findIndex(e => e.id === etapaId);
+                    if (etapaIndex !== -1) {
+                        etapas[etapaIndex].nombre = nombre;
+                        etapas[etapaIndex].color = color;
+                    }
+                } else {
+                    const nuevaEtapa = { id: generateId(), nombre: nombre, color: color, fechaCreacion: new Date().toISOString() };
+                    etapas.push(nuevaEtapa);
+                }
+                renderPipeline();
+                etapaModal.style.display = 'none';
+            }
+        });
+
+        function openTicketModal(etapaId, ticketId = null) {
+            currentTicketId = ticketId;
+            ticketEtapaIdInput.value = etapaId;
+            ticketForm.reset();
+            ticketIdInput.value = '';
+            nuevoComentarioInput.value = '';
+
+            // Cargar selects con datos de la empresa (código original)
+            populateSelect(ticketClienteSelect, dataCustomers, 'Seleccione un cliente/contacto');
+            populateSelect(ticketResponsablesSelect, dataCollaborators, 'Seleccione responsable', false);
+            populateSelect(nuevaTareaResponsableSelect, dataCollaborators, 'Responsable');
+
+            let initialAgregadoPorIds = [];
+
+            if (ticketId) {
+                ticketModalTitle.querySelector('span').textContent = 'Editar Ticket';
+                const ticket = tickets.find(t => t.id === ticketId);
+                if (ticket) {
+                    ticketIdInput.value = ticket.id;
+                    ticketNombreInput.value = ticket.nombre || '';
+                    ticketDescripcionInput.value = ticket.descripcion || '';
+                    
+                    // Obtener IDs seleccionados para Agregado por
+                    initialAgregadoPorIds = Array.isArray(ticket.agregadoPorIds) ? ticket.agregadoPorIds : [];
+                    
+                    ticketClienteSelect.value = ticket.clienteId || '';
+                    
+                    if (ticket.fechaCreacion) {
+                        const d = new Date(ticket.fechaCreacion);
+                        ticketFechaCreacionInput.value = formatInputDateTime(d);
+                    } else {
+                        ticketFechaCreacionInput.value = formatInputDateTime(new Date());
+                    }
+
+                    ticketFechaVencimientoInput.value = ticket.fechaVencimiento ? formatInputDate(new Date(ticket.fechaVencimiento)) : formatInputDate(new Date());
+                    ticketCompletadoCheckbox.checked = ticket.completado || false;
+
+                    if (ticket.responsablesIds && Array.isArray(ticket.responsablesIds) && ticket.responsablesIds.length > 0) {
+                        ticketResponsablesSelect.value = ticket.responsablesIds[0];
+                    } else {
+                        ticketResponsablesSelect.value = '';
+                    }
+
+                    // Renderizar secciones del nuevo diseño
+                    renderReuniones(ticket.reuniones || []);
+                    renderTareas(ticket.tasks || []);
+                    renderComentarios(ticket.comentarios || []);
+                    
+                    // Actualizar información general
+                    actualizarInformacionGeneral(ticket);
+                    
+                    // Actualizar estado del plazo
+                    updatePlazoStatus(ticketFechaVencimientoInput.value, ticketCompletadoCheckbox.checked);
+                }
+            } else {
+                ticketModalTitle.querySelector('span').textContent = 'Nuevo Ticket';
+                ticketFechaCreacionInput.value = formatInputDateTime(new Date());
+                ticketFechaVencimientoInput.value = formatInputDate(new Date());
+                
+                // Inicializar secciones vacías
+                renderReuniones([]);
+                renderTareas([]);
+                renderComentarios([]);
+                
+                // Inicializar información general
+                actualizarInformacionGeneral({
+                    reuniones: [],
+                    tasks: [],
+                    etiquetas: [],
+                    comentarios: [],
+                    archivos: [],
+                    agregadoPorIds: [],
+                    clienteId: null
+                });
+                
+                // Actualizar estado del plazo
+                updatePlazoStatus(ticketFechaVencimientoInput.value, false);
+            }
+
+            // INICIALIZAR EL COMPONENTE DE SELECCIÓN MÚLTIPLE PARA AGREGADO POR
+            createMultiSelectUI(multiSelect_AgregadoPor, dataUsers, initialAgregadoPorIds, ticketAgregadoPorIdsInput);
+
+            ticketModal.style.display = 'flex';
+        }
+
+        ticketForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = ticketNombreInput.value.trim();
+            const etapaId = ticketEtapaIdInput.value;
+
+            if (!nombre || !etapaId) return;
+
+            const descripcion = ticketDescripcionInput.value;
+            
+            // OBTENER IDs DEL COMPONENTE CUSTOM PARA AGREGADO POR
+            const agregadoPorIds = getSelectedIdsFromCustomUI(ticketAgregadoPorIdsInput);
+            
+            const clienteId = ticketClienteSelect.value ? parseInt(ticketClienteSelect.value) : null;
+            const fechaCreacionVal = ticketFechaCreacionInput.value ? new Date(ticketFechaCreacionInput.value).toISOString() : new Date().toISOString();
+            const fechaVencimiento = ticketFechaVencimientoInput.value;
+            const completado = ticketCompletadoCheckbox.checked;
+
+            const responsableVal = ticketResponsablesSelect.value ? parseInt(ticketResponsablesSelect.value) : null;
+            const responsablesIds = responsableVal ? [responsableVal] : [];
+
+            if (ticketIdInput.value) {
+                const ticketId = ticketIdInput.value;
+                const ticketIndex = tickets.findIndex(t => t.id === ticketId);
+                if (ticketIndex !== -1) {
+                    tickets[ticketIndex] = {
+                        ...tickets[ticketIndex],
+                        nombre,
+                        descripcion,
+                        agregadoPorIds,
+                        clienteId,
+                        responsablesIds,
+                        fechaVencimiento,
+                        completado,
+                        fechaCreacion: fechaCreacionVal
+                    };
+                }
+            } else {
+                const nuevoTicket = {
+                    id: generateId(),
+                    nombre,
+                    fechaCreacion: fechaCreacionVal,
+                    id_etapa: etapaId,
+                    descripcion,
+                    agregadoPorIds,
+                    clienteId,
+                    responsablesIds,
+                    fechaVencimiento,
+                    completado,
+                    tasks: tempTasks.slice(),
+                    reuniones: [],
+                    comentarios: [],
+                    etiquetas: ['Nuevo'],
+                    archivos: []
+                };
+                tickets.push(nuevoTicket);
+                tempTasks = [];
+                tempTaskCounter = 0;
+            }
+
+            renderPipeline();
+            ticketModal.style.display = 'none';
+        });
+
+        confirmOkBtn.addEventListener('click', () => {
+            if (confirmCallback) confirmCallback();
+            confirmModal.style.display = 'none';
+        });
+        confirmCancelBtn.addEventListener('click', () => { confirmModal.style.display = 'none'; });
+
+        function showConfirm(message, callback) {
+            confirmCallback = callback;
+            document.getElementById('confirmModalMessage').textContent = message;
+            confirmModal.style.display = 'flex';
+        }
+
+        // =========================================================================================
+        // RENDER PIPELINE (CÓDIGO ORIGINAL MODIFICADO)
+        // =========================================================================================
+        function renderPipeline() {
+            pipelineContainer.innerHTML = '';
+            etapas.forEach(etapa => {
+                const etapaElement = document.createElement('div');
+                etapaElement.className = 'etapa';
+                etapaElement.style.borderTopColor = etapa.color || '#e5e7eb';
+                etapaElement.setAttribute('data-etapa-id', etapa.id);
+                etapaElement.addEventListener('dragover', dragOver);
+                etapaElement.addEventListener('dragleave', dragLeave);
+                etapaElement.addEventListener('drop', drop);
+
+                const ticketsInEtapa = tickets.filter(t => t.id_etapa === etapa.id);
+
+                etapaElement.innerHTML = `
+                    <div class="etapa-header">
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <span class="etapa-title">${etapa.nombre}</span>
+                            <span class="etapa-count">${ticketsInEtapa.length}</span>
+                        </div>
+                        <div class="etapa-actions">
+                            <button onclick="editEtapa('${etapa.id}')" title="Editar etapa">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button onclick="confirmDeleteEtapa('${etapa.id}')" title="Eliminar etapa">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 6h18M8 6v14a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6M10 6V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tickets-container" data-etapa-id="${etapa.id}">
+                        ${ticketsInEtapa.map(ticket => {
+                            const today = new Date();
+                            today.setHours(0,0,0,0);
+                            const totalTasks = ticket.tasks?.length || 0;
+                            const completedTasks = ticket.tasks?.filter(t => t.completed).length || 0;
+                            const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+                            const vencimiento = ticket.fechaVencimiento ? new Date(ticket.fechaVencimiento) : null;
+                            let statusBadge = '';
+                            
+                            if (ticket.completado) {
+                                statusBadge = '<span class="status-badge status-completed">Completado</span>';
+                            } else if (vencimiento && vencimiento < today) {
+                                statusBadge = '<span class="status-badge status-overdue">Vencido</span>';
+                            } else {
+                                statusBadge = '<span class="status-badge status-pending">Pendiente</span>';
+                            }
+                            
+                            // Obtener información de los creadores
+                            const agregadoPorIds = Array.isArray(ticket.agregadoPorIds) ? ticket.agregadoPorIds : [];
+                            const creadores = agregadoPorIds.length > 0 ? 
+                                dataUsers.filter(u => agregadoPorIds.includes(u.id)).map(u => u.name).join(', ') : 
+                                'Sin asignar';
+                            
+                            return `
+                            <div class="ticket" draggable="true" data-ticket-id="${ticket.id}" onclick="openTicketModal('${etapa.id}', '${ticket.id}')">
+                                <div class="ticket-thumbnail" style="background: ${etapa.color || '#f3f4f6'}; color: white;">${(ticket.nombre || 'T').charAt(0).toUpperCase()}</div>
+                                <div class="ticket-body">
+                                    <div class="ticket-title">${escapeHtml(ticket.nombre)} ${statusBadge}</div>
+                                    <div class="ticket-desc">${escapeHtml((ticket.descripcion||'').slice(0,80))}${(ticket.descripcion && ticket.descripcion.length>80)?'…':''}</div>
+                                    
+                                    <!-- Barra de progreso para tareas -->
+                                    ${totalTasks > 0 ? `
+                                    <div class="progress-container">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: ${progressPercent}%;"></div>
+                                        </div>
+                                        <div class="progress-text">${progressPercent}% completado (${completedTasks}/${totalTasks} tareas)</div>
+                                    </div>
+                                    ` : ''}
+                                    
+                                    <div class="ticket-meta">
+                                        <div>Creado por: ${escapeHtml(creadores)}</div>
+                                        <div>Creación: ${formatDate(new Date(ticket.fechaCreacion))}</div>
+                                        <div>Vence: ${ticket.fechaVencimiento ? formatDate(new Date(ticket.fechaVencimiento)) : '—'}</div>
+                                    </div>
+                                </div>
+                                <div class="ticket-actions">
+                                    <button onclick="event.stopPropagation(); confirmDeleteTicket('${ticket.id}')" title="Eliminar ticket">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                            <path d="M3 6h18M8 6v14a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6M10 6V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        `}).join('')}
+                    </div>
+                    <button class="add-ticket-btn" onclick="openTicketModal('${etapa.id}')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Añadir Ticket
+                    </button>
+                `;
+
+                pipelineContainer.appendChild(etapaElement);
+            });
+
+            document.querySelectorAll('.ticket').forEach(ticketElement => {
+                ticketElement.addEventListener('dragstart', dragStart);
+            });
+            
+            updateCompanyInfo();
+        }
+
+        // =========================================================================================
+        // DRAG & DROP (CÓDIGO ORIGINAL)
+        // =========================================================================================
+        function dragStart(e) {
+            draggedTicket = e.target;
+            e.dataTransfer.setData('text/plain', e.target.dataset.ticketId);
+            setTimeout(() => { e.target.classList.add('dragging'); }, 0);
+        }
+        function dragOver(e) {
+            e.preventDefault();
+            const etapaElement = e.currentTarget;
+            if (etapaElement && !etapaElement.classList.contains('highlight')) etapaElement.classList.add('highlight');
+        }
+        function dragLeave(e) { e.currentTarget.classList.remove('highlight'); }
+        function drop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('highlight');
+            const ticketId = e.dataTransfer.getData('text/plain');
+            const newEtapaId = e.currentTarget.dataset.etapaId;
+            const ticket = tickets.find(t => t.id === ticketId);
+            if (ticket) {
+                ticket.id_etapa = newEtapaId;
+                renderPipeline();
+            }
+        }
+
+        // =========================================================================================
+        // ETAPAS & TICKETS CRUD (CÓDIGO ORIGINAL)
+        // =========================================================================================
+        function editEtapa(etapaId) {
+            const etapa = etapas.find(e => e.id === etapaId);
+            if (etapa) {
+                etapaIdInput.value = etapa.id;
+                etapaNombreInput.value = etapa.nombre;
+                etapaColorInput.value = etapa.color;
+                colorPreview.textContent = etapa.color;
+                modalTitle.textContent = 'Editar Etapa';
+                etapaModal.style.display = 'flex';
+            }
+        }
+
+        function confirmDeleteEtapa(etapaId) {
+            showConfirm('Eliminar esta etapa moverá todos los tickets a la primera etapa. ¿Continuar?', () => {
+                deleteEtapa(etapaId);
+            });
+        }
+
+        function deleteEtapa(etapaId) {
+            const index = etapas.findIndex(e => e.id === etapaId);
+            if (index !== -1) {
+                const [deletedEtapa] = etapas.splice(index, 1);
+                const targetEtapaId = etapas.length > 0 ? etapas[0].id : null;
+                tickets.forEach(ticket => {
+                    if (ticket.id_etapa === deletedEtapa.id) ticket.id_etapa = targetEtapaId;
+                });
+                renderPipeline();
+            }
+        }
+
+        function confirmDeleteTicket(ticketId) {
+            showConfirm('¿Estás seguro de que deseas eliminar este ticket?', () => {
+                deleteTicket(ticketId);
+            });
+        }
+
+        function deleteTicket(ticketId) {
+            const index = tickets.findIndex(t => t.id === ticketId);
+            if (index !== -1) {
+                tickets.splice(index, 1);
+                renderPipeline();
+            }
+        }
+
+        // =========================================================================================
+        // INICIALIZACIÓN (CÓDIGO ORIGINAL MODIFICADO)
+        // =========================================================================================
+        function initData() {
+            const savedEtapas = localStorage.getItem('etapas');
+            const savedTickets = localStorage.getItem('tickets');
+
+            if (savedEtapas) etapas = JSON.parse(savedEtapas);
+            if (savedTickets) tickets = JSON.parse(savedTickets);
+
+            if (etapas.length === 0) {
+                etapas = [
+                    { id: 'etapa1', nombre: 'Por hacer', color: '#f97373', fechaCreacion: new Date().toISOString() },
+                    { id: 'etapa2', nombre: 'En progreso', color: '#60a5fa', fechaCreacion: new Date().toISOString() },
+                    { id: 'etapa3', nombre: 'Terminado', color: '#34d399', fechaCreacion: new Date().toISOString() }
+                ];
+            }
+
+            if (tickets.length === 0) {
+                const oneDayLater = formatInputDate(new Date(Date.now() + 86400000));
+                const yesterday = formatInputDate(new Date(Date.now() - 86400000));
+                tickets = [
+                    {
+                        id: 'ticket1',
+                        nombre: 'Prospecto que Arregla celulares',
+                        fechaCreacion: new Date().toISOString(),
+                        id_etapa: 'etapa1',
+                        descripcion: 'Estuvo apagado su celular al contactarlo',
+                        agregadoPorIds: [1, 2], // Ahora es un array de IDs
+                        clienteId: 1,
+                        responsablesIds: [1],
+                        fechaVencimiento: oneDayLater,
+                        completado: false,
+                        tasks: [
+                            { 
+                                id: 'task1', 
+                                nombre: 'Contactar al cliente', 
+                                fechaLimite: '2025-05-23', 
+                                responsableId: 1,
+                                responsable: 'Daniel Castillo',
+                                completed: true 
+                            },
+                            { 
+                                id: 'task2', 
+                                nombre: 'Evaluar el equipo', 
+                                fechaLimite: '2025-05-24', 
+                                responsableId: 2,
+                                responsable: 'Carlos Mendoza',
+                                completed: false 
+                            }
+                        ],
+                        reuniones: [
+                            { id: 'r1', titulo: 'Reunión inicial', fecha: '2025-06-07', responsable: 'Luis Purizaca' }
+                        ],
+                        comentarios: [
+                            { id: 'c1', texto: 'El cliente reportó que el celular se apaga solo', autor: 'Luis Purizaca', fecha: '2025-05-21' }
+                        ],
+                        etiquetas: ['Referidos Sr. Joe', 'Urgente'],
+                        archivos: []
+                    },
+                    {
+                        id: 'ticket2',
+                        nombre: 'Desarrollar funcionalidad',
+                        fechaCreacion: new Date().toISOString(),
+                        id_etapa: 'etapa1',
+                        descripcion: 'Crear la nueva funcionalidad de filtro avanzado.',
+                        agregadoPorIds: [2], // Ahora es un array de IDs
+                        clienteId: 2,
+                        responsablesIds: [2],
+                        fechaVencimiento: yesterday,
+                        completado: false,
+                        tasks: [],
+                        reuniones: [],
+                        comentarios: [],
+                        etiquetas: ['Desarrollo'],
+                        archivos: []
+                    },
+                    {
+                        id: 'ticket3',
+                        nombre: 'Revisar código',
+                        fechaCreacion: new Date().toISOString(),
+                        id_etapa: 'etapa2',
+                        descripcion: 'Hacer una revisión de código antes del despliegue.',
+                        agregadoPorIds: [1, 3], // Ahora es un array de IDs
+                        clienteId: 5,
+                        responsablesIds: [2],
+                        fechaVencimiento: oneDayLater,
+                        completado: true,
+                        tasks: [],
+                        reuniones: [],
+                        comentarios: [],
+                        etiquetas: ['Revisión'],
+                        archivos: []
+                    }
+                ];
+            }
+        }
+
+        function init() {
+            initData();
+            renderPipeline();
+        }
+
+        init();
+    </script>
+</body>
+</html>
